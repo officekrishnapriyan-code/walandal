@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Wal & al | Cloud, Robotics & Software for a Regenerative Planet</title>
+    <meta
+      name="description"
+      content="wal and al is a sustainability engineering studio building cloud, robotics and software platforms for water, air and land."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <!-- Header / Navigation -->
+    <header class="site-header">
+      <div class="container nav-container">
+        <div class="logo">
+          <span class="logo-mark">&</span>
+          <span class="logo-text">WAL&AL</span>
+        </div>
+
+        <nav class="main-nav">
+          <button class="nav-toggle" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
+          <ul class="nav-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#meaning">About</a></li>
+            <li><a href="#focus">Focus Areas</a></li>
+            <li><a href="#solutions">Work</a></li>
+            <li><a href="#founder">Founder</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero -->
+      <section id="hero" class="hero-section">
+        <div class="hero-overlay"></div>
+
+        <div class="container hero-content reveal">
+          <div class="hero-text">
+            <p class="eyebrow">Sustainability Engineering Studio</p>
+            <h1>Engineering Harmony Between Water, Air, and Land.</h1>
+            <p class="hero-subtitle">
+              wal and al builds cloud, robotics, and software platforms for the sustainable
+              management of water, air, and land. We design systems that monitor, automate,
+              and support data-driven decisions for a regenerative planet.
+            </p>
+
+            <div class="hero-actions">
+              <a href="#contact" class="btn primary">Talk to Us</a>
+              <a href="#solutions" class="btn secondary">Explore Our Work</a>
+            </div>
+
+            <p class="hero-tagline">
+              Cloud, Robotics, and Software for a Regenerative Planet.
+            </p>
+          </div>
+
+          <div class="hero-panel">
+            <div class="hero-stats-card">
+              <h2>Wal & al</h2>
+              <p class="hero-panel-text">
+                Water, Air, Land — for All. wal and al exists to protect
+                natural systems while enabling communities, cities, and organizations
+                to act with clarity and confidence.
+              </p>
+
+              <div class="hero-stats">
+                <div class="stat">
+                  <span class="stat-number" data-target="3">0</span>
+                  <span class="stat-label">Resource domains</span>
+                </div>
+                <div class="stat">
+                  <span class="stat-number" data-target="24">0</span>
+                  <span class="stat-label">Hours of sensing / day (pilot scale)</span>
+                </div>
+                <div class="stat">
+                  <span class="stat-number" data-target="100">0</span>
+                  <span class="stat-label">% focus on impact</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- What wal and al Means -->
+      <section id="meaning" class="section">
+        <div class="container reveal">
+          <div class="section-header">
+            <h2>What wal and al Means</h2>
+            <p>
+              The name wal and al is a promise. Wal stands for Water, Air, and Land — the
+              core systems that make life possible. Al stands for All — all communities,
+              all ecosystems, and all future generations.
+            </p>
+            <p>
+              We build technology that understands these systems as a connected whole:
+              sensing what matters, surfacing timely insights, and enabling practical
+              action on the ground.
+            </p>
+          </div>
+
+          <div class="domain-tabs">
+            <div
+              class="tab-list"
+              role="tablist"
+              aria-label="Resource domains"
+            >
+              <button
+                class="tab-button active"
+                role="tab"
+                aria-selected="true"
+                aria-controls="tab-water"
+                id="tab-water-btn"
+              >
+                Water
+              </button>
+              <button
+                class="tab-button"
+                role="tab"
+                aria-selected="false"
+                aria-controls="tab-air"
+                id="tab-air-btn"
+              >
+                Air
+              </button>
+              <button
+                class="tab-button"
+                role="tab"
+                aria-selected="false"
+                aria-controls="tab-land"
+                id="tab-land-btn"
+              >
+                Land
+              </button>
+            </div>
+
+            <div class="tab-panels">
+              <div
+                class="tab-panel active"
+                id="tab-water"
+                role="tabpanel"
+                aria-labelledby="tab-water-btn"
+              >
+                <h3>Water: From Source to Tap</h3>
+                <p>
+                  We design IoT-enabled water solutions that continuously monitor quality
+                  and availability — from elevated tanks and pipelines to community taps.
+                  Chlorine dosing, leak detection, and safety thresholds are managed with
+                  clear, actionable alerts.
+                </p>
+                <ul class="tab-list-items">
+                  <li>Real-time monitoring of pH, turbidity, TDS, and chlorine.</li>
+                  <li>Smart dosing logic to reduce risk of contamination.</li>
+                  <li>Dashboards that work for both utilities and small communities.</li>
+                </ul>
+              </div>
+
+              <div
+                class="tab-panel"
+                id="tab-air"
+                role="tabpanel"
+                aria-labelledby="tab-air-btn"
+              >
+                <h3>Air: Making the Invisible Visible</h3>
+                <p>
+                  Air quality is often ignored until it becomes a crisis. wal and al builds
+                  sensor networks and analytics that bring real-time air data into everyday
+                  decisions for buildings, campuses, and cities.
+                </p>
+                <ul class="tab-list-items">
+                  <li>Indoor and outdoor sensor grids with edge intelligence.</li>
+                  <li>Early warnings when comfort or safety limits are exceeded.</li>
+                  <li>APIs and dashboards for planners, operators, and researchers.</li>
+                </ul>
+              </div>
+
+              <div
+                class="tab-panel"
+                id="tab-land"
+                role="tabpanel"
+                aria-labelledby="tab-land-btn"
+              >
+                <h3>Land: Listening to Ecosystems</h3>
+                <p>
+                  Soil, vegetation, and habitats tell a story about resilience. Using
+                  robotics and distributed sensing, we help capture the data behind that
+                  story so that restoration, agriculture, and infrastructure can adapt
+                  faster.
+                </p>
+                <ul class="tab-list-items">
+                  <li>Robotic and handheld sensing for soil and habitat health.</li>
+                  <li>Spatial maps that combine field data with satellite insights.</li>
+                  <li>Decision tools for planning interventions and monitoring impact.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Focus Areas -->
+      <section id="focus" class="section section-alt">
+        <div class="container reveal">
+          <div class="section-header">
+            <h2>Our Focus Areas</h2>
+            <p>
+              wal and al combines modern cloud practices, robotics, and software engineering
+              to build systems that stay reliable outside the lab — in real water networks,
+              real buildings, and real landscapes.
+            </p>
+          </div>
+
+          <div class="card-grid">
+            <article class="card">
+              <div class="card-icon" aria-hidden="true">☁️</div>
+              <h3>Cloud-Native Sustainability Platforms</h3>
+              <p>
+                We architect secure, scalable backends that ingest streams of sensor data,
+                process events in real time, and expose clean APIs and dashboards tailored
+                to your teams.
+              </p>
+              <p>
+                From AWS and Azure to open standards, we design for resilience, observability,
+                and long-term maintainability.
+              </p>
+            </article>
+
+            <article class="card">
+              <div class="card-icon" aria-hidden="true">🤖</div>
+              <h3>Robotics & Edge Intelligence</h3>
+              <p>
+                Our robotics and embedded work brings computation closer to the field —
+                whether on mobile robots, edge gateways, or constrained sensor nodes.
+              </p>
+              <p>
+                We prioritize robust behavior under variable connectivity, power, and
+                environmental conditions.
+              </p>
+            </article>
+
+            <article class="card">
+              <div class="card-icon" aria-hidden="true">🛰️</div>
+              <h3>Software for Natural Resources</h3>
+              <p>
+                We build tools that help utilities, rural communities, and climate projects
+                plan, monitor, and react to fast-changing conditions in water, air, and land.
+              </p>
+              <p>
+                Interfaces are designed for clarity, so that non-technical teams can trust
+                and act on the data.
+              </p>
+            </article>
+
+            <article class="card">
+              <div class="card-icon" aria-hidden="true">📊</div>
+              <h3>Data, AI & Digital Twins</h3>
+              <p>
+                Using analytics and modeling, we create digital counterparts of real
+                systems — from water tanks to microgrids — to test scenarios and forecast
+                risk before it appears on the ground.
+              </p>
+              <p>
+                Our goal is not complexity for its own sake, but better decisions when
+                they matter most.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sample Solutions -->
+      <section id="solutions" class="section">
+        <div class="container reveal">
+          <div class="section-header">
+            <h2>Example Initiatives</h2>
+            <p>
+              wal and al works as an applied engineering partner, turning ideas into field-ready
+              pilots. Here are example concepts that capture how we think and build.
+            </p>
+          </div>
+
+          <div class="card-grid">
+            <article class="card solution-card">
+              <h3>Aqua Insight – Intelligent Water Tank Monitoring</h3>
+              <p>
+                A monitoring and control layer for overhead tanks in rural and urban
+                communities, combining sensors and cloud analytics to keep drinking
+                water safe and available.
+              </p>
+              <ul>
+                <li>Continuous tracking of chlorine, pH, turbidity, and TDS.</li>
+                <li>Automatic alerts when thresholds drift into risk zones.</li>
+                <li>Evidence for better operation, maintenance, and policy decisions.</li>
+              </ul>
+            </article>
+
+            <article class="card solution-card">
+              <h3>Resilient Microgrids & Energy-Aware Control</h3>
+              <p>
+                A software and data layer for microgrids that serves pumps, treatment
+                units, sensors, and buildings using renewable energy in a resilient,
+                predictable way.
+              </p>
+              <ul>
+                <li>Load-aware scheduling that protects critical services.</li>
+                <li>Integration of weather, storage, and demand forecasts.</li>
+                <li>Dashboards for operators and community stakeholders.</li>
+              </ul>
+            </article>
+
+            <article class="card solution-card">
+              <h3>Robotic Field Sensing for Ecosystems</h3>
+              <p>
+                Autonomous and semi-autonomous platforms that map environmental conditions
+                over time, giving planners and conservationists a living picture of their
+                landscapes.
+              </p>
+              <ul>
+                <li>Mobile sensing for soil moisture, vegetation, and microclimate.</li>
+                <li>Repeatable routes for before/after comparisons.</li>
+                <li>Data products ready for GIS, modeling, and reporting.</li>
+              </ul>
+            </article>
+
+            <article class="card solution-card">
+              <h3>to be filled</h3>
+              <p>
+                foo-bar
+              </p>
+              <ul>
+                foo-bar
+              </ul>
+            </article>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- How We Work -->
+      <section id="process" class="section section-alt">
+        <div class="container reveal">
+          <div class="section-header">
+            <h2>How We Work</h2>
+            <p>
+              Every engagement is structured to respect local knowledge, build on what
+              already works, and leave teams stronger than before.
+            </p>
+          </div>
+
+          <div class="process-grid">
+            <div class="process-step">
+              <span class="step-number">01</span>
+              <h3>Discover</h3>
+              <p>
+                We map your current systems, constraints, and ambitions — from field
+                realities to existing data and infrastructure.
+              </p>
+            </div>
+
+            <div class="process-step">
+              <span class="step-number">02</span>
+              <h3>Co-design</h3>
+              <p>
+                Together, we identify high-leverage interventions and design a solution
+                that fits your teams, not just the technology.
+              </p>
+            </div>
+
+            <div class="process-step">
+              <span class="step-number">03</span>
+              <h3>Build & Integrate</h3>
+              <p>
+                We prototype, test, and integrate hardware and software — from sensors
+                and robots to cloud platforms and dashboards.
+              </p>
+            </div>
+
+            <div class="process-step">
+              <span class="step-number">04</span>
+              <h3>Monitor & Evolve</h3>
+              <p>
+                Once deployed, we help track performance, refine algorithms, and grow
+                the system as your needs and context change.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Founder -->
+      <section id="founder" class="section">
+        <div class="container founder-layout reveal">
+          <div class="founder-photo" aria-hidden="true">
+            <div class="photo-placeholder">KP</div>
+          </div>
+
+          <div class="founder-content">
+            <h2>About the Founder</h2>
+            <h3>Krishnapriyan M S</h3>
+            <p>
+              I’m Krishnapriyan M S, and my work is shaped by a conviction I’ve carried through
+              every journey: a society’s health can be measured by the health of the environment
+              around it.
+            </p>
+            <p>
+              Whether it’s tracking pollution near industries, monitoring coastal waters with
+              autonomous vessels, or ensuring safe drinking water in remote communities, my mission
+              is to bring visibility to the places where environmental stress turns into human
+              hardship.
+            </p>
+            <p>
+              This initiative is built for one purpose — to turn observation into action,
+              and action into impact.
+            </p>
+            <blockquote class="founder-quote">
+              “Technology should serve both people and planet — not one at the cost of
+              the other.”
+            </blockquote>
+          </div>
+        </div>
+      </section>
+
+      <!-- Why wal and al -->
+      <section id="value" class="section section-alt">
+        <div class="container reveal">
+          <div class="section-header">
+            <h2>Why wal and al?</h2>
+            <p>
+              Choosing a partner for climate and resource projects means trusting them
+              with both your community and your data. We take that responsibility
+              seriously.
+            </p>
+          </div>
+
+          <div class="card-grid value-grid">
+            <article class="card mini-card">
+              <h3>Full-Stack Capability</h3>
+              <p>
+                From field sensors and robotics all the way to cloud dashboards and APIs,
+                we design the full stack as one coherent system.
+              </p>
+            </article>
+
+            <article class="card mini-card">
+              <h3>Designed for Reality</h3>
+              <p>
+                Our solutions are built for uneven power, patchy connectivity, and harsh
+                environments — not just controlled lab conditions.
+              </p>
+            </article>
+
+            <article class="card mini-card">
+              <h3>Impact You Can Measure</h3>
+              <p>
+                We focus on metrics that actually matter — fewer outages, safer water,
+                more reliable data — instead of vanity dashboards.
+              </p>
+            </article>
+
+            <article class="card mini-card">
+              <h3>Open and Collaborative</h3>
+              <p>
+                We favor open standards, clear documentation, and co-design with local
+                teams so that solutions can evolve without lock-in.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ Accordion -->
+      <section id="faq" class="section">
+        <div class="container reveal">
+          <div class="section-header">
+            <h2>Questions You Might Have</h2>
+            <p>
+              Working with a sustainability-focused engineering studio is different from
+              buying a product off the shelf. Here are a few common questions.
+            </p>
+          </div>
+
+          <div class="faq-list">
+            <div class="faq-item">
+              <button class="faq-question">
+                <span>Do you only work on water projects?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  No. Water, air, and land are deeply connected, and so is our work. Many
+                  engagements start with one resource — such as drinking water safety —
+                  and then expand to energy, air quality, or land-use insights over time.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                <span>What stage of idea or project is the right time to reach out?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  We are comfortable joining early, when you only have a problem statement,
+                  or later, when you need help making an existing pilot robust. The earlier
+                  we talk, the easier it is to avoid dead-ends and design for long-term use.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                <span>Can you collaborate with our in-house or partner teams?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Yes. We often work alongside internal IT, operations, or research teams,
+                  as well as local implementation partners. Our role is to provide the
+                  technical backbone and design practices that help everyone move faster,
+                  together.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                <span>Do you support long-term operations?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  We aim to leave you with systems that are maintainable by your teams or
+                  local partners. Where helpful, we can define long-term support or
+                  evolution engagements aligned to clear outcomes, not just tickets.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact" class="section section-alt">
+        <div class="container reveal">
+          <div class="section-header">
+            <h2>Let’s Build What the Planet Needs.</h2>
+            <p>
+              Tell us about your water, air, or land challenge — we’ll respond with honest,
+              practical ideas for how technology can help.
+            </p>
+          </div>
+
+          <div class="contact-layout">
+            <form
+              class="contact-form"
+              action="https://example.com/contact"
+              method="post"
+            >
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" required />
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" required />
+              </div>
+
+              <div class="form-group">
+                <label for="organization">Organization</label>
+                <input id="organization" name="organization" type="text" />
+              </div>
+
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="4"
+                  required
+                ></textarea>
+              </div>
+
+              <button type="submit" class="btn primary">Send Message</button>
+
+              <!--
+              <p class="contact-note">
+                You can also reach us at:
+                <a href="mailto:hello@walandal.com">hello@walandal.com</a>
+              </p>
+              -->
+            </form>
+
+            <div class="contact-side">
+              <div class="contact-card">
+                <h3>Who We Work With</h3>
+                <p>
+                  Cities and local governments, utilities and infrastructure owners,
+                  impact-driven companies and NGOs, and research labs exploring the
+                  future of natural resource management.
+                </p>
+              </div>
+
+              <div class="contact-card">
+                <h3>What We Bring</h3>
+                <p>
+                  A blend of cloud, robotics, and software expertise, grounded in field
+                  experience and a clear commitment to sustainable development.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container footer-content">
+        <div class="footer-main">
+          <p class="footer-brand">© 2025 wal & al. All rights reserved.</p>
+          <p class="footer-mission">
+            Designing technology for water, air, land — and all.
+          </p>
+        </div>
+
+        <nav class="footer-nav">
+          <a href="#hero">Home</a>
+          <a href="#meaning">About</a>
+          <a href="#focus">Focus Areas</a>
+          <a href="#solutions">Work</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+
+      <div class="container footer-note">
+        <p>
+          We use basic analytics to understand how our site is used so we can improve our impact.
+        </p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
