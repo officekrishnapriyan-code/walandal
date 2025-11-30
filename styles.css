@@ -454,7 +454,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: radial-gradient(circle at 30% 0, #f5fefe, #c5e9f1);
+  background: radial-gradient(circle at 30% 0, #345252, #c5e9f1);
   margin-bottom: 0.6rem;
 }
 
