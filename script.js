@@ -72,18 +72,15 @@ faqItems.forEach((item) => {
     const isOpen = item.classList.contains("open");
     faqItems.forEach((el) => el.classList.remove("open"));
 
+    const answer = item.querySelector(".faq-answer");
+    if (!answer) return;
+
     if (!isOpen) {
       item.classList.add("open");
-      const answer = item.querySelector(".faq-answer");
-      if (answer) {
-        // ensure max-height is large enough for content
-        answer.style.maxHeight = answer.scrollHeight + "px";
-      }
+      // ensure max-height is large enough for content
+      answer.style.maxHeight = answer.scrollHeight + "px";
     } else {
-      const answer = item.querySelector(".faq-answer");
-      if (answer) {
-        answer.style.maxHeight = "0";
-      }
+      answer.style.maxHeight = "0";
     }
   });
 });
@@ -158,3 +155,87 @@ if (statNumbers.length > 0) {
     statNumbers.forEach(animateNumber);
   }
 }
+
+/* =========================================================
+   Contact form submit (Formspree) — NO REDIRECT
+   Requires in HTML:
+     <form id="contactForm"> ... </form>
+     <button id="contactSubmitBtn" type="submit">...</button>
+     <p id="contactStatus"></p>   (optional but recommended)
+   Also keep:
+     <input type="text" name="_gotcha" style="display:none" ... />
+========================================================= */
+
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/xdkqjezv";
+
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("contactForm");
+  if (!form) return;
+
+  const btn =
+    document.getElementById("contactSubmitBtn") ||
+    form.querySelector('button[type="submit"]');
+
+  // If you didn't add a status <p>, we create one automatically
+  let statusEl = document.getElementById("contactStatus");
+  if (!statusEl) {
+    statusEl = document.createElement("p");
+    statusEl.id = "contactStatus";
+    statusEl.className = "contact-status";
+    statusEl.style.marginTop = "12px";
+    statusEl.style.display = "none";
+    form.appendChild(statusEl);
+  }
+
+  function showStatus(message, ok) {
+    statusEl.textContent = message;
+    statusEl.style.display = "block";
+    // Keep your theme intact; just tweak weight/opacity
+    statusEl.style.fontWeight = ok ? "600" : "600";
+    statusEl.style.opacity = "0.95";
+  }
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault(); // stop default redirect
+
+    // honeypot: if filled, silently ignore
+    const gotcha = form.querySelector('input[name="_gotcha"]');
+    if (gotcha && gotcha.value) return;
+
+    statusEl.style.display = "none";
+
+    const originalText = btn ? btn.textContent : "";
+    if (btn) {
+      btn.disabled = true;
+      btn.textContent = "Sending...";
+    }
+
+    try {
+      const formData = new FormData(form);
+
+      const resp = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        body: formData,
+        headers: {
+          Accept: "application/json", // key thing: stops redirect, returns JSON
+        },
+      });
+
+      if (resp.ok) {
+        showStatus("Message sent successfully!", true);
+        form.reset();
+      } else {
+        const data = await resp.json().catch(() => ({}));
+        showStatus(data?.error || "Failed to send. Please try again.", false);
+      }
+    } catch (err) {
+      console.error(err);
+      showStatus("Network error. Please try again.", false);
+    } finally {
+      if (btn) {
+        btn.disabled = false;
+        btn.textContent = originalText || "Send Message";
+      }
+    }
+  });
+});
