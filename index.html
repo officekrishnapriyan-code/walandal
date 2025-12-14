@@ -599,45 +599,53 @@
           </div>
 
           <div class="contact-layout">
-            <form
-              class="contact-form"
-              action="https://example.com/contact"
-              method="post"
-            >
-              <div class="form-group">
-                <label for="name">Name</label>
-                <input id="name" name="name" type="text" required />
-              </div>
+            
+        <form
+          class="contact-form"
+          action="https://formspree.io/f/xdkqjezv"
+          method="POST"
+        >
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" required />
+          </div>
+        
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required />
+          </div>
+        
+          <div class="form-group">
+            <label for="organization">Organization</label>
+            <input id="organization" name="organization" type="text" />
+          </div>
+        
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+          </div>
+        
+          <!-- Honeypot field (spam protection) -->
+          <input
+            type="text"
+            name="_gotcha"
+            style="display:none"
+            tabindex="-1"
+            autocomplete="off"
+          />
+        
+          <button type="submit" class="btn primary">Send Message</button>
+        
+          <!-- Optional mailto fallback -->
+          <!--
+          <p class="contact-note">
+            You can also reach us at:
+            <a href="mailto:hello@walandal.com">hello@walandal.com</a>
+          </p>
+          -->
+        </form>
+      </div>
 
-              <div class="form-group">
-                <label for="email">Email</label>
-                <input id="email" name="email" type="email" required />
-              </div>
-
-              <div class="form-group">
-                <label for="organization">Organization</label>
-                <input id="organization" name="organization" type="text" />
-              </div>
-
-              <div class="form-group">
-                <label for="message">Message</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows="4"
-                  required
-                ></textarea>
-              </div>
-
-              <button type="submit" class="btn primary">Send Message</button>
-
-              <!--
-              <p class="contact-note">
-                You can also reach us at:
-                <a href="mailto:hello@walandal.com">hello@walandal.com</a>
-              </p>
-              -->
-            </form>
 
             <div class="contact-side">
               <div class="contact-card">
