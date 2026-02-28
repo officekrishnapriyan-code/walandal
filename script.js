@@ -1,241 +1,470 @@
-// Smooth scrolling for internal anchor links
-document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-  anchor.addEventListener("click", (event) => {
-    const targetId = anchor.getAttribute("href");
-    if (!targetId || targetId === "#") return;
+// ============================================
+// WAL & AL - Interactive Behaviors
+// ============================================
 
+// Mobile Navigation Toggle
+const navToggle = document.querySelector('.nav-toggle');
+const navMenu = document.querySelector('.nav-menu');
+const navLinks = document.querySelectorAll('.nav-menu a');
+
+if (navToggle) {
+  navToggle.addEventListener('click', () => {
+    navToggle.classList.toggle('active');
+    navMenu.classList.toggle('active');
+  });
+
+  // Close menu when clicking a link
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      navToggle.classList.remove('active');
+      navMenu.classList.remove('active');
+    });
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!navToggle.contains(e.target) && !navMenu.contains(e.target)) {
+      navToggle.classList.remove('active');
+      navMenu.classList.remove('active');
+    }
+  });
+}
+
+// Smooth Scroll for Anchor Links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    const targetId = this.getAttribute('href');
+    if (targetId === '#') return;
+    
     const targetElement = document.querySelector(targetId);
     if (!targetElement) return;
-
-    event.preventDefault();
-    const headerOffset = 70;
-    const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
-    const offsetPosition = elementPosition - headerOffset;
-
+    
+    e.preventDefault();
+    
+    const navHeight = document.querySelector('.nav-glass').offsetHeight;
+    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight;
+    
     window.scrollTo({
-      top: offsetPosition,
-      behavior: "smooth",
+      top: targetPosition,
+      behavior: 'smooth'
     });
   });
 });
 
-// Mobile nav toggle
-const nav = document.querySelector(".main-nav");
-const navToggle = document.querySelector(".nav-toggle");
-if (nav && navToggle) {
-  navToggle.addEventListener("click", () => {
-    nav.classList.toggle("open");
-  });
+// Scroll Reveal Animation
+const revealElements = document.querySelectorAll('.reveal');
 
-  document.querySelectorAll(".nav-links a").forEach((link) => {
-    link.addEventListener("click", () => {
-      nav.classList.remove("open");
-    });
-  });
-}
-
-// Tabs for Water / Air / Land
-const tabButtons = document.querySelectorAll(".tab-button");
-const tabPanels = document.querySelectorAll(".tab-panel");
-
-tabButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    const targetId = button.getAttribute("aria-controls");
-    if (!targetId) return;
-
-    tabButtons.forEach((btn) => {
-      btn.classList.remove("active");
-      btn.setAttribute("aria-selected", "false");
-    });
-    tabPanels.forEach((panel) => {
-      panel.classList.remove("active");
-    });
-
-    button.classList.add("active");
-    button.setAttribute("aria-selected", "true");
-
-    const targetPanel = document.getElementById(targetId);
-    if (targetPanel) {
-      targetPanel.classList.add("active");
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry, index) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => {
+        entry.target.classList.add('visible');
+      }, index * 100);
+      revealObserver.unobserve(entry.target);
     }
   });
+}, {
+  threshold: 0.1,
+  rootMargin: '0px 0px -50px 0px'
 });
 
-// FAQ accordion
-const faqItems = document.querySelectorAll(".faq-item");
-
-faqItems.forEach((item) => {
-  const questionButton = item.querySelector(".faq-question");
-  if (!questionButton) return;
-
-  questionButton.addEventListener("click", () => {
-    const isOpen = item.classList.contains("open");
-    faqItems.forEach((el) => el.classList.remove("open"));
-
-    const answer = item.querySelector(".faq-answer");
-    if (!answer) return;
-
-    if (!isOpen) {
-      item.classList.add("open");
-      // ensure max-height is large enough for content
-      answer.style.maxHeight = answer.scrollHeight + "px";
-    } else {
-      answer.style.maxHeight = "0";
-    }
-  });
+revealElements.forEach(el => {
+  revealObserver.observe(el);
 });
 
-// IntersectionObserver for reveal-on-scroll
-const revealElements = document.querySelectorAll(".reveal");
+// Navigation Background on Scroll
+const nav = document.querySelector('.nav-glass');
+let lastScroll = 0;
 
-if ("IntersectionObserver" in window) {
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    {
-      threshold: 0.2,
-    }
-  );
-
-  revealElements.forEach((el) => observer.observe(el));
-} else {
-  // Fallback: make all elements visible if IntersectionObserver is not supported
-  revealElements.forEach((el) => el.classList.add("visible"));
-}
-
-// Animated numbers in hero stats
-const statNumbers = document.querySelectorAll(".stat-number");
-
-function animateNumber(el) {
-  const target = parseInt(el.getAttribute("data-target") || "0", 10);
-  let current = 0;
-  const duration = 1200;
-  const startTime = performance.now();
-
-  function update(now) {
-    const elapsed = now - startTime;
-    const progress = Math.min(elapsed / duration, 1);
-    const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
-    current = Math.floor(target * eased);
-    el.textContent = current.toString();
-
-    if (progress < 1) {
-      requestAnimationFrame(update);
-    } else {
-      el.textContent = target.toString();
-    }
-  }
-
-  requestAnimationFrame(update);
-}
-
-if (statNumbers.length > 0) {
-  const statsContainer = document.querySelector(".hero-stats-card");
-  if (statsContainer && "IntersectionObserver" in window) {
-    const statsObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            statNumbers.forEach(animateNumber);
-            statsObserver.disconnect();
-          }
-        });
-      },
-      { threshold: 0.4 }
-    );
-    statsObserver.observe(statsContainer);
+window.addEventListener('scroll', () => {
+  const currentScroll = window.pageYOffset;
+  
+  if (currentScroll > 100) {
+    nav.style.background = 'rgba(10, 14, 26, 0.95)';
+    nav.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.5)';
   } else {
-    // Fallback: animate immediately
-    statNumbers.forEach(animateNumber);
+    nav.style.background = 'rgba(10, 14, 26, 0.8)';
+    nav.style.boxShadow = 'none';
   }
-}
+  
+  lastScroll = currentScroll;
+});
 
-/* =========================================================
-   Contact form submit (Formspree) — NO REDIRECT
-   Requires in HTML:
-     <form id="contactForm"> ... </form>
-     <button id="contactSubmitBtn" type="submit">...</button>
-     <p id="contactStatus"></p>   (optional but recommended)
-   Also keep:
-     <input type="text" name="_gotcha" style="display:none" ... />
-========================================================= */
+// Contact Form Submission (Formspree)
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xdkqjezv';
 
-const FORMSPREE_ENDPOINT = "https://formspree.io/f/xdkqjezv";
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+  const submitBtn = document.getElementById('contactSubmitBtn');
+  const statusEl = document.getElementById('contactStatus');
 
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("contactForm");
-  if (!form) return;
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
 
-  const btn =
-    document.getElementById("contactSubmitBtn") ||
-    form.querySelector('button[type="submit"]');
-
-  // If you didn't add a status <p>, we create one automatically
-  let statusEl = document.getElementById("contactStatus");
-  if (!statusEl) {
-    statusEl = document.createElement("p");
-    statusEl.id = "contactStatus";
-    statusEl.className = "contact-status";
-    statusEl.style.marginTop = "12px";
-    statusEl.style.display = "none";
-    form.appendChild(statusEl);
-  }
-
-  function showStatus(message, ok) {
-    statusEl.textContent = message;
-    statusEl.style.display = "block";
-    // Keep your theme intact; just tweak weight/opacity
-    statusEl.style.fontWeight = ok ? "600" : "600";
-    statusEl.style.opacity = "0.95";
-  }
-
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault(); // stop default redirect
-
-    // honeypot: if filled, silently ignore
-    const gotcha = form.querySelector('input[name="_gotcha"]');
+    // Honeypot check
+    const gotcha = contactForm.querySelector('input[name="_gotcha"]');
     if (gotcha && gotcha.value) return;
 
-    statusEl.style.display = "none";
+    statusEl.style.display = 'none';
+    statusEl.classList.remove('show');
 
-    const originalText = btn ? btn.textContent : "";
-    if (btn) {
-      btn.disabled = true;
-      btn.textContent = "Sending...";
-    }
+    const originalText = submitBtn.textContent;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
 
     try {
-      const formData = new FormData(form);
-
-      const resp = await fetch(FORMSPREE_ENDPOINT, {
-        method: "POST",
+      const formData = new FormData(contactForm);
+      
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
         body: formData,
         headers: {
-          Accept: "application/json", // key thing: stops redirect, returns JSON
-        },
+          'Accept': 'application/json'
+        }
       });
 
-      if (resp.ok) {
-        showStatus("Message sent successfully!", true);
-        form.reset();
+      if (response.ok) {
+        statusEl.textContent = 'Message sent successfully! We\'ll be in touch soon.';
+        statusEl.style.background = 'rgba(127, 176, 105, 0.1)';
+        statusEl.style.border = '1px solid rgba(127, 176, 105, 0.3)';
+        statusEl.style.color = '#7fb069';
+        statusEl.classList.add('show');
+        statusEl.style.display = 'block';
+        contactForm.reset();
       } else {
-        const data = await resp.json().catch(() => ({}));
-        showStatus(data?.error || "Failed to send. Please try again.", false);
+        const data = await response.json().catch(() => ({}));
+        throw new Error(data.error || 'Failed to send message');
       }
-    } catch (err) {
-      console.error(err);
-      showStatus("Network error. Please try again.", false);
+    } catch (error) {
+      console.error('Form submission error:', error);
+      statusEl.textContent = 'Failed to send message. Please try again.';
+      statusEl.style.background = 'rgba(239, 68, 68, 0.1)';
+      statusEl.style.border = '1px solid rgba(239, 68, 68, 0.3)';
+      statusEl.style.color = '#ef4444';
+      statusEl.classList.add('show');
+      statusEl.style.display = 'block';
     } finally {
-      if (btn) {
-        btn.disabled = false;
-        btn.textContent = originalText || "Send Message";
-      }
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalText;
     }
   });
+}
+
+// Parallax Effect on Hero
+const heroGlow = document.querySelector('.hero-glow');
+if (heroGlow) {
+  window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const heroHeight = document.querySelector('.hero-cinematic').offsetHeight;
+    
+    if (scrolled < heroHeight) {
+      const parallaxAmount = scrolled * 0.3;
+      heroGlow.style.transform = `translate(-50%, calc(-50% + ${parallaxAmount}px))`;
+    }
+  });
+}
+
+// Add hover effect to cards
+const cards = document.querySelectorAll('.domain-card, .bento-card, .capability-card');
+cards.forEach(card => {
+  card.addEventListener('mouseenter', function() {
+    this.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+  });
 });
+
+// Animate stats on scroll
+const statsSection = document.querySelector('.hero-stats');
+if (statsSection) {
+  const statNumbers = document.querySelectorAll('.stat-number');
+  let animated = false;
+
+  const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !animated) {
+        animated = true;
+        statNumbers.forEach((stat, index) => {
+          const text = stat.textContent;
+          if (text.includes('/')) return; // Skip "24/7"
+          
+          const target = parseInt(text);
+          if (isNaN(target)) return;
+          
+          let current = 0;
+          const increment = target / 50;
+          const duration = 1500;
+          const stepTime = duration / 50;
+          
+          const counter = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+              stat.textContent = target;
+              clearInterval(counter);
+            } else {
+              stat.textContent = Math.floor(current);
+            }
+          }, stepTime);
+        });
+        statsObserver.disconnect();
+      }
+    });
+  }, { threshold: 0.5 });
+
+  statsObserver.observe(statsSection);
+}
+
+// Console Easter Egg
+console.log('%c WAL & AL ', 'background: linear-gradient(135deg, #0fb9b1, #7fb069); color: #0a0e1a; font-size: 20px; font-weight: bold; padding: 10px 20px; border-radius: 8px;');
+console.log('%c Engineering for a Regenerative Planet ', 'color: #0fb9b1; font-size: 14px; font-family: monospace;');
+console.log('%c Interested in joining our mission? Reach out at the contact form! ', 'color: #94a3b8; font-size: 12px;');
+
+// ============================================
+// Bento Grid Carousel
+// ============================================
+
+class BentoCarousel {
+  constructor() {
+    this.carousel = document.getElementById('bentoCarousel');
+    this.prevBtn = document.getElementById('prevBtn');
+    this.nextBtn = document.getElementById('nextBtn');
+    this.dotsContainer = document.getElementById('carouselDots');
+    
+    if (!this.carousel) return;
+    
+    this.currentIndex = 0;
+    this.cardsPerView = window.innerWidth > 1024 ? 2 : 1;
+    this.originalCards = Array.from(this.carousel.children);
+    this.totalCards = this.originalCards.length;
+    this.totalPages = Math.ceil(this.totalCards / this.cardsPerView);
+    this.isTransitioning = false;
+    
+    this.init();
+  }
+  
+  init() {
+    // Clone cards for infinite loop
+    this.cloneCards();
+    
+    this.createDots();
+    this.updateCarousel(false);
+    this.attachEvents();
+    
+    // Handle window resize
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        const newCardsPerView = window.innerWidth > 1024 ? 2 : 1;
+        if (newCardsPerView !== this.cardsPerView) {
+          this.cardsPerView = newCardsPerView;
+          this.totalPages = Math.ceil(this.totalCards / this.cardsPerView);
+          this.currentIndex = Math.min(this.currentIndex, this.totalPages - 1);
+          
+          // Remove clones and recreate
+          this.carousel.innerHTML = '';
+          this.originalCards.forEach(card => this.carousel.appendChild(card.cloneNode(true)));
+          this.originalCards = Array.from(this.carousel.children);
+          this.cloneCards();
+          
+          this.createDots();
+          this.updateCarousel(false);
+        }
+      }, 250);
+    });
+    
+    // Touch/Swipe support
+    this.addSwipeSupport();
+  }
+  
+  cloneCards() {
+    // Clone first set at the end
+    this.originalCards.forEach(card => {
+      const clone = card.cloneNode(true);
+      clone.classList.add('clone');
+      this.carousel.appendChild(clone);
+    });
+    
+    // Clone last set at the beginning
+    for (let i = this.originalCards.length - 1; i >= 0; i--) {
+      const clone = this.originalCards[i].cloneNode(true);
+      clone.classList.add('clone');
+      this.carousel.insertBefore(clone, this.carousel.firstChild);
+    }
+    
+    // Set initial position to show original first cards
+    this.currentIndex = 0;
+    const cardWidth = this.carousel.children[0].offsetWidth;
+    const gap = parseFloat(getComputedStyle(this.carousel).gap) || 0;
+    const offset = -(this.totalCards * (cardWidth + gap));
+    this.carousel.style.transform = `translateX(${offset}px)`;
+    this.carousel.style.transition = 'none';
+  }
+  
+  createDots() {
+    this.dotsContainer.innerHTML = '';
+    for (let i = 0; i < this.totalPages; i++) {
+      const dot = document.createElement('button');
+      dot.classList.add('carousel-dot');
+      dot.setAttribute('aria-label', `Go to page ${i + 1}`);
+      if (i === this.currentIndex) dot.classList.add('active');
+      dot.addEventListener('click', () => this.goToPage(i));
+      this.dotsContainer.appendChild(dot);
+    }
+  }
+  
+  attachEvents() {
+    this.prevBtn.addEventListener('click', () => this.prev());
+    this.nextBtn.addEventListener('click', () => this.next());
+    
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') this.prev();
+      if (e.key === 'ArrowRight') this.next();
+    });
+    
+    // Handle transition end for infinite loop
+    this.carousel.addEventListener('transitionend', () => {
+      this.isTransitioning = false;
+      
+      // Reset position for infinite loop
+      if (this.currentIndex >= this.totalPages) {
+        this.currentIndex = 0;
+        this.updateCarousel(false);
+      } else if (this.currentIndex < 0) {
+        this.currentIndex = this.totalPages - 1;
+        this.updateCarousel(false);
+      }
+    });
+  }
+  
+  addSwipeSupport() {
+    let startX = 0;
+    let currentX = 0;
+    let isDragging = false;
+    
+    this.carousel.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+      isDragging = true;
+    }, { passive: true });
+    
+    this.carousel.addEventListener('touchmove', (e) => {
+      if (!isDragging) return;
+      currentX = e.touches[0].clientX;
+    }, { passive: true });
+    
+    this.carousel.addEventListener('touchend', () => {
+      if (!isDragging) return;
+      isDragging = false;
+      
+      const diff = startX - currentX;
+      const threshold = 50;
+      
+      if (Math.abs(diff) > threshold) {
+        if (diff > 0) {
+          this.next();
+        } else {
+          this.prev();
+        }
+      }
+    });
+    
+    // Mouse drag support for desktop
+    this.carousel.addEventListener('mousedown', (e) => {
+      startX = e.clientX;
+      isDragging = true;
+      this.carousel.style.cursor = 'grabbing';
+    });
+    
+    document.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      currentX = e.clientX;
+    });
+    
+    document.addEventListener('mouseup', () => {
+      if (!isDragging) return;
+      isDragging = false;
+      this.carousel.style.cursor = 'grab';
+      
+      const diff = startX - currentX;
+      const threshold = 50;
+      
+      if (Math.abs(diff) > threshold) {
+        if (diff > 0) {
+          this.next();
+        } else {
+          this.prev();
+        }
+      }
+    });
+  }
+  
+  updateCarousel(animate = true) {
+    if (this.isTransitioning) return;
+    
+    const cardWidth = this.carousel.children[0].offsetWidth;
+    const gap = parseFloat(getComputedStyle(this.carousel).gap) || 0;
+    
+    // Calculate offset including the cloned cards at the beginning
+    const actualIndex = this.currentIndex + this.totalPages;
+    const offset = -(actualIndex * this.cardsPerView * (cardWidth + gap));
+    
+    if (animate) {
+      this.carousel.style.transition = 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+      this.isTransitioning = true;
+    } else {
+      this.carousel.style.transition = 'none';
+    }
+    
+    this.carousel.style.transform = `translateX(${offset}px)`;
+    
+    // Update dots
+    const dots = this.dotsContainer.querySelectorAll('.carousel-dot');
+    dots.forEach((dot, index) => {
+      const normalizedIndex = ((this.currentIndex % this.totalPages) + this.totalPages) % this.totalPages;
+      dot.classList.toggle('active', index === normalizedIndex);
+    });
+  }
+  
+  next() {
+    if (this.isTransitioning) return;
+    this.currentIndex++;
+    this.updateCarousel(true);
+  }
+  
+  prev() {
+    if (this.isTransitioning) return;
+    this.currentIndex--;
+    this.updateCarousel(true);
+  }
+  
+  goToPage(index) {
+    if (this.isTransitioning) return;
+    
+    // Calculate the shortest path to the target page
+    const normalizedCurrent = ((this.currentIndex % this.totalPages) + this.totalPages) % this.totalPages;
+    const diff = index - normalizedCurrent;
+    
+    // Determine direction for shortest path
+    if (Math.abs(diff) <= this.totalPages / 2) {
+      // Direct path is shorter
+      this.currentIndex += diff;
+    } else {
+      // Wrap around is shorter
+      if (diff > 0) {
+        this.currentIndex -= (this.totalPages - diff);
+      } else {
+        this.currentIndex += (this.totalPages + diff);
+      }
+    }
+    
+    this.updateCarousel(true);
+  }
+}
+
+// Initialize carousel when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => {
+    new BentoCarousel();
+  });
+} else {
+  new BentoCarousel();
+}
