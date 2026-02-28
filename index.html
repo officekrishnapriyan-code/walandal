@@ -2,683 +2,463 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
-    <title>Wal & al | Cloud, Robotics & Software for a Regenerative Planet</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WAL & AL | Cloud, Robotics & Software for a Regenerative Planet</title>
     <meta
       name="description"
-      content="wal and al is a sustainability engineering studio building cloud, robotics and software platforms for water, air and land."
+      content="WAL & AL is a sustainability engineering studio building cloud, robotics and software platforms for water, air and land."
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css" />
   </head>
 
   <body>
-    <!-- Header / Navigation -->
-    <header class="site-header">
-      <div class="container nav-container">
-        <div class="logo">
-          <!-- <span class="logo-mark">WAL & AL</span> -->
-          <span class="logo-text">WAL & AL</span>
+    <!-- Navigation -->
+    <nav class="nav-glass">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <img src="logo/1772257458537.png" alt="WAL & AL Logo" class="logo-image" />
         </div>
+        
+        <button class="nav-toggle" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
 
-        <nav class="main-nav">
-          <button class="nav-toggle" aria-label="Toggle navigation">
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
-
-          <ul class="nav-links">
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#meaning">About</a></li>
-            <li><a href="#focus">Focus Areas</a></li>
-            <li><a href="#solutions">Work</a></li>
-            <li><a href="#founder">Founder</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </nav>
+        <ul class="nav-menu">
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#domains">Domains</a></li>
+          <li><a href="#systems">Systems</a></li>
+          <li><a href="#capabilities">Capabilities</a></li>
+          <li><a href="#founder">Team</a></li>
+          <li><a href="#contact" class="nav-cta">Contact</a></li>
+        </ul>
       </div>
-    </header>
+    </nav>
 
-    <main>
-      <!-- Hero -->
-      <section id="hero" class="hero-section">
-        <div class="hero-overlay"></div>
-
-        <div class="container hero-content reveal">
-          <div class="hero-text">
-            <p class="eyebrow">Autonomous Systems, Robotics & Cloud Intelligence</p>
-            <h1>Engineering Reliable Solutions for a More Sustainable Planet.</h1>
-            <p class="hero-subtitle">
-              We build cloud, robotics, and software platforms that monitor and manage water, air, and 
-              land with precision and reliability. Our systems automate critical processes, 
-              surface actionable insights, and help make data-driven decisions that strengthen environmental resilience.
-            </p>
-
-            <div class="hero-actions">
-              <a href="#contact" class="btn primary">Talk to Us</a>
-              <a href="#solutions" class="btn secondary">Explore Our Work</a>
-            </div>
-
-            <p class="hero-tagline">
-              Cloud, Robotics, and Software for a Regenerative Planet.
-            </p>
-          </div>
-
-          <div class="hero-panel">
-            <div class="hero-stats-card">
-
-            <h2>wal and al</h2>
-            <p class="hero-panel-text">
-              We design and deploy robotics, sensing, and cloud infrastructure that
-              transform environmental data into actionable insight for operations, research,
-              and policy.
-            </p>
-            
-
-              <div class="hero-stats">
-                <div class="stat">
-                  <span class="stat-number" data-target="3">0</span>
-                  <span class="stat-label">Resource domains</span>
-                </div>
-                <div class="stat">
-                  <span class="stat-number" data-target="24">0</span>
-                  <span class="stat-label">Operational testing hours per day</span>
-                </div>
-                <div class="stat">
-                  <span class="stat-number" data-target="100">0</span>
-                  <span class="stat-label">% Engineering focused on real-world impact</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- What wal and al Means -->
-      <section id="meaning" class="section">
-        <div class="container reveal">
-          <div class="section-header">
-            <h2>The Idea Behind wal and al</h2>
-            <p>
-              The name wal and al is a promise. Wal stands for Water, Air, and Land — the
-              core systems that make life possible. Al stands for All — all communities,
-              all ecosystems, and all future generations.
-            </p>
-            <p>
-              wal and al represents a simple idea: environmental systems are complex, 
-              but the technology used to understand them shouldn’t be. Our name reflects 
-              an approach—integrated sensing and cloud intelligence working 
-              together to generate reliable environmental insight.
-            </p>
-          </div>
-
-          <div class="domain-tabs">
-            <div
-              class="tab-list"
-              role="tablist"
-              aria-label="Resource domains"
-            >
-              <button
-                class="tab-button active"
-                role="tab"
-                aria-selected="true"
-                aria-controls="tab-water"
-                id="tab-water-btn"
-              >
-                Water
-              </button>
-              <button
-                class="tab-button"
-                role="tab"
-                aria-selected="false"
-                aria-controls="tab-air"
-                id="tab-air-btn"
-              >
-                Air
-              </button>
-              <button
-                class="tab-button"
-                role="tab"
-                aria-selected="false"
-                aria-controls="tab-land"
-                id="tab-land-btn"
-              >
-                Ocean
-              </button>
-            </div>
-
-            <div class="tab-panels">
-              <div
-                class="tab-panel active"
-                id="tab-water"
-                role="tabpanel"
-                aria-labelledby="tab-water-btn"
-              >
-                <h3>Water: In pursuit of a dream to ensure safe and clean water</h3>
-                <p>
-                  We design IoT-enabled water solutions that continuously monitor quality
-                  and availability — from elevated tanks and pipelines to community taps.
-                  Chlorine dosing and safety thresholds are managed with
-                  clear, actionable alerts.
-                </p>
-                <ul class="tab-list-items">
-                  <li>Real-time monitoring of pH, turbidity, TDS, and chlorine.</li>
-                  <li>Smart dosing logic to reduce risk of contamination.</li>
-                </ul>
-              </div>
-
-              <div
-                class="tab-panel"
-                id="tab-air"
-                role="tabpanel"
-                aria-labelledby="tab-air-btn"
-              >
-                <h3>Air: Industrial Emission Intelligence</h3>
-                <p>
-                  We build systems that help industries and regulatory bodies measure and evaluate
-                  emissions with precision. Our solutions capture pollutant levels, gas signatures,
-                  and atmospheric changes across industrial sites—turning complex environmental
-                  behaviour into clear, operational insight.
-                </p>
-                <ul class="tab-list-items">
-                  <li>Real-time assessment of emissions, pollutants, and carbon footprints.</li>
-                  <li>Boundary and corridor monitoring for compliance and safety.</li>
-                  <li>Cloud-based analytics, alerts, and long-term trend reporting.</li>
-                </ul>
-                
-              </div>
-
-              <div
-                class="tab-panel"
-                id="tab-land"
-                role="tabpanel"
-                aria-labelledby="tab-land-btn"
-              >
-                <h3>Ocean: Marine Environmental Intelligence</h3>
-                <p>
-                  Coastal and ocean environments are dynamic, sensitive, and difficult to observe
-                  consistently. Our systems provide reliable environmental intelligence across marine
-                  zones, helping teams understand changing conditions, track critical indicators,
-                  and make informed decisions for conservation, safety, and planning.
-                </p>
-                <ul class="tab-list-items">
-                  <li>Monitoring of key ocean and coastal parameters.</li>
-                  <li>Detection of environmental shifts and emerging risks.</li>
-                  <li>Cloud-based insights for research, operations, and governance.</li>
-                </ul>
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-
-
-
-
-
-
+    <!-- Hero Section -->
+    <section id="hero" class="hero-cinematic">
+      <div class="hero-glow"></div>
+      <div class="hero-grid-pattern"></div>
       
-      <!-- Focus Areas -->
-      <section id="focus" class="section section-alt">
-        <div class="container reveal">
-          <div class="section-header">
-            <h2>What We Build</h2>
-            <p>
-                We design platforms that capture, analyse, and operationalise environmental data
-                through a blend of autonomous systems, advanced sensing, and scalable cloud
-                infrastructure.
-            </p>
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="badge-mono">AUTONOMOUS SYSTEMS · ROBOTICS · CLOUD INTELLIGENCE</span>
+        </div>
+        
+        <h1 class="hero-title">
+          Engineering Precision<br/>
+          Systems for Environmental<br/>
+          Resilience
+        </h1>
+        
+        <p class="hero-subtitle">
+          We architect cloud-native platforms, autonomous robotics, and intelligent<br/>
+          sensing systems that transform environmental data into actionable intelligence.
+        </p>
+        
+        <div class="hero-actions">
+          <a href="#contact" class="btn-primary">Start a Conversation</a>
+          <a href="#systems" class="btn-secondary">Explore Systems</a>
+        </div>
+        
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-number">3</span>
+            <span class="stat-label">Resource Domains</span>
           </div>
-
-          <div class="card-grid">
-            <article class="card">
-              <div class="card-icon" aria-hidden="true">☁️</div>
-              <h3>Cloud-Native Sustainability Platforms</h3>
-              <p>
-                We architect secure, scalable backends that ingest streams of sensor data,
-                process events in real time, and expose clean APIs and dashboards tailored
-                to your teams.
-              </p>
-              <p>
-                From AWS and Azure to open standards, we design for resilience, observability,
-                and long-term maintainability.
-              </p>
-            </article>
-
-            <article class="card">
-              <div class="card-icon" aria-hidden="true">🤖</div>
-                <h3>Robotics & Edge Intelligence</h3>
-                <p>
-                  We develop autonomous and semi-autonomous systems that collect environmental and
-                  operational data where traditional infrastructure cannot reach.
-                </p>
-                <p>
-                  Our edge platforms are engineered to operate reliably under changing conditions,
-                  delivering real-time intelligence even in remote or constrained environments.
-                </p>
-
-            </article>
-
-            <!-- <article class="card">
-              <div class="card-icon" aria-hidden="true">🛰️</div>
-              <h3>Software for Natural Resources</h3>
-              <p>
-                We build tools that help utilities, rural communities, and climate projects
-                plan, monitor, and react to fast-changing conditions in water, air, and land.
-              </p>
-              <p>
-                Interfaces are designed for clarity, so that non-technical teams can trust
-                and act on the data.
-              </p>
-            </article>
-
-            <article class="card">
-              <div class="card-icon" aria-hidden="true">📊</div>
-              <h3>Data, AI & Digital Twins</h3>
-              <p>
-                Using analytics and modeling, we create digital counterparts of real
-                systems — from water tanks to microgrids — to test scenarios and forecast
-                risk before it appears on the ground.
-              </p>
-              <p>
-                Our goal is not complexity for its own sake, but better decisions when
-                they matter most.
-              </p>
-            </article> -->
-
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number">24/7</span>
+            <span class="stat-label">Operational</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number">100%</span>
+            <span class="stat-label">Impact Focused</span>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
+    <!-- Domains Section -->
+    <section id="domains" class="section-domains">
+      <div class="container">
+        <div class="section-header reveal">
+          <h2>The WAL & AL Framework</h2>
+          <p>
+            WAL represents Water, Air, and Land—the core systems sustaining life.<br/>
+            AL stands for All—every community, ecosystem, and future generation.
+          </p>
+        </div>
 
-
-
-
-
-
-
-      <!-- Systems We Build -->
-      <section id="solutions" class="section">
-        <div class="container reveal">
-          <div class="section-header">
-            <h2>Systems We Build</h2>
-            <p>
-              wal and al develops applied systems that combine robotics, ROS / ROS&nbsp;2,
-              and cloud platforms. Our work translates environmental and operational
-              signals into reliable, decision-ready intelligence for teams on the ground.
-            </p>
+        <div class="domains-grid reveal">
+          <!-- Water -->
+          <div class="domain-card">
+            <div class="domain-icon">
+              <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="60" cy="60" r="55" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.2"/>
+                <circle cx="60" cy="60" r="45" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.3"/>
+                <circle cx="60" cy="60" r="35" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.4"/>
+                <path d="M60 25 L60 95 M25 60 L95 60" stroke="currentColor" stroke-width="0.5" opacity="0.2"/>
+                <path d="M60 40 Q55 50 60 60 Q65 50 60 40 M60 60 Q55 70 60 80 Q65 70 60 60" 
+                      fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                <circle cx="60" cy="35" r="2.5" fill="currentColor"/>
+                <circle cx="60" cy="85" r="2.5" fill="currentColor"/>
+              </svg>
+            </div>
+            <div class="domain-content">
+              <span class="domain-tag">H₂O MONITORING</span>
+              <h3>WATER</h3>
+              <p>IoT-enabled quality and availability monitoring across distribution networks and community infrastructure.</p>
+            </div>
           </div>
 
-          <div class="card-grid">
-            <!-- 1. Drinking water -->
-            <article class="card solution-card">
-              <h3>Aqua Insight – Drinking Water Intelligence</h3>
+          <!-- Air -->
+          <div class="domain-card">
+            <div class="domain-icon">
+              <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="60" cy="60" r="55" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.2"/>
+                <circle cx="60" cy="60" r="45" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.3"/>
+                <circle cx="60" cy="60" r="35" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.4"/>
+                <path d="M60 25 L60 95 M25 60 L95 60" stroke="currentColor" stroke-width="0.5" opacity="0.2"/>
+                <path d="M35 45 Q45 40 60 45 Q75 40 85 45" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                <path d="M35 60 Q45 55 60 60 Q75 55 85 60" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                <path d="M35 75 Q45 70 60 75 Q75 70 85 75" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                <circle cx="35" cy="45" r="2.5" fill="currentColor"/>
+                <circle cx="85" cy="75" r="2.5" fill="currentColor"/>
+              </svg>
+            </div>
+            <div class="domain-content">
+              <span class="domain-tag">EMISSION TRACKING</span>
+              <h3>AIR</h3>
+              <p>Precision measurement of pollutants and atmospheric changes at industrial sites and corridors.</p>
+            </div>
+          </div>
+
+          <!-- Land -->
+          <div class="domain-card">
+            <div class="domain-icon">
+              <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="60" cy="60" r="55" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.2"/>
+                <circle cx="60" cy="60" r="45" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.3"/>
+                <circle cx="60" cy="60" r="35" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.4"/>
+                <path d="M60 25 L60 95 M25 60 L95 60" stroke="currentColor" stroke-width="0.5" opacity="0.2"/>
+                <path d="M30 75 L40 65 L50 70 L60 60 L70 65 L80 55 L90 60" 
+                      fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <rect x="48" y="70" width="4" height="10" fill="currentColor" opacity="0.7"/>
+                <rect x="68" y="65" width="4" height="15" fill="currentColor" opacity="0.7"/>
+                <circle cx="60" cy="45" r="3" fill="currentColor"/>
+              </svg>
+            </div>
+            <div class="domain-content">
+              <span class="domain-tag">MARINE OBSERVATION</span>
+              <h3>LAND</h3>
+              <p>Coastal and ocean environmental intelligence for conservation, safety, and planning.</p>
+            </div>
+          </div>
+
+          <!-- All -->
+          <div class="domain-card domain-card-highlight">
+            <div class="domain-icon">
+              <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="60" cy="60" r="55" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.2"/>
+                <circle cx="60" cy="60" r="45" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.3"/>
+                <circle cx="60" cy="60" r="35" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.4"/>
+                <circle cx="60" cy="60" r="25" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.5"/>
+                <path d="M60 25 L60 95 M25 60 L95 60 M40 40 L80 80 M80 40 L40 80" 
+                      stroke="currentColor" stroke-width="0.5" opacity="0.2"/>
+                <circle cx="60" cy="60" r="10" fill="none" stroke="currentColor" stroke-width="2.5"/>
+                <circle cx="60" cy="35" r="2.5" fill="currentColor"/>
+                <circle cx="60" cy="85" r="2.5" fill="currentColor"/>
+                <circle cx="35" cy="60" r="2.5" fill="currentColor"/>
+                <circle cx="85" cy="60" r="2.5" fill="currentColor"/>
+              </svg>
+            </div>
+            <div class="domain-content">
+              <span class="domain-tag">INTEGRATED PLATFORM</span>
+              <h3>ALL</h3>
+              <p>Unified cloud infrastructure connecting all domains for comprehensive environmental intelligence.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Systems Section - Bento Grid -->
+    <section id="systems" class="section-systems">
+      <div class="container">
+        <div class="section-header reveal">
+          <h2>Systems We Build</h2>
+          <p>
+            Applied systems combining robotics, ROS / ROS 2, and cloud platforms.<br/>
+            Environmental and operational signals translated into decision-ready intelligence.
+          </p>
+        </div>
+
+        <div class="bento-grid-wrapper reveal">
+          <div class="bento-grid" id="bentoCarousel">
+          <!-- Aqua Insight -->
+          <div class="bento-card bento-large">
+            <div class="bento-header">
+              <span class="bento-tag">CLOUD-NATIVE</span>
+              <h3>AQUA INSIGHT</h3>
+              <p class="bento-subtitle">Drinking Water Intelligence</p>
+            </div>
+            <div class="bento-content">
               <p>
                 A monitoring and insight layer for drinking water networks, focused on
-                overhead tanks and local distribution in rural and urban settings. Aqua
-                Insight provides continuous visibility into water quality and availability.
+                overhead tanks and local distribution. Continuous visibility into water
+                quality and availability.
               </p>
-              <ul>
-                <li>Tracking of key parameters such as chlorine, pH, turbidity, TDS, and level.</li>
-                <li>Alerting when conditions drift toward risk or non-compliance zones.</li>
-                <li>Dashboards and reports that support operations, maintenance, and planning.</li>
-              </ul>
-            </article>
+              <div class="tech-specs">
+                <div class="spec-title">TECHNICAL SPECS</div>
+                <ul>
+                  <li>Real-time tracking: chlorine, pH, turbidity, TDS, level</li>
+                  <li>Automated alerting for risk and non-compliance zones</li>
+                  <li>Dashboards for operations, maintenance, and planning</li>
+                </ul>
+              </div>
+            </div>
+          </div>
 
-            <!-- 2. Industrial emissions -->
-            <article class="card solution-card">
-              <h3>Industrial Emission Monitoring Layer</h3>
+          <!-- Industrial Emission -->
+          <div class="bento-card bento-large">
+            <div class="bento-header">
+              <span class="bento-tag">EDGE INTELLIGENCE</span>
+              <h3>INDUSTRIAL EMISSION</h3>
+              <p class="bento-subtitle">Monitoring Layer</p>
+            </div>
+            <div class="bento-content">
               <p>
-                A data and analytics layer for understanding emissions around industrial
-                sites and corridors. The system focuses on measuring pollutants and trends
-                that matter for compliance, risk, and long-term environmental stewardship.
+                Data and analytics layer for emissions monitoring around industrial
+                sites and corridors. Measuring pollutants and trends critical for
+                compliance and stewardship.
               </p>
-              <ul>
-                <li>Measurement of critical gases, particulates, and carbon-related indicators.</li>
-                <li>Structured insights for boundary, corridor, and zone-based assessment.</li>
-                <li>Cloud-native reporting and APIs for regulators, operators, and auditors.</li>
-              </ul>
-            </article>
+              <div class="tech-specs">
+                <div class="spec-title">TECHNICAL SPECS</div>
+                <ul>
+                  <li>Measurement of gases, particulates, carbon indicators</li>
+                  <li>Structured insights for boundary and zone assessment</li>
+                  <li>Cloud-native reporting and APIs for regulators</li>
+                </ul>
+              </div>
+            </div>
+          </div>
 
-            <!-- 3. Marine / ocean -->
-            <article class="card solution-card">
-              <h3>Marine Environmental Observation Systems</h3>
+          <!-- Marine Observation -->
+          <div class="bento-card bento-medium">
+            <div class="bento-header">
+              <span class="bento-tag">AUTONOMOUS</span>
+              <h3>MARINE OBSERVATION</h3>
+              <p class="bento-subtitle">Environmental Systems</p>
+            </div>
+            <div class="bento-content">
               <p>
-                Systems designed to capture environmental signals in coastal and near-shore
-                waters. These solutions help teams understand changing marine conditions and
-                support monitoring, planning, and research.
+                Systems capturing environmental signals in coastal and near-shore
+                waters. Supporting monitoring, planning, and research.
               </p>
-              <ul>
-                <li>Acquisition of key physical and chemical indicators in marine environments.</li>
-                <li>Detection of shifts linked to pollution, stress, or resilience.</li>
-                <li>Data products ready for analysis, mapping, and scientific workflows.</li>
-              </ul>
-            </article>
+              <div class="tech-specs">
+                <div class="spec-title">TECHNICAL SPECS</div>
+                <ul>
+                  <li>Key physical and chemical marine indicators</li>
+                  <li>Detection of pollution and stress shifts</li>
+                  <li>Data products for analysis and mapping</li>
+                </ul>
+              </div>
+            </div>
+          </div>
 
-            <!-- 4. ROS / ROS 2 + cloud -->
-            <article class="card solution-card">
-              <h3>ROS / ROS&nbsp;2 Fleet & Cloud Integration</h3>
+          <!-- ROS Integration -->
+          <div class="bento-card bento-medium">
+            <div class="bento-header">
+              <span class="bento-tag">ROS / ROS 2</span>
+              <h3>FLEET & CLOUD</h3>
+              <p class="bento-subtitle">Integration Layer</p>
+            </div>
+            <div class="bento-content">
               <p>
-                An integration layer that connects ROS and ROS&nbsp;2-based systems with
-                modern cloud infrastructure. The goal is to make fleets observable,
-                manageable, and easier to evolve over time.
+                Integration layer connecting ROS and ROS 2-based systems with
+                modern cloud infrastructure. Observable, manageable fleets.
               </p>
-              <ul>
-                <li>Telemetry, logging, and health monitoring for distributed robotic systems.</li>
-                <li>Bridges between ROS topics and cloud services for storage, analytics, and control.</li>
-                <li>Foundations for remote operations, updates, and digital-twin style analysis.</li>
-              </ul>
-            </article>
+              <div class="tech-specs">
+                <div class="spec-title">TECHNICAL SPECS</div>
+                <ul>
+                  <li>Telemetry, logging, health monitoring</li>
+                  <li>Bridges between ROS topics and cloud services</li>
+                  <li>Remote operations and digital-twin analysis</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
-      </section>
+        
+        <!-- Carousel Navigation -->
+        <div class="carousel-nav">
+          <button class="carousel-btn" id="prevBtn" aria-label="Previous">‹</button>
+          <div class="carousel-dots" id="carouselDots"></div>
+          <button class="carousel-btn" id="nextBtn" aria-label="Next">›</button>
+        </div>
+      </div>
+    </section>
 
+    <!-- Capabilities Section -->
+    <section id="capabilities" class="section-capabilities">
+      <div class="container">
+        <div class="section-header reveal">
+          <h2>Core Capabilities</h2>
+          <p>
+            Full-stack engineering from field sensors to cloud dashboards.<br/>
+            Designed for real-world conditions, not just lab environments.
+          </p>
+        </div>
 
-
-
-
-
-      <!-- How We Work -->
-      <section id="process" class="section section-alt">
-        <div class="container reveal">
-          <div class="section-header">
-            <h2>How We Work</h2>
+        <div class="capabilities-grid reveal">
+          <div class="capability-card">
+            <div class="capability-icon">☁️</div>
+            <h3>Cloud-Native Platforms</h3>
             <p>
-              Every engagement is structured to respect local knowledge, build on what
-              already works, and leave teams stronger than before.
+              Secure, scalable backends that ingest sensor streams, process events
+              in real time, and expose clean APIs tailored to operational teams.
             </p>
           </div>
 
-          <div class="process-grid">
-            <div class="process-step">
-              <span class="step-number">01</span>
-              <h3>Discover</h3>
-              <p>
-                We map your current systems, constraints, and ambitions — from field
-                realities to existing data and infrastructure.
-              </p>
-            </div>
+          <div class="capability-card">
+            <div class="capability-icon">🤖</div>
+            <h3>Robotics & Edge</h3>
+            <p>
+              Autonomous systems collecting environmental data where traditional
+              infrastructure cannot reach. Reliable operation under dynamic conditions.
+            </p>
+          </div>
 
-            <div class="process-step">
-              <span class="step-number">02</span>
-              <h3>Co-design</h3>
-              <p>
-                Together, we identify high-leverage interventions and design a solution
-                that fits your teams, not just the technology.
-              </p>
-            </div>
+          <div class="capability-card">
+            <div class="capability-icon">📡</div>
+            <h3>Sensing Networks</h3>
+            <p>
+              Distributed sensor networks with intelligent edge processing.
+              Real-time data acquisition and validation at the source.
+            </p>
+          </div>
 
-            <div class="process-step">
-              <span class="step-number">03</span>
-              <h3>Build & Integrate</h3>
-              <p>
-                We prototype, test, and integrate hardware and software — from sensors
-                and robots to cloud platforms and dashboards.
-              </p>
-            </div>
-
-            <div class="process-step">
-              <span class="step-number">04</span>
-              <h3>Monitor & Evolve</h3>
-              <p>
-                Once deployed, we help track performance, refine algorithms, and grow
-                the system as your needs and context change.
-              </p>
-            </div>
+          <div class="capability-card">
+            <div class="capability-icon">🔗</div>
+            <h3>System Integration</h3>
+            <p>
+              Seamless integration with existing infrastructure. Open standards,
+              clear documentation, and maintainable architectures.
+            </p>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- Founder -->
-      <section id="founder" class="section">
-        <div class="container founder-layout reveal">
-          <div class="founder-photo" aria-hidden="true">
-            <div class="photo-placeholder">KP</div>
+    <!-- Founder Section -->
+    <section id="founder" class="section-founder">
+      <div class="container">
+        <div class="founder-card reveal">
+          <div class="founder-image">
+            <div class="founder-avatar">KP</div>
           </div>
-
           <div class="founder-content">
-            <h2>About the Founder</h2>
-            <h3>Krishnapriyan M S</h3>
-            <p>
-              I’m Krishnapriyan M S, and my work is shaped by a conviction I’ve carried through
-              every journey: a society’s health can be measured by the health of the environment
-              around it.
-            </p>
-            <p>
-              Whether it’s tracking pollution near industries, monitoring coastal waters with
-              autonomous vessels, or ensuring safe drinking water in remote communities, my mission
-              is to bring visibility to the places where environmental stress turns into human
-              hardship.
-            </p>
-            <p>
-              This initiative is built for one purpose — to turn observation into action,
-              and action into impact.
+            <span class="founder-tag">LEAD ENGINEER</span>
+            <h2>Krishnapriyan M S</h2>
+            <p class="founder-bio">
+              My work is shaped by a conviction: a society's health can be measured
+              by the health of the environment around it. Whether tracking pollution
+              near industries, monitoring coastal waters with autonomous vessels, or
+              ensuring safe drinking water in remote communities, my mission is to
+              bring visibility where environmental stress turns into human hardship.
             </p>
             <blockquote class="founder-quote">
-              “Technology should serve both people and planet — not one at the cost of
-              the other.”
+              "Technology should serve both people and planet—not one at the cost of the other."
             </blockquote>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- Why wal and al -->
-      <section id="value" class="section section-alt">
-        <div class="container reveal">
-          <div class="section-header">
-            <h2>Why wal and al?</h2>
+    <!-- Contact Section -->
+    <section id="contact" class="section-contact">
+      <div class="container">
+        <div class="contact-wrapper reveal">
+          <div class="contact-info">
+            <h2>Let's Build What the Planet Needs</h2>
             <p>
-              Choosing a partner for climate and resource projects means trusting them
-              with both your community and your data. We take that responsibility
-              seriously.
+              Tell us about your water, air, or land challenge—we'll respond with
+              honest, practical ideas for how technology can help.
             </p>
-          </div>
-
-          <div class="card-grid value-grid">
-            <article class="card mini-card">
-              <h3>Full-Stack Capability</h3>
-              <p>
-                From field sensors and robotics all the way to cloud dashboards and APIs,
-                we design the full stack as one coherent system.
-              </p>
-            </article>
-
-            <article class="card mini-card">
-              <h3>Designed for Reality</h3>
-              <p>
-                Our solutions are built for uneven power, patchy connectivity, and harsh
-                environments — not just controlled lab conditions.
-              </p>
-            </article>
-
-            <article class="card mini-card">
-              <h3>Impact You Can Measure</h3>
-              <p>
-                We focus on metrics that actually matter — fewer outages, safer water,
-                more reliable data — instead of vanity dashboards.
-              </p>
-            </article>
-
-            <article class="card mini-card">
-              <h3>Open and Collaborative</h3>
-              <p>
-                We favor open standards, clear documentation, and co-design with local
-                teams so that solutions can evolve without lock-in.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- FAQ Accordion -->
-      <section id="faq" class="section">
-        <div class="container reveal">
-          <div class="section-header">
-            <h2>Questions You Might Have</h2>
-            <p>
-              Working with a sustainability-focused engineering studio is different from
-              buying a product off the shelf. Here are a few common questions.
-            </p>
-          </div>
-
-          <div class="faq-list">
-            <div class="faq-item">
-              <button class="faq-question">
-                <span>Do you only work on water projects?</span>
-                <span class="faq-icon">+</span>
-              </button>
-              <div class="faq-answer">
+            
+            <div class="contact-details">
+              <div class="contact-item">
+                <span class="contact-label">WHO WE WORK WITH</span>
                 <p>
-                  No. Water, air, and land are deeply connected, and so is our work. Many
-                  engagements start with one resource — such as drinking water safety —
-                  and then expand to energy, air quality, or land-use insights over time.
+                  Cities and local governments, utilities and infrastructure owners,
+                  impact-driven companies and NGOs, research labs exploring the
+                  future of natural resource management.
                 </p>
               </div>
-            </div>
-
-            <div class="faq-item">
-              <button class="faq-question">
-                <span>What stage of idea or project is the right time to reach out?</span>
-                <span class="faq-icon">+</span>
-              </button>
-              <div class="faq-answer">
+              
+              <div class="contact-item">
+                <span class="contact-label">WHAT WE BRING</span>
                 <p>
-                  We are comfortable joining early, when you only have a problem statement,
-                  or later, when you need help making an existing pilot robust. The earlier
-                  we talk, the easier it is to avoid dead-ends and design for long-term use.
-                </p>
-              </div>
-            </div>
-
-            <div class="faq-item">
-              <button class="faq-question">
-                <span>Can you collaborate with our in-house or partner teams?</span>
-                <span class="faq-icon">+</span>
-              </button>
-              <div class="faq-answer">
-                <p>
-                  Yes. We often work alongside internal IT, operations, or research teams,
-                  as well as local implementation partners. Our role is to provide the
-                  technical backbone and design practices that help everyone move faster,
-                  together.
-                </p>
-              </div>
-            </div>
-
-            <div class="faq-item">
-              <button class="faq-question">
-                <span>Do you support long-term operations?</span>
-                <span class="faq-icon">+</span>
-              </button>
-              <div class="faq-answer">
-                <p>
-                  We aim to leave you with systems that are maintainable by your teams or
-                  local partners. Where helpful, we can define long-term support or
-                  evolution engagements aligned to clear outcomes, not just tickets.
+                  A blend of cloud, robotics, and software expertise, grounded in
+                  field experience and a clear commitment to sustainable development.
                 </p>
               </div>
             </div>
           </div>
-        </div>
-      </section>
 
-      <!-- Contact -->
-      <section id="contact" class="section section-alt">
-        <div class="container reveal">
-          <div class="section-header">
-            <h2>Let’s Build What the Planet Needs.</h2>
-            <p>
-              Tell us about your water, air, or land challenge — we’ll respond with honest,
-              practical ideas for how technology can help.
-            </p>
-          </div>
-
-
-            <!-- contact block  -->
-
-        <div class="contact-layout">
           <form class="contact-form" id="contactForm">
             <div class="form-group">
               <label for="name">Name</label>
-              <input id="name" name="name" type="text" required />
+              <input id="name" name="name" type="text" placeholder="Your name" required />
             </div>
           
             <div class="form-group">
               <label for="email">Email</label>
-              <input id="email" name="email" type="email" required />
+              <input id="email" name="email" type="email" placeholder="your@email.com" required />
             </div>
           
             <div class="form-group">
               <label for="organization">Organization</label>
-              <input id="organization" name="organization" type="text" />
+              <input id="organization" name="organization" type="text" placeholder="Your organization (optional)" />
             </div>
           
             <div class="form-group">
               <label for="message">Message</label>
-              <textarea id="message" name="message" rows="4" required></textarea>
+              <textarea id="message" name="message" rows="5" placeholder="Tell us about your project or challenge..." required></textarea>
             </div>
           
-            <!-- Honeypot (spam) -->
             <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
           
-            <button type="submit" class="btn primary" id="contactSubmitBtn">Send Message</button>
+            <button type="submit" class="btn-primary" id="contactSubmitBtn">Send Message</button>
           
-            <!-- Status message area -->
-            <p id="contactStatus" class="contact-status" style="margin-top:12px; display:none;"></p>
+            <p id="contactStatus" class="contact-status"></p>
           </form>
-
-          <div class="contact-side">
-            <div class="contact-card">
-              <h3>Who We Work With</h3>
-              <p>
-                Cities and local governments, utilities and infrastructure owners,
-                impact-driven companies and NGOs, and research labs exploring the
-                future of natural resource management.
-              </p>
-            </div>
-
-            <div class="contact-card">
-              <h3>What We Bring</h3>
-              <p>
-                A blend of cloud, robotics, and software expertise, grounded in field
-                experience and a clear commitment to sustainable development.
-              </p>
-            </div>
-          </div>
         </div>
-        </div>
-      </section>
-    </main>
+      </div>
+    </section>
 
     <!-- Footer -->
-    <footer class="site-footer">
-      <div class="container footer-content">
-        <div class="footer-main">
-          <p class="footer-brand">© 2025 wal & al. All rights reserved.</p>
-          <p class="footer-mission">
-            Designing technology for water, air, land — and all.
-          </p>
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-brand">
+            <img src="logo/1772257458537.png" alt="WAL & AL Logo" class="footer-logo-image" />
+            <p>Designing technology for water, air, land—and all.</p>
+          </div>
         </div>
-
-        <nav class="footer-nav">
-          <a href="#hero">Home</a>
-          <a href="#meaning">About</a>
-          <a href="#focus">Focus Areas</a>
-          <a href="#solutions">Work</a>
-          <a href="#contact">Contact</a>
-        </nav>
+        
+        <div class="footer-bottom">
+          <p>© 2025 WAL & AL. All rights reserved.</p>
+        </div>
       </div>
-      <!-- <div class="container footer-note">
-        <p>
-          We use basic analytics to understand how our site is used so we can improve our impact.
-        </p>
-      </div> -->
     </footer>
+
     <script src="script.js"></script>
   </body>
 </html>
