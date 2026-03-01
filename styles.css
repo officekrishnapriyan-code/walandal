@@ -1175,7 +1175,7 @@ section {
   }
   
   .logo-image {
-    height: 32px;
+    height: 30px;
   }
   
   .nav-logo .logo-mono {
@@ -1220,75 +1220,214 @@ section {
     transform: rotate(-45deg) translate(7px, -6px);
   }
   
+  /* Hero Section Mobile */
   .hero-cinematic {
     min-height: 100vh;
     padding-top: 70px;
     padding-bottom: 2rem;
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .hero-badge {
+    margin-bottom: 1.5rem;
+  }
+  
+  .badge-mono {
+    font-size: 0.65rem;
+    padding: 0.5rem 1rem;
+    letter-spacing: 0.1em;
   }
   
   .hero-title {
-    font-size: clamp(1.75rem, 7vw, 2.25rem);
-    line-height: 1.2;
+    font-size: clamp(1.5rem, 8vw, 2rem);
+    line-height: 1.15;
+    margin-bottom: 1rem;
   }
   
   .hero-subtitle {
-    font-size: clamp(0.9rem, 3vw, 1rem);
+    font-size: clamp(0.875rem, 3.5vw, 1rem);
+    line-height: 1.5;
+    margin-bottom: 2rem;
   }
   
   .hero-actions {
     flex-direction: column;
     width: 100%;
     gap: 1rem;
+    margin-bottom: 2rem;
   }
   
   .hero-actions .btn-primary,
   .hero-actions .btn-secondary {
     width: 100%;
     text-align: center;
+    padding: 0.875rem 1.5rem;
+    font-size: 0.9rem;
   }
   
   .hero-stats {
     flex-direction: column;
-    gap: 1.25rem;
-    padding: 1.5rem;
+    gap: 1rem;
+    padding: 1.25rem;
+    max-width: 100%;
+  }
+  
+  .stat-item {
+    width: 100%;
+  }
+  
+  .stat-number {
+    font-size: 1.75rem;
+  }
+  
+  .stat-label {
+    font-size: 0.7rem;
   }
   
   .stat-divider {
-    width: 100%;
+    width: 80%;
     height: 1px;
+    margin: 0 auto;
+  }
+  
+  /* Domains Section Mobile */
+  .section-domains {
+    padding-top: clamp(2rem, 4vh, 3rem) !important;
   }
   
   .domains-grid {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .domain-card {
+    padding: 2rem 1.5rem;
+  }
+  
+  .domain-icon {
+    width: 90px;
+    height: 90px;
+    margin-bottom: 1.5rem;
+  }
+  
+  .domain-tag {
+    font-size: 0.7rem;
+  }
+  
+  .domain-card h3 {
+    font-size: 1.35rem;
+  }
+  
+  .domain-card p {
+    font-size: 0.9rem;
+  }
+  
+  /* Systems Section Mobile */
+  .section-systems {
+    padding: clamp(2rem, 4vh, 3rem) 0 clamp(2rem, 4vh, 3rem);
+  }
+  
+  .section-systems .section-header h2 {
+    font-size: clamp(1.5rem, 6vw, 1.85rem);
+  }
+  
+  .section-systems .section-header p {
+    font-size: 0.875rem;
+  }
+  
+  .bento-grid-wrapper {
+    margin-top: 1.5rem;
   }
   
   .bento-card {
     flex: 0 0 100%;
     min-width: 100%;
-    padding: 1.5rem 1.25rem;
+    padding: 1.5rem;
+    max-height: none;
+  }
+  
+  .bento-tag {
+    font-size: 0.65rem;
+    padding: 0.3rem 0.75rem;
   }
   
   .bento-header h3 {
-    font-size: clamp(1.25rem, 5vw, 1.4rem);
+    font-size: 1.25rem;
+    margin-bottom: 0.35rem;
+  }
+  
+  .bento-subtitle {
+    font-size: 0.85rem;
   }
   
   .bento-content > p {
-    font-size: 0.875rem;
+    font-size: 0.85rem;
+    line-height: 1.55;
+  }
+  
+  .spec-title {
+    font-size: 0.65rem;
+  }
+  
+  .tech-specs {
+    padding-top: 1rem;
   }
   
   .tech-specs li {
     font-size: 0.8rem;
+    line-height: 1.5;
+    margin-bottom: 0.35rem;
+  }
+  
+  .carousel-nav {
+    margin-top: 1.5rem;
+  }
+  
+  .carousel-btn {
+    width: 44px;
+    height: 44px;
+    font-size: 1.1rem;
+  }
+  
+  .carousel-dot {
+    width: 8px;
+    height: 8px;
+  }
+  
+  /* Capabilities Section Mobile */
+  .section-capabilities {
+    padding-top: clamp(2rem, 4vh, 3rem) !important;
+    padding-bottom: clamp(3rem, 6vh, 4rem) !important;
   }
   
   .capabilities-grid {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
   
+  .capability-card {
+    padding: 1.75rem 1.5rem;
+  }
+  
+  .capability-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1.25rem;
+  }
+  
+  .capability-card h3 {
+    font-size: 1.2rem;
+  }
+  
+  .capability-card p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+  
+  /* Founder Section Mobile */
   .section-founder {
-    min-height: 100vh;
-    padding: clamp(4rem, 8vh, 6rem) 0;
+    min-height: auto;
+    padding: clamp(3rem, 6vh, 4rem) 0;
   }
   
   .founder-card {
@@ -1299,40 +1438,118 @@ section {
   }
   
   .founder-avatar {
-    width: 160px;
-    height: 160px;
-    font-size: 3.5rem;
+    width: 140px;
+    height: 140px;
+    font-size: 3rem;
+  }
+  
+  .founder-tag {
+    font-size: 0.7rem;
+  }
+  
+  .founder-content h2 {
+    font-size: 1.5rem;
+  }
+  
+  .founder-bio {
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+  
+  .founder-quote {
+    font-size: 1rem;
+    padding-left: 1.25rem;
+  }
+  
+  /* Contact Section Mobile */
+  .section-contact {
+    padding-bottom: clamp(3rem, 6vh, 4rem) !important;
+  }
+  
+  .contact-wrapper {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .contact-info h2 {
+    font-size: 1.5rem;
+  }
+  
+  .contact-info > p {
+    font-size: 0.9rem;
+  }
+  
+  .contact-details {
+    gap: 1.25rem;
+  }
+  
+  .contact-item {
+    padding: 1rem;
+  }
+  
+  .contact-label {
+    font-size: 0.7rem;
+  }
+  
+  .contact-item p {
+    font-size: 0.875rem;
   }
   
   .contact-form {
-    padding: 1.5rem 1.25rem;
+    padding: 1.5rem;
     grid-template-columns: 1fr;
     gap: 1rem;
+  }
+  
+  .form-group label {
+    font-size: 0.85rem;
   }
   
   .form-group input,
   .form-group textarea {
     padding: 0.75rem;
+    font-size: 0.9rem;
   }
   
   .form-group textarea {
-    min-height: 90px;
+    min-height: 100px;
   }
   
-  section {
-    padding: clamp(2.5rem, 6vh, 4rem) 0;
+  .contact-form .btn-primary {
+    padding: 0.875rem 1.5rem;
+    font-size: 0.9rem;
+  }
+  
+  /* Footer Mobile */
+  .footer {
+    padding: clamp(2rem, 4vh, 2.5rem) 0 clamp(1.5rem, 3vh, 2rem);
+  }
+  
+  .footer-logo-image {
+    height: 32px;
+  }
+  
+  .footer-brand p {
+    font-size: 0.85rem;
+  }
+  
+  .footer-bottom p {
+    font-size: 0.8rem;
+  }
+  
+  /* Section Headers Mobile */
+  .section-header {
+    margin-bottom: 2rem;
   }
   
   .section-header h2 {
-    font-size: clamp(1.75rem, 6vw, 2rem);
+    font-size: clamp(1.5rem, 6vw, 1.85rem);
+    margin-bottom: 0.75rem;
   }
   
-  .bento-card {
-    padding: 1.75rem 1.25rem;
-  }
-  
-  .bento-header h3 {
-    font-size: clamp(1.35rem, 5vw, 1.5rem);
+  .section-header p {
+    font-size: 0.875rem;
+    line-height: 1.6;
   }
 }
 
