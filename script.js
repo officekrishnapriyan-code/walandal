@@ -1017,17 +1017,16 @@ class ContactDetailsCarousel {
   }
 }
 
-// Update initialization to include contact carousel
+// Initialize all carousels when DOM is ready
+// Note: ContactDetailsCarousel disabled - using stacked layout on mobile
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', () => {
     new BentoCarousel();
     new DomainsCarousel();
     new CapabilitiesCarousel();
-    new ContactDetailsCarousel();
   });
 } else {
   new BentoCarousel();
   new DomainsCarousel();
   new CapabilitiesCarousel();
-  new ContactDetailsCarousel();
 }
