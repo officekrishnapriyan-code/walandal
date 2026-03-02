@@ -918,13 +918,14 @@ section {
 
 .contact-details-wrapper {
   width: 100%;
+  flex: 1;
 }
 
 .contact-details {
   display: flex;
   flex-direction: column;
   gap: clamp(1.5rem, 3vh, 2rem);
-  flex: 1;
+  height: 100%;
 }
 
 .contact-item {
@@ -960,10 +961,10 @@ section {
   backdrop-filter: var(--blur-glass);
   border: 1px solid var(--color-border);
   border-radius: var(--border-radius);
-  padding: clamp(2rem, 4vh, 2.75rem) clamp(1.75rem, 3.5vw, 2.5rem);
+  padding: clamp(2.5rem, 5vh, 3.5rem) clamp(2rem, 4vw, 3rem);
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.25rem;
+  gap: 1.5rem;
   height: 100%;
   align-content: start;
 }
@@ -1008,7 +1009,7 @@ section {
 .form-group input,
 .form-group textarea {
   width: 100%;
-  padding: 0.85rem;
+  padding: 1rem;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 10px;
@@ -1034,8 +1035,8 @@ section {
 
 .form-group textarea {
   resize: vertical;
-  min-height: 100px;
-  max-height: 200px;
+  min-height: 120px;
+  max-height: 250px;
 }
 
 .contact-form .btn-primary {
@@ -1414,7 +1415,7 @@ section {
   .domains-grid-wrapper {
     position: relative;
     width: 100%;
-    overflow: visible;
+    overflow: hidden;
     margin-top: 1.5rem;
     padding: 0.5rem 0;
   }
@@ -1423,13 +1424,11 @@ section {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    gap: 1rem;
+    gap: 0;
     transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     will-change: transform;
     cursor: grab;
     user-select: none;
-    overflow: visible;
-    padding: 0 0.25rem;
   }
   
   .domains-grid:active {
@@ -1437,12 +1436,12 @@ section {
   }
   
   .domain-card {
-    flex: 0 0 calc(100% - 0.5rem);
-    min-width: calc(100% - 0.5rem);
-    max-width: calc(100% - 0.5rem);
+    flex: 0 0 100%;
+    min-width: 100%;
+    max-width: 100%;
     padding: 1.5rem 1.25rem;
     text-align: center;
-    margin: 0 0.25rem;
+    box-sizing: border-box;
   }
   
   .domain-content {
@@ -1501,21 +1500,23 @@ section {
   
   .bento-grid-wrapper {
     margin-top: 1.25rem;
-    overflow: visible;
+    overflow: hidden;
   }
   
   .bento-grid {
-    padding: 0 0.25rem;
+    padding: 0;
+    gap: 0;
   }
   
   .bento-card {
-    flex: 0 0 calc(100% - 0.5rem);
-    min-width: calc(100% - 0.5rem);
+    flex: 0 0 100%;
+    min-width: 100%;
     padding: 1.25rem 1rem;
     max-height: 70vh;
     overflow-y: auto;
     text-align: center;
-    margin: 0 0.25rem;
+    margin: 0;
+    box-sizing: border-box;
   }
   
   .bento-tag {
@@ -1617,7 +1618,7 @@ section {
   .capabilities-grid-wrapper {
     position: relative;
     width: 100%;
-    overflow: visible;
+    overflow: hidden;
     margin-top: 1.5rem;
     padding: 0.5rem 0;
   }
@@ -1626,13 +1627,11 @@ section {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    gap: 1rem;
+    gap: 0;
     transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     will-change: transform;
     cursor: grab;
     user-select: none;
-    overflow: visible;
-    padding: 0 0.25rem;
   }
   
   .capabilities-grid:active {
@@ -1640,12 +1639,12 @@ section {
   }
   
   .capability-card {
-    flex: 0 0 calc(100% - 0.5rem);
-    min-width: calc(100% - 0.5rem);
-    max-width: calc(100% - 0.5rem);
+    flex: 0 0 100%;
+    min-width: 100%;
+    max-width: 100%;
     padding: 1.5rem 1.25rem;
     text-align: center;
-    margin: 0 0.25rem;
+    box-sizing: border-box;
   }
   
   .capability-icon {

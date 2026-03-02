@@ -304,9 +304,8 @@ class BentoCarousel {
     
     // Set initial position to show original first cards
     this.currentIndex = 0;
-    const cardWidth = this.carousel.children[0].offsetWidth;
-    const gap = parseFloat(getComputedStyle(this.carousel).gap) || 0;
-    const offset = -(this.totalCards * (cardWidth + gap));
+    const containerWidth = this.carousel.parentElement.offsetWidth;
+    const offset = -(this.totalCards * containerWidth);
     this.carousel.style.transform = `translateX(${offset}px)`;
     this.carousel.style.transition = 'none';
   }
@@ -533,9 +532,8 @@ class DomainsCarousel {
     }
     
     this.currentIndex = 0;
-    const cardWidth = this.carousel.children[0].offsetWidth;
-    const gap = parseFloat(getComputedStyle(this.carousel).gap) || 0;
-    const offset = -(this.totalCards * (cardWidth + gap));
+    const containerWidth = this.carousel.parentElement.offsetWidth;
+    const offset = -(this.totalCards * containerWidth);
     this.carousel.style.transform = `translateX(${offset}px)`;
     this.carousel.style.transition = 'none';
   }
@@ -604,10 +602,9 @@ class DomainsCarousel {
   updateCarousel(animate = true) {
     if (this.isTransitioning) return;
     
-    const cardWidth = this.carousel.children[0].offsetWidth;
-    const gap = parseFloat(getComputedStyle(this.carousel).gap) || 0;
+    const containerWidth = this.carousel.parentElement.offsetWidth;
     const actualIndex = this.currentIndex + this.totalPages;
-    const offset = -(actualIndex * (cardWidth + gap));
+    const offset = -(actualIndex * containerWidth);
     
     if (animate) {
       this.carousel.style.transition = 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
@@ -707,9 +704,8 @@ class CapabilitiesCarousel {
     }
     
     this.currentIndex = 0;
-    const cardWidth = this.carousel.children[0].offsetWidth;
-    const gap = parseFloat(getComputedStyle(this.carousel).gap) || 0;
-    const offset = -(this.totalCards * (cardWidth + gap));
+    const containerWidth = this.carousel.parentElement.offsetWidth;
+    const offset = -(this.totalCards * containerWidth);
     this.carousel.style.transform = `translateX(${offset}px)`;
     this.carousel.style.transition = 'none';
   }
@@ -778,10 +774,9 @@ class CapabilitiesCarousel {
   updateCarousel(animate = true) {
     if (this.isTransitioning) return;
     
-    const cardWidth = this.carousel.children[0].offsetWidth;
-    const gap = parseFloat(getComputedStyle(this.carousel).gap) || 0;
+    const containerWidth = this.carousel.parentElement.offsetWidth;
     const actualIndex = this.currentIndex + this.totalPages;
-    const offset = -(actualIndex * (cardWidth + gap));
+    const offset = -(actualIndex * containerWidth);
     
     if (animate) {
       this.carousel.style.transition = 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
@@ -895,9 +890,8 @@ class ContactDetailsCarousel {
     }
     
     this.currentIndex = 0;
-    const cardWidth = this.carousel.children[0].offsetWidth;
-    const gap = parseFloat(getComputedStyle(this.carousel).gap) || 0;
-    const offset = -(this.totalCards * (cardWidth + gap));
+    const containerWidth = this.carousel.parentElement.offsetWidth;
+    const offset = -(this.totalCards * containerWidth);
     this.carousel.style.transform = `translateX(${offset}px)`;
     this.carousel.style.transition = 'none';
   }
