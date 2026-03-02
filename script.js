@@ -186,23 +186,31 @@ if (statsSection) {
           const text = stat.textContent;
           if (text.includes('/')) return; // Skip "24/7"
           
+          // Check if it's the 100% stat
+          const isPercentage = text.includes('%');
           const target = parseInt(text);
           if (isNaN(target)) return;
           
-          let current = 0;
-          const increment = target / 50;
-          const duration = 1500;
-          const stepTime = duration / 50;
+          // Hide the stat initially
+          stat.style.opacity = '0';
           
-          const counter = setInterval(() => {
-            current += increment;
-            if (current >= target) {
-              stat.textContent = target;
-              clearInterval(counter);
-            } else {
-              stat.textContent = Math.floor(current);
-            }
-          }, stepTime);
+          setTimeout(() => {
+            stat.style.opacity = '1';
+            let current = 0;
+            const increment = target / 50;
+            const duration = 1500;
+            const stepTime = duration / 50;
+            
+            const counter = setInterval(() => {
+              current += increment;
+              if (current >= target) {
+                stat.textContent = isPercentage ? target + '%' : target;
+                clearInterval(counter);
+              } else {
+                stat.textContent = Math.floor(current);
+              }
+            }, stepTime);
+          }, index * 100);
         });
         statsObserver.disconnect();
       }
@@ -958,10 +966,9 @@ class ContactDetailsCarousel {
   updateCarousel(animate = true) {
     if (this.isTransitioning) return;
     
-    const cardWidth = this.carousel.children[0].offsetWidth;
-    const gap = parseFloat(getComputedStyle(this.carousel).gap) || 0;
+    const containerWidth = this.carousel.parentElement.offsetWidth;
     const actualIndex = this.currentIndex + this.totalPages;
-    const offset = -(actualIndex * (cardWidth + gap));
+    const offset = -(actualIndex * containerWidth);
     
     if (animate) {
       this.carousel.style.transition = 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
