@@ -468,3 +468,534 @@ if (document.readyState === 'loading') {
 } else {
   new BentoCarousel();
 }
+
+
+// ============================================
+// Domains Carousel (Mobile Only)
+// ============================================
+
+class DomainsCarousel {
+  constructor() {
+    this.carousel = document.getElementById('domainsCarousel');
+    this.prevBtn = document.getElementById('domainsPrevBtn');
+    this.nextBtn = document.getElementById('domainsNextBtn');
+    this.dotsContainer = document.getElementById('domainsDots');
+    
+    if (!this.carousel || window.innerWidth > 768) return;
+    
+    this.currentIndex = 0;
+    this.originalCards = Array.from(this.carousel.children);
+    this.totalCards = this.originalCards.length;
+    this.totalPages = this.totalCards;
+    this.isTransitioning = false;
+    
+    this.init();
+  }
+  
+  init() {
+    this.cloneCards();
+    this.createDots();
+    this.updateCarousel(false);
+    this.attachEvents();
+    this.addSwipeSupport();
+  }
+  
+  cloneCards() {
+    this.originalCards.forEach(card => {
+      const clone = card.cloneNode(true);
+      clone.classList.add('clone');
+      this.carousel.appendChild(clone);
+    });
+    
+    for (let i = this.originalCards.length - 1; i >= 0; i--) {
+      const clone = this.originalCards[i].cloneNode(true);
+      clone.classList.add('clone');
+      this.carousel.insertBefore(clone, this.carousel.firstChild);
+    }
+    
+    this.currentIndex = 0;
+    const cardWidth = this.carousel.children[0].offsetWidth;
+    const gap = parseFloat(getComputedStyle(this.carousel).gap) || 0;
+    const offset = -(this.totalCards * (cardWidth + gap));
+    this.carousel.style.transform = `translateX(${offset}px)`;
+    this.carousel.style.transition = 'none';
+  }
+  
+  createDots() {
+    this.dotsContainer.innerHTML = '';
+    for (let i = 0; i < this.totalPages; i++) {
+      const dot = document.createElement('button');
+      dot.classList.add('carousel-dot');
+      dot.setAttribute('aria-label', `Go to card ${i + 1}`);
+      if (i === this.currentIndex) dot.classList.add('active');
+      dot.addEventListener('click', () => this.goToPage(i));
+      this.dotsContainer.appendChild(dot);
+    }
+  }
+  
+  attachEvents() {
+    this.prevBtn.addEventListener('click', () => this.prev());
+    this.nextBtn.addEventListener('click', () => this.next());
+    
+    this.carousel.addEventListener('transitionend', () => {
+      this.isTransitioning = false;
+      
+      if (this.currentIndex >= this.totalPages) {
+        this.currentIndex = 0;
+        this.updateCarousel(false);
+      } else if (this.currentIndex < 0) {
+        this.currentIndex = this.totalPages - 1;
+        this.updateCarousel(false);
+      }
+    });
+  }
+  
+  addSwipeSupport() {
+    let startX = 0;
+    let currentX = 0;
+    let isDragging = false;
+    
+    this.carousel.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+      isDragging = true;
+    }, { passive: true });
+    
+    this.carousel.addEventListener('touchmove', (e) => {
+      if (!isDragging) return;
+      currentX = e.touches[0].clientX;
+    }, { passive: true });
+    
+    this.carousel.addEventListener('touchend', () => {
+      if (!isDragging) return;
+      isDragging = false;
+      
+      const diff = startX - currentX;
+      const threshold = 50;
+      
+      if (Math.abs(diff) > threshold) {
+        if (diff > 0) {
+          this.next();
+        } else {
+          this.prev();
+        }
+      }
+    });
+  }
+  
+  updateCarousel(animate = true) {
+    if (this.isTransitioning) return;
+    
+    const cardWidth = this.carousel.children[0].offsetWidth;
+    const gap = parseFloat(getComputedStyle(this.carousel).gap) || 0;
+    const actualIndex = this.currentIndex + this.totalPages;
+    const offset = -(actualIndex * (cardWidth + gap));
+    
+    if (animate) {
+      this.carousel.style.transition = 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+      this.isTransitioning = true;
+    } else {
+      this.carousel.style.transition = 'none';
+    }
+    
+    this.carousel.style.transform = `translateX(${offset}px)`;
+    
+    const dots = this.dotsContainer.querySelectorAll('.carousel-dot');
+    dots.forEach((dot, index) => {
+      const normalizedIndex = ((this.currentIndex % this.totalPages) + this.totalPages) % this.totalPages;
+      dot.classList.toggle('active', index === normalizedIndex);
+    });
+  }
+  
+  next() {
+    if (this.isTransitioning) return;
+    this.currentIndex++;
+    this.updateCarousel(true);
+  }
+  
+  prev() {
+    if (this.isTransitioning) return;
+    this.currentIndex--;
+    this.updateCarousel(true);
+  }
+  
+  goToPage(index) {
+    if (this.isTransitioning) return;
+    const normalizedCurrent = ((this.currentIndex % this.totalPages) + this.totalPages) % this.totalPages;
+    const diff = index - normalizedCurrent;
+    
+    if (Math.abs(diff) <= this.totalPages / 2) {
+      this.currentIndex += diff;
+    } else {
+      if (diff > 0) {
+        this.currentIndex -= (this.totalPages - diff);
+      } else {
+        this.currentIndex += (this.totalPages + diff);
+      }
+    }
+    
+    this.updateCarousel(true);
+  }
+}
+
+// ============================================
+// Capabilities Carousel (Mobile Only)
+// ============================================
+
+class CapabilitiesCarousel {
+  constructor() {
+    this.carousel = document.getElementById('capabilitiesCarousel');
+    this.prevBtn = document.getElementById('capabilitiesPrevBtn');
+    this.nextBtn = document.getElementById('capabilitiesNextBtn');
+    this.dotsContainer = document.getElementById('capabilitiesDots');
+    
+    if (!this.carousel || window.innerWidth > 768) return;
+    
+    this.currentIndex = 0;
+    this.originalCards = Array.from(this.carousel.children);
+    this.totalCards = this.originalCards.length;
+    this.totalPages = this.totalCards;
+    this.isTransitioning = false;
+    
+    this.init();
+  }
+  
+  init() {
+    this.cloneCards();
+    this.createDots();
+    this.updateCarousel(false);
+    this.attachEvents();
+    this.addSwipeSupport();
+  }
+  
+  cloneCards() {
+    this.originalCards.forEach(card => {
+      const clone = card.cloneNode(true);
+      clone.classList.add('clone');
+      this.carousel.appendChild(clone);
+    });
+    
+    for (let i = this.originalCards.length - 1; i >= 0; i--) {
+      const clone = this.originalCards[i].cloneNode(true);
+      clone.classList.add('clone');
+      this.carousel.insertBefore(clone, this.carousel.firstChild);
+    }
+    
+    this.currentIndex = 0;
+    const cardWidth = this.carousel.children[0].offsetWidth;
+    const gap = parseFloat(getComputedStyle(this.carousel).gap) || 0;
+    const offset = -(this.totalCards * (cardWidth + gap));
+    this.carousel.style.transform = `translateX(${offset}px)`;
+    this.carousel.style.transition = 'none';
+  }
+  
+  createDots() {
+    this.dotsContainer.innerHTML = '';
+    for (let i = 0; i < this.totalPages; i++) {
+      const dot = document.createElement('button');
+      dot.classList.add('carousel-dot');
+      dot.setAttribute('aria-label', `Go to card ${i + 1}`);
+      if (i === this.currentIndex) dot.classList.add('active');
+      dot.addEventListener('click', () => this.goToPage(i));
+      this.dotsContainer.appendChild(dot);
+    }
+  }
+  
+  attachEvents() {
+    this.prevBtn.addEventListener('click', () => this.prev());
+    this.nextBtn.addEventListener('click', () => this.next());
+    
+    this.carousel.addEventListener('transitionend', () => {
+      this.isTransitioning = false;
+      
+      if (this.currentIndex >= this.totalPages) {
+        this.currentIndex = 0;
+        this.updateCarousel(false);
+      } else if (this.currentIndex < 0) {
+        this.currentIndex = this.totalPages - 1;
+        this.updateCarousel(false);
+      }
+    });
+  }
+  
+  addSwipeSupport() {
+    let startX = 0;
+    let currentX = 0;
+    let isDragging = false;
+    
+    this.carousel.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+      isDragging = true;
+    }, { passive: true });
+    
+    this.carousel.addEventListener('touchmove', (e) => {
+      if (!isDragging) return;
+      currentX = e.touches[0].clientX;
+    }, { passive: true });
+    
+    this.carousel.addEventListener('touchend', () => {
+      if (!isDragging) return;
+      isDragging = false;
+      
+      const diff = startX - currentX;
+      const threshold = 50;
+      
+      if (Math.abs(diff) > threshold) {
+        if (diff > 0) {
+          this.next();
+        } else {
+          this.prev();
+        }
+      }
+    });
+  }
+  
+  updateCarousel(animate = true) {
+    if (this.isTransitioning) return;
+    
+    const cardWidth = this.carousel.children[0].offsetWidth;
+    const gap = parseFloat(getComputedStyle(this.carousel).gap) || 0;
+    const actualIndex = this.currentIndex + this.totalPages;
+    const offset = -(actualIndex * (cardWidth + gap));
+    
+    if (animate) {
+      this.carousel.style.transition = 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+      this.isTransitioning = true;
+    } else {
+      this.carousel.style.transition = 'none';
+    }
+    
+    this.carousel.style.transform = `translateX(${offset}px)`;
+    
+    const dots = this.dotsContainer.querySelectorAll('.carousel-dot');
+    dots.forEach((dot, index) => {
+      const normalizedIndex = ((this.currentIndex % this.totalPages) + this.totalPages) % this.totalPages;
+      dot.classList.toggle('active', index === normalizedIndex);
+    });
+  }
+  
+  next() {
+    if (this.isTransitioning) return;
+    this.currentIndex++;
+    this.updateCarousel(true);
+  }
+  
+  prev() {
+    if (this.isTransitioning) return;
+    this.currentIndex--;
+    this.updateCarousel(true);
+  }
+  
+  goToPage(index) {
+    if (this.isTransitioning) return;
+    const normalizedCurrent = ((this.currentIndex % this.totalPages) + this.totalPages) % this.totalPages;
+    const diff = index - normalizedCurrent;
+    
+    if (Math.abs(diff) <= this.totalPages / 2) {
+      this.currentIndex += diff;
+    } else {
+      if (diff > 0) {
+        this.currentIndex -= (this.totalPages - diff);
+      } else {
+        this.currentIndex += (this.totalPages + diff);
+      }
+    }
+    
+    this.updateCarousel(true);
+  }
+}
+
+// Initialize all carousels when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => {
+    new BentoCarousel();
+    new DomainsCarousel();
+    new CapabilitiesCarousel();
+  });
+} else {
+  new BentoCarousel();
+  new DomainsCarousel();
+  new CapabilitiesCarousel();
+}
+
+
+// ============================================
+// Contact Details Carousel (Mobile Only)
+// ============================================
+
+class ContactDetailsCarousel {
+  constructor() {
+    this.carousel = document.getElementById('contactDetailsCarousel');
+    this.prevBtn = document.getElementById('contactPrevBtn');
+    this.nextBtn = document.getElementById('contactNextBtn');
+    this.dotsContainer = document.getElementById('contactDots');
+    
+    if (!this.carousel || window.innerWidth > 768) return;
+    
+    this.currentIndex = 0;
+    this.originalCards = Array.from(this.carousel.children);
+    this.totalCards = this.originalCards.length;
+    this.totalPages = this.totalCards;
+    this.isTransitioning = false;
+    
+    this.init();
+  }
+  
+  init() {
+    this.cloneCards();
+    this.createDots();
+    this.updateCarousel(false);
+    this.attachEvents();
+    this.addSwipeSupport();
+  }
+  
+  cloneCards() {
+    this.originalCards.forEach(card => {
+      const clone = card.cloneNode(true);
+      clone.classList.add('clone');
+      this.carousel.appendChild(clone);
+    });
+    
+    for (let i = this.originalCards.length - 1; i >= 0; i--) {
+      const clone = this.originalCards[i].cloneNode(true);
+      clone.classList.add('clone');
+      this.carousel.insertBefore(clone, this.carousel.firstChild);
+    }
+    
+    this.currentIndex = 0;
+    const cardWidth = this.carousel.children[0].offsetWidth;
+    const gap = parseFloat(getComputedStyle(this.carousel).gap) || 0;
+    const offset = -(this.totalCards * (cardWidth + gap));
+    this.carousel.style.transform = `translateX(${offset}px)`;
+    this.carousel.style.transition = 'none';
+  }
+  
+  createDots() {
+    this.dotsContainer.innerHTML = '';
+    for (let i = 0; i < this.totalPages; i++) {
+      const dot = document.createElement('button');
+      dot.classList.add('carousel-dot');
+      dot.setAttribute('aria-label', `Go to info ${i + 1}`);
+      if (i === this.currentIndex) dot.classList.add('active');
+      dot.addEventListener('click', () => this.goToPage(i));
+      this.dotsContainer.appendChild(dot);
+    }
+  }
+  
+  attachEvents() {
+    this.prevBtn.addEventListener('click', () => this.prev());
+    this.nextBtn.addEventListener('click', () => this.next());
+    
+    this.carousel.addEventListener('transitionend', () => {
+      this.isTransitioning = false;
+      
+      if (this.currentIndex >= this.totalPages) {
+        this.currentIndex = 0;
+        this.updateCarousel(false);
+      } else if (this.currentIndex < 0) {
+        this.currentIndex = this.totalPages - 1;
+        this.updateCarousel(false);
+      }
+    });
+  }
+  
+  addSwipeSupport() {
+    let startX = 0;
+    let currentX = 0;
+    let isDragging = false;
+    
+    this.carousel.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+      isDragging = true;
+    }, { passive: true });
+    
+    this.carousel.addEventListener('touchmove', (e) => {
+      if (!isDragging) return;
+      currentX = e.touches[0].clientX;
+    }, { passive: true });
+    
+    this.carousel.addEventListener('touchend', () => {
+      if (!isDragging) return;
+      isDragging = false;
+      
+      const diff = startX - currentX;
+      const threshold = 50;
+      
+      if (Math.abs(diff) > threshold) {
+        if (diff > 0) {
+          this.next();
+        } else {
+          this.prev();
+        }
+      }
+    });
+  }
+  
+  updateCarousel(animate = true) {
+    if (this.isTransitioning) return;
+    
+    const cardWidth = this.carousel.children[0].offsetWidth;
+    const gap = parseFloat(getComputedStyle(this.carousel).gap) || 0;
+    const actualIndex = this.currentIndex + this.totalPages;
+    const offset = -(actualIndex * (cardWidth + gap));
+    
+    if (animate) {
+      this.carousel.style.transition = 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+      this.isTransitioning = true;
+    } else {
+      this.carousel.style.transition = 'none';
+    }
+    
+    this.carousel.style.transform = `translateX(${offset}px)`;
+    
+    const dots = this.dotsContainer.querySelectorAll('.carousel-dot');
+    dots.forEach((dot, index) => {
+      const normalizedIndex = ((this.currentIndex % this.totalPages) + this.totalPages) % this.totalPages;
+      dot.classList.toggle('active', index === normalizedIndex);
+    });
+  }
+  
+  next() {
+    if (this.isTransitioning) return;
+    this.currentIndex++;
+    this.updateCarousel(true);
+  }
+  
+  prev() {
+    if (this.isTransitioning) return;
+    this.currentIndex--;
+    this.updateCarousel(true);
+  }
+  
+  goToPage(index) {
+    if (this.isTransitioning) return;
+    const normalizedCurrent = ((this.currentIndex % this.totalPages) + this.totalPages) % this.totalPages;
+    const diff = index - normalizedCurrent;
+    
+    if (Math.abs(diff) <= this.totalPages / 2) {
+      this.currentIndex += diff;
+    } else {
+      if (diff > 0) {
+        this.currentIndex -= (this.totalPages - diff);
+      } else {
+        this.currentIndex += (this.totalPages + diff);
+      }
+    }
+    
+    this.updateCarousel(true);
+  }
+}
+
+// Update initialization to include contact carousel
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => {
+    new BentoCarousel();
+    new DomainsCarousel();
+    new CapabilitiesCarousel();
+    new ContactDetailsCarousel();
+  });
+} else {
+  new BentoCarousel();
+  new DomainsCarousel();
+  new CapabilitiesCarousel();
+  new ContactDetailsCarousel();
+}

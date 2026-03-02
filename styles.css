@@ -168,7 +168,7 @@ body {
 }
 
 .nav-cta {
-  padding: 0.6rem 1.5rem;
+  padding: 0.65rem 1.75rem;
   background: rgba(15, 185, 177, 0.1);
   border: 1px solid var(--color-teal);
   border-radius: 8px;
@@ -411,6 +411,11 @@ section {
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: clamp(1.5rem, 3vw, 2rem);
   margin-top: clamp(2rem, 4vh, 2.5rem);
+}
+
+/* Hide domains carousel nav on desktop */
+.domains-carousel-nav {
+  display: none;
 }
 
 .domain-card {
@@ -751,6 +756,11 @@ section {
   margin-top: clamp(2rem, 4vh, 2.5rem);
 }
 
+/* Hide capabilities carousel nav on desktop */
+.capabilities-carousel-nav {
+  display: none;
+}
+
 .capability-card {
   background: rgba(15, 20, 32, 0.6);
   backdrop-filter: var(--blur-glass);
@@ -791,7 +801,7 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: clamp(5rem, 10vh, 8rem) 0;
+  padding: clamp(5rem, 10vh, 8rem) 0 clamp(6rem, 12vh, 10rem);
 }
 
 .founder-card {
@@ -871,6 +881,11 @@ section {
   grid-template-columns: 1fr 1.2fr;
   gap: clamp(2.5rem, 5vw, 4rem);
   align-items: stretch;
+}
+
+/* Hide contact carousel nav on desktop */
+.contact-carousel-nav {
+  display: none;
 }
 
 .contact-info {
@@ -1251,7 +1266,7 @@ section {
   /* Hero Section - Optimized for mobile */
   .hero-cinematic {
     min-height: 85vh;
-    padding-top: 75px;
+    padding-top: 85px; /* Increased from 75px to prevent overlap */
     padding-bottom: 1.5rem;
     padding-left: 1rem;
     padding-right: 1rem;
@@ -1355,13 +1370,33 @@ section {
     line-height: 1.6;
   }
   
-  .domains-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
+  /* Domains Carousel Wrapper */
+  .domains-grid-wrapper {
+    position: relative;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: visible;
     margin-top: 1.5rem;
+    padding: 0.5rem 0;
+  }
+  
+  .domains-grid {
+    display: flex;
+    gap: 1rem;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+    cursor: grab;
+    user-select: none;
+    overflow: visible;
+  }
+  
+  .domains-grid:active {
+    cursor: grabbing;
   }
   
   .domain-card {
+    flex: 0 0 100%;
+    min-width: 100%;
     padding: 1.5rem 1.25rem;
   }
   
@@ -1384,6 +1419,12 @@ section {
   .domain-card p {
     font-size: 0.875rem; /* 14px */
     line-height: 1.6;
+  }
+  
+  /* Show domains carousel nav only on mobile */
+  .domains-carousel-nav {
+    display: flex;
+    margin-top: 1rem;
   }
   
   /* Systems Section */
@@ -1480,13 +1521,33 @@ section {
     padding: 2rem 0 !important;
   }
   
-  .capabilities-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
+  /* Capabilities Carousel Wrapper */
+  .capabilities-grid-wrapper {
+    position: relative;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: visible;
     margin-top: 1.5rem;
+    padding: 0.5rem 0;
+  }
+  
+  .capabilities-grid {
+    display: flex;
+    gap: 1rem;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+    cursor: grab;
+    user-select: none;
+    overflow: visible;
+  }
+  
+  .capabilities-grid:active {
+    cursor: grabbing;
   }
   
   .capability-card {
+    flex: 0 0 100%;
+    min-width: 100%;
     padding: 1.5rem 1.25rem;
   }
   
@@ -1503,6 +1564,12 @@ section {
   .capability-card p {
     font-size: 0.875rem; /* 14px */
     line-height: 1.65;
+  }
+  
+  /* Show capabilities carousel nav only on mobile */
+  .capabilities-carousel-nav {
+    display: flex;
+    margin-top: 1rem;
   }
   
   /* Founder Section */
@@ -1568,11 +1635,32 @@ section {
     margin-bottom: 1.25rem;
   }
   
+  /* Contact Details Carousel Wrapper */
+  .contact-details-wrapper {
+    position: relative;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: visible;
+    padding: 0.5rem 0;
+  }
+  
   .contact-details {
+    display: flex;
     gap: 1rem;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+    cursor: grab;
+    user-select: none;
+    overflow: visible;
+  }
+  
+  .contact-details:active {
+    cursor: grabbing;
   }
   
   .contact-item {
+    flex: 0 0 100%;
+    min-width: 100%;
     padding: 1rem 0.875rem;
   }
   
@@ -1584,6 +1672,12 @@ section {
   .contact-item p {
     font-size: 0.875rem; /* 14px */
     line-height: 1.65;
+  }
+  
+  /* Show contact carousel nav only on mobile */
+  .contact-carousel-nav {
+    display: flex;
+    margin-top: 1rem;
   }
   
   .contact-form {
