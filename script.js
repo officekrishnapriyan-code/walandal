@@ -232,7 +232,7 @@ class BentoCarousel {
     
     this.currentIndex = 0;
     this.cardsPerView = window.innerWidth > 1024 ? 2 : 1;
-    this.originalCards = Array.from(this.carousel.children);
+    this.originalCards = Array.from(this.carousel.children).filter(card => !card.classList.contains('clone'));
     this.totalCards = this.originalCards.length;
     this.totalPages = Math.ceil(this.totalCards / this.cardsPerView);
     this.isTransitioning = false;
@@ -241,6 +241,10 @@ class BentoCarousel {
   }
   
   init() {
+    // Clear any existing clones first
+    const existingClones = this.carousel.querySelectorAll('.clone');
+    existingClones.forEach(clone => clone.remove());
+    
     // Clone cards for infinite loop
     this.cloneCards();
     
@@ -476,15 +480,18 @@ if (document.readyState === 'loading') {
 
 class DomainsCarousel {
   constructor() {
+    // Only initialize on mobile
+    if (window.innerWidth > 768) return;
+    
     this.carousel = document.getElementById('domainsCarousel');
     this.prevBtn = document.getElementById('domainsPrevBtn');
     this.nextBtn = document.getElementById('domainsNextBtn');
     this.dotsContainer = document.getElementById('domainsDots');
     
-    if (!this.carousel || window.innerWidth > 768) return;
+    if (!this.carousel || !this.prevBtn || !this.nextBtn || !this.dotsContainer) return;
     
     this.currentIndex = 0;
-    this.originalCards = Array.from(this.carousel.children);
+    this.originalCards = Array.from(this.carousel.children).filter(card => !card.classList.contains('clone'));
     this.totalCards = this.originalCards.length;
     this.totalPages = this.totalCards;
     this.isTransitioning = false;
@@ -493,6 +500,10 @@ class DomainsCarousel {
   }
   
   init() {
+    // Clear any existing clones first
+    const existingClones = this.carousel.querySelectorAll('.clone');
+    existingClones.forEach(clone => clone.remove());
+    
     this.cloneCards();
     this.createDots();
     this.updateCarousel(false);
@@ -643,15 +654,18 @@ class DomainsCarousel {
 
 class CapabilitiesCarousel {
   constructor() {
+    // Only initialize on mobile
+    if (window.innerWidth > 768) return;
+    
     this.carousel = document.getElementById('capabilitiesCarousel');
     this.prevBtn = document.getElementById('capabilitiesPrevBtn');
     this.nextBtn = document.getElementById('capabilitiesNextBtn');
     this.dotsContainer = document.getElementById('capabilitiesDots');
     
-    if (!this.carousel || window.innerWidth > 768) return;
+    if (!this.carousel || !this.prevBtn || !this.nextBtn || !this.dotsContainer) return;
     
     this.currentIndex = 0;
-    this.originalCards = Array.from(this.carousel.children);
+    this.originalCards = Array.from(this.carousel.children).filter(card => !card.classList.contains('clone'));
     this.totalCards = this.originalCards.length;
     this.totalPages = this.totalCards;
     this.isTransitioning = false;
@@ -660,6 +674,10 @@ class CapabilitiesCarousel {
   }
   
   init() {
+    // Clear any existing clones first
+    const existingClones = this.carousel.querySelectorAll('.clone');
+    existingClones.forEach(clone => clone.remove());
+    
     this.cloneCards();
     this.createDots();
     this.updateCarousel(false);
@@ -824,15 +842,18 @@ if (document.readyState === 'loading') {
 
 class ContactDetailsCarousel {
   constructor() {
+    // Only initialize on mobile
+    if (window.innerWidth > 768) return;
+    
     this.carousel = document.getElementById('contactDetailsCarousel');
     this.prevBtn = document.getElementById('contactPrevBtn');
     this.nextBtn = document.getElementById('contactNextBtn');
     this.dotsContainer = document.getElementById('contactDots');
     
-    if (!this.carousel || window.innerWidth > 768) return;
+    if (!this.carousel || !this.prevBtn || !this.nextBtn || !this.dotsContainer) return;
     
     this.currentIndex = 0;
-    this.originalCards = Array.from(this.carousel.children);
+    this.originalCards = Array.from(this.carousel.children).filter(card => !card.classList.contains('clone'));
     this.totalCards = this.originalCards.length;
     this.totalPages = this.totalCards;
     this.isTransitioning = false;
@@ -841,6 +862,10 @@ class ContactDetailsCarousel {
   }
   
   init() {
+    // Clear any existing clones first
+    const existingClones = this.carousel.querySelectorAll('.clone');
+    existingClones.forEach(clone => clone.remove());
+    
     this.cloneCards();
     this.createDots();
     this.updateCarousel(false);
