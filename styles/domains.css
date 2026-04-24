@@ -1,0 +1,74 @@
+.domains__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+.domain-card {
+  position: relative;
+  padding: 32px;
+  border-radius: var(--radius);
+  background: var(--bg-elev-1);
+  border: 1px solid var(--hairline);
+  transition: transform 0.5s var(--ease-out-expo),
+              border-color 0.5s var(--ease-out-expo),
+              background 0.5s var(--ease-out-expo);
+  transform-style: preserve-3d;
+  will-change: transform;
+  overflow: hidden;
+}
+.domain-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(20,224,213,0.08), transparent 40%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+.domain-card:hover { transform: translateY(-8px); border-color: rgba(20,224,213,0.4); }
+.domain-card:hover::before { opacity: 1; }
+.domain-card:hover .domain-card__glyph svg { transform: rotate(12deg); }
+
+.domain-card--highlight {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--bg-elev-1), var(--bg-elev-1)) padding-box,
+    var(--gradient-brand) border-box;
+  box-shadow: 0 20px 60px -20px rgba(20,224,213,0.25);
+}
+
+.domain-card__glyph {
+  width: 60px; height: 60px;
+  margin-bottom: 24px;
+  color: var(--teal);
+}
+.domain-card__glyph svg {
+  transition: transform 0.6s var(--ease-out-expo);
+  will-change: transform;
+}
+.domain-card__glyph .draw {
+  stroke-dasharray: 200;
+  stroke-dashoffset: 200;
+  transition: stroke-dashoffset 1.4s var(--ease-out-expo);
+}
+.domain-card.is-in .domain-card__glyph .draw { stroke-dashoffset: 0; }
+
+.domain-card__tag {
+  color: var(--teal) !important;
+  font-size: 0.6875rem;
+  margin-bottom: 14px;
+}
+.domain-card__title {
+  font-family: var(--font-sans);
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text);
+  margin-bottom: 14px;
+}
+.domain-card__body {
+  color: var(--text-muted);
+  line-height: 1.55;
+  font-size: 0.9375rem;
+}

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 40" width="220" height="40" role="img" aria-label="WAL & AL">
+  <defs>
+    <linearGradient id="wlmark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#14E0D5"/>
+      <stop offset="100%" stop-color="#8BD17C"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Mark: three layered chevrons -->
+  <g transform="translate(2 6)" fill="none" stroke="url(#wlmark)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="0 22 12 8 24 22" opacity="0.45"/>
+    <polyline points="6 22 18 8 30 22" opacity="0.75"/>
+    <polyline points="12 22 24 8 36 22" opacity="1"/>
+  </g>
+
+  <!-- Wordmark -->
+  <text x="50" y="27"
+        font-family="Inter, -apple-system, system-ui, sans-serif"
+        font-weight="800"
+        font-size="20"
+        letter-spacing="0.04em"
+        fill="#F5F7FA">WAL &amp; AL</text>
+</svg>
