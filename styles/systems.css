@@ -1,0 +1,176 @@
+.systems { padding-bottom: 0; }
+
+.systems__pin {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+.systems__track {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  gap: 40px;
+  padding-inline: var(--gutter);
+  will-change: transform;
+}
+
+.system-card {
+  flex-shrink: 0;
+  width: 70vw;
+  min-width: 600px;
+  max-width: 1100px;
+  height: 70vh;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 40px;
+  padding: 56px;
+  border-radius: var(--radius);
+  background:
+    linear-gradient(135deg, rgba(20,224,213,0.04), transparent 50%),
+    var(--bg-elev-1);
+  border: 1px solid var(--hairline);
+  position: relative;
+  overflow: hidden;
+}
+.system-card__text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 480px;
+}
+.system-card__tag {
+  color: var(--teal) !important;
+  margin-bottom: 18px;
+  font-size: 0.6875rem;
+}
+.system-card__title {
+  font-family: var(--font-sans);
+  font-size: clamp(2rem, 3.4vw, 2.75rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.system-card__subtitle {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.125rem;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+.system-card__body {
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 28px;
+}
+.system-card__specs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.system-card__specs li {
+  position: relative;
+  padding-left: 22px;
+  color: var(--text);
+  font-size: 0.9375rem;
+}
+.system-card__specs li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 11px;
+  width: 12px; height: 1px;
+  background: var(--teal);
+}
+
+.system-card__visual {
+  position: relative;
+  border-radius: var(--radius-sm);
+  background:
+    radial-gradient(circle at center, rgba(20,224,213,0.08), transparent 70%),
+    var(--bg-elev-2);
+  border: 1px solid var(--hairline);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Aqua waves */
+.visual-aqua .wave-1 { animation: waveFloat 6s ease-in-out infinite; }
+.visual-aqua .wave-2 { animation: waveFloat 5s ease-in-out infinite reverse; }
+.visual-aqua .wave-3 { animation: waveFloat 7s ease-in-out infinite; }
+@keyframes waveFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* Emission bars */
+.visual-emission .bar { transition: height 1.2s var(--ease-out-expo), y 1.2s var(--ease-out-expo); }
+.visual-emission.is-in .bar { /* handled by JS */ }
+
+/* Marine sonar */
+.visual-marine .sonar-sweep { animation: sonar 4s linear infinite; }
+.visual-marine .ping { animation: ping 2s ease-in-out infinite; }
+.visual-marine .ping:nth-child(2) { animation-delay: 0.5s; }
+.visual-marine .ping:nth-child(3) { animation-delay: 1s; }
+@keyframes sonar { to { transform: rotate(360deg); } }
+@keyframes ping {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.6); }
+}
+
+/* ROS orbits */
+.visual-ros .orbit-1 { animation: orbit 12s linear infinite; }
+.visual-ros .orbit-2 { animation: orbit 8s linear infinite reverse; }
+.visual-ros .orbit-3 { animation: orbit 6s linear infinite; }
+@keyframes orbit { to { transform: rotate(360deg); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .visual-aqua .wave-1, .visual-aqua .wave-2, .visual-aqua .wave-3,
+  .visual-marine .sonar-sweep, .visual-marine .ping,
+  .visual-ros .orbit-1, .visual-ros .orbit-2, .visual-ros .orbit-3 {
+    animation: none;
+  }
+}
+
+.systems__dots {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  padding-block: 32px 80px;
+}
+.systems__dots .dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--hairline-strong);
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s, width 0.3s;
+}
+.systems__dots .dot.active {
+  background: var(--teal);
+  width: 24px;
+  border-radius: 4px;
+}
+
+@media (max-width: 840px) {
+  .systems__pin {
+    height: auto;
+    overflow: visible;
+  }
+  .systems__track {
+    flex-direction: column;
+    gap: 20px;
+    height: auto;
+    padding-block: 20px 40px;
+    transform: none !important;
+  }
+  .system-card {
+    width: 100%;
+    min-width: 0;
+    height: auto;
+    grid-template-columns: 1fr;
+    padding: 32px;
+  }
+  .system-card__visual { min-height: 240px; }
+}

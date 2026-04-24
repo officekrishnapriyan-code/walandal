@@ -1,0 +1,44 @@
+:root {
+  /* Surfaces */
+  --bg:               #07090F;
+  --bg-elev-1:        #0C1119;
+  --bg-elev-2:        #121927;
+  --hairline:         rgba(255,255,255,0.06);
+  --hairline-strong:  rgba(255,255,255,0.12);
+
+  /* Brand */
+  --teal:             #14E0D5;
+  --teal-deep:        #0FB9B1;
+  --sage:             #8BD17C;
+  --amber:            #F2C55C;
+  --gradient-brand:   linear-gradient(135deg, #14E0D5 0%, #8BD17C 100%);
+  --gradient-text:    linear-gradient(180deg, #FFFFFF 0%, #8FA0B8 100%);
+
+  /* Text */
+  --text:             #F5F7FA;
+  --text-muted:       #9AA8BD;
+  --text-dim:         #5A6577;
+
+  /* Type */
+  --font-sans:    "Inter", -apple-system, system-ui, sans-serif;
+  --font-mono:    "JetBrains Mono", "SF Mono", monospace;
+  --font-display: "Instrument Serif", "Times New Roman", serif;
+
+  /* Scale (fluid clamp) */
+  --fs-display:   clamp(3rem, 7vw, 6.5rem);
+  --fs-h1:        clamp(2.25rem, 5vw, 4rem);
+  --fs-h2:        clamp(1.75rem, 3.5vw, 2.75rem);
+  --fs-h3:        clamp(1.25rem, 2vw, 1.5rem);
+  --fs-body:      clamp(1rem, 1.1vw, 1.125rem);
+  --fs-mono-sm:   0.75rem;
+
+  /* Layout */
+  --container:    1320px;
+  --gutter:       clamp(1.25rem, 4vw, 2rem);
+  --radius:       18px;
+  --radius-sm:    10px;
+
+  /* Easing + timing */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out:   cubic-bezier(0.65, 0, 0.35, 1);
+}
