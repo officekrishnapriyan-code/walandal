@@ -1,0 +1,92 @@
+/* Shared section styles */
+section { padding: clamp(5rem, 10vh, 8rem) 0; }
+
+/* Manifesto */
+#manifesto {
+  min-height: 120vh;
+  background: var(--bg-elev-1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.manifesto-pin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  padding: 0 var(--gutter);
+}
+.manifesto-statement {
+  font-size: var(--fs-h1);
+  font-weight: 800;
+  text-align: center;
+  max-width: 900px;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+.manifesto-statement .word {
+  display: inline-block;
+  opacity: 0.15;
+  transition: opacity 0.1s;
+}
+
+/* Marquee */
+.marquee-wrap {
+  width: 100%;
+  border-top: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline);
+  overflow: hidden;
+  padding: 1rem 0;
+}
+.marquee-track {
+  display: flex;
+  gap: 3rem;
+  white-space: nowrap;
+  animation: marqueeScroll 30s linear infinite;
+}
+.marquee-wrap:hover .marquee-track { animation-play-state: paused; }
+.marquee-item {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-sm);
+  letter-spacing: 0.2em;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+@keyframes marqueeScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Metrics strip */
+.metrics-strip {
+  background: var(--bg-elev-1);
+  border-top: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline);
+  padding: 3rem 0;
+}
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  text-align: center;
+}
+.metric-number {
+  font-family: var(--font-mono);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--teal);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+.metric-label {
+  font-size: var(--fs-mono-sm);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+@media (max-width: 640px) {
+  .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+}

@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WAL & AL | Cloud, Robotics & Software for a Regenerative Planet</title>
+    <meta
+      name="description"
+      content="WAL & AL is a sustainability engineering studio building cloud, robotics and software platforms for water, air and land."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="fixes.css" />
+  </head>
+
+  <body>
+    <!-- Navigation -->
+    <nav class="nav-glass">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <img src="logo/1772257458537.png" alt="WAL & AL Logo" class="logo-image" />
+        </div>
+        
+        <button class="nav-toggle" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <ul class="nav-menu">
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#domains">Domains</a></li>
+          <li><a href="#systems">Systems</a></li>
+          <li><a href="#capabilities">Capabilities</a></li>
+          <li><a href="#founder">Team</a></li>
+          <li><a href="#contact" class="nav-cta">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero-cinematic">
+      <div class="hero-glow"></div>
+      <div class="hero-grid-pattern"></div>
+      
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="badge-mono">AUTONOMOUS SYSTEMS · ROBOTICS · CLOUD INTELLIGENCE</span>
+        </div>
+        
+        <h1 class="hero-title">
+          Engineering Precision<br/>
+          Systems for Environmental<br/>
+          Resilience
+        </h1>
+        
+        <p class="hero-subtitle">
+          We architect cloud-native platforms, autonomous robotics, and intelligent<br/>
+          sensing systems that transform environmental data into actionable intelligence.
+        </p>
+        
+        <div class="hero-actions">
+          <a href="#contact" class="btn-primary">Start a Conversation</a>
+          <a href="#systems" class="btn-secondary">Explore Systems</a>
+        </div>
+        
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-number">3</span>
+            <span class="stat-label">Resource Domains</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number">24/7</span>
+            <span class="stat-label">Operational</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number">100%</span>
+            <span class="stat-label">Impact Focused</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Domains Section -->
+    <section id="domains" class="section-domains">
+      <div class="container">
+        <div class="section-header reveal">
+          <h2>The WAL & AL Framework</h2>
+          <p>
+            WAL represents Water, Air, and Land—the core systems sustaining life.<br/>
+            AL stands for All—every community, ecosystem, and future generation.
+          </p>
+        </div>
+
+        <div class="domains-grid-wrapper reveal">
+          <div class="domains-grid" id="domainsCarousel">
+          <!-- Water -->
+          <div class="domain-card">
+            <div class="domain-icon">
+              <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="60" cy="60" r="55" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.2"/>
+                <circle cx="60" cy="60" r="45" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.3"/>
+                <circle cx="60" cy="60" r="35" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.4"/>
+                <path d="M60 25 L60 95 M25 60 L95 60" stroke="currentColor" stroke-width="0.5" opacity="0.2"/>
+                <path d="M60 40 Q55 50 60 60 Q65 50 60 40 M60 60 Q55 70 60 80 Q65 70 60 60" 
+                      fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                <circle cx="60" cy="35" r="2.5" fill="currentColor"/>
+                <circle cx="60" cy="85" r="2.5" fill="currentColor"/>
+              </svg>
+            </div>
+            <div class="domain-content">
+              <span class="domain-tag">H₂O MONITORING</span>
+              <h3>WATER</h3>
+              <p>IoT-enabled quality and availability monitoring across distribution networks and community infrastructure.</p>
+            </div>
+          </div>
+
+          <!-- Air -->
+          <div class="domain-card">
+            <div class="domain-icon">
+              <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="60" cy="60" r="55" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.2"/>
+                <circle cx="60" cy="60" r="45" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.3"/>
+                <circle cx="60" cy="60" r="35" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.4"/>
+                <path d="M60 25 L60 95 M25 60 L95 60" stroke="currentColor" stroke-width="0.5" opacity="0.2"/>
+                <path d="M35 45 Q45 40 60 45 Q75 40 85 45" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                <path d="M35 60 Q45 55 60 60 Q75 55 85 60" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                <path d="M35 75 Q45 70 60 75 Q75 70 85 75" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                <circle cx="35" cy="45" r="2.5" fill="currentColor"/>
+                <circle cx="85" cy="75" r="2.5" fill="currentColor"/>
+              </svg>
+            </div>
+            <div class="domain-content">
+              <span class="domain-tag">EMISSION TRACKING</span>
+              <h3>AIR</h3>
+              <p>Precision measurement of pollutants and atmospheric changes at industrial sites and corridors.</p>
+            </div>
+          </div>
+
+          <!-- Land -->
+          <div class="domain-card">
+            <div class="domain-icon">
+              <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="60" cy="60" r="55" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.2"/>
+                <circle cx="60" cy="60" r="45" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.3"/>
+                <circle cx="60" cy="60" r="35" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.4"/>
+                <path d="M60 25 L60 95 M25 60 L95 60" stroke="currentColor" stroke-width="0.5" opacity="0.2"/>
+                <path d="M30 75 L40 65 L50 70 L60 60 L70 65 L80 55 L90 60" 
+                      fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <rect x="48" y="70" width="4" height="10" fill="currentColor" opacity="0.7"/>
+                <rect x="68" y="65" width="4" height="15" fill="currentColor" opacity="0.7"/>
+                <circle cx="60" cy="45" r="3" fill="currentColor"/>
+              </svg>
+            </div>
+            <div class="domain-content">
+              <span class="domain-tag">MARINE OBSERVATION</span>
+              <h3>LAND</h3>
+              <p>Coastal and ocean environmental intelligence for conservation, safety, and planning.</p>
+            </div>
+          </div>
+
+          <!-- All -->
+          <div class="domain-card domain-card-highlight">
+            <div class="domain-icon">
+              <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="60" cy="60" r="55" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.2"/>
+                <circle cx="60" cy="60" r="45" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.3"/>
+                <circle cx="60" cy="60" r="35" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.4"/>
+                <circle cx="60" cy="60" r="25" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.5"/>
+                <path d="M60 25 L60 95 M25 60 L95 60 M40 40 L80 80 M80 40 L40 80" 
+                      stroke="currentColor" stroke-width="0.5" opacity="0.2"/>
+                <circle cx="60" cy="60" r="10" fill="none" stroke="currentColor" stroke-width="2.5"/>
+                <circle cx="60" cy="35" r="2.5" fill="currentColor"/>
+                <circle cx="60" cy="85" r="2.5" fill="currentColor"/>
+                <circle cx="35" cy="60" r="2.5" fill="currentColor"/>
+                <circle cx="85" cy="60" r="2.5" fill="currentColor"/>
+              </svg>
+            </div>
+            <div class="domain-content">
+              <span class="domain-tag">INTEGRATED PLATFORM</span>
+              <h3>ALL</h3>
+              <p>Unified cloud infrastructure connecting all domains for comprehensive environmental intelligence.</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Domains Carousel Navigation (Mobile Only) -->
+        <div class="carousel-nav domains-carousel-nav">
+          <button class="carousel-btn" id="domainsPrevBtn" aria-label="Previous">‹</button>
+          <div class="carousel-dots" id="domainsDots"></div>
+          <button class="carousel-btn" id="domainsNextBtn" aria-label="Next">›</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Systems Section - Bento Grid -->
+    <section id="systems" class="section-systems">
+      <div class="container">
+        <div class="section-header reveal">
+          <h2>Systems We Build</h2>
+          <p>
+            Applied systems combining robotics, ROS / ROS 2, and cloud platforms.<br/>
+            Environmental and operational signals translated into decision-ready intelligence.
+          </p>
+        </div>
+
+        <div class="bento-grid-wrapper reveal">
+          <div class="bento-grid" id="bentoCarousel">
+          <!-- Aqua Insight -->
+          <div class="bento-card bento-large">
+            <div class="bento-header">
+              <span class="bento-tag">CLOUD-NATIVE</span>
+              <h3>AQUA INSIGHT</h3>
+              <p class="bento-subtitle">Drinking Water Intelligence</p>
+            </div>
+            <div class="bento-content">
+              <p>
+                A monitoring and insight layer for drinking water networks, focused on
+                overhead tanks and local distribution. Continuous visibility into water
+                quality and availability.
+              </p>
+              <div class="tech-specs">
+                <div class="spec-title">TECHNICAL SPECS</div>
+                <ul>
+                  <li>Real-time tracking: chlorine, pH, turbidity, TDS, level</li>
+                  <li>Automated alerting for risk and non-compliance zones</li>
+                  <li>Dashboards for operations, maintenance, and planning</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Industrial Emission -->
+          <div class="bento-card bento-large">
+            <div class="bento-header">
+              <span class="bento-tag">EDGE INTELLIGENCE</span>
+              <h3>INDUSTRIAL EMISSION</h3>
+              <p class="bento-subtitle">Monitoring Layer</p>
+            </div>
+            <div class="bento-content">
+              <p>
+                Data and analytics layer for emissions monitoring around industrial
+                sites and corridors. Measuring pollutants and trends critical for
+                compliance and stewardship.
+              </p>
+              <div class="tech-specs">
+                <div class="spec-title">TECHNICAL SPECS</div>
+                <ul>
+                  <li>Measurement of gases, particulates, carbon indicators</li>
+                  <li>Structured insights for boundary and zone assessment</li>
+                  <li>Cloud-native reporting and APIs for regulators</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Marine Observation -->
+          <div class="bento-card bento-medium">
+            <div class="bento-header">
+              <span class="bento-tag">AUTONOMOUS</span>
+              <h3>MARINE OBSERVATION</h3>
+              <p class="bento-subtitle">Environmental Systems</p>
+            </div>
+            <div class="bento-content">
+              <p>
+                Systems capturing environmental signals in coastal and near-shore
+                waters. Supporting monitoring, planning, and research.
+              </p>
+              <div class="tech-specs">
+                <div class="spec-title">TECHNICAL SPECS</div>
+                <ul>
+                  <li>Key physical and chemical marine indicators</li>
+                  <li>Detection of pollution and stress shifts</li>
+                  <li>Data products for analysis and mapping</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- ROS Integration -->
+          <div class="bento-card bento-medium">
+            <div class="bento-header">
+              <span class="bento-tag">ROS / ROS 2</span>
+              <h3>FLEET & CLOUD</h3>
+              <p class="bento-subtitle">Integration Layer</p>
+            </div>
+            <div class="bento-content">
+              <p>
+                Integration layer connecting ROS and ROS 2-based systems with
+                modern cloud infrastructure. Observable, manageable fleets.
+              </p>
+              <div class="tech-specs">
+                <div class="spec-title">TECHNICAL SPECS</div>
+                <ul>
+                  <li>Telemetry, logging, health monitoring</li>
+                  <li>Bridges between ROS topics and cloud services</li>
+                  <li>Remote operations and digital-twin analysis</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Carousel Navigation -->
+        <div class="carousel-nav">
+          <button class="carousel-btn" id="prevBtn" aria-label="Previous">‹</button>
+          <div class="carousel-dots" id="carouselDots"></div>
+          <button class="carousel-btn" id="nextBtn" aria-label="Next">›</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Capabilities Section -->
+    <section id="capabilities" class="section-capabilities">
+      <div class="container">
+        <div class="section-header reveal">
+          <h2>Core Capabilities</h2>
+          <p>
+            Full-stack engineering from field sensors to cloud dashboards.<br/>
+            Designed for real-world conditions, not just lab environments.
+          </p>
+        </div>
+
+        <div class="capabilities-grid-wrapper reveal">
+          <div class="capabilities-grid" id="capabilitiesCarousel">
+          <div class="capability-card">
+            <div class="capability-icon">☁️</div>
+            <h3>Cloud-Native Platforms</h3>
+            <p>
+              Secure, scalable backends that ingest sensor streams, process events
+              in real time, and expose clean APIs tailored to operational teams.
+            </p>
+          </div>
+
+          <div class="capability-card">
+            <div class="capability-icon">🤖</div>
+            <h3>Robotics & Edge</h3>
+            <p>
+              Autonomous systems collecting environmental data where traditional
+              infrastructure cannot reach. Reliable operation under dynamic conditions.
+            </p>
+          </div>
+
+          <div class="capability-card">
+            <div class="capability-icon">📡</div>
+            <h3>Sensing Networks</h3>
+            <p>
+              Distributed sensor networks with intelligent edge processing.
+              Real-time data acquisition and validation at the source.
+            </p>
+          </div>
+
+          <div class="capability-card">
+            <div class="capability-icon">🔗</div>
+            <h3>System Integration</h3>
+            <p>
+              Seamless integration with existing infrastructure. Open standards,
+              clear documentation, and maintainable architectures.
+            </p>
+          </div>
+        </div>
+        
+        <!-- Capabilities Carousel Navigation (Mobile Only) -->
+        <div class="carousel-nav capabilities-carousel-nav">
+          <button class="carousel-btn" id="capabilitiesPrevBtn" aria-label="Previous">‹</button>
+          <div class="carousel-dots" id="capabilitiesDots"></div>
+          <button class="carousel-btn" id="capabilitiesNextBtn" aria-label="Next">›</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Founder Section -->
+    <section id="founder" class="section-founder">
+      <div class="container">
+        <div class="section-header reveal">
+          <h2>The Team</h2>
+          <p>The people building WAL & AL.</p>
+        </div>
+        <div class="team-grid reveal">
+          <div class="founder-card">
+            <div class="founder-image">
+              <div class="founder-avatar">KP</div>
+            </div>
+            <div class="founder-content">
+              <span class="founder-tag">LEAD ENGINEER</span>
+              <h2>Krishnapriyan M S</h2>
+              <p class="founder-bio">
+                My work is shaped by a conviction: a society's health can be measured
+                by the health of the environment around it. Whether tracking pollution
+                near industries, monitoring coastal waters with autonomous vessels, or
+                ensuring safe drinking water in remote communities, my mission is to
+                bring visibility where environmental stress turns into human hardship.
+              </p>
+              <blockquote class="founder-quote">
+                "Technology should serve both people and planet—not one at the cost of the other."
+              </blockquote>
+            </div>
+          </div>
+
+          <div class="founder-card">
+            <div class="founder-image">
+              <div class="founder-avatar">JD</div>
+            </div>
+            <div class="founder-content">
+              <span class="founder-tag">CO-FOUNDER</span>
+              <h2>Jayvikram Durairaja</h2>
+              <blockquote class="founder-quote">
+                "The best systems are built where electrons meet intention — at the edge where code becomes current."
+              </blockquote>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-contact">
+      <div class="container">
+        <div class="contact-wrapper reveal">
+          <div class="contact-info">
+            <h2>Let's Build What the Planet Needs</h2>
+            <p>
+              Tell us about your water, air, or land challenge—we'll respond with
+              honest, practical ideas for how technology can help.
+            </p>
+            
+            <div class="contact-details-wrapper">
+              <div class="contact-details" id="contactDetailsCarousel">
+                <div class="contact-item">
+                  <span class="contact-label">WHO WE WORK WITH</span>
+                  <p>
+                    Cities and local governments, utilities and infrastructure owners,
+                    impact-driven companies and NGOs, research labs exploring the
+                    future of natural resource management.
+                  </p>
+                </div>
+                
+                <div class="contact-item">
+                  <span class="contact-label">WHAT WE BRING</span>
+                  <p>
+                    A blend of cloud, robotics, and software expertise, grounded in
+                    field experience and a clear commitment to sustainable development.
+                  </p>
+                </div>
+              </div>
+              
+              <!-- Contact Details Carousel Navigation (Mobile Only) -->
+              <div class="carousel-nav contact-carousel-nav">
+                <button class="carousel-btn" id="contactPrevBtn" aria-label="Previous">‹</button>
+                <div class="carousel-dots" id="contactDots"></div>
+                <button class="carousel-btn" id="contactNextBtn" aria-label="Next">›</button>
+              </div>
+            </div>
+          </div>
+
+          <form class="contact-form" id="contactForm">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" placeholder="Your name" required />
+            </div>
+          
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="your@email.com" required />
+            </div>
+          
+            <div class="form-group">
+              <label for="organization">Organization</label>
+              <input id="organization" name="organization" type="text" placeholder="Your organization (optional)" />
+            </div>
+          
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="5" placeholder="Tell us about your project or challenge..." required></textarea>
+            </div>
+          
+            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+          
+            <button type="submit" class="btn-primary" id="contactSubmitBtn">Send Message</button>
+          
+            <p id="contactStatus" class="contact-status"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-brand">
+            <img src="logo/1772257458537.png" alt="WAL & AL Logo" class="footer-logo-image" />
+            <p>Designing technology for a better environment, for every future generation.</p>
+          </div>
+        </div>
+        
+        <div class="footer-bottom">
+          <p>© 2025 WAL & AL. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

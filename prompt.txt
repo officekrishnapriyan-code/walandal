@@ -1,0 +1,573 @@
+You are building a brand-new, agency-grade marketing website for "WAL & AL"
+(walandal.com) — a deep-tech engineering studio. Goal: a single-page,
+heavily-animated, professional site that feels on par with Active Theory,
+Linear, Vercel, or Resn-tier work. Replace the current walandal.com entirely.
+
+==========================================================
+0. STACK + GROUND RULES
+==========================================================
+Use VANILLA HTML + CSS + JavaScript (no React, no framework, no bundler beyond
+Vite for dev). Animation libraries via CDN:
+  - GSAP 3 + ScrollTrigger + SplitText (free) for scroll/text animation
+  - Lenis (studio-freight/lenis) for buttery smooth scroll
+  - Three.js (r160+) for the hero WebGL background
+
+Why vanilla: easy to host anywhere (Netlify, Vercel, GitHub Pages, S3),
+zero framework lock-in, fastest first paint, matches an "engineering studio"
+ethos.
+
+Required behaviour for ALL animation:
+  - Honour `prefers-reduced-motion: reduce` — disable smooth scroll,
+    parallax, WebGL, magnetic cursor, and replace SplitText reveals with
+    instant opacity:1.
+  - All animations 60fps on a mid-range laptop. Use `transform` and
+    `opacity` only (no width/height/top/left animation).
+  - All scroll reveals via ScrollTrigger with `start: "top 85%"`,
+    `once: true`.
+
+==========================================================
+1. FILE STRUCTURE TO CREATE
+==========================================================
+walandal-site/
+├── index.html
+├── styles/
+│   ├── reset.css
+│   ├── tokens.css        (CSS variables — colors, fonts, spacing)
+│   ├── base.css          (typography, body, container)
+│   ├── nav.css
+│   ├── hero.css
+│   ├── sections.css      (shared section styles)
+│   ├── domains.css
+│   ├── systems.css
+│   ├── capabilities.css
+│   ├── founder.css
+│   ├── contact.css
+│   ├── footer.css
+│   └── utilities.css     (animation helpers, reveal classes)
+├── scripts/
+│   ├── main.js           (entry — boots everything)
+│   ├── lenis-smooth.js   (smooth scroll setup)
+│   ├── cursor.js         (custom cursor + magnetic buttons)
+│   ├── nav.js            (sticky nav, scroll progress, mobile menu)
+│   ├── hero-webgl.js     (Three.js animated mesh + particle field)
+│   ├── reveals.js        (SplitText hero, scroll-reveal sections)
+│   ├── counters.js       (animated stats)
+│   ├── systems-pin.js    (pinned horizontal scroll for Systems bento)
+│   ├── tilt.js           (3D card tilt on hover)
+│   ├── marquee.js        (infinite tech-stack marquee)
+│   ├── form.js           (contact form Formspree handler)
+│   └── utils.js
+├── assets/
+│   ├── logo.svg          (NEW transparent SVG logo — see section 3)
+│   ├── og-image.png      (social share — 1200×630)
+│   └── favicon.svg
+├── netlify.toml          (or vercel.json — pick one based on detected host)
+├── .gitignore
+└── package.json          (vite dev dep only, scripts: dev/build/preview)
+
+==========================================================
+2. BRAND TOKENS (styles/tokens.css)
+==========================================================
+:root {
+  /* Surfaces */
+  --bg:               #07090F;
+  --bg-elev-1:        #0C1119;
+  --bg-elev-2:        #121927;
+  --hairline:         rgba(255,255,255,0.06);
+  --hairline-strong:  rgba(255,255,255,0.12);
+
+  /* Brand */
+  --teal:             #14E0D5;
+  --teal-deep:        #0FB9B1;
+  --sage:             #8BD17C;
+  --amber:            #F2C55C;
+  --gradient-brand:   linear-gradient(135deg, #14E0D5 0%, #8BD17C 100%);
+  --gradient-text:    linear-gradient(180deg, #FFFFFF 0%, #8FA0B8 100%);
+
+  /* Text */
+  --text:             #F5F7FA;
+  --text-muted:       #9AA8BD;
+  --text-dim:         #5A6577;
+
+  /* Type */
+  --font-sans:  "Inter", -apple-system, system-ui, sans-serif;
+  --font-mono:  "JetBrains Mono", "SF Mono", monospace;
+  --font-display: "Instrument Serif", "Times New Roman", serif;
+    /* used for elegant accent words inside headlines */
+
+  /* Scale (fluid clamp) */
+  --fs-display:   clamp(3rem, 7vw, 6.5rem);
+  --fs-h1:        clamp(2.25rem, 5vw, 4rem);
+  --fs-h2:        clamp(1.75rem, 3.5vw, 2.75rem);
+  --fs-h3:        clamp(1.25rem, 2vw, 1.5rem);
+  --fs-body:      clamp(1rem, 1.1vw, 1.125rem);
+  --fs-mono-sm:   0.75rem;
+
+  /* Layout */
+  --container:    1320px;
+  --gutter:       clamp(1.25rem, 4vw, 2rem);
+  --radius:       18px;
+  --radius-sm:    10px;
+
+  /* Easing + timing */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out:   cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+Load fonts from Google Fonts: Inter (300–900), JetBrains Mono (400–700),
+Instrument Serif (regular + italic).
+
+==========================================================
+3. NEW LOGO (assets/logo.svg)
+==========================================================
+Create a transparent SVG. Mark = three layered chevrons (water/air/land)
+sweeping right, in teal-to-sage gradient. Wordmark "WAL & AL" in Inter 800,
+letter-spacing 0.04em, fill `var(--text)` for use on dark.
+The mark must work at 24px (favicon) and 64px (nav). No white background.
+
+==========================================================
+4. PAGE STRUCTURE (index.html)
+==========================================================
+Sections in order, each with id matching nav:
+  1. <header class="nav">           — sticky, glass, scroll progress bar
+  2. <section id="hero">            — full-viewport, WebGL bg, SplitText
+  3. <section id="manifesto">       — large pinned statement, marquee below
+  4. <section id="domains">         — WAL & AL framework (4 cards)
+  5. <section id="systems">         — pinned horizontal scroll bento
+  6. <section id="capabilities">    — 4-card grid with 3D tilt
+  7. <section id="founder">         — KP card with portrait placeholder
+  8. <section id="contact">         — form + studio info
+  9. <footer class="footer">
+
+==========================================================
+5. NAVIGATION (nav.js + nav.css)
+==========================================================
+- Fixed top, full-width, glass blur (backdrop-filter: blur(20px) saturate(180%)).
+- Left: logo SVG (links #hero). Right: links Domains · Systems · Capabilities
+  · Team. CTA "Start a Project" → #contact, magnetic hover.
+- After 80px scroll: shrink padding, increase background opacity.
+- 2px progress bar at very bottom of the nav, width = scrollY/scrollHeight.
+- Mobile (<840px): hamburger → slide-down full-screen menu with staggered
+  link reveal (GSAP, 0.06s stagger).
+
+==========================================================
+6. HERO (#hero — hero.css + hero-webgl.js + reveals.js)
+==========================================================
+Layout: 100vh, content vertically centred, max-width 1100px.
+
+Background (Three.js):
+  - Full-bleed canvas behind content.
+  - A low-poly icosahedron (radius 1.6, detail 4) with a custom shader:
+    vertex displacement using simplex noise (time-driven, amplitude 0.18).
+    Material: ShaderMaterial, wireframe overlay in --teal at 0.35 alpha
+    plus a translucent fill in --teal-deep at 0.08 alpha.
+  - 800 instanced particles drifting on slow noise field, sized 1–2px,
+    color --teal-deep, additive blending.
+  - Slowly rotates on Y axis (0.0008 rad/frame). Reacts to mouse: lerp
+    rotation toward (mouseY*0.0006, mouseX*0.0008).
+  - On scroll, fade canvas opacity from 1 → 0 between 0 and 60% viewport.
+
+Foreground content (top to bottom):
+  - Mono eyebrow pill: "AUTONOMOUS · SENSING · CLOUD" in --teal, JetBrains
+    Mono, 0.2em tracking.
+  - H1, hero-title, var(--fs-display), Inter 800, line-height 1.02:
+        "Engineering precision for a <em>regenerative</em> planet."
+    The word "regenerative" uses Instrument Serif italic and is wrapped
+    in `<span class="accent">`. Apply background-clip: text with
+    --gradient-brand.
+  - Subhead, var(--fs-body) * 1.15, max 620px, --text-muted:
+        "We architect cloud-native platforms, autonomous robotics, and
+         intelligent sensing systems that turn environmental data into
+         decision-ready intelligence."
+  - Two buttons: primary "Start a Project" (filled teal, dark text,
+    magnetic), secondary "See Our Systems" (outline, magnetic).
+  - Bottom-left absolute: scroll hint — vertical "SCROLL" + animated 1px
+    line growing from 0 → 60px on a 2.4s loop.
+  - Bottom-right absolute: live timestamp in mono updating every second
+    ("KOCHI · IST · 14:32:09").
+
+Hero animation timeline (GSAP, runs on load):
+  1. Eyebrow opacity 0→1 + y 12→0 (0.6s, ease-out-expo).
+  2. SplitText hero-title by chars, stagger 0.018s, y 110%→0, 1.0s.
+  3. Subhead opacity 0→1 + y 16→0, 0.7s, delay 0.5.
+  4. Buttons stagger in, 0.6s, delay 0.8.
+  5. Scroll hint + timestamp fade in, delay 1.2.
+
+==========================================================
+7. MANIFESTO (#manifesto — sections.css)
+==========================================================
+- Full-bleed, dark, ~120vh tall. Pin the inner content for first 80vh.
+- Centre line: large statement, var(--fs-h1), each word fades in as it
+  passes the viewport centre (ScrollTrigger scrub, word-by-word opacity
+  0.15 → 1):
+       "A society's health can be measured by the health of the
+        environment around it."
+- Below pin (after unpin): infinite marquee strip, 1px borders top/bottom,
+  mono uppercase, scrolling left at 30s/loop:
+       "WATER · AIR · LAND · ALL · WATER · AIR · LAND · ALL · ..."
+  Pause on hover.
+
+==========================================================
+8. DOMAINS (#domains — domains.css)
+==========================================================
+Section header (eyebrow + h2 + 1-line description):
+  Eyebrow: "01 / FRAMEWORK"
+  H2:      "The WAL & AL framework."
+  Desc:    "WAL is Water, Air, and Land — the systems sustaining life.
+            AL is All — every community, ecosystem, and generation."
+
+Grid: 4 cards, CSS grid auto-fit minmax(280px, 1fr), gap 24px.
+Card content (use these exact strings):
+
+  WATER   — tag "H₂O MONITORING"
+            "IoT-enabled quality and availability monitoring across
+             distribution networks and community infrastructure."
+  AIR     — tag "EMISSION TRACKING"
+            "Precision measurement of pollutants and atmospheric changes
+             at industrial sites and corridors."
+  LAND    — tag "MARINE OBSERVATION"
+            "Coastal and ocean environmental intelligence for
+             conservation, safety, and planning."
+  ALL     — tag "INTEGRATED PLATFORM" (highlight card, brand gradient
+            border)
+            "Unified cloud infrastructure connecting every domain into
+             comprehensive environmental intelligence."
+
+Each card:
+  - Glass surface (bg-elev-1 + 1px hairline), radius 18px, padding 32px.
+  - Top: animated SVG glyph (60×60). Use a different geometric mark per
+    domain — water=ripple rings, air=stacked sine waves, land=topo lines,
+    all=concentric grid. Animate with GSAP draw-on when card enters
+    viewport (strokeDashoffset).
+  - Tag in mono uppercase, --teal.
+  - H3 in Inter 800, 1.5rem, letter-spacing 0.05em.
+  - Body in --text-muted.
+  - On hover: y -8px, border-color teal at 0.4 alpha, glyph rotates 12deg.
+  - 3D tilt on hover (tilt.js, max 6deg).
+
+==========================================================
+9. SYSTEMS (#systems — pinned horizontal scroll)
+==========================================================
+Eyebrow "02 / WHAT WE BUILD", H2 "Systems engineered for the field."
+
+Pin the section for 4×100vh of vertical scroll. Translate the inner
+horizontal track from x: 0 to x: -(track.width - viewport.width) using
+ScrollTrigger scrub: 1.
+
+Track contains 4 wide cards (each ~70vw, height ~70vh):
+
+  AQUA INSIGHT     — tag "CLOUD-NATIVE", subtitle "Drinking Water
+                     Intelligence"
+                     Body: "A monitoring and insight layer for drinking
+                     water networks. Continuous visibility into water
+                     quality and availability across overhead tanks and
+                     local distribution."
+                     Specs:
+                       - Real-time chlorine, pH, turbidity, TDS, level
+                       - Automated alerting for risk and non-compliance zones
+                       - Dashboards for operations, maintenance, planning
+
+  INDUSTRIAL EMISSION — tag "EDGE INTELLIGENCE", subtitle "Monitoring Layer"
+                     Body: "Data and analytics layer for emissions
+                     monitoring around industrial sites and corridors.
+                     Measuring pollutants and trends critical for
+                     compliance and stewardship."
+                     Specs:
+                       - Gases, particulates, carbon indicators
+                       - Boundary and zone assessment
+                       - Cloud-native reporting and APIs for regulators
+
+  MARINE OBSERVATION — tag "AUTONOMOUS", subtitle "Environmental Systems"
+                     Body: "Systems capturing environmental signals in
+                     coastal and near-shore waters. Supporting monitoring,
+                     planning, and research."
+                     Specs:
+                       - Key physical and chemical marine indicators
+                       - Detection of pollution and stress shifts
+                       - Data products for analysis and mapping
+
+  FLEET & CLOUD    — tag "ROS / ROS 2", subtitle "Integration Layer"
+                     Body: "Integration layer connecting ROS and ROS 2-
+                     based systems with modern cloud infrastructure.
+                     Observable, manageable robotic fleets."
+                     Specs:
+                       - Telemetry, logging, health monitoring
+                       - Bridges between ROS topics and cloud services
+                       - Remote operations and digital-twin analysis
+
+Each card: glass, radius 18px, padding 40px, two-column layout (text left,
+animated visual right). The right visual is a pure-CSS/SVG abstract:
+  - Aqua: animated wave path + dotted grid
+  - Emission: bar-chart bars rising on enter
+  - Marine: rotating sonar sweep
+  - ROS: orbiting nodes around a centre
+
+Below the track when unpinned: progress dots showing 1/4 → 4/4 active.
+
+Mobile (<840px): disable pinning. Convert to vertical stack with snap
+scroll, dots become a normal carousel control.
+
+==========================================================
+10. CAPABILITIES (#capabilities — capabilities.css + tilt.js)
+==========================================================
+Eyebrow "03 / CAPABILITIES", H2 "Full-stack from sensor to dashboard."
+
+4 cards in a 2×2 grid (single column on mobile). Each:
+  - 1px hairline border, glass surface, padding 36px, radius 18px.
+  - Top-left: numbered mono badge "01" → "04" in --teal.
+  - Lucide-style 32px line icon (use inline SVG):
+        Cloud-Native Platforms — cloud icon
+        Robotics & Edge       — cpu / chip icon
+        Sensing Networks      — radio-tower icon
+        System Integration    — git-merge icon
+  - H3, body copy below (use exact strings):
+
+  01 · Cloud-Native Platforms
+       "Secure, scalable backends that ingest sensor streams, process
+        events in real time, and expose clean APIs tailored to operational
+        teams."
+  02 · Robotics & Edge
+       "Autonomous systems collecting environmental data where traditional
+        infrastructure cannot reach. Reliable operation under dynamic
+        conditions."
+  03 · Sensing Networks
+       "Distributed sensor networks with intelligent edge processing.
+        Real-time data acquisition and validation at the source."
+  04 · System Integration
+       "Seamless integration with existing infrastructure. Open standards,
+        clear documentation, and maintainable architectures."
+
+  - 3D tilt on hover (tilt.js, max 8deg, perspective 1000px). Light
+    follows cursor as a soft radial-gradient overlay using CSS variables.
+
+==========================================================
+11. FOUNDER (#founder — founder.css)
+==========================================================
+Two-column card (1fr 1.4fr) on desktop, stacked on mobile. Padding 64px.
+
+Left column:
+  - 240×240 portrait placeholder: rounded square (radius 24px) with a
+    diagonal teal-to-sage gradient + the initials "KP" centred in
+    Instrument Serif italic, 88px, white at 0.95 opacity.
+  - Below: mono caption "LEAD ENGINEER · KOCHI, INDIA"
+
+Right column:
+  - Eyebrow: "04 / TEAM"
+  - H2: "Krishnapriyan M S"
+  - Bio (use exact text):
+        "My work is shaped by a conviction: a society's health can be
+         measured by the health of the environment around it. Whether
+         tracking pollution near industries, monitoring coastal waters
+         with autonomous vessels, or ensuring safe drinking water in
+         remote communities, my mission is to bring visibility where
+         environmental stress turns into human hardship."
+  - Pull quote (left teal border, italic Instrument Serif, 1.4rem):
+        "Technology should serve both people and planet — not one at the
+         cost of the other."
+
+Reveal: card opacity 0→1 + y 40→0 on enter. Portrait gradient slowly
+rotates 360° over 30s loop.
+
+==========================================================
+12. CONTACT (#contact — contact.css + form.js)
+==========================================================
+Two columns (1fr 1.2fr) on desktop, stacked on mobile.
+
+Left:
+  - Eyebrow "05 / CONTACT"
+  - H2: "Let's build what the planet needs."
+  - Body: "Tell us about your water, air, or land challenge — we'll
+    respond with honest, practical ideas for how technology can help."
+  - Two info blocks (mono label + paragraph):
+       "WHO WE WORK WITH" → "Cities and local governments, utilities and
+       infrastructure owners, impact-driven companies and NGOs, research
+       labs exploring the future of natural resource management."
+       "WHAT WE BRING" → "A blend of cloud, robotics, and software
+       expertise, grounded in field experience and a clear commitment to
+       sustainable development."
+
+Right (form):
+  - Glass card, radius 18px, padding 40px.
+  - Fields: Name, Email, Organization (optional), Message (textarea, 5
+    rows). Honeypot `_gotcha`. POST to Formspree endpoint
+    https://formspree.io/f/REPLACE_WITH_FORM_ID — leave a clearly marked
+    TODO comment so the user can swap in their own ID.
+  - Submit button: full-width, primary, magnetic. Loading state shows
+    a 16px spinning ring. Success state morphs button into a teal check
+    with text "Message sent — we'll be in touch.". Error shows the
+    message in --amber.
+  - On focus, each input's bottom border animates from 0 → 100% width
+    with the brand gradient (transform: scaleX).
+
+==========================================================
+13. FOOTER
+==========================================================
+- 1px top hairline, padding 64px 0.
+- Left: logo + tagline "Designing technology for water, air, land — and all."
+- Right: tiny mono nav links + © 2026 WAL & AL.
+- Below: a single very large word "WAL & AL" using outline text
+  (-webkit-text-stroke: 1px var(--hairline-strong); color: transparent;
+  font-size: clamp(6rem, 22vw, 22rem); letter-spacing: -0.04em).
+
+==========================================================
+14. GLOBAL INTERACTIONS
+==========================================================
+Smooth scroll (lenis-smooth.js):
+  - Init Lenis on load, lerp 0.1, smoothWheel true. Hook into GSAP ticker
+    so ScrollTrigger updates correctly.
+
+Custom cursor (cursor.js):
+  - Two divs: outer ring (32px) and inner dot (6px). Hide native cursor on
+    desktop only.
+  - Outer ring lerps to mouse position (factor 0.18). Inner dot follows
+    instantly.
+  - On hover over [data-magnetic] elements: pull element transform toward
+    cursor by 18% of the offset; outer ring scales to 1.6× and tints --teal
+    at 0.4 alpha.
+  - On hover over text inputs: cursor becomes a vertical caret.
+  - Disable entirely on touch devices and prefers-reduced-motion.
+
+Scroll reveal (reveals.js):
+  - Add a `.reveal` class for elements that fade + rise (y 40 → 0,
+    opacity 0 → 1, 0.8s, ease-out-expo, ScrollTrigger once).
+  - Add `.reveal-stagger` to a parent — children stagger 0.08s.
+  - Hero title uses GSAP SplitText (chars), all other H2 uses SplitText
+    by lines with mask reveal (wrap each line in overflow:hidden, animate
+    y 110% → 0).
+
+Counters (counters.js):
+  - Already-known stats card under hero on mobile is removed; instead,
+    add a thin metrics strip just above the footer:
+        "3"   "RESOURCE DOMAINS"
+        "24/7" "OPERATIONAL"
+        "100%" "IMPACT FOCUSED"
+        "ROS 2" "ROBOTICS STACK"
+    Animate numbers on scroll into view (0 → target over 1.6s, ease-out).
+    "24/7", "100%", and "ROS 2" use a typewriter reveal instead of count.
+
+Performance:
+  - Lazy-init Three.js only after first paint (requestIdleCallback or
+    setTimeout 0).
+  - Use IntersectionObserver to start/stop the WebGL render loop based
+    on visibility.
+  - Preload the two webfonts; subset to Latin.
+  - All images <50KB; SVGs preferred.
+  - Lighthouse target: Performance ≥ 90 mobile, 95 desktop. Accessibility
+    100. Best Practices 100. SEO 100.
+
+Accessibility:
+  - Every interactive element keyboard reachable, visible :focus-visible
+    ring (2px outset --teal).
+  - All animations respect prefers-reduced-motion.
+  - Color contrast ≥ 4.5:1 for body text. Buttons ≥ 3:1.
+  - Semantic landmarks (header, nav, main, section, footer). aria-labels
+    on icon buttons.
+  - Form: label/for associations, aria-live on status message.
+
+SEO + meta:
+  - <title>WAL & AL — Engineering precision for a regenerative planet.</title>
+  - Meta description, OG tags (title, description, image, url), Twitter
+    card summary_large_image. Canonical link to https://walandal.com.
+  - JSON-LD Organization schema (name "WAL & AL", url, logo, founder
+    Krishnapriyan M S, location Kochi IN).
+
+==========================================================
+15. PACKAGE + DEV
+==========================================================
+package.json:
+  {
+    "name": "walandal-site",
+    "private": true,
+    "type": "module",
+    "scripts": {
+      "dev":     "vite",
+      "build":   "vite build",
+      "preview": "vite preview"
+    },
+    "devDependencies": { "vite": "^5.4.0" }
+  }
+
+Vite serves `index.html` at root. Build output `dist/`. No bundling for
+GSAP / Lenis / Three — load from CDN with `defer`:
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/SplitText.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+  <script type="importmap">
+    { "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"
+    } }
+  </script>
+  <script type="module" src="/scripts/main.js"></script>
+
+(Note SplitText is now free under GSAP's license as of 2025; if any issue,
+fall back to a tiny inline char-splitter and animate from there.)
+
+==========================================================
+16. DEPLOY CONFIG
+==========================================================
+Detect host. If repo already has Netlify or Vercel config, keep its style.
+Otherwise drop a `netlify.toml`:
+
+  [build]
+    command   = "npm run build"
+    publish   = "dist"
+
+  [[headers]]
+    for = "/*"
+    [headers.values]
+      X-Frame-Options          = "DENY"
+      X-Content-Type-Options   = "nosniff"
+      Referrer-Policy          = "strict-origin-when-cross-origin"
+      Permissions-Policy       = "geolocation=(), microphone=(), camera=()"
+      Cache-Control            = "public, max-age=0, must-revalidate"
+
+  [[headers]]
+    for = "/assets/*"
+    [headers.values]
+      Cache-Control = "public, max-age=31536000, immutable"
+
+==========================================================
+17. .gitignore
+==========================================================
+  node_modules
+  dist
+  .DS_Store
+  .env
+  .vite
+
+==========================================================
+18. WORKFLOW — DO THIS IN ORDER
+==========================================================
+1. Read the existing repo. Confirm the live site files (probably
+   index.html, styles.css, script.js, /logo) are present.
+2. Move the existing files into a folder `legacy/` so nothing is lost.
+3. Scaffold the new structure from sections 1–16 above.
+4. `npm install` and `npm run dev`. Open the site, walk every section.
+   Verify on Chrome desktop and Chrome mobile-emulator (iPhone 14, Pixel 7).
+5. Run `npm run build`, then `npm run preview`, walk again.
+6. Lighthouse audit; fix anything below the targets in section 14.
+7. Commit:
+       git checkout -b redesign/v2
+       git add .
+       git commit -m "feat: complete site redesign — agency-grade animation,
+                      Three.js hero, pinned systems, refined typography"
+       git push -u origin redesign/v2
+   Then open a PR titled "Redesign v2" with a short summary listing the
+   sections and animation features.
+8. Report back: branch name, commit SHA, PR URL, and any TODOs left
+   (e.g. Formspree form ID, OG image upload).
+
+==========================================================
+19. ABSOLUTE CONSTRAINTS
+==========================================================
+- DO NOT invent product names, capabilities, or stats beyond the strings
+  given in this prompt. The content above is the source of truth.
+- DO NOT use stock photography. All visuals are SVG / WebGL / CSS.
+- DO NOT add Tailwind, Bootstrap, jQuery, or any UI kit.
+- DO NOT add React, Vue, Svelte, or Next.
+- DO NOT skip prefers-reduced-motion handling.
+- DO NOT push directly to `main`. Always open a PR on `redesign/v2`.
+- If anything in this prompt is ambiguous, choose the more restrained,
+  Linear/Vercel-grade option — never go flashy for the sake of flashy.

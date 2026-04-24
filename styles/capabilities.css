@@ -1,0 +1,64 @@
+#capabilities { background: var(--bg); }
+
+.capabilities-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.capability-card {
+  background: var(--bg-elev-1);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  padding: 2.25rem;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s, box-shadow 0.4s;
+  transform-style: preserve-3d;
+}
+.capability-card:hover {
+  border-color: rgba(20,224,213,0.3);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+
+/* Light follow overlay */
+.capability-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+  background: radial-gradient(
+    400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(20,224,213,0.06) 0%,
+    transparent 60%
+  );
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.capability-card:hover::after { opacity: 1; }
+
+.cap-number {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-sm);
+  color: var(--teal);
+  letter-spacing: 0.1em;
+  margin-bottom: 1.25rem;
+  display: block;
+}
+.cap-icon {
+  width: 32px; height: 32px;
+  color: var(--teal);
+  margin-bottom: 1.25rem;
+}
+.capability-card h3 {
+  font-size: var(--fs-h3);
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+.capability-card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.65; }
+
+@media (max-width: 640px) {
+  .capabilities-grid { grid-template-columns: 1fr; }
+}

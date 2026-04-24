@@ -1,0 +1,154 @@
+/* WAL & AL — Fixes Layer */
+html { scroll-behavior: smooth; }
+
+/* NAV LOGO */
+.nav-logo .logo-image {
+  height: 34px; width: auto; object-fit: cover; padding: 0;
+  background: rgba(15,185,177,0.06);
+  border: 1px solid rgba(15,185,177,0.18);
+  border-radius: 8px;
+}
+
+/* FOOTER */
+.footer-logo-image {
+  height: 34px; width: auto; object-fit: cover; padding: 0;
+  background: rgba(15,185,177,0.06);
+  border: 1px solid rgba(15,185,177,0.18);
+  border-radius: 8px;
+}
+.footer-brand { display: flex; flex-direction: column; align-items: center; gap: 0.75rem; }
+
+/* HERO STAT DIVIDERS */
+.stat-divider {
+  width: 1px; height: 48px;
+  background: linear-gradient(180deg, transparent, rgba(15,185,177,0.4), transparent);
+}
+
+/* BENTO GLOW — hover only */
+.bento-card { max-height: none !important; overflow: hidden; }
+.bento-card::before { opacity: 0 !important; }
+.bento-card:hover::before { opacity: 1 !important; }
+
+/* DESKTOP ≥ 769px */
+@media (min-width: 769px) {
+
+  .section-domains,
+  .section-systems,
+  .section-capabilities,
+  .section-founder,
+  .section-contact {
+    min-height: 100vh;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  /* DOMAINS */
+  .section-domains { padding: 6rem 0 4rem !important; }
+  .domains-grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 1.5rem !important;
+    margin-top: 2rem;
+    transform: none !important;
+  }
+  .domain-card { flex: none !important; min-width: 0 !important; width: 100% !important; }
+  .domains-carousel-nav { display: none !important; }
+
+  /* SYSTEMS */
+  .section-systems { padding: 6rem 0 4rem !important; min-height: 100vh !important; }
+  .bento-grid-wrapper { overflow: visible; }
+  .bento-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1.5rem !important;
+    transform: none !important;
+    cursor: default !important;
+  }
+  .bento-card { flex: none !important; min-width: 0 !important; width: 100% !important; }
+
+  /* CAPABILITIES */
+  .section-capabilities { padding: 6rem 0 4rem !important; }
+  .capabilities-grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 1.5rem !important;
+    margin-top: 2rem;
+    transform: none !important;
+  }
+  .capability-card { flex: none !important; min-width: 0 !important; width: 100% !important; }
+  .capabilities-carousel-nav { display: none !important; }
+
+  /* TEAM */
+  .section-founder {
+    padding: 5rem 0 4rem !important;
+    justify-content: flex-start !important;
+    min-height: 100vh !important;
+  }
+  .section-founder .section-header { margin-bottom: 1.5rem; }
+  .team-grid { display: flex; flex-direction: column; gap: 1.5rem; }
+  .team-grid .founder-card:nth-child(2) { padding: 2rem 2.5rem; align-items: center; }
+
+  /* CONTACT */
+  .section-contact { padding: 6rem 0 4rem !important; min-height: 100vh !important; }
+  .section-contact .container { width: 100%; }
+  .contact-wrapper {
+    display: grid !important;
+    grid-template-columns: 1fr 1.3fr !important;
+    gap: 3rem !important;
+    align-items: stretch !important;
+    width: 100%;
+  }
+  .contact-info h2 { font-size: clamp(1.75rem, 3vw, 2.75rem); margin-bottom: 1rem; }
+  .contact-info > p { font-size: clamp(0.95rem, 1.5vw, 1.1rem); margin-bottom: 1.75rem; }
+  .contact-details { gap: 1.25rem; }
+  .contact-item { padding: 1.5rem; }
+  .contact-item p { font-size: 0.95rem; line-height: 1.7; }
+  .contact-form { padding: 2.5rem !important; gap: 1.25rem !important; height: 100%; }
+  .form-group label { font-size: 0.9rem; margin-bottom: 0.4rem; }
+  .form-group input, .form-group textarea { padding: 0.875rem 1rem; font-size: 0.95rem; }
+  .form-group textarea { min-height: 120px; }
+  .contact-carousel-nav { display: none !important; }
+}
+
+/* MOBILE ≤ 768px */
+@media (max-width: 768px) {
+  .nav-logo .logo-image { height: 30px; }
+  .footer-logo-image { height: 30px; }
+  .footer-content { text-align: center; }
+
+  .hero-title br, .hero-subtitle br,
+  .section-header p br, .contact-info > p br { display: none; }
+
+  .badge-mono {
+    font-size: 0.6rem; letter-spacing: 0.12em;
+    padding: 0.5rem 1rem; white-space: normal;
+    text-align: center; max-width: 90vw;
+  }
+
+  .stat-divider { display: none; }
+  .hero-stats { flex-wrap: wrap; gap: 0.75rem; padding: 1rem; }
+  .stat-item { flex: 1 1 calc(50% - 0.5rem); }
+
+  .section-founder {
+    min-height: 0 !important; display: block !important;
+    padding: 4rem 0 3rem !important;
+  }
+  .team-grid { display: flex; flex-direction: column; gap: 1.25rem; }
+  .founder-card {
+    grid-template-columns: 1fr !important; text-align: center;
+    padding: 1.5rem 1.25rem !important; gap: 1.25rem !important;
+  }
+  .founder-quote { text-align: left; }
+
+  .section-contact {
+    min-height: 0 !important; display: block !important;
+    padding: 3rem 0 2rem !important;
+  }
+  .contact-wrapper { grid-template-columns: 1fr !important; gap: 1.5rem !important; }
+  .contact-form { grid-template-columns: 1fr !important; padding: 1.5rem 1.25rem !important; }
+  .contact-form .form-group,
+  .contact-form .btn-primary,
+  .contact-form .contact-status { grid-column: span 1 !important; }
+}
