@@ -1,0 +1,164 @@
+/* ============================================
+WAL & AL — Alignment Fixes Layer
+Loaded AFTER styles.css. Pure overrides.
+No new design — only alignment / wrap / fit.
+============================================ */
+
+/* 1. NAV LOGO — tone down the white-background PNG so it stops
+   clashing with the dark navbar. */
+.nav-logo .logo-image {
+  height: 32px;
+  padding: 4px 8px;
+  background: rgba(15, 185, 177, 0.06);
+  border: 1px solid rgba(15, 185, 177, 0.18);
+  border-radius: 8px;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+/* 2. HERO STATS — make the dividers actually visible on desktop. */
+.stat-divider {
+  background: linear-gradient(180deg,
+    transparent,
+    rgba(15, 185, 177, 0.35),
+    transparent);
+  height: 48px;
+}
+
+/* 3. HERO STATS on mobile — stop the "24/7 + 0 / 22 alone" wrap. */
+@media (max-width: 720px) {
+  .hero-stats {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.25rem 1.5rem;
+    width: 100%;
+    max-width: 360px;
+  }
+  .hero-stats .stat-divider {
+    width: 60%;
+    height: 1px;
+    background: linear-gradient(90deg,
+      transparent,
+      rgba(15, 185, 177, 0.25),
+      transparent);
+  }
+  .stat-item { width: 100%; }
+}
+
+/* 4. Hide hardcoded <br/> tags on narrow screens so text wraps naturally. */
+@media (max-width: 720px) {
+  .hero-title br,
+  .hero-subtitle br,
+  .section-header p br,
+  .contact-info > p br {
+    display: none;
+  }
+}
+
+/* 5. HERO BADGE — fit "AUTONOMOUS SYSTEMS · ROBOTICS · CLOUD INTELLIGENCE"
+   inside its pill on small screens. */
+@media (max-width: 720px) {
+  .badge-mono {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    padding: 0.5rem 1rem;
+    line-height: 1.5;
+    white-space: normal;
+    text-align: center;
+    max-width: 92vw;
+  }
+}
+
+/* 6. Hero title/subtitle balanced wrapping on mobile. */
+@media (max-width: 720px) {
+  .hero-title    { text-wrap: balance; padding: 0 0.25rem; }
+  .hero-subtitle { text-wrap: pretty;  padding: 0 0.5rem;  }
+}
+
+/* 7. Section headers wrap cleanly on mobile. */
+@media (max-width: 720px) {
+  .section-header h2 { text-wrap: balance; }
+  .section-header p  { text-wrap: pretty;  }
+}
+
+/* 8. Tighter nav padding + smaller logo on mobile. */
+@media (max-width: 720px) {
+  .nav-container { padding: 0.85rem 1rem; }
+  .nav-logo .logo-image { height: 28px; padding: 3px 6px; }
+}
+
+/* 9. BENTO CARDS — drop the 100vh-based max-height so tech-specs
+   never get clipped on short viewports. */
+.bento-card { max-height: none; }
+
+/* 10. SYSTEMS section — remove min-height: 100vh that creates a huge
+   empty pocket on tall mobile viewports. */
+.section-systems {
+  min-height: 0;
+  display: block;
+  padding: clamp(3rem, 8vh, 6rem) 0;
+}
+
+/* Same fix for FOUNDER section. */
+.section-founder {
+  min-height: 0;
+  display: block;
+  padding: clamp(3rem, 8vh, 6rem) 0;
+}
+
+/* 11. FOUNDER CARD — stack avatar above bio on mobile. */
+@media (max-width: 720px) {
+  .founder-card {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 2rem 1.5rem;
+    text-align: center;
+  }
+  .founder-avatar {
+    width: 140px;
+    height: 140px;
+    font-size: 2.75rem;
+  }
+  .founder-quote { text-align: left; }
+}
+
+/* 12. CONTACT — force single-column on mobile so inputs don't squeeze. */
+@media (max-width: 720px) {
+  .contact-wrapper {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .contact-form {
+    grid-template-columns: 1fr !important;
+    padding: 1.75rem 1.25rem;
+  }
+  .contact-form .form-group,
+  .contact-form .btn-primary,
+  .contact-form .contact-status {
+    grid-column: span 1 !important;
+  }
+}
+
+/* 13. FOOTER — align brand, give footer logo the same dark-pill treatment. */
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.footer-logo-image {
+  height: 32px;
+  padding: 4px 8px;
+  background: rgba(15, 185, 177, 0.06);
+  border: 1px solid rgba(15, 185, 177, 0.18);
+  border-radius: 8px;
+}
+@media (max-width: 720px) {
+  .footer-content { text-align: center; }
+  .footer-brand   { justify-content: center; }
+}
+
+/* 14. CAROUSEL — tighter on mobile. */
+@media (max-width: 720px) {
+  .carousel-nav { gap: 1.25rem; margin-top: 1.25rem; }
+  .carousel-btn { width: 40px; height: 40px; }
+}
