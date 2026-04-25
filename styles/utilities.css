@@ -14,12 +14,15 @@
   display: inline-block;
   overflow: hidden;
   vertical-align: bottom;
+  padding-bottom: 0.15em;
+  line-height: 1.15;
 }
 .reveal-lines .line > span {
   display: inline-block;
   transform: translate3d(0, 110%, 0);
   transition: transform 0.9s var(--ease-out-expo);
   will-change: transform;
+  padding-bottom: 0.15em;
 }
 .reveal-lines.is-in .line > span { transform: translate3d(0, 0, 0); }
 

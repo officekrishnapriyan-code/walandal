@@ -1,5 +1,5 @@
-// TODO: replace with your real Formspree form ID
-const FORMSPREE_ENDPOINT = 'https://formspree.io/f/REPLACE_WITH_FORM_ID';
+// Formspree endpoint
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xdkqjezv';
 
 export function initForm() {
   const form = document.getElementById('contact-form');

@@ -19,8 +19,8 @@ export function initCursor() {
   }, { passive: true });
 
   function loop() {
-    rx = lerp(rx, mx, 0.18);
-    ry = lerp(ry, my, 0.18);
+    rx = lerp(rx, mx, 0.28);
+    ry = lerp(ry, my, 0.28);
     ring.style.transform = `translate3d(${rx}px, ${ry}px, 0) translate(-50%, -50%)`;
     requestAnimationFrame(loop);
   }
@@ -29,16 +29,22 @@ export function initCursor() {
   // Magnetic + state hovers
   const magnetics = document.querySelectorAll('[data-magnetic]');
   magnetics.forEach((el) => {
+    let magRaf = 0;
     el.addEventListener('mouseenter', () => cursor.classList.add('is-magnetic'));
     el.addEventListener('mouseleave', () => {
       cursor.classList.remove('is-magnetic');
       el.style.transform = '';
     });
     el.addEventListener('mousemove', (e) => {
-      const rect = el.getBoundingClientRect();
-      const dx = e.clientX - (rect.left + rect.width / 2);
-      const dy = e.clientY - (rect.top + rect.height / 2);
-      el.style.transform = `translate3d(${dx * 0.18}px, ${dy * 0.18}px, 0)`;
+      const cx = e.clientX, cy = e.clientY;
+      if (magRaf) return;
+      magRaf = requestAnimationFrame(() => {
+        magRaf = 0;
+        const rect = el.getBoundingClientRect();
+        const dx = cx - (rect.left + rect.width / 2);
+        const dy = cy - (rect.top + rect.height / 2);
+        el.style.transform = `translate3d(${dx * 0.18}px, ${dy * 0.18}px, 0)`;
+      });
     });
   });
 

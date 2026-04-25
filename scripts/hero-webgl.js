@@ -10,7 +10,7 @@ export async function initHeroWebGL() {
   catch { return; }
 
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
   renderer.setSize(canvas.clientWidth, canvas.clientHeight, false);
   renderer.setClearColor(0x000000, 0);
 
@@ -119,7 +119,7 @@ export async function initHeroWebGL() {
   scene.add(meshFill, meshWire);
 
   // ---------- Particle field ----------
-  const PARTICLE_COUNT = 800;
+  const PARTICLE_COUNT = 500;
   const positions = new Float32Array(PARTICLE_COUNT * 3);
   for (let i = 0; i < PARTICLE_COUNT; i++) {
     positions[i * 3 + 0] = (Math.random() - 0.5) * 14;
@@ -160,38 +160,59 @@ export async function initHeroWebGL() {
     targetRotX = my * 0.0006 * 600;
   }, { passive: true });
 
-  function fadeOnScroll() {
-    const vh = window.innerHeight;
-    const t = Math.min(1, Math.max(0, window.scrollY / (vh * 0.6)));
-    canvas.style.opacity = String(1 - t);
-  }
-  window.addEventListener('scroll', fadeOnScroll, { passive: true });
-
   // ---------- Render with IO control ----------
   let running = true;
+  let faded = false;
   const io = new IntersectionObserver(([entry]) => {
     running = entry.isIntersecting;
-  }, { threshold: 0.01 });
+    if (running) {
+      faded = false;
+      canvas.style.visibility = '';
+      canvas.style.opacity = '1';
+      renderer.render(scene, camera);
+    }
+  }, { threshold: 0 });
   io.observe(canvas);
 
   const clock = new THREE.Clock();
+
+  function updateScene(t) {
+    uniforms.uTime.value = t;
+    meshFill.rotation.y += 0.0008;
+    meshWire.rotation.y = meshFill.rotation.y;
+    meshFill.rotation.x += (targetRotX - meshFill.rotation.x) * 0.04;
+    meshFill.rotation.y += (targetRotY - meshFill.rotation.y) * 0.04 * 0.3;
+    meshWire.rotation.x = meshFill.rotation.x;
+    points.rotation.y += 0.0004;
+    points.rotation.x = Math.sin(t * 0.15) * 0.05;
+  }
+
   function animate() {
-    if (running) {
-      const t = clock.getElapsedTime();
-      uniforms.uTime.value = t;
-
-      meshFill.rotation.y += 0.0008;
-      meshWire.rotation.y = meshFill.rotation.y;
-      meshFill.rotation.x += (targetRotX - meshFill.rotation.x) * 0.04;
-      meshFill.rotation.y += (targetRotY - meshFill.rotation.y) * 0.04 * 0.3;
-      meshWire.rotation.x = meshFill.rotation.x;
-
-      points.rotation.y += 0.0004;
-      points.rotation.x = Math.sin(t * 0.15) * 0.05;
-
-      renderer.render(scene, camera);
-    }
     requestAnimationFrame(animate);
+    if (!running) return;
+
+    const t = clock.getElapsedTime();
+    updateScene(t);
+
+    // Fade on scroll — every frame so it reacts on scroll back up too
+    const vh = window.innerHeight;
+    const fade = Math.min(1, Math.max(0, window.scrollY / (vh * 0.6)));
+    const opacity = 1 - fade;
+    canvas.style.opacity = String(opacity);
+
+    if (opacity > 0.02) {
+      if (faded) {
+        faded = false;
+        canvas.style.visibility = '';
+      }
+      renderer.render(scene, camera);
+    } else {
+      if (!faded) {
+        faded = true;
+        canvas.style.visibility = 'hidden';
+      }
+      // skip GPU draw but keep loop alive
+    }
   }
 
   // Reveal canvas

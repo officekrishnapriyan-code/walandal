@@ -3,15 +3,19 @@ import { prefersReducedMotion } from './utils.js';
 export function initLenis() {
   if (prefersReducedMotion()) return null;
   if (typeof window.Lenis === 'undefined') return null;
+  if (window.matchMedia('(pointer: coarse)').matches) return null;
 
   const lenis = new window.Lenis({
-    lerp: 0.1,
+    lerp: 0.12,
+    duration: 1.0,
     smoothWheel: true,
+    syncTouch: false,
     wheelMultiplier: 1,
     touchMultiplier: 1.5,
+    autoRaf: false,
   });
 
-  // Hook into GSAP ticker so ScrollTrigger updates correctly
+  // Official Lenis ↔ GSAP bridge — single RAF driver via gsap.ticker
   if (window.gsap && window.ScrollTrigger) {
     lenis.on('scroll', window.ScrollTrigger.update);
     window.gsap.ticker.add((time) => lenis.raf(time * 1000));
@@ -20,6 +24,8 @@ export function initLenis() {
     function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
     requestAnimationFrame(raf);
   }
+
+  window.__lenis = lenis;
 
   // Anchor link smooth-scroll integration
   document.querySelectorAll('a[href^="#"]').forEach((a) => {
