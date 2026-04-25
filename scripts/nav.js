@@ -70,7 +70,7 @@ export function initNav() {
     function tick() {
       const opts = { timeZone: 'Asia/Kolkata', hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' };
       const now  = new Intl.DateTimeFormat('en-GB', opts).format(new Date());
-      ts.textContent = `KOCHI · IST · ${now}`;
+      ts.textContent = `INDIA · IST · ${now}`;
     }
     tick();
     setInterval(tick, 1000);
