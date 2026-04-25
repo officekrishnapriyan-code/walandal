@@ -10,6 +10,7 @@
     radial-gradient(ellipse at 70% 30%, rgba(15,185,177,0.12), transparent 50%),
     radial-gradient(ellipse at 20% 80%, rgba(139,209,124,0.08), transparent 50%),
     var(--bg);
+  contain: paint;
 }
 .hero__canvas {
   position: absolute;
@@ -18,6 +19,7 @@
   z-index: 0;
   opacity: 0;
   transition: opacity 1.2s var(--ease-out-expo);
+  transform: translateZ(0);
 }
 .hero__canvas.is-ready { opacity: 1; }
 
@@ -74,6 +76,19 @@
   color: var(--text);
   margin: 0 auto 28px;
   max-width: 980px;
+}
+
+/* "regenerative" accent word — Instrument Serif italic with brand gradient */
+.hero__title .accent {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
 }
 
 .hero__subhead {

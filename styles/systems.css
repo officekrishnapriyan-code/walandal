@@ -1,29 +1,53 @@
-.systems { padding-bottom: 0; }
-
-.systems__pin {
-  position: relative;
+.systems {
+  padding: 0 !important;          /* kill the .section padding */
   height: 100vh;
   overflow: hidden;
+  position: relative;
+  contain: none;
+  display: flex;
+  flex-direction: column;
 }
+
+/* Header inside the 100vh section */
+.systems .section__header {
+  flex: 0 0 auto;
+  padding: clamp(80px, 10vh, 100px) var(--gutter) clamp(1rem, 2vh, 1.5rem);
+  margin-bottom: 0;
+  max-width: var(--container);
+  margin-inline: auto;
+  width: 100%;
+}
+
+.systems__pin {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
 .systems__track {
   display: flex;
+  flex-wrap: nowrap;
+  align-items: stretch;
   height: 100%;
-  align-items: center;
   gap: 40px;
   padding-inline: var(--gutter);
   will-change: transform;
+  transform: translate3d(0,0,0);
+  backface-visibility: hidden;
 }
 
 .system-card {
-  flex-shrink: 0;
-  width: 70vw;
-  min-width: 600px;
-  max-width: 1100px;
-  height: 70vh;
+  flex: 0 0 auto;
+  width: 72vw;
+  min-width: 560px;
+  max-width: 1060px;
+  height: 100%;
   display: grid;
   grid-template-columns: 1.1fr 1fr;
-  gap: 40px;
-  padding: 56px;
+  gap: 32px;
+  padding: clamp(24px, 3vw, 44px);
   border-radius: var(--radius);
   background:
     linear-gradient(135deg, rgba(20,224,213,0.04), transparent 50%),
@@ -31,6 +55,8 @@
   border: 1px solid var(--hairline);
   position: relative;
   overflow: hidden;
+  transform: translateZ(0);
+  box-sizing: border-box;
 }
 .system-card__text {
   display: flex;

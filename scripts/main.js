@@ -14,7 +14,10 @@ onReady(async () => {
   // Wait for GSAP + ScrollTrigger from CDN (deferred). Lenis is optional.
   try { await waitFor(() => window.gsap && window.ScrollTrigger, 30, 4000); } catch { /* continue without GSAP */ }
 
-  // Sync DOM-only behaviour first
+  // Smooth scroll FIRST — must be running before ScrollTrigger registers
+  initLenis();
+
+  // Sync DOM-only behaviour
   initNav();
   initCursor();
   initTilt();
@@ -22,12 +25,9 @@ onReady(async () => {
   initForm();
   initCounters();
 
-  // Reveal/scroll bound — needs GSAP if available
+  // Reveal/scroll bound — needs GSAP + Lenis already running
   initReveals();
   initSystemsPin();
-
-  // Smooth scroll
-  initLenis();
 
   // WebGL hero — defer to keep first paint snappy
   const start = () => initHeroWebGL();

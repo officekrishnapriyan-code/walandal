@@ -28,8 +28,8 @@
   <!-- Preload fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&family=Instrument+Serif:ital@0;1&family=DM+Serif+Display:ital@0;1&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&family=Instrument+Serif:ital@0;1&family=DM+Serif+Display:ital@0;1&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" />
 
   <!-- Styles -->
   <link rel="stylesheet" href="/styles/reset.css" />
@@ -53,16 +53,16 @@
     "@type": "Organization",
     "name": "WAL & AL",
     "url": "https://walandal.com",
-    "logo": "https://walandal.com/assets/logo.svg",
+    "logo": "https://walandal.com/assets/logo.png",
     "description": "Deep-tech engineering studio building cloud-native platforms, autonomous robotics, and intelligent sensing systems.",
     "founder": {
       "@type": "Person",
       "name": "Krishnapriyan M S",
-      "jobTitle": "Lead Engineer"
+      "jobTitle": "Founder"
     },
     "address": {
       "@type": "PostalAddress",
-      "addressLocality": "Kochi",
+      "addressLocality": "India",
       "addressCountry": "IN"
     }
   }
@@ -92,22 +92,30 @@
   </div>
 
   <!-- ============== NAV ============== -->
-  <header class="nav" id="nav">
+  <header class="nav" id="nav" data-state="top">
     <div class="nav__inner container">
       <a href="#hero" class="nav__brand" aria-label="WAL &amp; AL — home">
-        <img src="/assets/logo.svg" alt="WAL &amp; AL" class="nav__logo" />
+        <span class="nav__brand-dot" aria-hidden="true"></span>
+        <img src="/assets/logo.png" alt="" class="nav__logo" />
+        <span class="nav__brand-meta">
+          <span class="nav__brand-name">WAL &amp; AL</span>
+          <span class="nav__brand-tag">DEEP-TECH STUDIO</span>
+        </span>
       </a>
 
       <nav class="nav__links" aria-label="Primary">
-        <a href="#domains">Domains</a>
-        <a href="#systems">Systems</a>
-        <a href="#capabilities">Capabilities</a>
-        <a href="#founder">Team</a>
+        <a href="#domains"      data-index="01" data-label="Domains"><span>Domains</span></a>
+        <a href="#systems"      data-index="02" data-label="Systems"><span>Systems</span></a>
+        <a href="#capabilities" data-index="03" data-label="Capabilities"><span>Capabilities</span></a>
+        <a href="#founder"      data-index="04" data-label="Team"><span>Team</span></a>
       </nav>
 
+
       <a href="#contact" class="btn btn--primary nav__cta" data-magnetic>
-        Start a Project
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        <span class="nav__cta-label">Start a Project</span>
+        <span class="nav__cta-arrow" aria-hidden="true">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </span>
       </a>
 
       <button class="nav__hamburger" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
@@ -146,7 +154,7 @@
         </h1>
 
         <p class="hero__subhead" id="hero-subhead">
-          We architect cloud-native platforms, autonomous robotics, and intelligent sensing systems that turn environmental data into decision-ready intelligence.
+          We build cloud-native platforms, autonomous robotics, and intelligent sensing systems that turn raw environmental data into decisions that matter.
         </p>
 
         <div class="hero__cta" id="hero-cta">
@@ -166,7 +174,7 @@
       </div>
 
       <div class="hero__timestamp mono" id="hero-timestamp" aria-live="off">
-        KOCHI · IST · 00:00:00
+        India · IST · 00:00:00
       </div>
     </section>
 
@@ -174,23 +182,25 @@
     <section id="manifesto" class="manifesto">
       <div class="manifesto__pin">
         <div class="manifesto__inner container">
-          <p class="mono manifesto__eyebrow">— THE BELIEF</p>
+          <p class="mono manifesto__eyebrow">— OUR CONVICTION</p>
           <h2 class="manifesto__statement" id="manifesto-statement">
-            A society's health can be measured by the health of the environment around it.
+            Technology in service of the planet — built today, trusted tomorrow, and designed for every generation that comes after.
           </h2>
         </div>
       </div>
 
       <div class="marquee" aria-hidden="true">
         <div class="marquee__track">
-          <span>WATER · AIR · LAND · ALL · </span>
-          <span>WATER · AIR · LAND · ALL · </span>
-          <span>WATER · AIR · LAND · ALL · </span>
-          <span>WATER · AIR · LAND · ALL · </span>
-          <span>WATER · AIR · LAND · ALL · </span>
-          <span>WATER · AIR · LAND · ALL · </span>
-          <span>WATER · AIR · LAND · ALL · </span>
-          <span>WATER · AIR · LAND · ALL · </span>
+          <span>PRECISION ENGINEERING · </span>
+          <span>ENVIRONMENTAL INTELLIGENCE · </span>
+          <span>AUTONOMOUS SYSTEMS · </span>
+          <span>CLOUD-NATIVE · </span>
+          <span>BUILT FOR IMPACT · </span>
+          <span>PRECISION ENGINEERING · </span>
+          <span>ENVIRONMENTAL INTELLIGENCE · </span>
+          <span>AUTONOMOUS SYSTEMS · </span>
+          <span>CLOUD-NATIVE · </span>
+          <span>BUILT FOR IMPACT · </span>
         </div>
       </div>
     </section>
@@ -201,7 +211,7 @@
         <p class="mono section__eyebrow">01 / FRAMEWORK</p>
         <h2 class="section__title reveal-lines">The WAL &amp; AL framework.</h2>
         <p class="section__desc reveal">
-          WAL is Water, Air, and Land — the systems sustaining life. AL is All — every community, ecosystem, and generation.
+          WAL stands for Water, Air, and Land — the three systems every living thing depends on. AL stands for All — every community, every ecosystem, every generation that follows.
         </p>
       </header>
 
@@ -217,7 +227,7 @@
           </div>
           <p class="domain-card__tag mono">H₂O MONITORING</p>
           <h3 class="domain-card__title">Water</h3>
-          <p class="domain-card__body">IoT-enabled quality and availability monitoring across distribution networks and community infrastructure.</p>
+          <p class="domain-card__body">Real-time monitoring of water quality and availability across overhead tanks, distribution networks, and community infrastructure — so no one drinks water that shouldn't be drunk.</p>
         </article>
 
         <article class="domain-card" data-tilt>
@@ -231,7 +241,7 @@
           </div>
           <p class="domain-card__tag mono">EMISSION TRACKING</p>
           <h3 class="domain-card__title">Air</h3>
-          <p class="domain-card__body">Precision measurement of pollutants and atmospheric changes at industrial sites and corridors.</p>
+          <p class="domain-card__body">Precision measurement of pollutants, particulates, and atmospheric shifts at industrial sites and corridors — turning invisible threats into visible data.</p>
         </article>
 
         <article class="domain-card" data-tilt>
@@ -245,7 +255,7 @@
           </div>
           <p class="domain-card__tag mono">MARINE OBSERVATION</p>
           <h3 class="domain-card__title">Land</h3>
-          <p class="domain-card__body">Coastal and ocean environmental intelligence for conservation, safety, and planning.</p>
+          <p class="domain-card__body">Coastal and ocean environmental intelligence for conservation, safety, and planning — from near-shore waters to remote marine zones.</p>
         </article>
 
         <article class="domain-card domain-card--highlight" data-tilt>
@@ -260,7 +270,7 @@
           </div>
           <p class="domain-card__tag mono">INTEGRATED PLATFORM</p>
           <h3 class="domain-card__title">All</h3>
-          <p class="domain-card__body">Unified cloud infrastructure connecting every domain into comprehensive environmental intelligence.</p>
+          <p class="domain-card__body">One unified cloud infrastructure connecting water, air, and land data into a single intelligence layer — so every decision is informed by the full picture.</p>
         </article>
       </div>
     </section>
@@ -280,7 +290,7 @@
               <p class="mono system-card__tag">CLOUD-NATIVE</p>
               <h3 class="system-card__title">Aqua Insight</h3>
               <p class="system-card__subtitle">Drinking Water Intelligence</p>
-              <p class="system-card__body">A monitoring and insight layer for drinking water networks. Continuous visibility into water quality and availability across overhead tanks and local distribution.</p>
+              <p class="system-card__body">A monitoring and insight layer for drinking water networks. Continuous, real-time visibility into water quality and availability — from overhead tanks to the last mile of local distribution.</p>
               <ul class="system-card__specs">
                 <li>Real-time chlorine, pH, turbidity, TDS, level</li>
                 <li>Automated alerting for risk and non-compliance zones</li>
@@ -311,7 +321,7 @@
               <p class="mono system-card__tag">EDGE INTELLIGENCE</p>
               <h3 class="system-card__title">Industrial Emission</h3>
               <p class="system-card__subtitle">Monitoring Layer</p>
-              <p class="system-card__body">Data and analytics layer for emissions monitoring around industrial sites and corridors. Measuring pollutants and trends critical for compliance and stewardship.</p>
+              <p class="system-card__body">A data and analytics layer for emissions monitoring around industrial sites and corridors. Measuring the pollutants and trends that matter most for compliance, stewardship, and community health.</p>
               <ul class="system-card__specs">
                 <li>Gases, particulates, carbon indicators</li>
                 <li>Boundary and zone assessment</li>
@@ -340,7 +350,7 @@
               <p class="mono system-card__tag">AUTONOMOUS</p>
               <h3 class="system-card__title">Marine Observation</h3>
               <p class="system-card__subtitle">Environmental Systems</p>
-              <p class="system-card__body">Systems capturing environmental signals in coastal and near-shore waters. Supporting monitoring, planning, and research.</p>
+              <p class="system-card__body">Autonomous systems capturing environmental signals in coastal and near-shore waters. Built for conditions where traditional infrastructure can't go — supporting monitoring, planning, and research at scale.</p>
               <ul class="system-card__specs">
                 <li>Key physical and chemical marine indicators</li>
                 <li>Detection of pollution and stress shifts</li>
@@ -378,7 +388,7 @@
               <p class="mono system-card__tag">ROS / ROS 2</p>
               <h3 class="system-card__title">Fleet &amp; Cloud</h3>
               <p class="system-card__subtitle">Integration Layer</p>
-              <p class="system-card__body">Integration layer connecting ROS and ROS 2-based systems with modern cloud infrastructure. Observable, manageable robotic fleets.</p>
+              <p class="system-card__body">An integration layer connecting ROS and ROS 2-based robotic systems with modern cloud infrastructure. Observable fleets, reliable telemetry, and remote operations — all in one place.</p>
               <ul class="system-card__specs">
                 <li>Telemetry, logging, health monitoring</li>
                 <li>Bridges between ROS topics and cloud services</li>
@@ -431,7 +441,7 @@
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.5 19a4.5 4.5 0 1 0-1.5-8.7A6 6 0 0 0 4 13a4 4 0 0 0 4 6h9.5z"/></svg>
           </div>
           <h3 class="capability-card__title">Cloud-Native Platforms</h3>
-          <p class="capability-card__body">Secure, scalable backends that ingest sensor streams, process events in real time, and expose clean APIs tailored to operational teams.</p>
+          <p class="capability-card__body">Secure, scalable backends that ingest sensor streams, process events in real time, and deliver clean APIs to the teams who act on the data.</p>
         </article>
 
         <article class="capability-card" data-tilt>
@@ -441,7 +451,7 @@
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/></svg>
           </div>
           <h3 class="capability-card__title">Robotics &amp; Edge</h3>
-          <p class="capability-card__body">Autonomous systems collecting environmental data where traditional infrastructure cannot reach. Reliable operation under dynamic conditions.</p>
+          <p class="capability-card__body">Autonomous systems that go where people can't — collecting environmental data in the field, reliably, under real-world conditions.</p>
         </article>
 
         <article class="capability-card" data-tilt>
@@ -451,7 +461,7 @@
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 16.5A4.5 4.5 0 0 1 9.5 12M5 12a8 8 0 0 1 8-8M5 8a12 12 0 0 1 12-12"/><circle cx="12" cy="20" r="2"/><path d="M12 22v-2"/></svg>
           </div>
           <h3 class="capability-card__title">Sensing Networks</h3>
-          <p class="capability-card__body">Distributed sensor networks with intelligent edge processing. Real-time data acquisition and validation at the source.</p>
+          <p class="capability-card__body">Distributed sensor networks with intelligent edge processing — acquiring, validating, and acting on data at the source before it ever reaches the cloud.</p>
         </article>
 
         <article class="capability-card" data-tilt>
@@ -461,7 +471,7 @@
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 21V9a9 9 0 0 0 9 9"/></svg>
           </div>
           <h3 class="capability-card__title">System Integration</h3>
-          <p class="capability-card__body">Seamless integration with existing infrastructure. Open standards, clear documentation, and maintainable architectures.</p>
+          <p class="capability-card__body">We work with what you already have. Open standards, clear documentation, and architectures built to last — not to lock you in.</p>
         </article>
 
       </div>
@@ -475,7 +485,7 @@
             <div class="founder__portrait-grad"></div>
             <span class="founder__initials">KP</span>
           </div>
-          <p class="mono founder__caption">LEAD ENGINEER · KOCHI, INDIA</p>
+        <p class="mono founder__caption">FOUNDER · INDIA</p>
         </div>
 
         <div class="founder__right">
@@ -505,10 +515,6 @@
         <div class="metric__value" data-typewriter="100%"></div>
         <div class="metric__label mono">IMPACT FOCUSED</div>
       </div>
-      <div class="metric reveal">
-        <div class="metric__value" data-typewriter="ROS 2"></div>
-        <div class="metric__label mono">ROBOTICS STACK</div>
-      </div>
     </section>
 
     <!-- ============== CONTACT ============== -->
@@ -517,19 +523,19 @@
 
         <div class="contact__left">
           <p class="mono section__eyebrow">05 / CONTACT</p>
-          <h2 class="contact__title reveal-lines">Let's build what the planet needs.</h2>
+          <h2 class="contact__title reveal-lines">Got a challenge worth solving?</h2>
           <p class="contact__body">
-            Tell us about your water, air, or land challenge — we'll respond with honest, practical ideas for how technology can help.
+            Tell us about your water, air, or land problem. We'll come back with honest, practical ideas — no sales pitch, just engineering thinking.
           </p>
 
           <div class="contact__info">
             <div class="info-block">
               <p class="mono info-block__label">WHO WE WORK WITH</p>
-              <p>Cities and local governments, utilities and infrastructure owners, impact-driven companies and NGOs, research labs exploring the future of natural resource management.</p>
+              <p>Cities and local governments, utilities and infrastructure owners, impact-driven companies and NGOs, and research labs building the future of natural resource management.</p>
             </div>
             <div class="info-block">
               <p class="mono info-block__label">WHAT WE BRING</p>
-              <p>A blend of cloud, robotics, and software expertise, grounded in field experience and a clear commitment to sustainable development.</p>
+              <p>Deep expertise in cloud, robotics, and sensing — grounded in field experience and a genuine commitment to building technology that serves both people and planet.</p>
             </div>
           </div>
         </div>
@@ -576,8 +582,8 @@
   <footer class="footer">
     <div class="footer__top container">
       <div class="footer__brand">
-        <img src="/assets/logo.svg" alt="WAL &amp; AL" class="footer__logo" />
-        <p class="footer__tagline">Designing technology for water, air, land — and all.</p>
+        <img src="/assets/logo.png" alt="WAL &amp; AL" class="footer__logo" />
+        <p class="footer__tagline">Technology in service of the planet — today and for every generation after.</p>
       </div>
       <div class="footer__nav">
         <nav aria-label="Footer">

@@ -2,9 +2,13 @@
   position: relative;
   padding: clamp(80px, 12vw, 160px) 0;
 }
+
+/* Systems section overrides contain so the pin spacer works */
+.systems { contain: none; }
 .section__header {
-  max-width: 880px;
+  max-width: var(--container);
   margin: 0 auto clamp(48px, 6vw, 80px);
+  padding-inline: var(--gutter);
   text-align: left;
 }
 .section__eyebrow {
@@ -16,9 +20,10 @@
   font-size: var(--fs-h1);
   font-weight: 800;
   letter-spacing: -0.03em;
-  line-height: 1.05;
+  line-height: 1.12;
   color: var(--text);
   margin-bottom: 24px;
+  padding-bottom: 0.08em;
 }
 .section__desc {
   font-size: calc(var(--fs-body) * 1.1);
@@ -71,14 +76,14 @@
 /* ============== Metrics strip ============== */
 .metrics {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: clamp(20px, 3vw, 40px);
   padding: 64px var(--gutter);
   border-top: 1px solid var(--hairline);
   border-bottom: 1px solid var(--hairline);
   margin-top: clamp(40px, 6vw, 80px);
 }
-.metric { text-align: left; }
+.metric { text-align: center; }
 .metric__value {
   font-family: var(--font-sans);
   font-size: clamp(2.5rem, 5vw, 3.5rem);
@@ -95,8 +100,8 @@
   font-size: 0.6875rem;
 }
 @media (max-width: 840px) {
-  .metrics { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+  .metrics { grid-template-columns: repeat(3, 1fr); gap: 24px; }
 }
 @media (max-width: 480px) {
-  .metrics { grid-template-columns: 1fr 1fr; }
+  .metrics { grid-template-columns: 1fr; }
 }

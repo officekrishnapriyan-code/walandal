@@ -18,49 +18,13 @@ export function initReveals() {
     const stamp   = document.getElementById('hero-timestamp');
 
     let chars;
-    if (SplitText && title) {
-      try {
-        const split = new SplitText(title, { type: 'chars,words' });
-        chars = split.chars;
-      } catch { /* ignore */ }
-    }
-    if (!chars && title) {
-      // Fallback simple char splitter — preserves the .accent span
-      const wrap = (node) => {
-        const out = [];
-        node.childNodes.forEach((n) => {
-          if (n.nodeType === 3) {
-            n.textContent.split('').forEach((c) => {
-              const s = document.createElement('span');
-              s.style.display = 'inline-block';
-              s.textContent = c === ' ' ? '\u00A0' : c;
-              out.push(s);
-            });
-          } else if (n.nodeType === 1) {
-            const wrapper = n.cloneNode(false);
-            wrapper.style.display = 'inline-block';
-            n.childNodes.forEach((cn) => {
-              if (cn.nodeType === 3) {
-                cn.textContent.split('').forEach((c) => {
-                  const s = document.createElement('span');
-                  s.style.display = 'inline-block';
-                  s.textContent = c === ' ' ? '\u00A0' : c;
-                  wrapper.appendChild(s);
-                  out.push(s);
-                });
-              }
-            });
-            n.replaceWith(wrapper);
-          }
-        });
-        return out;
-      };
-      chars = wrap(title);
-    }
+    // Skip SplitText for hero title — it breaks the .accent gradient span.
+    // Animate the whole title as one element instead.
+    chars = null;
 
     const tl = gsap.timeline({ defaults: { ease: 'expo.out' } });
     if (eyebrow) tl.fromTo(eyebrow, { y: 12, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6 });
-    if (chars && chars.length) tl.from(chars, { yPercent: 110, opacity: 0, duration: 1.0, stagger: 0.018 }, '-=0.2');
+    if (title)   tl.fromTo(title,   { y: 32, opacity: 0 }, { y: 0, opacity: 1, duration: 0.9 }, '-=0.2');
     if (sub) tl.fromTo(sub, { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7 }, 0.5);
     if (cta) tl.fromTo(cta.children, { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, stagger: 0.08 }, 0.8);
     if (hint) tl.to(hint, { opacity: 1, duration: 0.7 }, 1.2);
@@ -128,15 +92,17 @@ export function initReveals() {
     const text = stmt.textContent.trim();
     stmt.innerHTML = text.split(/\s+/).map((w) => `<span class="word">${w}</span>`).join(' ');
     const words = stmt.querySelectorAll('.word');
+
+    // All words fill together as the block scrolls into the centre of the viewport
     gsap.to(words, {
       opacity: 1,
       ease: 'none',
-      stagger: 1,
+      stagger: 0.08,          // tiny stagger — left to right, feels natural
       scrollTrigger: {
         trigger: stmt,
-        start: 'top 70%',
-        end: 'bottom 40%',
-        scrub: true,
+        start: 'center 65%',  // start filling when centre of text is 65% down
+        end: 'center 35%',    // fully white when centre reaches 35% (above mid)
+        scrub: 0.5,
       },
     });
   } else if (stmt && reduced) {
