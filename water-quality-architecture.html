@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Smart Water Quality Monitoring — AWS Architecture</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #f4f6f8; min-height: 100vh; }
+  .page { max-width: 1600px; margin: 0 auto; padding: 24px; }
+  .header { margin-bottom: 16px; }
+  .header h1 { font-size: 22px; font-weight: 700; color: #1a1a2e; }
+  .header p  { font-size: 13px; color: #6b7280; margin-top: 4px; }
+  .card { background: white; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); padding: 24px; }
+  svg { width: 100%; height: auto; display: block; }
+  @media print {
+    body { background: white; }
+    .card { box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="header">
+    <h1>Smart Water Quality Monitoring System</h1>
+    <p>AWS Reference Architecture &nbsp;·&nbsp; IoT + Automated Control + AI Chat &nbsp;·&nbsp; Built for Godspeed SOW</p>
+  </div>
+  <div class="card">
+<svg viewBox="0 0 1540 960" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI',Arial,sans-serif">
+<defs>
+  <marker id="arr"   markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3z" fill="#666"/></marker>
+  <marker id="arr-b" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3z" fill="#1a73e8"/></marker>
+  <marker id="arr-o" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3z" fill="#d2691e"/></marker>
+  <marker id="arr-g" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3z" fill="#1d8348"/></marker>
+  <marker id="arr-p" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3z" fill="#7d3c98"/></marker>
+  <marker id="arr-r" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3z" fill="#c0392b"/></marker>
+</defs>
+
+<!-- ═══════════════ EDGE LAYER ═══════════════ -->
+<rect x="8" y="55" width="148" height="230" rx="10" fill="#fafafa" stroke="#bbb" stroke-width="1.5" stroke-dasharray="6,3"/>
+<text x="82" y="47" text-anchor="middle" font-size="11" font-weight="700" fill="#555">Edge Layer</text>
+
+<!-- IoT Sensor -->
+<rect x="28" y="68" width="108" height="80" rx="8" fill="#fff3e0" stroke="#e8700a" stroke-width="1.5"/>
+<text x="82" y="95" text-anchor="middle" font-size="22">📡</text>
+<text x="82" y="115" text-anchor="middle" font-size="10" font-weight="600" fill="#333">IoT Sensor</text>
+<text x="82" y="128" text-anchor="middle" font-size="9" fill="#666">Chlorine / Flow</text>
+
+<!-- Arrow down -->
+<line x1="82" y1="150" x2="82" y2="168" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+
+<!-- ESP32 -->
+<rect x="28" y="170" width="108" height="80" rx="8" fill="#fff3e0" stroke="#e8700a" stroke-width="1.5"/>
+<text x="82" y="197" text-anchor="middle" font-size="22">🖥</text>
+<text x="82" y="217" text-anchor="middle" font-size="10" font-weight="600" fill="#333">ESP32</text>
+<text x="82" y="230" text-anchor="middle" font-size="9" fill="#666">Edge Device</text>
+
+<!-- ESP32 → IoT MQTT -->
+<path d="M138,210 Q165,170 210,130" fill="none" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+<text x="158" y="162" font-size="8" fill="#555" transform="rotate(-38,158,162)">MQTT/TLS</text>
+
+<!-- Dispenser command back (dashed orange) -->
+<path d="M210,155 Q175,195 138,230" fill="none" stroke="#d2691e" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arr-o)"/>
+<text x="150" y="212" font-size="8" fill="#d2691e" transform="rotate(38,150,212)">Cmd: Dispense</text>
+
+<!-- ═══════════════ AWS CLOUD BOUNDARY ═══════════════ -->
+<rect x="185" y="18" width="1340" height="922" rx="14" fill="#fafcff" stroke="#232f3e" stroke-width="2"/>
+<!-- AWS badge -->
+<rect x="197" y="10" width="120" height="20" rx="4" fill="#232f3e"/>
+<text x="257" y="24" text-anchor="middle" font-size="10" fill="white" font-weight="700">⬡ AWS Cloud</text>
+
+<!-- ── IoT Core group ── -->
+<rect x="205" y="42" width="260" height="320" rx="10" fill="#fff8f0" stroke="#e8700a" stroke-width="1.5"/>
+<text x="335" y="35" text-anchor="middle" font-size="11" font-weight="700" fill="#e8700a">AWS IoT Core</text>
+
+<!-- MQTT Broker -->
+<rect x="218" y="56" width="105" height="78" rx="8" fill="white" stroke="#e8700a" stroke-width="1"/>
+<text x="270" y="82" text-anchor="middle" font-size="24">📶</text>
+<text x="270" y="101" text-anchor="middle" font-size="9" font-weight="600" fill="#333">MQTT Broker</text>
+<text x="270" y="113" text-anchor="middle" font-size="8" fill="#666">AWS IoT Core</text>
+
+<!-- Device Shadow -->
+<rect x="342" y="56" width="105" height="78" rx="8" fill="white" stroke="#e8700a" stroke-width="1"/>
+<text x="394" y="82" text-anchor="middle" font-size="24">🔁</text>
+<text x="394" y="101" text-anchor="middle" font-size="9" font-weight="600" fill="#333">Device Shadow</text>
+<text x="394" y="113" text-anchor="middle" font-size="8" fill="#666">Bi-directional</text>
+
+<!-- Rules Engine -->
+<rect x="218" y="153" width="105" height="78" rx="8" fill="white" stroke="#e8700a" stroke-width="1"/>
+<text x="270" y="179" text-anchor="middle" font-size="24">⚡</text>
+<text x="270" y="198" text-anchor="middle" font-size="9" font-weight="600" fill="#333">Rules Engine</text>
+<text x="270" y="210" text-anchor="middle" font-size="8" fill="#666">SQL → SQS</text>
+
+<!-- IoT Policy -->
+<rect x="342" y="153" width="105" height="78" rx="8" fill="white" stroke="#e8700a" stroke-width="1"/>
+<text x="394" y="179" text-anchor="middle" font-size="24">🔒</text>
+<text x="394" y="198" text-anchor="middle" font-size="9" font-weight="600" fill="#333">IoT Policy</text>
+<text x="394" y="210" text-anchor="middle" font-size="8" fill="#666">mTLS / Cert</text>
+
+<!-- SQS -->
+<rect x="260" y="255" width="108" height="84" rx="8" fill="#ff9f43" stroke="#e8700a" stroke-width="1.5"/>
+<text x="314" y="284" text-anchor="middle" font-size="24" fill="white">⊞</text>
+<text x="314" y="305" text-anchor="middle" font-size="9" font-weight="600" fill="white">SQS Queue</text>
+<text x="314" y="318" text-anchor="middle" font-size="8" fill="#fff3e0">Telemetry Buffer</text>
+
+<!-- Rules → SQS arrow -->
+<line x1="270" y1="233" x2="300" y2="255" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+
+<!-- ── Observability ── -->
+<rect x="205" y="382" width="260" height="148" rx="10" fill="#eff6ff" stroke="#1a73e8" stroke-width="1.5"/>
+<text x="335" y="375" text-anchor="middle" font-size="11" font-weight="700" fill="#1a73e8">Observability</text>
+
+<rect x="218" y="394" width="108" height="78" rx="8" fill="white" stroke="#1a73e8" stroke-width="1"/>
+<text x="272" y="420" text-anchor="middle" font-size="24">👁</text>
+<text x="272" y="439" text-anchor="middle" font-size="9" font-weight="600" fill="#333">CloudWatch</text>
+<text x="272" y="451" text-anchor="middle" font-size="8" fill="#666">Queue Depth Alarm</text>
+
+<rect x="342" y="394" width="108" height="78" rx="8" fill="white" stroke="#1a73e8" stroke-width="1"/>
+<text x="396" y="420" text-anchor="middle" font-size="24">⤢</text>
+<text x="396" y="439" text-anchor="middle" font-size="9" font-weight="600" fill="#333">Auto Scaling</text>
+<text x="396" y="451" text-anchor="middle" font-size="8" fill="#666">ECS Service</text>
+
+<!-- CW → AutoScale arrow -->
+<line x1="328" y1="435" x2="342" y2="435" stroke="#1a73e8" stroke-width="1.5" marker-end="url(#arr-b)"/>
+<text x="260" y="488" font-size="8" fill="#1a73e8">Alarm triggers scaling</text>
+
+<!-- ── Config & Secrets ── -->
+<rect x="205" y="548" width="260" height="148" rx="10" fill="#f5f0ff" stroke="#7d3c98" stroke-width="1.5"/>
+<text x="335" y="541" text-anchor="middle" font-size="11" font-weight="700" fill="#7d3c98">Config &amp; Secrets</text>
+
+<rect x="218" y="560" width="108" height="78" rx="8" fill="white" stroke="#7d3c98" stroke-width="1"/>
+<text x="272" y="586" text-anchor="middle" font-size="24">⚙</text>
+<text x="272" y="605" text-anchor="middle" font-size="9" font-weight="600" fill="#333">SSM Param Store</text>
+<text x="272" y="617" text-anchor="middle" font-size="8" fill="#666">App Configuration</text>
+
+<rect x="342" y="560" width="108" height="78" rx="8" fill="white" stroke="#7d3c98" stroke-width="1"/>
+<text x="396" y="586" text-anchor="middle" font-size="24">🔑</text>
+<text x="396" y="605" text-anchor="middle" font-size="9" font-weight="600" fill="#333">Secrets Manager</text>
+<text x="396" y="617" text-anchor="middle" font-size="8" fill="#666">InfluxDB Tokens</text>
+
+<!-- ═══════════════ ECS FARGATE GROUP ═══════════════ -->
+<rect x="490" y="42" width="430" height="500" rx="10" fill="#fff8f0" stroke="#e8700a" stroke-width="2"/>
+<rect x="490" y="30" width="188" height="22" rx="5" fill="#e8700a"/>
+<text x="584" y="45" text-anchor="middle" font-size="10" fill="white" font-weight="700">ECS Fargate Services</text>
+
+<!-- Task 1: Ingest ETL -->
+<rect x="505" y="58" width="400" height="128" rx="8" fill="white" stroke="#f0a500" stroke-width="1.2"/>
+<rect x="505" y="58" width="8" height="128" rx="4" fill="#e8700a"/>
+<text x="530" y="78" font-size="11" font-weight="700" fill="#333">📥 Ingest / ETL Task</text>
+<text x="525" y="96"  font-size="9" fill="#555">• Reads from SQS telemetry buffer</text>
+<text x="525" y="111" font-size="9" fill="#555">• Parses and validates sensor payload</text>
+<text x="525" y="126" font-size="9" fill="#555">• Writes to DynamoDB (metadata) + InfluxDB (time-series)</text>
+<text x="525" y="141" font-size="9" fill="#555">• Deduplication, enrichment, backpressure handling</text>
+<text x="525" y="156" font-size="9" fill="#555">• Pulls runtime config from SSM Parameter Store</text>
+<text x="525" y="171" font-size="9" fill="#555">• InfluxDB token retrieved from Secrets Manager</text>
+
+<!-- Task 2: Anomaly / Control -->
+<rect x="505" y="204" width="400" height="148" rx="8" fill="white" stroke="#f0a500" stroke-width="1.2"/>
+<rect x="505" y="204" width="8" height="148" rx="4" fill="#c0392b"/>
+<text x="530" y="224" font-size="11" font-weight="700" fill="#333">⚠️ Anomaly / Control Task</text>
+<text x="525" y="242" font-size="9" fill="#555">• Polls InfluxDB for latest Cl readings per tank</text>
+<text x="525" y="257" font-size="9" fill="#555">• Compares reading against safe threshold (configurable via SSM)</text>
+<text x="525" y="272" font-size="9" fill="#555">• Calculates chlorine deficit → publishes command to IoT Device Shadow</text>
+<text x="525" y="287" font-size="9" fill="#555">• ESP32 receives shadow update → activates chlorine dispenser</text>
+<text x="525" y="302" font-size="9" fill="#555">• Triggers SNS alert if level breaches critical threshold</text>
+<text x="525" y="317" font-size="9" fill="#555">• ML-based adaptive threshold (future: Amazon SageMaker)</text>
+<text x="525" y="332" font-size="9" fill="#555">• Writes control event log back to DynamoDB</text>
+
+<!-- Task 3: API -->
+<rect x="505" y="370" width="400" height="148" rx="8" fill="white" stroke="#f0a500" stroke-width="1.2"/>
+<rect x="505" y="370" width="8" height="148" rx="4" fill="#1a73e8"/>
+<text x="530" y="390" font-size="11" font-weight="700" fill="#333">🌐 API Gateway Task (REST + GraphQL)</text>
+<text x="525" y="408" font-size="9" fill="#555">• Authenticated REST + GraphQL endpoints for Flutter client</text>
+<text x="525" y="423" font-size="9" fill="#555">• Role-based access control — users scoped to district / tank</text>
+<text x="525" y="438" font-size="9" fill="#555">• Queries InfluxDB for time-series charts and live readings</text>
+<text x="525" y="453" font-size="9" fill="#555">• Queries DynamoDB for tank metadata, alert history</text>
+<text x="525" y="468" font-size="9" fill="#555">• Resolves user → permitted tanks from DynamoDB RBAC table</text>
+<text x="525" y="483" font-size="9" fill="#555">• WebSocket support for real-time dashboard updates</text>
+<text x="525" y="498" font-size="9" fill="#555">• Rate-limited; fronted by AWS WAF</text>
+
+<!-- SQS → ECS Ingest -->
+<path d="M370,297 Q440,240 505,120" fill="none" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+<text x="400" y="230" font-size="8" fill="#555" transform="rotate(-50,400,230)">Consume</text>
+
+<!-- ECS Control → IoT Shadow (dispenser cmd) dashed orange -->
+<path d="M505,280 Q450,270 395,200" fill="none" stroke="#d2691e" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arr-o)"/>
+<text x="420" y="248" font-size="8" fill="#d2691e" transform="rotate(-18,420,248)">Shadow update</text>
+
+<!-- SQS → CloudWatch -->
+<path d="M314,340 L314,382" fill="none" stroke="#1a73e8" stroke-width="1.2" stroke-dasharray="4,2" marker-end="url(#arr-b)"/>
+<text x="318" y="368" font-size="8" fill="#1a73e8">Metrics</text>
+
+<!-- AutoScale → ECS (double headed suggestion) -->
+<path d="M450,435 Q480,435 505,278" fill="none" stroke="#1a73e8" stroke-width="1.2" stroke-dasharray="4,2" marker-end="url(#arr-b)"/>
+<text x="462" y="360" font-size="8" fill="#1a73e8" transform="rotate(-80,462,360)">Scale</text>
+
+<!-- SSM → ECS Tasks dashed purple -->
+<path d="M272,638 Q340,620 505,360" fill="none" stroke="#7d3c98" stroke-width="1" stroke-dasharray="4,2" marker-end="url(#arr-p)"/>
+<path d="M396,638 Q440,600 505,360" fill="none" stroke="#7d3c98" stroke-width="1" stroke-dasharray="4,2" marker-end="url(#arr-p)"/>
+
+<!-- ═══════════════ STORAGE GROUP ═══════════════ -->
+<rect x="490" y="564" width="430" height="165" rx="10" fill="#e8f8f0" stroke="#1d8348" stroke-width="1.5"/>
+<text x="705" y="557" text-anchor="middle" font-size="11" font-weight="700" fill="#1d8348">Storage Layer</text>
+
+<!-- DynamoDB -->
+<rect x="503" y="578" width="125" height="130" rx="8" fill="white" stroke="#1d8348" stroke-width="1"/>
+<text x="565" y="605" text-anchor="middle" font-size="26">⬡</text>
+<text x="565" y="627" text-anchor="middle" font-size="9" font-weight="600" fill="#333">DynamoDB</text>
+<text x="565" y="641" text-anchor="middle" font-size="8" fill="#666">Tank metadata</text>
+<text x="565" y="654" text-anchor="middle" font-size="8" fill="#666">District → Email map</text>
+<text x="565" y="667" text-anchor="middle" font-size="8" fill="#666">RBAC / User roles</text>
+<text x="565" y="680" text-anchor="middle" font-size="8" fill="#666">Control event log</text>
+<text x="565" y="693" text-anchor="middle" font-size="8" fill="#666">Alert history</text>
+
+<!-- InfluxDB -->
+<rect x="648" y="578" width="125" height="130" rx="8" fill="white" stroke="#1d8348" stroke-width="1"/>
+<text x="710" y="605" text-anchor="middle" font-size="26">📈</text>
+<text x="710" y="627" text-anchor="middle" font-size="9" font-weight="600" fill="#333">InfluxDB</text>
+<text x="710" y="641" text-anchor="middle" font-size="8" fill="#666">Timestream-compatible</text>
+<text x="710" y="654" text-anchor="middle" font-size="8" fill="#666">Cl readings (time-series)</text>
+<text x="710" y="667" text-anchor="middle" font-size="8" fill="#666">Flow &amp; sensor metrics</text>
+<text x="710" y="680" text-anchor="middle" font-size="8" fill="#666">Token: Secrets Manager</text>
+
+<!-- S3 -->
+<rect x="793" y="578" width="112" height="130" rx="8" fill="white" stroke="#1d8348" stroke-width="1"/>
+<text x="849" y="605" text-anchor="middle" font-size="26">🗃</text>
+<text x="849" y="627" text-anchor="middle" font-size="9" font-weight="600" fill="#333">S3</text>
+<text x="849" y="641" text-anchor="middle" font-size="8" fill="#666">Raw telemetry archive</text>
+<text x="849" y="654" text-anchor="middle" font-size="8" fill="#666">Compliance backup</text>
+<text x="849" y="667" text-anchor="middle" font-size="8" fill="#666">Replay / reprocessing</text>
+
+<!-- ECS Ingest → DynamoDB -->
+<line x1="565" y1="186" x2="565" y2="578" stroke="#1d8348" stroke-width="1.5" marker-end="url(#arr-g)"/>
+<!-- ECS Ingest → InfluxDB -->
+<line x1="710" y1="186" x2="710" y2="578" stroke="#1d8348" stroke-width="1.5" marker-end="url(#arr-g)"/>
+<!-- ECS Ingest → S3 -->
+<line x1="849" y1="186" x2="849" y2="578" stroke="#1d8348" stroke-width="1" stroke-dasharray="4,2" marker-end="url(#arr-g)"/>
+
+<!-- ECS API reads -->
+<path d="M710,518 L710,578" fill="none" stroke="#1a73e8" stroke-width="1.5" stroke-dasharray="4,2" marker-end="url(#arr-b)"/>
+<path d="M565,518 L565,578" fill="none" stroke="#1a73e8" stroke-width="1.5" stroke-dasharray="4,2" marker-end="url(#arr-b)"/>
+
+<!-- ═══════════════ NOTIFICATIONS ═══════════════ -->
+<rect x="490" y="754" width="430" height="140" rx="10" fill="#fdf2f2" stroke="#c0392b" stroke-width="1.5"/>
+<text x="705" y="747" text-anchor="middle" font-size="11" font-weight="700" fill="#c0392b">Notifications</text>
+
+<rect x="503" y="766" width="108" height="88" rx="8" fill="white" stroke="#c0392b" stroke-width="1"/>
+<text x="557" y="792" text-anchor="middle" font-size="24">🔔</text>
+<text x="557" y="812" text-anchor="middle" font-size="9" font-weight="600" fill="#333">SNS Topic</text>
+<text x="557" y="825" text-anchor="middle" font-size="8" fill="#666">Threshold breach alert</text>
+
+<rect x="633" y="766" width="108" height="88" rx="8" fill="white" stroke="#c0392b" stroke-width="1"/>
+<text x="687" y="792" text-anchor="middle" font-size="24" font-weight="700">λ</text>
+<text x="687" y="812" text-anchor="middle" font-size="9" font-weight="600" fill="#333">Lambda</text>
+<text x="687" y="825" text-anchor="middle" font-size="8" fill="#666">Email resolver</text>
+<text x="687" y="838" text-anchor="middle" font-size="8" fill="#666">(DynamoDB district lookup)</text>
+
+<rect x="763" y="766" width="142" height="88" rx="8" fill="white" stroke="#c0392b" stroke-width="1"/>
+<text x="834" y="792" text-anchor="middle" font-size="24">✉</text>
+<text x="834" y="812" text-anchor="middle" font-size="9" font-weight="600" fill="#333">SES / Email</text>
+<text x="834" y="825" text-anchor="middle" font-size="8" fill="#666">District email (from DynamoDB)</text>
+<text x="834" y="838" text-anchor="middle" font-size="8" fill="#666">No hardcoded recipients</text>
+
+<!-- SNS → Lambda -->
+<line x1="613" y1="810" x2="633" y2="810" stroke="#c0392b" stroke-width="1.5" marker-end="url(#arr-r)"/>
+<!-- Lambda → SES -->
+<line x1="743" y1="810" x2="763" y2="810" stroke="#c0392b" stroke-width="1.5" marker-end="url(#arr-r)"/>
+<!-- Lambda → DynamoDB lookup -->
+<path d="M687,766 Q600,720 565,710" fill="none" stroke="#c0392b" stroke-width="1" stroke-dasharray="3,2" marker-end="url(#arr-r)"/>
+<text x="602" y="730" font-size="8" fill="#c0392b">Email lookup</text>
+<!-- ECS Control → SNS -->
+<line x1="557" y1="518" x2="557" y2="766" stroke="#c0392b" stroke-width="1.5" marker-end="url(#arr-r)"/>
+<text x="562" y="645" font-size="8" fill="#c0392b">Alert</text>
+
+<!-- ═══════════════ AI CHAT LAYER ═══════════════ -->
+<rect x="950" y="42" width="420" height="330" rx="10" fill="#f5f0ff" stroke="#7d3c98" stroke-width="1.5"/>
+<text x="1160" y="35" text-anchor="middle" font-size="11" font-weight="700" fill="#7d3c98">AI Chat Layer</text>
+
+<rect x="963" y="56" width="108" height="88" rx="8" fill="white" stroke="#7d3c98" stroke-width="1"/>
+<text x="1017" y="82" text-anchor="middle" font-size="24">🤖</text>
+<text x="1017" y="102" text-anchor="middle" font-size="9" font-weight="600" fill="#333">Amazon Bedrock</text>
+<text x="1017" y="115" text-anchor="middle" font-size="8" fill="#666">Claude / Titan LLM</text>
+
+<rect x="1093" y="56" width="108" height="88" rx="8" fill="white" stroke="#7d3c98" stroke-width="1"/>
+<text x="1147" y="82" text-anchor="middle" font-size="24" font-weight="700">λ</text>
+<text x="1147" y="102" text-anchor="middle" font-size="9" font-weight="600" fill="#333">Lambda</text>
+<text x="1147" y="115" text-anchor="middle" font-size="8" fill="#666">Query + RBAC enforcer</text>
+
+<rect x="1223" y="56" width="108" height="88" rx="8" fill="white" stroke="#7d3c98" stroke-width="1"/>
+<text x="1277" y="82" text-anchor="middle" font-size="24">👤</text>
+<text x="1277" y="102" text-anchor="middle" font-size="9" font-weight="600" fill="#333">Cognito</text>
+<text x="1277" y="115" text-anchor="middle" font-size="8" fill="#666">JWT / User roles</text>
+
+<!-- AI flow box -->
+<rect x="963" y="162" width="392" height="192" rx="8" fill="white" stroke="#c9a0f5" stroke-width="1"/>
+<text x="980" y="183" font-size="10" font-weight="700" fill="#7d3c98">AI Chat Flow (Role-Scoped):</text>
+<text x="980" y="202" font-size="9" fill="#555">1. User asks: "Is Tank 3 safe today?"</text>
+<text x="980" y="219" font-size="9" fill="#555">2. Flutter sends JWT to API Gateway → Lambda validates token</text>
+<text x="980" y="236" font-size="9" fill="#555">3. Cognito JWT carries district + tank-access roles</text>
+<text x="980" y="253" font-size="9" fill="#555">4. Lambda queries DynamoDB → fetches only permitted tank data</text>
+<text x="980" y="270" font-size="9" fill="#555">5. Lambda calls Bedrock with scoped data as context</text>
+<text x="980" y="287" font-size="9" fill="#555">6. Bedrock generates natural-language answer</text>
+<text x="980" y="304" font-size="9" fill="#555">7. Response returned — user never sees other districts' data</text>
+<text x="980" y="321" font-size="9" fill="#555">8. Full audit trail logged in DynamoDB</text>
+<text x="980" y="338" font-size="9" fill="#555">9. Supports: status queries, trend analysis, alert history, advice</text>
+
+<!-- Bedrock ↔ Lambda -->
+<line x1="1093" y1="100" x2="1071" y2="100" stroke="#7d3c98" stroke-width="1.5" marker-end="url(#arr-p)"/>
+
+<!-- ═══════════════ CLIENT ═══════════════ -->
+<rect x="950" y="394" width="420" height="250" rx="10" fill="#eff6ff" stroke="#1a73e8" stroke-width="1.5"/>
+<text x="1160" y="387" text-anchor="middle" font-size="11" font-weight="700" fill="#1a73e8">Client (Flutter — Mobile + Web)</text>
+
+<rect x="963" y="406" width="108" height="88" rx="8" fill="white" stroke="#1a73e8" stroke-width="1"/>
+<text x="1017" y="432" text-anchor="middle" font-size="24">📱</text>
+<text x="1017" y="452" text-anchor="middle" font-size="9" font-weight="600" fill="#333">Flutter App</text>
+<text x="1017" y="465" text-anchor="middle" font-size="8" fill="#666">iOS / Android / Web</text>
+
+<!-- Feature list -->
+<rect x="1093" y="406" width="262" height="228" rx="8" fill="white" stroke="#a8d4f5" stroke-width="1"/>
+<text x="1110" y="426" font-size="10" font-weight="700" fill="#1a73e8">App Features:</text>
+<text x="1110" y="444" font-size="9" fill="#555">• Live tank chlorine dashboard</text>
+<text x="1110" y="460" font-size="9" fill="#555">• Historical trend charts (InfluxDB)</text>
+<text x="1110" y="476" font-size="9" fill="#555">• AI chat — "Is tank 3 safe?"</text>
+<text x="1110" y="492" font-size="9" fill="#555">• Role-scoped multi-tank view</text>
+<text x="1110" y="508" font-size="9" fill="#555">• Push + email alert history</text>
+<text x="1110" y="524" font-size="9" fill="#555">• Dispenser status &amp; manual override</text>
+<text x="1110" y="540" font-size="9" fill="#555">• District-level reporting</text>
+<text x="1110" y="556" font-size="9" fill="#555">• Download / export reports</text>
+<text x="1110" y="572" font-size="9" fill="#555">• Alert threshold configuration</text>
+<text x="1110" y="588" font-size="9" fill="#555">• Offline sync (cached readings)</text>
+<text x="1110" y="604" font-size="9" fill="#555">• Cognito login (MFA supported)</text>
+<text x="1110" y="620" font-size="9" fill="#555">• WebSocket real-time updates</text>
+
+<!-- Flutter → ECS API -->
+<path d="M963,455 Q920,455 905,455" fill="none" stroke="#1a73e8" stroke-width="1.5" marker-end="url(#arr-b)"/>
+<text x="910" y="448" font-size="8" fill="#1a73e8">REST/GraphQL</text>
+
+<!-- Flutter → AI API -->
+<path d="M1017,394 L1017,162" fill="none" stroke="#7d3c98" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arr-p)"/>
+<text x="1022" y="285" font-size="8" fill="#7d3c98">AI chat query</text>
+
+<!-- Lambda AI → DynamoDB -->
+<path d="M1147,162 Q1000,750 700,680" fill="none" stroke="#7d3c98" stroke-width="1" stroke-dasharray="4,2" marker-end="url(#arr-p)"/>
+<text x="960" y="620" font-size="8" fill="#7d3c98">RBAC lookup</text>
+
+<!-- ECS API → Flutter (data response) -->
+<path d="M905,445 Q928,500 963,500" fill="none" stroke="#1a73e8" stroke-width="1" stroke-dasharray="3,2" marker-end="url(#arr-b)"/>
+
+<!-- ═══════════════ LEGEND ═══════════════ -->
+<rect x="950" y="664" width="420" height="218" rx="10" fill="#fafafa" stroke="#ddd" stroke-width="1"/>
+<text x="970" y="686" font-size="11" font-weight="700" fill="#333">Legend</text>
+
+<line x1="970" y1="706" x2="1005" y2="706" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+<text x="1013" y="710" font-size="9" fill="#555">MQTT / SQS telemetry</text>
+
+<line x1="970" y1="726" x2="1005" y2="726" stroke="#1a73e8" stroke-width="1.5" marker-end="url(#arr-b)"/>
+<text x="1013" y="730" font-size="9" fill="#555">API / query (read)</text>
+
+<line x1="970" y1="746" x2="1005" y2="746" stroke="#d2691e" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arr-o)"/>
+<text x="1013" y="750" font-size="9" fill="#555">Dispenser command (bi-directional)</text>
+
+<line x1="970" y1="766" x2="1005" y2="766" stroke="#1d8348" stroke-width="1.5" marker-end="url(#arr-g)"/>
+<text x="1013" y="770" font-size="9" fill="#555">Write / store data</text>
+
+<line x1="970" y1="786" x2="1005" y2="786" stroke="#7d3c98" stroke-width="1.5" marker-end="url(#arr-p)"/>
+<text x="1013" y="790" font-size="9" fill="#555">AI inference / role-scoped query</text>
+
+<line x1="970" y1="806" x2="1005" y2="806" stroke="#c0392b" stroke-width="1.5" marker-end="url(#arr-r)"/>
+<text x="1013" y="810" font-size="9" fill="#555">Alert / notification</text>
+
+<line x1="970" y1="826" x2="1005" y2="826" stroke="#555" stroke-width="1" stroke-dasharray="4,2"/>
+<text x="1013" y="830" font-size="9" fill="#555">Config / credentials pull (dashed)</text>
+
+<text x="970" y="862" font-size="9" fill="#888">v1.0 — Smart Water Quality Monitoring · AWS Architecture · May 2026</text>
+</svg>
+  </div>
+</div>
+</body>
+</html>
