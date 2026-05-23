@@ -1,5 +1,5 @@
 // ============================================
-// WAL & AL - Interactive Behaviors
+// WAL & AL - Interactive Behaviors - initial design for the web application
 // ============================================
 
 // Mobile Navigation Toggle
