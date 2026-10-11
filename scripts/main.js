@@ -5,7 +5,7 @@ import { initNav } from './nav.js';
 import { initHeroWebGL } from './hero-webgl.js';
 import { initReveals } from './reveals.js';
 import { initCounters } from './counters.js';
-import { initSystemsPin } from './systems-pin.js';
+import { initAquaDemo } from './aqua-demo.js';
 import { initTilt } from './tilt.js';
 import { initMarquee } from './marquee.js';
 import { initForm } from './form.js';
@@ -27,7 +27,7 @@ onReady(async () => {
 
   // Reveal/scroll bound — needs GSAP + Lenis already running
   initReveals();
-  initSystemsPin();
+  initAquaDemo();
 
   // WebGL hero — defer to keep first paint snappy
   const start = () => initHeroWebGL();

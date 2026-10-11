@@ -1,84 +1,48 @@
-/* Fix header alignment - remove double padding */
-.domains .section__header.container {
-  padding-inline: 0;
-}
-
-/* Fix domains__grid container padding */
-.domains__grid.container {
-  padding-inline: 0;
-}
-
+/* ============== DOMAINS · WATER AIR LAND ============== */
 .domains__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
 }
-.domain-card {
+.realm {
   position: relative;
-  padding: 32px;
-  border-radius: var(--radius);
-  background: var(--bg-elev-1);
-  border: 1px solid var(--hairline);
-  transition: transform 0.5s var(--ease-out-expo),
-              border-color 0.5s var(--ease-out-expo),
-              background 0.5s var(--ease-out-expo);
-  transform-style: preserve-3d;
-  will-change: transform;
   overflow: hidden;
+  padding: 36px 30px 32px;
+  border-radius: calc(var(--radius) + 6px);
+  background: linear-gradient(180deg, var(--bg-elev-1), var(--bg));
+  border: 1px solid var(--hairline);
+  min-height: 460px;
+  display: flex; flex-direction: column; gap: 22px;
+  transition: border-color .5s var(--ease-out-expo);
 }
-.domain-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(20,224,213,0.08), transparent 40%);
-  opacity: 0;
-  transition: opacity 0.5s ease;
+.realm:hover { border-color: rgba(20, 224, 213, 0.35); }
+.realm__letter {
+  position: absolute; right: -12px; bottom: -48px;
+  font-family: var(--font-sans); font-weight: 900;
+  font-size: 15rem; line-height: 1; letter-spacing: -0.06em;
+  color: transparent; -webkit-text-stroke: 1px rgba(20, 224, 213, 0.18);
+  transition: -webkit-text-stroke-color .6s, transform .8s var(--ease-out-expo);
   pointer-events: none;
 }
-.domain-card:hover { transform: translateY(-8px); border-color: rgba(20,224,213,0.4); }
-.domain-card:hover::before { opacity: 1; }
-.domain-card:hover .domain-card__glyph svg { transform: rotate(12deg); }
+.realm:hover .realm__letter { -webkit-text-stroke-color: rgba(20, 224, 213, 0.45); transform: translateY(-10px); }
+.realm__name { color: var(--teal) !important; }
+.realm__system { position: relative; }
+.realm__system h3 {
+  font-size: 1.35rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px;
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+}
+.realm__system p { color: var(--text-muted); line-height: 1.55; font-size: 0.95rem; max-width: 34ch; }
+.realm__list { list-style: none; display: flex; flex-direction: column; gap: 8px; position: relative; }
+.realm__list li { color: var(--text-muted); font-size: 0.9rem; padding-left: 18px; position: relative; }
+.realm__list li::before { content: ''; position: absolute; left: 0; top: 0.6em; width: 8px; height: 1px; background: var(--teal); }
 
-.domain-card--highlight {
-  border: 1px solid transparent;
-  background:
-    linear-gradient(var(--bg-elev-1), var(--bg-elev-1)) padding-box,
-    var(--gradient-brand) border-box;
-  box-shadow: 0 20px 60px -20px rgba(20,224,213,0.25);
+.tag {
+  font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase;
+  padding: 4px 9px; border-radius: 999px;
 }
+.tag--live { color: var(--bg); background: var(--teal); }
 
-.domain-card__glyph {
-  width: 60px; height: 60px;
-  margin-bottom: 24px;
-  color: var(--teal);
-}
-.domain-card__glyph svg {
-  transition: transform 0.6s var(--ease-out-expo);
-  will-change: transform;
-}
-.domain-card__glyph .draw {
-  stroke-dasharray: 200;
-  stroke-dashoffset: 200;
-  transition: stroke-dashoffset 1.4s var(--ease-out-expo);
-}
-.domain-card.is-in .domain-card__glyph .draw { stroke-dashoffset: 0; }
-
-.domain-card__tag {
-  color: var(--teal) !important;
-  font-size: 0.6875rem;
-  margin-bottom: 14px;
-}
-.domain-card__title {
-  font-family: var(--font-sans);
-  font-size: 1.5rem;
-  font-weight: 800;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--text);
-  margin-bottom: 14px;
-}
-.domain-card__body {
-  color: var(--text-muted);
-  line-height: 1.55;
-  font-size: 0.9375rem;
+@media (max-width: 1000px) {
+  .domains__grid { grid-template-columns: 1fr; }
+  .realm { min-height: 0; }
 }

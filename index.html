@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#07090F" />
 
   <title>WAL &amp; AL — Engineering precision for a regenerative planet.</title>
-  <meta name="description" content="WAL &amp; AL is a deep-tech engineering studio architecting cloud-native platforms, autonomous robotics, and intelligent sensing systems for water, air, and land." />
+  <meta name="description" content="WAL &amp; AL is a deep-tech engineering studio building intelligent systems for water, air and land, including Aqua Insight, real-time drinking-water monitoring with automatic chlorination." />
 
   <link rel="canonical" href="https://walandal.com/" />
 
@@ -41,10 +41,11 @@
   <link rel="stylesheet" href="/styles/nav.css" />
   <link rel="stylesheet" href="/styles/hero.css" />
   <link rel="stylesheet" href="/styles/sections.css" />
+  <link rel="stylesheet" href="/styles/work.css" />
+  <link rel="stylesheet" href="/styles/platform.css" />
   <link rel="stylesheet" href="/styles/domains.css" />
-  <link rel="stylesheet" href="/styles/systems.css" />
   <link rel="stylesheet" href="/styles/capabilities.css" />
-  <link rel="stylesheet" href="/styles/founder.css" />
+  <link rel="stylesheet" href="/styles/team.css" />
   <link rel="stylesheet" href="/styles/contact.css" />
   <link rel="stylesheet" href="/styles/footer.css" />
 
@@ -106,10 +107,11 @@
       </a>
 
       <nav class="nav__links" aria-label="Primary">
-        <a href="#domains"      data-index="01" data-label="Domains"><span>Domains</span></a>
-        <a href="#systems"      data-index="02" data-label="Systems"><span>Systems</span></a>
-        <a href="#capabilities" data-index="03" data-label="Capabilities"><span>Capabilities</span></a>
-        <a href="#founder"      data-index="04" data-label="Team"><span>Team</span></a>
+        <a href="#work"         data-index="01" data-label="Work"><span>Work</span></a>
+        <a href="#platform"     data-index="02" data-label="Platform"><span>Platform</span></a>
+        <a href="#domains"      data-index="03" data-label="Domains"><span>Domains</span></a>
+        <a href="#capabilities" data-index="04" data-label="Capabilities"><span>Capabilities</span></a>
+        <a href="#team"         data-index="05" data-label="Team"><span>Team</span></a>
       </nav>
 
 
@@ -132,10 +134,11 @@
   <!-- Mobile menu -->
   <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
     <nav>
+      <a href="#work">Work</a>
+      <a href="#platform">Platform</a>
       <a href="#domains">Domains</a>
-      <a href="#systems">Systems</a>
       <a href="#capabilities">Capabilities</a>
-      <a href="#founder">Team</a>
+      <a href="#team">Team</a>
       <a href="#contact" class="mobile-menu__cta">Start a Project →</a>
     </nav>
   </div>
@@ -166,8 +169,8 @@
             Start a Project
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </a>
-          <a href="#systems" class="btn btn--ghost" data-magnetic>
-            See Our Systems
+          <a href="#work" class="btn btn--ghost" data-magnetic>
+            See Our Work
           </a>
         </div>
       </div>
@@ -209,386 +212,393 @@
       </div>
     </section>
 
-    <!-- ============== DOMAINS ============== -->
+    <!-- ============== WORK · AQUA INSIGHT ============== -->
+    <section id="work" class="section work">
+      <header class="section__header container work__header">
+        <div>
+          <p class="mono section__eyebrow">01 / FLAGSHIP</p>
+          <h2 class="section__title reveal-lines">Aqua Insight.</h2>
+          <p class="work__tagline reveal"><span class="accent">Ensuring trust in every drop.</span></p>
+        </div>
+        <p class="section__desc reveal">
+          Millions of people in rural India drink from overhead tanks and borewells, where manual chlorination either under-doses or over-doses and nobody sees the problem until people fall ill. Aqua Insight puts a solar-powered sensor kit on every tank, doses chlorine automatically, and gives owners, operators and authorities one live picture of water they can trust.
+        </p>
+      </header>
+
+      <div class="work__grid container">
+        <!-- Live product mock-up -->
+        <div class="work__device reveal" aria-label="Aqua Insight mobile app preview">
+          <div class="device">
+            <div class="device__notch"></div>
+            <div class="device__screen" id="aqua-demo">
+              <div class="app-top">
+                <div>
+                  <p class="app-eyebrow">FIELD OPERATOR · 5 TANKS</p>
+                  <p class="app-title">My tanks</p>
+                </div>
+                <span class="app-live"><i></i>LIVE</span>
+              </div>
+
+              <div class="app-hero">
+                <svg class="app-ring" viewBox="0 0 80 80" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0" stop-color="#5EEAD4"/><stop offset="1" stop-color="#22D3EE"/>
+                    </linearGradient>
+                  </defs>
+                  <circle cx="40" cy="40" r="32" class="app-ring__track"/>
+                  <circle cx="40" cy="40" r="32" class="app-ring__value" id="demo-ring"/>
+                  <text x="40" y="42" text-anchor="middle" class="app-ring__num" id="demo-wqi">91</text>
+                  <text x="40" y="54" text-anchor="middle" class="app-ring__lbl">WQI</text>
+                </svg>
+                <div class="app-hero__text">
+                  <p class="app-eyebrow">WATER QUALITY</p>
+                  <p class="app-grade" id="demo-grade">Excellent</p>
+                  <p class="app-muted">Average across 5 tanks</p>
+                </div>
+              </div>
+
+              <div class="app-card app-card--crit" data-tank="crit">
+                <div class="app-card__head">
+                  <span class="app-bar app-bar--crit"></span>
+                  <div><p class="app-id">KRR-THN-02</p><p class="app-muted">Colony RO tank · Thanthoni</p></div>
+                  <span class="app-pill app-pill--crit">Critical</span>
+                </div>
+                <div class="app-metrics">
+                  <div><span>pH</span><b data-m="ph">7.08</b></div>
+                  <div class="is-crit"><span>Cl mg/L</span><b data-m="cl">0.14</b></div>
+                  <div><span>TDS</span><b data-m="tds">428</b></div>
+                  <div><span>NTU</span><b data-m="ntu">0.66</b></div>
+                </div>
+                <p class="app-dose"><i></i>Auto-dose sent · <code>Dispense Cl</code></p>
+              </div>
+
+              <div class="app-card" data-tank="ok">
+                <div class="app-card__head">
+                  <span class="app-bar app-bar--ok"></span>
+                  <div><p class="app-id">KRR-KAP-01</p><p class="app-muted">Ward 3 overhead tank · K.A-P</p></div>
+                  <span class="app-pill app-pill--ok">Optimal</span>
+                </div>
+                <div class="app-metrics">
+                  <div><span>pH</span><b data-m="ph">7.42</b></div>
+                  <div><span>Cl mg/L</span><b data-m="cl">0.68</b></div>
+                  <div><span>TDS</span><b data-m="tds">312</b></div>
+                  <div><span>NTU</span><b data-m="ntu">0.42</b></div>
+                </div>
+                <p class="app-predict">Predicted · chlorine below 0.2 mg/L in ~1h 30m</p>
+              </div>
+
+              <div class="app-nav" aria-hidden="true">
+                <span class="is-on"></span><span></span><span></span><span></span><span></span>
+              </div>
+            </div>
+          </div>
+          <p class="work__device-note mono">Live demo data · Android &amp; iOS app</p>
+        </div>
+
+        <!-- Feature list -->
+        <div class="work__features reveal-stagger">
+          <article class="feature">
+            <span class="feature__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/><path d="M8 14h2l1-2 2 4 1-2h2"/></svg></span>
+            <div><h3>Real-time water quality</h3><p>Free chlorine, pH, TDS, turbidity and tank level, streamed from every tank and checked against drinking-water limits as it arrives.</p></div>
+          </article>
+          <article class="feature">
+            <span class="feature__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 3h6M10 3v5l-5 9a2 2 0 0 0 1.7 3h10.6a2 2 0 0 0 1.7-3l-5-9V3"/><path d="M7.5 14h9"/></svg></span>
+            <div><h3>Closed-loop chlorine dosing</h3><p>When residual chlorine drops, the cloud sends a dose command straight back to the tank. Operators can switch to manual and dose on demand.</p></div>
+          </article>
+          <article class="feature">
+            <span class="feature__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 17l5-5 4 3 8-8"/><path d="M15 7h5v5"/></svg></span>
+            <div><h3>Predictive alerts</h3><p>Trend analysis warns before a limit is crossed, so a low-chlorine tank gets attention hours before it becomes unsafe.</p></div>
+          </article>
+          <article class="feature">
+            <span class="feature__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg></span>
+            <div><h3>One score: Water Quality Index</h3><p>A 0–100 score for every tank, village and district that anyone can read at a glance, from a resident to a district officer.</p></div>
+          </article>
+          <article class="feature">
+            <span class="feature__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/></svg></span>
+            <div><h3>Compliance, ready to share</h3><p>IS&nbsp;10500 compliance by village, incidents and response times, exported as a PDF report for audits and review meetings.</p></div>
+          </article>
+          <article class="feature">
+            <span class="feature__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M15 14.5c2.8.3 5 2.5 5 5.5"/></svg></span>
+            <div><h3>Built for everyone on the chain</h3><p>Owners, field operators and district authorities each see what they need, and residents get a plain-language “Is the water safe?” card.</p></div>
+          </article>
+        </div>
+      </div>
+
+      <ul class="work__chips container reveal" aria-label="Product facts">
+        <li>Solar-powered ESP32 sensor kits</li>
+        <li>AWS IoT · hosted in India</li>
+        <li>Mobile app for Android &amp; iOS</li>
+        <li>DPDP-ready privacy &amp; security</li>
+        <li>Water level &amp; supply tracking</li>
+      </ul>
+    </section>
+
+    <!-- ============== PLATFORM · HOW IT WORKS ============== -->
+    <section id="platform" class="section platform">
+      <header class="section__header container">
+        <p class="mono section__eyebrow">02 / HOW IT WORKS</p>
+        <h2 class="section__title reveal-lines">From sensor to decision, in one loop.</h2>
+        <p class="section__desc reveal">
+          Every reading travels the same hardened path: measured at the tank, secured in flight, checked in the cloud, and acted on, either by people through the app or by the tank itself through the doser.
+        </p>
+      </header>
+
+      <div class="pipeline container reveal" id="pipeline">
+        <svg class="pipeline__wire" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="wireGrad" x1="0" x2="1">
+              <stop offset="0" stop-color="#14E0D5" stop-opacity="0.35"/>
+              <stop offset="0.5" stop-color="#14E0D5" stop-opacity="0.8"/>
+              <stop offset="1" stop-color="#8BD17C" stop-opacity="0.35"/>
+            </linearGradient>
+          </defs>
+          <path class="pipeline__line" d="M60 60 H1140"/>
+          <path class="pipeline__loop" d="M1040 52 C 1040 4, 160 4, 160 52"/>
+          <circle class="pipeline__pulse" r="4"><animateMotion dur="5s" repeatCount="indefinite" path="M60 60 H1140"/></circle>
+          <circle class="pipeline__pulse pipeline__pulse--b" r="4"><animateMotion dur="5s" begin="2.5s" repeatCount="indefinite" path="M60 60 H1140"/></circle>
+          <circle class="pipeline__return" r="3.5"><animateMotion dur="5s" begin="1s" repeatCount="indefinite" path="M1040 52 C 1040 4, 160 4, 160 52"/></circle>
+        </svg>
+
+        <ol class="pipeline__steps">
+          <li class="step">
+            <span class="step__num mono">01</span>
+            <h3>Sense</h3>
+            <p>Solar ESP32 kit on the tank: chlorine, pH, TDS, turbidity, level, and a chlorine doser.</p>
+          </li>
+          <li class="step">
+            <span class="step__num mono">02</span>
+            <h3>Connect</h3>
+            <p>MQTT over TLS into AWS IoT Core, with a certificate for each device.</p>
+          </li>
+          <li class="step">
+            <span class="step__num mono">03</span>
+            <h3>Buffer</h3>
+            <p>IoT rules route every message into a durable queue, so no reading is lost.</p>
+          </li>
+          <li class="step">
+            <span class="step__num mono">04</span>
+            <h3>Process</h3>
+            <p>Containers validate, store and evaluate each reading against safe limits.</p>
+          </li>
+          <li class="step">
+            <span class="step__num mono">05</span>
+            <h3>Remember</h3>
+            <p>A time-series database keeps every tank's history for trends and audits.</p>
+          </li>
+          <li class="step">
+            <span class="step__num mono">06</span>
+            <h3>Act</h3>
+            <p>Alerts, the mobile app, and reports, plus a dose command back to the tank.</p>
+          </li>
+        </ol>
+        <p class="pipeline__legend mono"><i></i> Telemetry &nbsp;&nbsp; <i class="is-loop"></i> Closed-loop dosing command</p>
+      </div>
+    </section>
+
+    <!-- ============== DOMAINS · WATER AIR LAND ============== -->
     <section id="domains" class="section domains">
       <header class="section__header container">
-        <p class="mono section__eyebrow">01 / FRAMEWORK</p>
-        <h2 class="section__title reveal-lines">The WAL &amp; AL framework.</h2>
+        <p class="mono section__eyebrow">03 / DOMAINS</p>
+        <h2 class="section__title reveal-lines">Water. Air. Land.</h2>
         <p class="section__desc reveal">
-          Systems engineered to outlast the problems they solve. Precision at scale, autonomy in execution, coherence across layers — building infrastructure that endures.
+          One engineering approach, three resource systems. The same sensing, cloud and autonomy stack that runs Aqua Insight carries over to the air we breathe and the land we work.
         </p>
-
       </header>
 
       <div class="domains__grid container reveal-stagger">
-        <article class="domain-card" data-tilt>
-          <div class="domain-card__glyph">
-            <svg viewBox="0 0 60 60" width="60" height="60" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
-              <path d="M30 10 L50 50" class="draw" />
-              <path d="M30 10 L10 50" class="draw" />
-              <path d="M10 50 L50 50 L30 10 Z" class="draw" />
-              <path d="M30 25 L40 45" class="draw" />
-              <path d="M30 25 L20 45" class="draw" />
-              <path d="M20 45 L40 45 L30 25 Z" class="draw" />
-              <circle cx="30" cy="10" r="2" class="draw" />
-            </svg>
+        <article class="realm" data-tilt>
+          <span class="realm__letter" aria-hidden="true">W</span>
+          <p class="realm__name mono">WATER</p>
+          <div class="realm__system">
+            <h3>Aqua Insight <span class="tag tag--live">Flagship</span></h3>
+            <p>Drinking-water intelligence for overhead tanks and local distribution: live quality, automatic chlorination, compliance.</p>
           </div>
-          <p class="domain-card__tag mono">SYSTEMS DESIGN</p>
-          <h3 class="domain-card__title">Precision</h3>
-          <p class="domain-card__body">Architecting systems with exacting specifications — every component calibrated, every interface optimized, every signal clean. We build with micrometer precision and industrial-grade reliability.</p>
+          <div class="realm__system">
+            <h3>Marine Observation</h3>
+            <p>Autonomous surface vessels that sample lakes, rivers and coastal waters for TDS, pH and turbidity where fixed sensors can't go.</p>
+          </div>
         </article>
 
-        <article class="domain-card" data-tilt>
-          <div class="domain-card__glyph">
-            <svg viewBox="0 0 60 60" width="60" height="60" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
-              <circle cx="30" cy="30" r="10" class="draw" />
-              <path d="M30 20 L30 10" class="draw" />
-              <path d="M30 40 L30 50" class="draw" />
-              <path d="M20 30 L10 30" class="draw" />
-              <path d="M40 30 L50 30" class="draw" />
-              <path d="M22 22 L14 14" class="draw" />
-              <path d="M38 38 L46 46" class="draw" />
-              <path d="M22 38 L14 46" class="draw" />
-              <path d="M38 22 L46 14" class="draw" />
-            </svg>
+        <article class="realm" data-tilt>
+          <span class="realm__letter" aria-hidden="true">A</span>
+          <p class="realm__name mono">AIR</p>
+          <div class="realm__system">
+            <h3>Industrial Emission Monitoring</h3>
+            <p>Sensor networks around industrial sites and corridors measuring gases, particulates and carbon indicators.</p>
           </div>
-          <p class="domain-card__tag mono">ROS / ROS 2</p>
-          <h3 class="domain-card__title">Fleet</h3>
-          <p class="domain-card__body">Autonomous robotic systems built on ROS and ROS 2, connected to modern cloud infrastructure. We enable fleets of robots to operate independently, share telemetry, and scale from single units to coordinated swarms.</p>
+          <ul class="realm__list">
+            <li>Boundary and zone assessment</li>
+            <li>Trend analytics for compliance and community health</li>
+            <li>Reporting and APIs for regulators</li>
+          </ul>
         </article>
 
-        <article class="domain-card" data-tilt>
-          <div class="domain-card__glyph">
-            <svg viewBox="0 0 60 60" width="60" height="60" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
-              <path d="M10 30 L50 30" class="draw" />
-              <path d="M10 20 L50 20" class="draw" />
-              <path d="M10 40 L50 40" class="draw" />
-              <path d="M20 10 L20 50" class="draw" />
-              <path d="M40 10 L40 50" class="draw" />
-              <circle cx="20" cy="20" r="2" class="draw" />
-              <circle cx="40" cy="20" r="2" class="draw" />
-              <circle cx="20" cy="40" r="2" class="draw" />
-              <circle cx="40" cy="40" r="2" class="draw" />
-            </svg>
+        <article class="realm" data-tilt>
+          <span class="realm__letter" aria-hidden="true">L</span>
+          <p class="realm__name mono">LAND</p>
+          <div class="realm__system">
+            <h3>Fleet &amp; Cloud</h3>
+            <p>An integration layer that connects ROS and ROS&nbsp;2 robots to the cloud, from a single unit to a coordinated fleet.</p>
           </div>
-          <p class="domain-card__tag mono">CLOUD-NATIVE</p>
-          <h3 class="domain-card__title">Fabric</h3>
-          <p class="domain-card__body">Unified data layers that maintain integrity across distributed systems. We weave together disparate data sources into a single, consistent view — so every decision is based on truth, not approximation.</p>
-        </article>
-
-        <article class="domain-card domain-card--highlight" data-tilt>
-          <div class="domain-card__glyph">
-            <svg viewBox="0 0 60 60" width="60" height="60" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
-              <path d="M10 30 L50 30" class="draw" />
-              <path d="M30 10 L30 50" class="draw" />
-              <path d="M18 18 L42 42" class="draw" />
-              <path d="M42 18 L18 42" class="draw" />
-              <circle cx="30" cy="30" r="6" class="draw" />
-            </svg>
-          </div>
-          <p class="domain-card__tag mono">FULL SPECTRUM</p>
-          <h3 class="domain-card__title">Scale</h3>
-          <p class="domain-card__body">Infrastructure that grows with ambition — from single-node deployments to continent-spanning networks. We design for exponential growth, ensuring your systems scale without compromise or re-architecture.</p>
+          <ul class="realm__list">
+            <li>Telemetry, logging and health monitoring</li>
+            <li>Bridges between ROS topics and cloud services</li>
+            <li>Remote operations and digital-twin analysis</li>
+          </ul>
         </article>
       </div>
     </section>
 
-    <!-- ============== SYSTEMS (pinned horizontal) ============== -->
-    <section id="systems" class="section systems">
-      <header class="section__header container">
-        <p class="mono section__eyebrow">02 / WHAT WE BUILD</p>
-        <h2 class="section__title reveal-lines">Systems engineered for the field.</h2>
-      </header>
-
-      <div class="systems__pin" id="systems-pin">
-        <div class="systems__track" id="systems-track">
-
-          <article class="system-card">
-            <div class="system-card__text">
-              <p class="mono system-card__tag">CLOUD-NATIVE</p>
-              <h3 class="system-card__title">Aqua Insight</h3>
-              <p class="system-card__subtitle">Drinking Water Intelligence</p>
-              <p class="system-card__body">A monitoring and insight layer for drinking water networks. Continuous, real-time visibility into water quality and availability — from overhead tanks to the last mile of local distribution.</p>
-              <ul class="system-card__specs">
-                <li>Real-time chlorine, pH, turbidity, TDS, level</li>
-                <li>Automated alerting for risk and non-compliance zones</li>
-                <li>Dashboards for operations, maintenance, planning</li>
-              </ul>
-            </div>
-            <div class="system-card__visual visual-aqua" aria-hidden="true">
-              <svg viewBox="0 0 320 320" width="100%" height="100%">
-                <path d="M40 80 L280 80" stroke="rgba(20,224,213,0.2)" stroke-width="1"/>
-                <path d="M40 160 L280 160" stroke="rgba(20,224,213,0.2)" stroke-width="1"/>
-                <path d="M40 240 L280 240" stroke="rgba(20,224,213,0.2)" stroke-width="1"/>
-                <circle cx="80" cy="80" r="6" class="node-top" fill="#14E0D5"/>
-                <circle cx="160" cy="80" r="6" class="node-top" fill="#14E0D5"/>
-                <circle cx="240" cy="80" r="6" class="node-top" fill="#14E0D5"/>
-                <path d="M80 86 L80 120" stroke="#14E0D5" stroke-width="1"/>
-                <path d="M160 86 L160 120" stroke="#14E0D5" stroke-width="1"/>
-                <path d="M240 86 L240 120" stroke="#14E0D5" stroke-width="1"/>
-                <circle cx="80" cy="120" r="6" class="node-mid" fill="#14E0D5"/>
-                <circle cx="160" cy="120" r="6" class="node-mid" fill="#14E0D5"/>
-                <circle cx="240" cy="120" r="6" class="node-mid" fill="#14E0D5"/>
-                <path d="M80 126 L80 160" stroke="#14E0D5" stroke-width="1"/>
-                <path d="M160 126 L160 160" stroke="#14E0D5" stroke-width="1"/>
-                <path d="M240 126 L240 160" stroke="#14E0D5" stroke-width="1"/>
-                <circle cx="80" cy="160" r="6" class="node-bot" fill="#14E0D5"/>
-                <circle cx="160" cy="160" r="6" class="node-bot" fill="#14E0D5"/>
-                <circle cx="240" cy="160" r="6" class="node-bot" fill="#14E0D5"/>
-                <path d="M80 166 L80 200" stroke="#14E0D5" stroke-width="1"/>
-                <path d="M160 166 L160 200" stroke="#14E0D5" stroke-width="1"/>
-                <path d="M240 166 L240 200" stroke="#14E0D5" stroke-width="1"/>
-                <circle cx="80" cy="200" r="4" fill="#14E0D5"/>
-                <circle cx="160" cy="200" r="4" fill="#14E0D5"/>
-                <circle cx="240" cy="200" r="4" fill="#14E0D5"/>
-              </svg>
-            </div>
-          </article>
-
-          <article class="system-card">
-            <div class="system-card__text">
-              <p class="mono system-card__tag">EDGE INTELLIGENCE</p>
-              <h3 class="system-card__title">Industrial Emission</h3>
-              <p class="system-card__subtitle">Monitoring Layer</p>
-              <p class="system-card__body">A data and analytics layer for emissions monitoring around industrial sites and corridors. Measuring the pollutants and trends that matter most for compliance, stewardship, and community health.</p>
-              <ul class="system-card__specs">
-                <li>Gases, particulates, carbon indicators</li>
-                <li>Boundary and zone assessment</li>
-                <li>Cloud-native reporting and APIs for regulators</li>
-              </ul>
-            </div>
-            <div class="system-card__visual visual-emission" aria-hidden="true">
-              <svg viewBox="0 0 320 320" width="100%" height="100%">
-                <path d="M50 260 L270 260" stroke="rgba(20,224,213,0.3)" stroke-width="2"/>
-                <path d="M70 260 L70 180" stroke="rgba(20,224,213,0.2)" stroke-width="1"/>
-                <path d="M110 260 L110 140" stroke="rgba(20,224,213,0.2)" stroke-width="1"/>
-                <path d="M150 260 L150 100" stroke="rgba(20,224,213,0.2)" stroke-width="1"/>
-                <path d="M190 260 L190 160" stroke="rgba(20,224,213,0.2)" stroke-width="1"/>
-                <path d="M230 260 L230 120" stroke="rgba(20,224,213,0.2)" stroke-width="1"/>
-                <path d="M270 260 L270 200" stroke="rgba(20,224,213,0.2)" stroke-width="1"/>
-                <rect x="60" y="180" width="20" height="80" fill="rgba(20,224,213,0.3)" rx="2"/>
-                <rect x="100" y="140" width="20" height="120" fill="rgba(20,224,213,0.5)" rx="2"/>
-                <rect x="140" y="100" width="20" height="160" fill="rgba(20,224,213,0.7)" rx="2"/>
-                <rect x="180" y="160" width="20" height="100" fill="rgba(20,224,213,0.4)" rx="2"/>
-                <rect x="220" y="120" width="20" height="140" fill="rgba(20,224,213,0.6)" rx="2"/>
-                <rect x="260" y="200" width="20" height="60" fill="rgba(20,224,213,0.3)" rx="2"/>
-                <path d="M70 180 L110 140 L150 100 L190 160 L230 120 L270 200" fill="none" stroke="#14E0D5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-          </article>
-
-          <article class="system-card">
-            <div class="system-card__text">
-              <p class="mono system-card__tag">AUTONOMOUS</p>
-              <h3 class="system-card__title">Marine Observation</h3>
-              <p class="system-card__subtitle">Environmental Systems</p>
-              <p class="system-card__body">Autonomous systems capturing environmental signals in coastal and near-shore waters. Built for conditions where traditional infrastructure can't go — supporting monitoring, planning, and research at scale.</p>
-              <ul class="system-card__specs">
-                <li>Key physical and chemical marine indicators</li>
-                <li>Detection of pollution and stress shifts</li>
-                <li>Data products for analysis and mapping</li>
-              </ul>
-            </div>
-            <div class="system-card__visual visual-marine" aria-hidden="true">
-              <svg viewBox="0 0 320 320" width="100%" height="100%">
-                <defs>
-                  <radialGradient id="sweep" cx="50%" cy="50%" r="50%">
-                    <stop offset="0%" stop-color="rgba(20,224,213,0)" />
-                    <stop offset="80%" stop-color="rgba(20,224,213,0.4)" />
-                    <stop offset="100%" stop-color="rgba(20,224,213,0)" />
-                  </radialGradient>
-                </defs>
-                <circle cx="160" cy="160" r="120" stroke="rgba(20,224,213,0.25)" fill="none" stroke-width="1"/>
-                <circle cx="160" cy="160" r="80" stroke="rgba(20,224,213,0.25)" fill="none" stroke-width="1"/>
-                <circle cx="160" cy="160" r="40" stroke="rgba(20,224,213,0.25)" fill="none" stroke-width="1"/>
-                <circle cx="160" cy="160" r="3" fill="#14E0D5"/>
-                <line x1="160" y1="160" x2="160" y2="40" stroke="rgba(20,224,213,0.4)" stroke-width="1"/>
-                <line x1="20" y1="160" x2="300" y2="160" stroke="rgba(20,224,213,0.15)" stroke-width="1" stroke-dasharray="4 4"/>
-                <line x1="160" y1="20" x2="160" y2="300" stroke="rgba(20,224,213,0.15)" stroke-width="1" stroke-dasharray="4 4"/>
-                <g class="sonar-sweep" style="transform-origin: 160px 160px">
-                  <path d="M160 160 L160 40 A120 120 0 0 1 264 100 Z" fill="url(#sweep)" />
-                </g>
-                <circle class="ping" cx="220" cy="120" r="3" fill="#8BD17C"/>
-                <circle class="ping" cx="100" cy="180" r="3" fill="#14E0D5"/>
-                <circle class="ping" cx="200" cy="220" r="3" fill="#F2C55C"/>
-              </svg>
-            </div>
-          </article>
-
-          <article class="system-card">
-            <div class="system-card__text">
-              <p class="mono system-card__tag">ROS / ROS 2</p>
-              <h3 class="system-card__title">Fleet &amp; Cloud</h3>
-              <p class="system-card__subtitle">Integration Layer</p>
-              <p class="system-card__body">An integration layer connecting ROS and ROS 2-based robotic systems with modern cloud infrastructure. Observable fleets, reliable telemetry, and remote operations — all in one place.</p>
-              <ul class="system-card__specs">
-                <li>Telemetry, logging, health monitoring</li>
-                <li>Bridges between ROS topics and cloud services</li>
-                <li>Remote operations and digital-twin analysis</li>
-              </ul>
-            </div>
-            <div class="system-card__visual visual-ros" aria-hidden="true">
-              <svg viewBox="0 0 320 320" width="100%" height="100%">
-                <circle cx="160" cy="160" r="100" stroke="rgba(20,224,213,0.18)" fill="none" stroke-width="1" stroke-dasharray="3 3"/>
-                <circle cx="160" cy="160" r="60" stroke="rgba(139,209,124,0.18)" fill="none" stroke-width="1" stroke-dasharray="3 3"/>
-                <g class="orbit orbit-1" style="transform-origin: 160px 160px">
-                  <circle cx="260" cy="160" r="6" fill="#14E0D5"/>
-                </g>
-                <g class="orbit orbit-2" style="transform-origin: 160px 160px">
-                  <circle cx="220" cy="160" r="5" fill="#8BD17C"/>
-                </g>
-                <g class="orbit orbit-3" style="transform-origin: 160px 160px">
-                  <circle cx="100" cy="160" r="4" fill="#F2C55C"/>
-                </g>
-                <circle cx="160" cy="160" r="22" fill="rgba(20,224,213,0.15)" stroke="#14E0D5" stroke-width="1.5"/>
-                <text x="160" y="166" text-anchor="middle" fill="#F5F7FA" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">CORE</text>
-              </svg>
-            </div>
-          </article>
-
-        </div>
-      </div>
-
-      <div class="systems__dots container" id="systems-dots">
-        <span class="dot active" data-i="0"></span>
-        <span class="dot" data-i="1"></span>
-        <span class="dot" data-i="2"></span>
-        <span class="dot" data-i="3"></span>
-      </div>
-    </section>
-
-    <!-- ============== CAPABILITIES ============== -->
+    <!-- ============== CAPABILITIES · STACK ============== -->
     <section id="capabilities" class="section capabilities">
-      <header class="section__header container">
-        <p class="mono section__eyebrow">03 / CAPABILITIES</p>
-        <h2 class="section__title reveal-lines">Full-stack from sensor to dashboard.</h2>
-      </header>
+      <div class="stack container">
+        <header class="stack__intro">
+          <p class="mono section__eyebrow">04 / CAPABILITIES</p>
+          <h2 class="section__title reveal-lines">Full stack, from silicon to dashboard.</h2>
+          <p class="section__desc reveal">We design and run every layer ourselves, so the system behaves as one product, not five vendors stitched together.</p>
+        </header>
 
-      <div class="capabilities__grid container reveal-stagger">
+        <ol class="stack__layers reveal-stagger">
+          <li class="layer">
+            <span class="layer__num mono">L1</span>
+            <div class="layer__body">
+              <h3>Hardware &amp; firmware</h3>
+              <p>Sensor kits, solar power, actuation and calibration, built for remote sites with unreliable power.</p>
+              <p class="layer__tags mono">ESP32 · Sensors · Solar · Dosing</p>
+            </div>
+          </li>
+          <li class="layer">
+            <span class="layer__num mono">L2</span>
+            <div class="layer__body">
+              <h3>IoT &amp; connectivity</h3>
+              <p>Secure device identity, MQTT messaging and commands that travel back to the field.</p>
+              <p class="layer__tags mono">MQTT · AWS IoT Core · X.509</p>
+            </div>
+          </li>
+          <li class="layer">
+            <span class="layer__num mono">L3</span>
+            <div class="layer__body">
+              <h3>Cloud &amp; data</h3>
+              <p>Event pipelines, containers and time-series storage that scale from one tank to thousands.</p>
+              <p class="layer__tags mono">SQS · ECS · InfluxDB · IaC</p>
+            </div>
+          </li>
+          <li class="layer">
+            <span class="layer__num mono">L4</span>
+            <div class="layer__body">
+              <h3>Apps &amp; intelligence</h3>
+              <p>Mobile apps and dashboards with indices, predictions and an AI assistant that explains what the data means.</p>
+              <p class="layer__tags mono">Flutter · Analytics · AI</p>
+            </div>
+          </li>
+          <li class="layer">
+            <span class="layer__num mono">L5</span>
+            <div class="layer__body">
+              <h3>Robotics &amp; autonomy</h3>
+              <p>Autonomous vehicles and robot fleets that collect data where fixed infrastructure can't reach.</p>
+              <p class="layer__tags mono">ROS · ROS 2 · Edge compute</p>
+            </div>
+          </li>
+          <li class="layer layer--accent">
+            <span class="layer__num mono">L6</span>
+            <div class="layer__body">
+              <h3>Security &amp; compliance</h3>
+              <p>Privacy by design, encrypted end to end, with audit trails that meet Indian regulation.</p>
+              <p class="layer__tags mono">DPDP Act · CERT-In · OWASP</p>
+            </div>
+          </li>
+        </ol>
+      </div>
 
-        <article class="capability-card" data-tilt>
-          <div class="capability-card__shine"></div>
-          <div class="capability-card__head">
-            <span class="capability-card__num mono">01</span>
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.5 19a4.5 4.5 0 1 0-1.5-8.7A6 6 0 0 0 4 13a4 4 0 0 0 4 6h9.5z"/></svg>
-          </div>
-          <h3 class="capability-card__title">Cloud-Native Platforms</h3>
-          <p class="capability-card__body">Secure, scalable backends that ingest sensor streams, process events in real time, and deliver clean APIs to the teams who act on the data.</p>
-        </article>
-
-        <article class="capability-card" data-tilt>
-          <div class="capability-card__shine"></div>
-          <div class="capability-card__head">
-            <span class="capability-card__num mono">02</span>
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/></svg>
-          </div>
-          <h3 class="capability-card__title">Robotics &amp; Edge</h3>
-          <p class="capability-card__body">Autonomous systems that go where people can't — collecting environmental data in the field, reliably, under real-world conditions.</p>
-        </article>
-
-        <article class="capability-card" data-tilt>
-          <div class="capability-card__shine"></div>
-          <div class="capability-card__head">
-            <span class="capability-card__num mono">03</span>
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 16.5A4.5 4.5 0 0 1 9.5 12M5 12a8 8 0 0 1 8-8M5 8a12 12 0 0 1 12-12"/><circle cx="12" cy="20" r="2"/><path d="M12 22v-2"/></svg>
-          </div>
-          <h3 class="capability-card__title">Sensing Networks</h3>
-          <p class="capability-card__body">Distributed sensor networks with intelligent edge processing — acquiring, validating, and acting on data at the source before it ever reaches the cloud.</p>
-        </article>
-
-        <article class="capability-card" data-tilt>
-          <div class="capability-card__shine"></div>
-          <div class="capability-card__head">
-            <span class="capability-card__num mono">04</span>
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 21V9a9 9 0 0 0 9 9"/></svg>
-          </div>
-          <h3 class="capability-card__title">System Integration</h3>
-          <p class="capability-card__body">We work with what you already have. Open standards, clear documentation, and architectures built to last — not to lock you in.</p>
-        </article>
-
+      <div class="standards container reveal" aria-label="Standards we build to">
+        <p class="mono standards__label">BUILT TO STANDARD</p>
+        <ul>
+          <li><b>IS 10500</b><span>Drinking water</span></li>
+          <li><b>DPDP Act 2023</b><span>Personal data</span></li>
+          <li><b>CERT-In 2022</b><span>Security logging</span></li>
+          <li><b>OWASP MASVS</b><span>Mobile security</span></li>
+          <li><b>UN SDG 6</b><span>Clean water</span></li>
+        </ul>
       </div>
     </section>
 
-    <!-- ============== FOUNDER ============== -->
-    <section id="founder" class="section founder">
-      <div class="founder__card container reveal">
-        <div class="founder__left">
-          <div class="founder__portrait" aria-hidden="true">
-            <div class="founder__portrait-grad"></div>
-            <span class="founder__initials">KP</span>
-          </div>
-        <p class="mono founder__caption">FOUNDER · INDIA</p>
+    <!-- ============== TEAM ============== -->
+    <section id="team" class="section team">
+      <div class="team__card container reveal">
+        <div class="team__visual" aria-hidden="true">
+          <div class="team__orbit team__orbit--1"></div>
+          <div class="team__orbit team__orbit--2"></div>
+          <div class="team__monogram">KP</div>
         </div>
 
-        <div class="founder__right">
-          <p class="mono section__eyebrow">04 / TEAM</p>
-          <h2 class="founder__name">Krishnapriyan M S</h2>
-          <p class="founder__bio">
+        <div class="team__text">
+          <p class="mono section__eyebrow">05 / TEAM</p>
+          <h2 class="team__name">Krishnapriyan M S</h2>
+          <p class="team__role mono">FOUNDER &amp; LEAD ENGINEER · INDIA</p>
+          <p class="team__bio">
             My work is shaped by a conviction: a society's health can be measured by the health of the environment around it. Whether tracking pollution near industries, monitoring coastal waters with autonomous vessels, or ensuring safe drinking water in remote communities, my mission is to bring visibility where environmental stress turns into human hardship.
           </p>
-          <blockquote class="founder__quote">
-            "Technology should serve both people and planet — not one at the cost of the other."
+          <blockquote class="team__quote">
+            “Technology should serve both people and planet, not one at the cost of the other.”
           </blockquote>
-        </div>
-      </div>
-    </section>
 
-    <!-- ============== METRICS STRIP ============== -->
-    <section class="metrics container" aria-label="Key metrics">
-      <div class="metric reveal">
-        <div class="metric__value" data-counter="3">0</div>
-        <div class="metric__label mono">RESOURCE DOMAINS</div>
-      </div>
-      <div class="metric reveal">
-        <div class="metric__value" data-typewriter="24/7"></div>
-        <div class="metric__label mono">OPERATIONAL</div>
-      </div>
-      <div class="metric reveal">
-        <div class="metric__value" data-typewriter="100%"></div>
-        <div class="metric__label mono">IMPACT FOCUSED</div>
+          <div class="team__awards">
+            <p class="mono team__awards-label">RECOGNITION</p>
+            <ul>
+              <li><b>Smart India Hackathon</b><span>Winner · 2022</span></li>
+              <li><b>Flipkart GRiD 3.0</b><span>Second runner-up · 2022</span></li>
+              <li><b>B&amp;R Automation Challenge</b><span>Winner · 2023</span></li>
+              <li><b>OpenCV</b><span>Core winner · 2022</span></li>
+              <li><b>EW Project Challenge</b><span>Winner · 2022</span></li>
+              <li><b>Delta Cup</b><span>Winner · 2022</span></li>
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- ============== CONTACT ============== -->
     <section id="contact" class="section contact">
-      <div class="contact__grid container">
-
+      <div class="contact__panel container">
         <div class="contact__left">
-          <p class="mono section__eyebrow">05 / CONTACT</p>
-          <h2 class="contact__title reveal-lines">Got a challenge worth solving?</h2>
+          <p class="mono section__eyebrow">06 / CONTACT</p>
+          <h2 class="contact__title reveal-lines">Let's build what the planet needs.</h2>
           <p class="contact__body">
-            Tell us about your water, air, or land problem. We'll come back with honest, practical ideas — no sales pitch, just engineering thinking.
+            Tell us about your water, air or land problem. We'll come back with honest, practical engineering thinking, not a sales pitch.
           </p>
 
-          <div class="contact__info">
-            <div class="info-block">
-              <p class="mono info-block__label">WHO WE WORK WITH</p>
-              <p>Cities and local governments, utilities and infrastructure owners, impact-driven companies and NGOs, and research labs building the future of natural resource management.</p>
-            </div>
-            <div class="info-block">
-              <p class="mono info-block__label">WHAT WE BRING</p>
-              <p>Deep expertise in cloud, robotics, and sensing — grounded in field experience and a genuine commitment to building technology that serves both people and planet.</p>
-            </div>
-          </div>
+          <ul class="contact__paths">
+            <li><span class="mono">01</span><div><b>Pilot Aqua Insight</b><p>For panchayats, municipalities, housing societies and utilities.</p></div></li>
+            <li><span class="mono">02</span><div><b>Partner on research</b><p>With universities, labs and NGOs working on water, air and land.</p></div></li>
+            <li><span class="mono">03</span><div><b>Build a custom system</b><p>Sensing, cloud or robotics, engineered end to end.</p></div></li>
+          </ul>
         </div>
 
         <form class="contact__form" id="contact-form" novalidate>
-          <!-- TODO: Replace REPLACE_WITH_FORM_ID with your Formspree form ID -->
-          <div class="field">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" autocomplete="name" required />
-          </div>
-          <div class="field">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" autocomplete="email" required />
+          <div class="field-row">
+            <div class="field">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" autocomplete="name" required />
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" autocomplete="email" required />
+            </div>
           </div>
           <div class="field">
             <label for="organization">Organization <span class="optional">(optional)</span></label>
             <input type="text" id="organization" name="organization" autocomplete="organization" />
           </div>
+          <fieldset class="field field--choice">
+            <legend>I'm interested in</legend>
+            <label><input type="radio" name="interest" value="Pilot Aqua Insight" checked /> <span>Pilot</span></label>
+            <label><input type="radio" name="interest" value="Research partnership" /> <span>Research</span></label>
+            <label><input type="radio" name="interest" value="Custom system" /> <span>Custom build</span></label>
+          </fieldset>
           <div class="field">
             <label for="message">Message</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
+            <textarea id="message" name="message" rows="4" required></textarea>
           </div>
 
           <!-- Honeypot -->
@@ -601,10 +611,8 @@
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
             </span>
           </button>
-
           <p class="contact__status mono" id="contact-status" aria-live="polite"></p>
         </form>
-
       </div>
     </section>
 
@@ -624,10 +632,11 @@
       </div>
       <div class="footer__nav">
         <nav aria-label="Footer">
+          <a href="#work" class="mono">Work</a>
+          <a href="#platform" class="mono">Platform</a>
           <a href="#domains" class="mono">Domains</a>
-          <a href="#systems" class="mono">Systems</a>
           <a href="#capabilities" class="mono">Capabilities</a>
-          <a href="#founder" class="mono">Team</a>
+          <a href="#team" class="mono">Team</a>
           <a href="#contact" class="mono">Contact</a>
         </nav>
         <p class="footer__copy mono">© 2026 WAL &amp; AL</p>
