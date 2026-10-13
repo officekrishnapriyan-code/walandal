@@ -41,12 +41,15 @@
   <link rel="stylesheet" href="/styles/nav.css" />
   <link rel="stylesheet" href="/styles/hero.css" />
   <link rel="stylesheet" href="/styles/sections.css" />
+  <link rel="stylesheet" href="/styles/work.css" />
+  <link rel="stylesheet" href="/styles/platform.css" />
   <link rel="stylesheet" href="/styles/domains.css" />
   <link rel="stylesheet" href="/styles/systems.css" />
   <link rel="stylesheet" href="/styles/capabilities.css" />
   <link rel="stylesheet" href="/styles/founder.css" />
   <link rel="stylesheet" href="/styles/contact.css" />
   <link rel="stylesheet" href="/styles/footer.css" />
+  <link rel="stylesheet" href="/styles/fit-new.css" />
 
   <!-- JSON-LD Organization Schema -->
   <script type="application/ld+json">
@@ -106,10 +109,12 @@
       </a>
 
       <nav class="nav__links" aria-label="Primary">
-        <a href="#domains"      data-index="01" data-label="Domains"><span>Domains</span></a>
-        <a href="#systems"      data-index="02" data-label="Systems"><span>Systems</span></a>
-        <a href="#capabilities" data-index="03" data-label="Capabilities"><span>Capabilities</span></a>
-        <a href="#founder"      data-index="04" data-label="Team"><span>Team</span></a>
+        <a href="#work"         data-index="01" data-label="Work"><span>Work</span></a>
+        <a href="#platform"     data-index="02" data-label="Platform"><span>Platform</span></a>
+        <a href="#domains"      data-index="03" data-label="Domains"><span>Domains</span></a>
+        <a href="#systems"      data-index="04" data-label="Systems"><span>Systems</span></a>
+        <a href="#capabilities" data-index="05" data-label="Capabilities"><span>Capabilities</span></a>
+        <a href="#founder"      data-index="06" data-label="Team"><span>Team</span></a>
       </nav>
 
 
@@ -132,6 +137,8 @@
   <!-- Mobile menu -->
   <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
     <nav>
+      <a href="#work">Work</a>
+      <a href="#platform">Platform</a>
       <a href="#domains">Domains</a>
       <a href="#systems">Systems</a>
       <a href="#capabilities">Capabilities</a>
@@ -209,10 +216,196 @@
       </div>
     </section>
 
+    <!-- ============== WORK · AQUA INSIGHT ============== -->
+    <section id="work" class="section work">
+      <header class="section__header container work__header">
+        <div>
+          <p class="mono section__eyebrow">01 / FLAGSHIP</p>
+          <h2 class="section__title reveal-lines">Aqua Insight.</h2>
+          <p class="work__tagline reveal"><span class="accent">Ensuring trust in every drop.</span></p>
+        </div>
+        <p class="section__desc reveal">
+          Rural overhead tanks are still chlorinated by hand, so water can turn unsafe without anyone noticing. Aqua Insight adds a solar sensor kit and automatic dosing to every tank, and one live view for owners, operators and authorities.
+        </p>
+      </header>
+
+      <div class="work__grid container">
+        <!-- Live product mock-up -->
+        <div class="work__device reveal" aria-label="Aqua Insight mobile app preview">
+          <div class="device-frame">
+          <div class="device">
+            <div class="device__notch"></div>
+            <div class="device__screen" id="aqua-demo">
+              <div class="app-top">
+                <div>
+                  <p class="app-eyebrow">FIELD OPERATOR · 5 TANKS</p>
+                  <p class="app-title">My tanks</p>
+                </div>
+                <span class="app-live"><i></i>LIVE</span>
+              </div>
+
+              <div class="app-hero">
+                <svg class="app-ring" viewBox="0 0 80 80" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0" stop-color="#5EEAD4"/><stop offset="1" stop-color="#22D3EE"/>
+                    </linearGradient>
+                  </defs>
+                  <circle cx="40" cy="40" r="32" class="app-ring__track"/>
+                  <circle cx="40" cy="40" r="32" class="app-ring__value" id="demo-ring"/>
+                  <text x="40" y="42" text-anchor="middle" class="app-ring__num" id="demo-wqi">91</text>
+                  <text x="40" y="54" text-anchor="middle" class="app-ring__lbl">WQI</text>
+                </svg>
+                <div class="app-hero__text">
+                  <p class="app-eyebrow">WATER QUALITY</p>
+                  <p class="app-grade" id="demo-grade">Excellent</p>
+                  <p class="app-muted">Average across 5 tanks</p>
+                </div>
+              </div>
+
+              <div class="app-card app-card--crit" data-tank="crit">
+                <div class="app-card__head">
+                  <span class="app-bar app-bar--crit"></span>
+                  <div><p class="app-id">KRR-THN-02</p><p class="app-muted">Colony RO tank · Thanthoni</p></div>
+                  <span class="app-pill app-pill--crit">Critical</span>
+                </div>
+                <div class="app-metrics">
+                  <div><span>pH</span><b data-m="ph">7.08</b></div>
+                  <div class="is-crit"><span>Cl mg/L</span><b data-m="cl">0.14</b></div>
+                  <div><span>TDS</span><b data-m="tds">428</b></div>
+                  <div><span>NTU</span><b data-m="ntu">0.66</b></div>
+                </div>
+                <p class="app-dose"><i></i>Auto-dose sent · <code>Dispense Cl</code></p>
+              </div>
+
+              <div class="app-card" data-tank="ok">
+                <div class="app-card__head">
+                  <span class="app-bar app-bar--ok"></span>
+                  <div><p class="app-id">KRR-KAP-01</p><p class="app-muted">Ward 3 overhead tank · K.A-P</p></div>
+                  <span class="app-pill app-pill--ok">Optimal</span>
+                </div>
+                <div class="app-metrics">
+                  <div><span>pH</span><b data-m="ph">7.42</b></div>
+                  <div><span>Cl mg/L</span><b data-m="cl">0.68</b></div>
+                  <div><span>TDS</span><b data-m="tds">312</b></div>
+                  <div><span>NTU</span><b data-m="ntu">0.42</b></div>
+                </div>
+                <p class="app-predict">Predicted · chlorine below 0.2 mg/L in ~1h 30m</p>
+              </div>
+
+              <div class="app-nav" aria-hidden="true">
+                <span class="is-on"></span><span></span><span></span><span></span><span></span>
+              </div>
+            </div>
+          </div>
+          </div>
+          <p class="work__device-note mono">Live demo data · Android &amp; iOS app</p>
+        </div>
+
+        <!-- Feature list -->
+        <div class="work__features swipe-row reveal-stagger">
+          <article class="feature">
+            <span class="feature__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/><path d="M8 14h2l1-2 2 4 1-2h2"/></svg></span>
+            <div><h3>Real-time water quality</h3><p>Chlorine, pH, TDS, turbidity and level, checked against safe limits as they arrive.</p></div>
+          </article>
+          <article class="feature">
+            <span class="feature__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 3h6M10 3v5l-5 9a2 2 0 0 0 1.7 3h10.6a2 2 0 0 0 1.7-3l-5-9V3"/><path d="M7.5 14h9"/></svg></span>
+            <div><h3>Closed-loop chlorine dosing</h3><p>Low chlorine triggers a dose command straight back to the tank.</p></div>
+          </article>
+          <article class="feature">
+            <span class="feature__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 17l5-5 4 3 8-8"/><path d="M15 7h5v5"/></svg></span>
+            <div><h3>Predictive alerts</h3><p>Trends warn hours before a limit is crossed.</p></div>
+          </article>
+          <article class="feature">
+            <span class="feature__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg></span>
+            <div><h3>Water Quality Index</h3><p>A 0–100 score for every tank, village and district.</p></div>
+          </article>
+          <article class="feature">
+            <span class="feature__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/></svg></span>
+            <div><h3>Compliance reports</h3><p>IS&nbsp;10500 reports by village, exported as PDF.</p></div>
+          </article>
+          <article class="feature">
+            <span class="feature__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M15 14.5c2.8.3 5 2.5 5 5.5"/></svg></span>
+            <div><h3>Built for every role</h3><p>Owners, operators and authorities, plus a “Is the water safe?” card for residents.</p></div>
+          </article>
+        </div>
+      </div>
+
+      <ul class="work__chips container reveal" aria-label="Product facts">
+        <li>Solar-powered ESP32 sensor kits</li>
+        <li>AWS IoT · hosted in India</li>
+        <li>Mobile app for Android &amp; iOS</li>
+        <li>DPDP-ready privacy &amp; security</li>
+        <li>Water level &amp; supply tracking</li>
+      </ul>
+    </section>
+
+    <!-- ============== PLATFORM · HOW IT WORKS ============== -->
+    <section id="platform" class="section platform">
+      <header class="section__header container">
+        <p class="mono section__eyebrow">02 / HOW IT WORKS</p>
+        <h2 class="section__title reveal-lines">From sensor to decision, in one loop.</h2>
+        <p class="section__desc reveal">
+          Measured at the tank, secured in flight, checked in the cloud, then acted on by people through the app or by the tank itself through the doser.
+        </p>
+      </header>
+
+      <div class="pipeline container reveal" id="pipeline">
+        <svg class="pipeline__wire" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="wireGrad" x1="0" x2="1">
+              <stop offset="0" stop-color="#14E0D5" stop-opacity="0.35"/>
+              <stop offset="0.5" stop-color="#14E0D5" stop-opacity="0.8"/>
+              <stop offset="1" stop-color="#8BD17C" stop-opacity="0.35"/>
+            </linearGradient>
+          </defs>
+          <path class="pipeline__line" d="M60 60 H1140"/>
+          <path class="pipeline__loop" d="M1040 52 C 1040 4, 160 4, 160 52"/>
+          <circle class="pipeline__pulse" r="4"><animateMotion dur="5s" repeatCount="indefinite" path="M60 60 H1140"/></circle>
+          <circle class="pipeline__pulse pipeline__pulse--b" r="4"><animateMotion dur="5s" begin="2.5s" repeatCount="indefinite" path="M60 60 H1140"/></circle>
+          <circle class="pipeline__return" r="3.5"><animateMotion dur="5s" begin="1s" repeatCount="indefinite" path="M1040 52 C 1040 4, 160 4, 160 52"/></circle>
+        </svg>
+
+        <ol class="pipeline__steps">
+          <li class="step">
+            <span class="step__num mono">01</span>
+            <h3>Sense</h3>
+            <p>Solar ESP32 kit with five sensors and a chlorine doser.</p>
+          </li>
+          <li class="step">
+            <span class="step__num mono">02</span>
+            <h3>Connect</h3>
+            <p>MQTT over TLS to AWS IoT Core, one certificate per device.</p>
+          </li>
+          <li class="step">
+            <span class="step__num mono">03</span>
+            <h3>Buffer</h3>
+            <p>A durable queue, so no reading is lost.</p>
+          </li>
+          <li class="step">
+            <span class="step__num mono">04</span>
+            <h3>Process</h3>
+            <p>Containers validate each reading against safe limits.</p>
+          </li>
+          <li class="step">
+            <span class="step__num mono">05</span>
+            <h3>Remember</h3>
+            <p>Time-series history for trends and audits.</p>
+          </li>
+          <li class="step">
+            <span class="step__num mono">06</span>
+            <h3>Act</h3>
+            <p>Alerts, app and reports, plus a dose back to the tank.</p>
+          </li>
+        </ol>
+        <p class="pipeline__legend mono"><i></i> Telemetry &nbsp;&nbsp; <i class="is-loop"></i> Closed-loop dosing command</p>
+      </div>
+    </section>
+
     <!-- ============== DOMAINS ============== -->
     <section id="domains" class="section domains">
       <header class="section__header container">
-        <p class="mono section__eyebrow">01 / FRAMEWORK</p>
+        <p class="mono section__eyebrow">03 / FRAMEWORK</p>
         <h2 class="section__title reveal-lines">The WAL &amp; AL framework.</h2>
         <p class="section__desc reveal">
           Systems engineered to outlast the problems they solve. Precision at scale, autonomy in execution, coherence across layers — building infrastructure that endures.
@@ -296,7 +489,7 @@
     <!-- ============== SYSTEMS (pinned horizontal) ============== -->
     <section id="systems" class="section systems">
       <header class="section__header container">
-        <p class="mono section__eyebrow">02 / WHAT WE BUILD</p>
+        <p class="mono section__eyebrow">04 / WHAT WE BUILD</p>
         <h2 class="section__title reveal-lines">Systems engineered for the field.</h2>
       </header>
 
@@ -457,55 +650,76 @@
       </div>
     </section>
 
-    <!-- ============== CAPABILITIES ============== -->
+    <!-- ============== CAPABILITIES · STACK ============== -->
     <section id="capabilities" class="section capabilities">
-      <header class="section__header container">
-        <p class="mono section__eyebrow">03 / CAPABILITIES</p>
-        <h2 class="section__title reveal-lines">Full-stack from sensor to dashboard.</h2>
-      </header>
+      <div class="stack container">
+        <header class="stack__intro">
+          <p class="mono section__eyebrow">05 / CAPABILITIES</p>
+          <h2 class="section__title reveal-lines">Full stack, from silicon to dashboard.</h2>
+          <p class="section__desc reveal">We build and run every layer ourselves, so the system behaves as one product.</p>
+        </header>
 
-      <div class="capabilities__grid container reveal-stagger">
+        <ol class="stack__layers reveal-stagger">
+          <li class="layer">
+            <span class="layer__num mono">L1</span>
+            <div class="layer__body">
+              <h3>Hardware &amp; firmware</h3>
+              <p>Sensor kits, solar power and actuation for remote sites.</p>
+              <p class="layer__tags mono">ESP32 · Sensors · Solar · Dosing</p>
+            </div>
+          </li>
+          <li class="layer">
+            <span class="layer__num mono">L2</span>
+            <div class="layer__body">
+              <h3>IoT &amp; connectivity</h3>
+              <p>Secure device identity and commands back to the field.</p>
+              <p class="layer__tags mono">MQTT · AWS IoT Core · X.509</p>
+            </div>
+          </li>
+          <li class="layer">
+            <span class="layer__num mono">L3</span>
+            <div class="layer__body">
+              <h3>Cloud &amp; data</h3>
+              <p>Pipelines and time-series storage from one tank to thousands.</p>
+              <p class="layer__tags mono">SQS · ECS · InfluxDB · IaC</p>
+            </div>
+          </li>
+          <li class="layer">
+            <span class="layer__num mono">L4</span>
+            <div class="layer__body">
+              <h3>Apps &amp; intelligence</h3>
+              <p>Apps and dashboards with predictions and an AI assistant.</p>
+              <p class="layer__tags mono">Flutter · Analytics · AI</p>
+            </div>
+          </li>
+          <li class="layer">
+            <span class="layer__num mono">L5</span>
+            <div class="layer__body">
+              <h3>Robotics &amp; autonomy</h3>
+              <p>Autonomous vehicles and fleets where infrastructure can't reach.</p>
+              <p class="layer__tags mono">ROS · ROS 2 · Edge compute</p>
+            </div>
+          </li>
+          <li class="layer layer--accent">
+            <span class="layer__num mono">L6</span>
+            <div class="layer__body">
+              <h3>Security &amp; compliance</h3>
+              <p>Privacy by design and audit trails for Indian regulation.</p>
+              <p class="layer__tags mono">DPDP Act · CERT-In · OWASP</p>
+            </div>
+          </li>
+        </ol>
+      </div>
 
-        <article class="capability-card" data-tilt>
-          <div class="capability-card__shine"></div>
-          <div class="capability-card__head">
-            <span class="capability-card__num mono">01</span>
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.5 19a4.5 4.5 0 1 0-1.5-8.7A6 6 0 0 0 4 13a4 4 0 0 0 4 6h9.5z"/></svg>
-          </div>
-          <h3 class="capability-card__title">Cloud-Native Platforms</h3>
-          <p class="capability-card__body">Secure, scalable backends that ingest sensor streams, process events in real time, and deliver clean APIs to the teams who act on the data.</p>
-        </article>
-
-        <article class="capability-card" data-tilt>
-          <div class="capability-card__shine"></div>
-          <div class="capability-card__head">
-            <span class="capability-card__num mono">02</span>
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/></svg>
-          </div>
-          <h3 class="capability-card__title">Robotics &amp; Edge</h3>
-          <p class="capability-card__body">Autonomous systems that go where people can't — collecting environmental data in the field, reliably, under real-world conditions.</p>
-        </article>
-
-        <article class="capability-card" data-tilt>
-          <div class="capability-card__shine"></div>
-          <div class="capability-card__head">
-            <span class="capability-card__num mono">03</span>
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 16.5A4.5 4.5 0 0 1 9.5 12M5 12a8 8 0 0 1 8-8M5 8a12 12 0 0 1 12-12"/><circle cx="12" cy="20" r="2"/><path d="M12 22v-2"/></svg>
-          </div>
-          <h3 class="capability-card__title">Sensing Networks</h3>
-          <p class="capability-card__body">Distributed sensor networks with intelligent edge processing — acquiring, validating, and acting on data at the source before it ever reaches the cloud.</p>
-        </article>
-
-        <article class="capability-card" data-tilt>
-          <div class="capability-card__shine"></div>
-          <div class="capability-card__head">
-            <span class="capability-card__num mono">04</span>
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 21V9a9 9 0 0 0 9 9"/></svg>
-          </div>
-          <h3 class="capability-card__title">System Integration</h3>
-          <p class="capability-card__body">We work with what you already have. Open standards, clear documentation, and architectures built to last — not to lock you in.</p>
-        </article>
-
+      <div class="standards container reveal" aria-label="Standards we build to">
+        <p class="mono standards__label">BUILT TO STANDARD</p>
+        <ul>
+          <li><b>IS 10500</b><span>Drinking water</span></li>
+          <li><b>DPDP Act 2023</b><span>Personal data</span></li>
+          <li><b>CERT-In 2022</b><span>Security logging</span></li>
+          <li><b>OWASP MASVS</b><span>Mobile security</span></li>
+          <li><b>UN SDG 6</b><span>Clean water</span></li>
+        </ul>
       </div>
     </section>
 
@@ -521,7 +735,7 @@
         </div>
 
         <div class="founder__right">
-          <p class="mono section__eyebrow">04 / TEAM</p>
+          <p class="mono section__eyebrow">06 / TEAM</p>
           <h2 class="founder__name">Krishnapriyan M S</h2>
           <p class="founder__bio">
             My work is shaped by a conviction: a society's health can be measured by the health of the environment around it. Whether tracking pollution near industries, monitoring coastal waters with autonomous vessels, or ensuring safe drinking water in remote communities, my mission is to bring visibility where environmental stress turns into human hardship.
@@ -554,7 +768,7 @@
       <div class="contact__grid container">
 
         <div class="contact__left">
-          <p class="mono section__eyebrow">05 / CONTACT</p>
+          <p class="mono section__eyebrow">07 / CONTACT</p>
           <h2 class="contact__title reveal-lines">Got a challenge worth solving?</h2>
           <p class="contact__body">
             Tell us about your water, air, or land problem. We'll come back with honest, practical ideas — no sales pitch, just engineering thinking.
@@ -624,6 +838,8 @@
       </div>
       <div class="footer__nav">
         <nav aria-label="Footer">
+          <a href="#work" class="mono">Work</a>
+          <a href="#platform" class="mono">Platform</a>
           <a href="#domains" class="mono">Domains</a>
           <a href="#systems" class="mono">Systems</a>
           <a href="#capabilities" class="mono">Capabilities</a>

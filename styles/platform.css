@@ -1,0 +1,59 @@
+/* ============== PLATFORM · HOW IT WORKS ============== */
+.platform {
+  background:
+    linear-gradient(180deg, var(--bg), var(--bg-elev-1) 50%, var(--bg));
+  border-top: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.pipeline { position: relative; }
+.pipeline__wire {
+  position: absolute; left: var(--gutter); right: var(--gutter); top: 12px; z-index: 2;
+  width: calc(100% - 2 * var(--gutter)); height: 120px;
+  overflow: visible; pointer-events: none;
+}
+.pipeline__line { fill: none; stroke: url(#wireGrad); stroke-width: 1.5; }
+.pipeline__loop { fill: none; stroke: rgba(139, 209, 124, 0.35); stroke-width: 1.2; stroke-dasharray: 4 6; }
+.pipeline__pulse { fill: var(--teal); filter: drop-shadow(0 0 6px var(--teal)); }
+.pipeline__return { fill: var(--sage); filter: drop-shadow(0 0 6px var(--sage)); }
+
+.pipeline__steps {
+  position: relative;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 14px;
+  padding-top: 48px;
+  z-index: 1;
+}
+.step {
+  position: relative;
+  padding: 44px 18px 34px;
+  border-radius: var(--radius);
+  background: var(--bg-elev-1);
+  border: 1px solid var(--hairline);
+  transition: border-color .4s var(--ease-out-expo), transform .4s var(--ease-out-expo);
+}
+.step::before {
+  content: '';
+  position: absolute; top: 18px; left: 18px;
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--bg); border: 2px solid var(--teal);
+  box-shadow: 0 0 0 4px rgba(20, 224, 213, 0.1);
+}
+.step:hover { border-color: rgba(20, 224, 213, 0.4); transform: translateY(-4px); }
+.step__num { position: absolute; bottom: 14px; right: 16px; color: var(--text-dim) !important; font-size: 0.65rem; }
+.step h3 { font-size: 1.15rem; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 8px; }
+.step p { font-size: 0.86rem; line-height: 1.5; color: var(--text-muted); }
+
+.pipeline__legend { margin-top: 28px; color: var(--text-dim) !important; font-size: 0.65rem; display: flex; align-items: center; gap: 8px; }
+.pipeline__legend i { display: inline-block; width: 18px; height: 2px; background: var(--teal); }
+.pipeline__legend i.is-loop { background: repeating-linear-gradient(90deg, var(--sage) 0 4px, transparent 4px 8px); }
+
+@media (max-width: 1100px) {
+  .pipeline__steps { grid-template-columns: repeat(3, 1fr); }
+  .pipeline__wire { display: none; }
+}
+@media (max-width: 640px) {
+  .pipeline__steps { grid-template-columns: 1fr; padding-left: 18px; border-left: 1px dashed rgba(20, 224, 213, 0.3); }
+}
