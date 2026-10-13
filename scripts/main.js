@@ -2,35 +2,27 @@ import { onReady, waitFor } from './utils.js';
 import { initLenis } from './lenis-smooth.js';
 import { initCursor } from './cursor.js';
 import { initNav } from './nav.js';
-import { initHeroWebGL } from './hero-webgl.js';
-import { initReveals } from './reveals.js';
-import { initCounters } from './counters.js';
-import { initAquaDemo } from './aqua-demo.js';
-import { initTilt } from './tilt.js';
-import { initMarquee } from './marquee.js';
 import { initForm } from './form.js';
+import { initAquaDemo } from './aqua-demo.js';
+import { initField } from './field.js';
+import { initChapters } from './chapters.js';
+import { initDeviceFit, initStepper, initLoop, initRealms, initSpotlight } from './interactions.js';
 
 onReady(async () => {
-  // Wait for GSAP + ScrollTrigger from CDN (deferred). Lenis is optional.
-  try { await waitFor(() => window.gsap && window.ScrollTrigger, 30, 4000); } catch { /* continue without GSAP */ }
+  // Layout-critical pieces first, so nothing jumps once GSAP arrives.
+  initDeviceFit();
+  initField();
 
-  // Smooth scroll FIRST — must be running before ScrollTrigger registers
+  try { await waitFor(() => window.gsap && window.ScrollTrigger, 30, 4000); } catch { /* run without GSAP */ }
+
   initLenis();
-
-  // Sync DOM-only behaviour
   initNav();
   initCursor();
-  initTilt();
-  initMarquee();
   initForm();
-  initCounters();
-
-  // Reveal/scroll bound — needs GSAP + Lenis already running
-  initReveals();
+  initChapters();
   initAquaDemo();
-
-  // WebGL hero — defer to keep first paint snappy
-  const start = () => initHeroWebGL();
-  if ('requestIdleCallback' in window) requestIdleCallback(start, { timeout: 800 });
-  else setTimeout(start, 0);
+  initStepper();
+  initLoop();
+  initRealms();
+  initSpotlight();
 });
