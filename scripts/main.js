@@ -9,6 +9,8 @@ import { initSystemsPin } from './systems-pin.js';
 import { initTilt } from './tilt.js';
 import { initMarquee } from './marquee.js';
 import { initForm } from './form.js';
+import { initAquaDemo } from './aqua-demo.js';
+import { initFit } from './fit.js';
 
 onReady(async () => {
   // Wait for GSAP + ScrollTrigger from CDN (deferred). Lenis is optional.
@@ -16,6 +18,10 @@ onReady(async () => {
 
   // Smooth scroll FIRST — must be running before ScrollTrigger registers
   initLenis();
+
+  // Size the Aqua Insight phone mock-up to the screen.
+  initFit();
+  initAquaDemo();
 
   // Sync DOM-only behaviour
   initNav();

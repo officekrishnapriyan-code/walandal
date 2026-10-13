@@ -1,0 +1,120 @@
+/* =====================================================================
+   One-screen fit for the sections added to the live page:
+   Work (Aqua Insight), Platform and Capabilities. Scoped to those three
+   so the existing live sections keep their current look.
+   ===================================================================== */
+:root {
+  --fit-nav-h: 76px;
+  --fit-pad-top: calc(var(--fit-nav-h) + clamp(8px, 2.5svh, 32px));
+  --fit-pad-bottom: clamp(16px, 3.5svh, 44px);
+}
+@media (max-width: 840px) { :root { --fit-nav-h: 64px; } }
+
+:is(#work, #platform, #capabilities) {
+  min-height: 100svh;
+  padding: var(--fit-pad-top) 0 var(--fit-pad-bottom);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+:is(#work, #platform, #capabilities) .section__header { margin-bottom: clamp(14px, 3.2svh, 44px); }
+:is(#work, #platform, #capabilities) .section__eyebrow { margin-bottom: clamp(8px, 1.4svh, 18px); }
+:is(#work, #platform, #capabilities) .section__title {
+  font-size: clamp(1.75rem, min(5vw, 6.6svh), 4rem);
+  margin-bottom: clamp(6px, 1.6svh, 22px);
+}
+:is(#work, #platform, #capabilities) .section__desc { font-size: clamp(0.9rem, min(1.25vw, 2.1svh), 1.15rem); line-height: 1.5; }
+
+/* ---- Work · Aqua Insight -------------------------------------------- */
+.work__tagline { font-size: clamp(1.15rem, min(2.6vw, 3.4svh), 2.1rem); margin: 0; }
+.work__grid { grid-template-columns: auto 1fr; gap: clamp(24px, 5vw, 88px); }
+.work__device { gap: clamp(6px, 1.2svh, 16px); }
+.work__device-note { margin-top: clamp(10px, 2svh, 22px); }
+/* Phone designed at 360×740, scaled to the screen by fit.js. */
+.device-frame { position: relative; width: calc(360px * var(--device-scale, 1)); height: calc(740px * var(--device-scale, 1)); }
+.device-frame .device {
+  position: absolute; top: 0; left: 0;
+  width: 360px; height: 740px; aspect-ratio: auto;
+  transform-origin: top left;
+  transform: scale(var(--device-scale, 1)) perspective(1400px) rotateY(-8deg) rotateX(4deg);
+}
+.work__device:hover .device-frame .device { transform: scale(var(--device-scale, 1)); }
+.work__features { gap: clamp(8px, 1.4svh, 14px); }
+.feature { padding: clamp(12px, 2svh, 22px); gap: 14px; }
+.feature__icon { width: 36px; height: 36px; border-radius: 10px; }
+.feature h3 { font-size: clamp(0.92rem, 2svh, 1.02rem); margin-bottom: 4px; }
+.feature p { font-size: clamp(0.8rem, 1.7svh, 0.9rem); line-height: 1.45; }
+.work__chips { display: none; }
+
+/* ---- Platform ------------------------------------------------------- */
+.step { padding: clamp(34px, 5svh, 44px) 16px clamp(24px, 3.5svh, 34px); }
+.step h3 { font-size: clamp(1rem, 2.2svh, 1.15rem); }
+.step p { font-size: clamp(0.8rem, 1.75svh, 0.86rem); }
+.pipeline__legend { margin-top: clamp(10px, 2svh, 28px); }
+
+/* ---- Capabilities --------------------------------------------------- */
+.stack { grid-template-columns: minmax(260px, 0.8fr) 1.2fr; align-items: center; }
+.stack__intro { position: static; }
+.stack__layers { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(8px, 1.4svh, 12px); }
+.layer { padding: clamp(12px, 2.2svh, 22px); gap: 14px; flex-direction: column; }
+.layer:hover { transform: translateY(-4px); }
+.layer__num { width: 34px; height: 34px; border-radius: 10px; font-size: 0.7rem; }
+.layer__body h3 { font-size: clamp(0.95rem, 2.1svh, 1.1rem); margin-bottom: 4px; }
+.layer__body p { font-size: clamp(0.8rem, 1.75svh, 0.9rem); }
+.layer__tags { margin-top: 6px; }
+.standards { margin-top: clamp(16px, 3.5svh, 56px); padding-top: clamp(12px, 2.4svh, 32px); gap: 18px; }
+.standards li { padding: clamp(8px, 1.4svh, 14px) 14px; min-width: 0; }
+
+/* ---- Tablets / small laptops ------------------------------------------ */
+@media (min-width: 761px) and (max-width: 1100px) {
+  .feature p, .layer__body p { display: none; }
+  .work__header { grid-template-columns: 1fr; gap: 8px; }
+  .work .section__desc { max-width: 70ch; }
+}
+@media (min-width: 761px) and (max-height: 760px) { .layer__body p { display: none; } }
+@media (max-height: 700px) { .feature p { display: none; } }
+
+/* ---- Phones ----------------------------------------------------------- */
+@media (max-width: 760px) {
+  .swipe-row {
+    display: flex !important; gap: 10px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
+    margin-inline: calc(-1 * var(--gutter)); padding-inline: var(--gutter); scroll-padding-inline: var(--gutter);
+    -webkit-overflow-scrolling: touch;
+  }
+  .swipe-row::-webkit-scrollbar { display: none; }
+
+  .work__header, .work__grid, .stack { grid-template-columns: minmax(0, 1fr); }
+  .work__header { gap: 10px; }
+  .work__grid { gap: clamp(10px, 2svh, 20px); }
+  .work .section__header { margin-bottom: 10px; }
+  .work__device, .work__features, .stack__intro, .standards { min-width: 0; }
+  .work__features { grid-template-columns: none; }
+  .work__features .feature { flex: 0 0 82%; scroll-snap-align: start; }
+  .work__device-note { display: none; }
+
+  .pipeline__steps { grid-template-columns: 1fr 1fr; padding: 0; border: 0; gap: 8px; }
+  .step { padding: 30px 12px 22px; }
+  .step::before { top: 12px; left: 12px; width: 10px; height: 10px; }
+  .step__num { bottom: 8px; right: 12px; }
+  .pipeline__legend { display: none; }
+
+  .stack { gap: clamp(12px, 2.4svh, 24px); }
+  .layer { padding: 12px; gap: 8px; }
+  .layer__body p { display: none; }
+  .layer__num { width: 28px; height: 28px; }
+  .standards { flex-direction: column; align-items: stretch; gap: 8px; max-width: 100%; }
+  .standards ul { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; min-width: 0; max-width: 100%; }
+  .standards ul::-webkit-scrollbar { display: none; }
+  .standards li { flex: 0 0 auto; }
+}
+@media (max-width: 760px) and (max-height: 780px) {
+  #platform .section__desc { display: none; }
+}
+@media (max-width: 400px) and (max-height: 780px) {
+  .work__tagline { font-size: 1rem; }
+  .work .section__header { margin-bottom: 6px; }
+  .work .section__desc { font-size: 0.86rem; }
+  .layer { padding: 10px; }
+  .layer__body h3 { font-size: 0.9rem; }
+  .standards { margin-top: 10px; padding-top: 8px; }
+}
