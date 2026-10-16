@@ -14,7 +14,7 @@ export function initFit() {
     const vh = window.innerHeight;
     const phone = vw <= 760;
     // Share of the screen height the phone may use.
-    const share = phone ? 0.3 : vw <= 1100 ? 0.48 : 0.53;
+    const share = phone ? (vh < 780 ? 0.28 : 0.34) : vw <= 1100 ? 0.48 : 0.53;
     const maxH = phone ? 420 : 640;
     const target = Math.max(phone ? 190 : 260, Math.min(maxH, vh * share));
     frame.style.setProperty('--device-scale', (target / DESIGN_H).toFixed(4));
