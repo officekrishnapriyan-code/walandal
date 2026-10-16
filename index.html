@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#07090F" />
 
   <title>WAL &amp; AL — Engineering precision for a regenerative planet.</title>
-  <meta name="description" content="WAL &amp; AL is a deep-tech engineering studio architecting cloud-native platforms, autonomous robotics, and intelligent sensing systems for water, air, and land." />
+  <meta name="description" content="WAL &amp; AL is a deep-tech engineering studio architecting cloud-native platforms, autonomous robotics, and intelligent sensing systems." />
 
   <link rel="canonical" href="https://walandal.com/" />
 
@@ -14,13 +14,13 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://walandal.com/" />
   <meta property="og:title" content="WAL &amp; AL — Engineering precision for a regenerative planet." />
-  <meta property="og:description" content="A deep-tech engineering studio building intelligent systems for water, air, and land." />
+  <meta property="og:description" content="A deep-tech engineering studio building intelligent sensing, robotics and cloud systems." />
   <meta property="og:image" content="https://walandal.com/assets/og-image.png" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="WAL &amp; AL — Engineering precision for a regenerative planet." />
-  <meta name="twitter:description" content="A deep-tech engineering studio building intelligent systems for water, air, and land." />
+  <meta name="twitter:description" content="A deep-tech engineering studio building intelligent sensing, robotics and cloud systems." />
   <meta name="twitter:image" content="https://walandal.com/assets/og-image.png" />
 
   <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
@@ -227,7 +227,7 @@
           <p class="work__tagline reveal"><span class="accent">Ensuring trust in every drop.</span></p>
         </div>
         <p class="section__desc reveal">
-          Rural overhead tanks are still chlorinated by hand, so water can turn unsafe without anyone noticing. Aqua Insight adds a solar sensor kit and automatic dosing to every tank, and one live view for owners, operators and authorities.
+          An end-to-end monitoring and control platform: solar-powered sensor nodes at the edge, a secure cloud pipeline, and live dashboards for owners, operators and authorities, with alerts, predictions and automated actions built in.
         </p>
       </header>
 
@@ -277,7 +277,7 @@
                   <div><span>TDS</span><b data-m="tds">428</b></div>
                   <div><span>NTU</span><b data-m="ntu">0.66</b></div>
                 </div>
-                <p class="app-dose"><i></i>Auto-dose sent · <code>Dispense Cl</code></p>
+                <p class="app-dose"><i></i>Auto-action sent · <code>CMD 0x2A</code></p>
               </div>
 
               <div class="app-card" data-tank="ok">
@@ -292,7 +292,7 @@
                   <div><span>TDS</span><b data-m="tds">312</b></div>
                   <div><span>NTU</span><b data-m="ntu">0.42</b></div>
                 </div>
-                <p class="app-predict">Predicted · chlorine below 0.2 mg/L in ~1h 30m</p>
+                <p class="app-predict">Predicted · all parameters in range for the next 6h</p>
               </div>
 
               <div class="app-nav" aria-hidden="true">
@@ -308,11 +308,11 @@
         <div class="work__features swipe-row reveal-stagger">
           <article class="feature">
             <span class="feature__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/><path d="M8 14h2l1-2 2 4 1-2h2"/></svg></span>
-            <div><h3>Real-time water quality</h3><p>Chlorine, pH, TDS, turbidity and level, checked against safe limits as they arrive.</p></div>
+            <div><h3>Real-time monitoring</h3><p>Multi-parameter quality and level readings, checked against configurable limits as they arrive.</p></div>
           </article>
           <article class="feature">
             <span class="feature__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 3h6M10 3v5l-5 9a2 2 0 0 0 1.7 3h10.6a2 2 0 0 0 1.7-3l-5-9V3"/><path d="M7.5 14h9"/></svg></span>
-            <div><h3>Closed-loop chlorine dosing</h3><p>Low chlorine triggers a dose command straight back to the tank.</p></div>
+            <div><h3>Closed-loop control</h3><p>Rules turn readings into commands sent straight back to field devices.</p></div>
           </article>
           <article class="feature">
             <span class="feature__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 17l5-5 4 3 8-8"/><path d="M15 7h5v5"/></svg></span>
@@ -348,7 +348,7 @@
         <p class="mono section__eyebrow">02 / HOW IT WORKS</p>
         <h2 class="section__title reveal-lines">From sensor to decision, in one loop.</h2>
         <p class="section__desc reveal">
-          Measured at the tank, secured in flight, checked in the cloud, then acted on by people through the app or by the tank itself through the doser.
+          Measured at the edge, secured in flight, processed in the cloud, then acted on by people through the dashboards or automatically by the devices themselves.
         </p>
       </header>
 
@@ -372,7 +372,7 @@
           <li class="step">
             <span class="step__num mono">01</span>
             <h3>Sense</h3>
-            <p>Solar ESP32 kit with five sensors and a chlorine doser.</p>
+            <p>Solar ESP32 nodes with multi-parameter sensors and actuators.</p>
           </li>
           <li class="step">
             <span class="step__num mono">02</span>
@@ -397,10 +397,10 @@
           <li class="step">
             <span class="step__num mono">06</span>
             <h3>Act</h3>
-            <p>Alerts, app and reports, plus a dose back to the tank.</p>
+            <p>Alerts, dashboards and reports, plus commands back to the field.</p>
           </li>
         </ol>
-        <p class="pipeline__legend mono"><i></i> Telemetry &nbsp;&nbsp; <i class="is-loop"></i> Closed-loop dosing command</p>
+        <p class="pipeline__legend mono"><i></i> Telemetry &nbsp;&nbsp; <i class="is-loop"></i> Closed-loop control command</p>
       </div>
     </section>
 
@@ -408,8 +408,8 @@
     <section id="domains" class="section domains">
       <header class="section__header container fw__header">
         <p class="mono section__eyebrow">03 / FRAMEWORK</p>
-        <h2 class="section__title reveal-lines">One method for water, air and land.</h2>
-        <p class="section__desc reveal">Every system we build follows the same four steps. What changes is the ground it stands on.</p>
+        <h2 class="section__title reveal-lines">One method behind every system.</h2>
+        <p class="section__desc reveal">Every system we build follows the same four steps, wherever it is deployed.</p>
       </header>
 
       <div class="fw container">
@@ -424,7 +424,6 @@
         <div class="fw__grid reveal-stagger">
           <article class="fw-card fw-card--water">
             <div class="fw-card__scene" data-anim aria-hidden="true">
-              <span class="fw-card__letter">W</span>
               <svg viewBox="0 0 300 120" preserveAspectRatio="xMidYMid slice">
                 <defs>
                   <linearGradient id="fwWater" x1="0" y1="0" x2="0" y2="1">
@@ -440,16 +439,15 @@
               </svg>
             </div>
             <div class="fw-card__text">
-              <p class="mono fw-card__tag">Water</p>
-              <h3 class="fw-card__title">Safe water, shown every minute.</h3>
-              <p class="fw-card__body">Tanks and pipelines report chlorine, pH, turbidity, TDS and level as they change, with a warning before a reading crosses the line.</p>
+              <p class="mono fw-card__tag">Monitoring networks</p>
+              <h3 class="fw-card__title">Critical infrastructure, live every minute.</h3>
+              <p class="fw-card__body">Distributed sensor nodes report every parameter as it changes, with a warning before any reading crosses its limit.</p>
               <p class="mono fw-card__in">In practice <span>Aqua Insight</span></p>
             </div>
           </article>
 
           <article class="fw-card fw-card--air">
             <div class="fw-card__scene" data-anim aria-hidden="true">
-              <span class="fw-card__letter">A</span>
               <svg viewBox="0 0 300 120" preserveAspectRatio="xMidYMid slice">
                 <g class="fw-flow">
                   <path d="M-300 40 H600 M-300 64 H600 M-300 88 H600" stroke="rgba(139,209,124,0.22)" stroke-width="1" stroke-dasharray="18 14"/>
@@ -463,16 +461,15 @@
               </svg>
             </div>
             <div class="fw-card__text">
-              <p class="mono fw-card__tag">Air</p>
-              <h3 class="fw-card__title">The air around industry, measured.</h3>
-              <p class="fw-card__body">Sensors at site boundaries track gases and particulates, building a record that plant teams, regulators and neighbours can all read.</p>
+              <p class="mono fw-card__tag">Industrial sensing</p>
+              <h3 class="fw-card__title">Industrial sites, measured continuously.</h3>
+              <p class="fw-card__body">Sensors at site boundaries track emissions and particulates, building a record that plant teams and regulators can both trust.</p>
               <p class="mono fw-card__in">In practice <span>Emission Monitoring</span></p>
             </div>
           </article>
 
           <article class="fw-card fw-card--land">
             <div class="fw-card__scene" data-anim aria-hidden="true">
-              <span class="fw-card__letter">L</span>
               <svg viewBox="0 0 300 120" preserveAspectRatio="xMidYMid slice">
                 <g fill="none" stroke="rgba(242,197,92,0.22)" stroke-width="1">
                   <ellipse cx="110" cy="66" rx="96" ry="44"/>
@@ -494,7 +491,7 @@
               </svg>
             </div>
             <div class="fw-card__text">
-              <p class="mono fw-card__tag">Land &amp; coast</p>
+              <p class="mono fw-card__tag">Field robotics</p>
               <h3 class="fw-card__title">Machines in the field, seen from anywhere.</h3>
               <p class="fw-card__body">Robots and marine platforms send telemetry from places people can't easily reach, all landing in one live cloud view.</p>
               <p class="mono fw-card__in">In practice <span>Marine · Fleet &amp; Cloud</span></p>
@@ -521,7 +518,7 @@
               <p class="system-card__subtitle">Drinking Water Intelligence</p>
               <p class="system-card__body">A monitoring and insight layer for drinking water networks. Continuous, real-time visibility into water quality and availability — from overhead tanks to the last mile of local distribution.</p>
               <ul class="system-card__specs">
-                <li>Real-time chlorine, pH, turbidity, TDS, level</li>
+                <li>Real-time multi-parameter quality and level</li>
                 <li>Automated alerting for risk and non-compliance zones</li>
                 <li>Dashboards for operations, maintenance, planning</li>
               </ul>
@@ -554,7 +551,7 @@
                   <text x="204" y="74">pH</text><text x="290" y="74" text-anchor="end" fill="#F5F7FA">7.2</text>
                   <rect x="204" y="80" width="86" height="3" rx="1.5" fill="rgba(255,255,255,0.08)"/>
                   <rect class="aq-meter" x="204" y="80" width="86" height="3" rx="1.5" fill="#14E0D5"/>
-                  <text x="204" y="110">Cl mg/L</text><text x="290" y="110" text-anchor="end" fill="#F5F7FA">0.42</text>
+                  <text x="204" y="110">TDS ppm</text><text x="290" y="110" text-anchor="end" fill="#F5F7FA">312</text>
                   <rect x="204" y="116" width="86" height="3" rx="1.5" fill="rgba(255,255,255,0.08)"/>
                   <rect class="aq-meter aq-meter--2" x="204" y="116" width="86" height="3" rx="1.5" fill="#8BD17C"/>
                   <text x="204" y="146">NTU</text><text x="290" y="146" text-anchor="end" fill="#F5F7FA">0.6</text>
@@ -730,7 +727,7 @@
             <div class="layer__body">
               <h3>Hardware &amp; firmware</h3>
               <p>Sensor kits, solar power and actuation for remote sites.</p>
-              <p class="layer__tags mono">ESP32 · Sensors · Solar · Dosing</p>
+              <p class="layer__tags mono">ESP32 · Sensors · Solar · Actuators</p>
             </div>
           </li>
           <li class="layer">
@@ -835,7 +832,7 @@
           <p class="mono section__eyebrow">07 / CONTACT</p>
           <h2 class="contact__title reveal-lines">Got a challenge worth solving?</h2>
           <p class="contact__body">
-            Tell us about your water, air, or land problem. We'll come back with honest, practical ideas — no sales pitch, just engineering thinking.
+            Tell us about the problem you're solving. We'll come back with honest, practical ideas — no sales pitch, just engineering thinking.
           </p>
 
           <div class="contact__info">
