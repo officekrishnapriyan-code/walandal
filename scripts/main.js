@@ -11,6 +11,7 @@ import { initMarquee } from './marquee.js';
 import { initForm } from './form.js';
 import { initAquaDemo } from './aqua-demo.js';
 import { initFit } from './fit.js';
+import { initMotion } from './motion.js';
 
 onReady(async () => {
   // Wait for GSAP + ScrollTrigger from CDN (deferred). Lenis is optional.
@@ -22,6 +23,7 @@ onReady(async () => {
   // Size the Aqua Insight phone mock-up to the screen.
   initFit();
   initAquaDemo();
+  initMotion();
 
   // Sync DOM-only behaviour
   initNav();
