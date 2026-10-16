@@ -104,3 +104,47 @@
   .founder__card { grid-template-columns: auto 1fr !important; gap: 28px !important; padding: 28px !important; }
   .founder__portrait { width: 140px !important; height: 140px !important; }
 }
+
+/* =====================================================================
+   Short laptop windows (e.g. 1920×1080 at 150% → ~1280×620 in the browser).
+   Same layout, tighter rhythm, secondary text dropped.
+   ===================================================================== */
+@media (min-width: 761px) and (max-height: 700px) {
+  :root { --d-top: calc(72px + 12px); --d-bottom: 14px; --fit-pad-top: calc(72px + 10px); --fit-pad-bottom: 12px; }
+  .section__title { font-size: clamp(1.8rem, 6.4svh, 2.6rem); }
+
+  /* What we build: give the card the full height, animation fully visible. */
+  .systems .section__header { padding-top: 84px; padding-bottom: 10px; }
+  .systems .section__title { margin-bottom: 0; }
+  .systems__dots { padding-block: 10px 14px; }
+  .system-card { padding: 20px 28px; gap: 24px; }
+  .system-card__tag { margin-bottom: 8px; }
+  .system-card__title { font-size: clamp(1.6rem, 5svh, 2.2rem); }
+  .system-card__subtitle { margin-bottom: 10px; font-size: 1rem; }
+  .system-card__body { margin-bottom: 0; font-size: 0.9rem; line-height: 1.55; }
+  .system-card__specs { display: none; }
+  .system-card__visual { min-height: 0; height: 100%; max-height: none; align-self: stretch; }
+  .system-card__visual svg { width: 100%; height: 100%; }
+
+  /* Team: compact card, stats on one line beneath. */
+  .founder__card { padding: 22px 32px; gap: 32px; }
+  .founder__portrait { width: 120px; height: 120px; }
+  .founder__name { font-size: clamp(1.8rem, 6svh, 2.4rem); margin-bottom: 8px; }
+  .founder__bio { font-size: 0.86rem; line-height: 1.55; }
+  .founder__quote { font-size: 1.05rem; margin-top: 12px; }
+  .founder .metrics { padding-top: 10px; margin-top: 10px; }
+  .founder .metric__value { font-size: 1.7rem; margin-bottom: 0; }
+
+  /* Contact: heading block centred against a compact form. */
+  .contact__grid { align-items: center; }
+  .contact__info { display: none; }
+  .contact__form { padding: 18px 22px; gap: 8px; }
+  .field input, .field textarea { padding: 6px 0; }
+  .field textarea { min-height: 56px; }
+  .contact__form .btn { padding-block: 12px; }
+}
+@media (min-width: 761px) and (max-height: 700px) {
+  .contact__form { display: grid; grid-template-columns: 1fr 1fr; column-gap: 16px; }
+  .contact__form > * { grid-column: 1 / -1; }
+  .contact__form > .field:nth-of-type(1), .contact__form > .field:nth-of-type(2) { grid-column: auto; min-width: 0; }
+}
