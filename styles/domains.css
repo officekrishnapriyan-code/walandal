@@ -202,7 +202,7 @@
 @media (max-width: 760px) {
   .fw-card__in { display: none; }
   .fw-card__text { padding: 10px 12px; }
-  #domains .section__header { margin-bottom: 16px; }
+  #domains .section__header { margin-bottom: 10px; }
 }
 @media (max-width: 760px) and (max-height: 860px) {
   #domains .section__desc { display: none; }
