@@ -13,18 +13,21 @@ export function initCursor() {
   let mx = window.innerWidth / 2, my = window.innerHeight / 2;
   let rx = mx, ry = my;
 
-  window.addEventListener('mousemove', (e) => {
-    mx = e.clientX; my = e.clientY;
-    dot.style.transform = `translate3d(${mx}px, ${my}px, 0) translate(-50%, -50%)`;
-  }, { passive: true });
-
+  // The ring eases after the pointer and the loop sleeps once it catches up.
+  let running = false;
   function loop() {
     rx = lerp(rx, mx, 0.28);
     ry = lerp(ry, my, 0.28);
     ring.style.transform = `translate3d(${rx}px, ${ry}px, 0) translate(-50%, -50%)`;
-    requestAnimationFrame(loop);
+    if (Math.abs(mx - rx) + Math.abs(my - ry) > 0.2) requestAnimationFrame(loop);
+    else running = false;
   }
-  loop();
+
+  window.addEventListener('mousemove', (e) => {
+    mx = e.clientX; my = e.clientY;
+    dot.style.transform = `translate3d(${mx}px, ${my}px, 0) translate(-50%, -50%)`;
+    if (!running) { running = true; requestAnimationFrame(loop); }
+  }, { passive: true });
 
   // Magnetic + state hovers
   const magnetics = document.querySelectorAll('[data-magnetic]');

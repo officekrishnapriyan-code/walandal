@@ -6,8 +6,7 @@ export function initLenis() {
   if (window.matchMedia('(pointer: coarse)').matches) return null;
 
   const lenis = new window.Lenis({
-    lerp: 0.12,
-    duration: 1.0,
+    lerp: 0.1,
     smoothWheel: true,
     syncTouch: false,
     wheelMultiplier: 1,
@@ -17,6 +16,7 @@ export function initLenis() {
 
   // Official Lenis ↔ GSAP bridge — single RAF driver via gsap.ticker
   if (window.gsap && window.ScrollTrigger) {
+    window.ScrollTrigger.config({ ignoreMobileResize: true });
     lenis.on('scroll', window.ScrollTrigger.update);
     window.gsap.ticker.add((time) => lenis.raf(time * 1000));
     window.gsap.ticker.lagSmoothing(0);
@@ -35,7 +35,7 @@ export function initLenis() {
       const target = document.querySelector(id);
       if (!target) return;
       e.preventDefault();
-      lenis.scrollTo(target, { offset: -20, duration: 1.2 });
+      lenis.scrollTo(target, { offset: 0, duration: 1.4, easing: (t) => 1 - Math.pow(1 - t, 4) });
     });
   });
 

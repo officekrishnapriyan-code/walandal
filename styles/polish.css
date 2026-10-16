@@ -27,10 +27,10 @@
 .section + .section, #manifesto + .section { border-top: 1px solid var(--hairline); }
 
 /* One hover language for every card. */
-.domain-card, .system-card, .feature, .layer, .step, .founder__card, .contact__form {
+.system-card, .feature, .layer, .step, .founder__card, .contact__form {
   transition: border-color .5s var(--ease-out-expo), box-shadow .5s var(--ease-out-expo), transform .5s var(--ease-out-expo);
 }
-.domain-card:hover, .feature:hover, .layer:hover, .step:hover {
+.feature:hover, .layer:hover, .step:hover {
   border-color: rgba(20, 224, 213, 0.35);
   box-shadow: 0 24px 60px -30px rgba(20, 224, 213, 0.35);
 }
@@ -53,10 +53,6 @@
     padding: var(--d-top) 0 var(--d-bottom);
     display: flex; flex-direction: column; justify-content: center;
   }
-  .domains .section__header.container, .domains__grid.container {
-    padding-inline: var(--gutter);
-    max-width: var(--container);
-  }
   .section__title { font-size: clamp(2rem, min(4.6vw, 6.8svh), 4rem); }
   .section__header { margin-bottom: clamp(16px, 3.4svh, 48px); }
   .section__desc { font-size: clamp(0.95rem, min(1.2vw, 2.1svh), 1.15rem); }
@@ -65,15 +61,6 @@
   .manifesto { height: 100svh; display: flex; flex-direction: column; }
   .manifesto__pin { flex: 1; min-height: 0; padding: var(--d-top) 0 var(--d-bottom); }
   .manifesto__statement { font-size: clamp(2rem, min(4.4vw, 6.6svh), 4.2rem); }
-
-  /* Framework: compact cards that scale with height. */
-  .domains__grid { gap: clamp(12px, 1.6vw, 22px); }
-  .domain-card { padding: clamp(18px, 3.2svh, 32px) clamp(18px, 1.8vw, 28px); }
-  .domain-card__glyph svg { width: clamp(36px, 6svh, 60px); height: clamp(36px, 6svh, 60px); }
-  .domain-card__glyph { margin-bottom: clamp(10px, 2svh, 22px); }
-  .domain-card__tag { margin-bottom: clamp(6px, 1.2svh, 12px); }
-  .domain-card__title { font-size: clamp(1.15rem, 2.8svh, 1.5rem); margin-bottom: clamp(6px, 1.4svh, 14px); }
-  .domain-card__body { font-size: clamp(0.84rem, 1.85svh, 0.98rem); line-height: 1.55; }
 
   /* Systems (pinned): header and cards scale with height. */
   .systems .section__header { padding-top: calc(76px + clamp(10px, 3svh, 32px)); }
@@ -104,21 +91,14 @@
 
 /* Short laptop screens (≤ 760px tall): drop secondary text. */
 @media (min-width: 761px) and (max-height: 760px) {
-  .domain-card__body { display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
   .info-block:last-child { display: none; }
   .founder__caption { display: none; }
 }
 
 /* Tablets */
 @media (min-width: 761px) and (max-width: 1100px) {
-  .domains__grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
-  .domain-card__body { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
   .contact__grid { grid-template-columns: 1fr 1fr !important; gap: 28px; }
   .contact__info { display: none; }
-}
-@media (min-width: 761px) and (max-width: 1100px) and (max-height: 820px) {
-  .domain-card__glyph { display: none; }
-  .domain-card__body { -webkit-line-clamp: 2; }
 }
 @media (min-width: 761px) and (max-width: 900px) {
   .founder__card { grid-template-columns: auto 1fr !important; gap: 28px !important; padding: 28px !important; }

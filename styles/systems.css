@@ -122,20 +122,7 @@
   justify-content: center;
 }
 
-/* Aqua waves */
-.visual-aqua .wave-1 { animation: waveFloat 6s ease-in-out infinite; }
-.visual-aqua .wave-2 { animation: waveFloat 5s ease-in-out infinite reverse; }
-.visual-aqua .wave-3 { animation: waveFloat 7s ease-in-out infinite; }
-@keyframes waveFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
-
-/* Emission bars */
-.visual-emission .bar { transition: height 1.2s var(--ease-out-expo), y 1.2s var(--ease-out-expo); }
-.visual-emission.is-in .bar { /* handled by JS */ }
-
-/* Marine sonar */
+/* Marine sonar (unchanged) */
 .visual-marine .sonar-sweep { animation: sonar 4s linear infinite; }
 .visual-marine .ping { animation: ping 2s ease-in-out infinite; }
 .visual-marine .ping:nth-child(2) { animation-delay: 0.5s; }
@@ -146,35 +133,68 @@
   50% { opacity: 1; transform: scale(1.6); }
 }
 
-/* ROS orbits */
-.visual-ros .orbit-1 { animation: orbit 12s linear infinite; }
-.visual-ros .orbit-2 { animation: orbit 8s linear infinite reverse; }
-.visual-ros .orbit-3 { animation: orbit 6s linear infinite; }
-@keyframes orbit { to { transform: rotate(360deg); } }
+/* Aqua Insight: a live tank. Water swells and breathes, the probe pings,
+   meters settle, the 24h trace redraws. */
+.visual-aqua .aq-wave { animation: aqDrift 4s linear infinite; }
+.visual-aqua .aq-wave--back { animation-duration: 6.5s; animation-direction: reverse; }
+@keyframes aqDrift { to { transform: translateX(-60px); } }
+.visual-aqua .aq-level { animation: aqLevel 9s ease-in-out infinite; }
+@keyframes aqLevel { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(14px); } }
+.visual-aqua .aq-bubble { fill: rgba(245,247,250,0.6); opacity: 0; animation: aqBubble 4s ease-in infinite; }
+.visual-aqua .aq-bubble:nth-of-type(2) { animation-delay: 1.3s; }
+.visual-aqua .aq-bubble:nth-of-type(3) { animation-delay: 2.6s; }
+@keyframes aqBubble { 0% { transform: translateY(0); opacity: 0; } 15% { opacity: .8; } 100% { transform: translateY(-100px); opacity: 0; } }
+.visual-aqua .aq-ping { transform-box: fill-box; transform-origin: center; animation: ring 2.4s ease-out infinite; }
+@keyframes ring { from { transform: scale(1); opacity: .9; } to { transform: scale(4.5); opacity: 0; } }
+.visual-aqua .aq-meter { transform-box: fill-box; transform-origin: left; animation: aqMeter 5s var(--ease-in-out) infinite; }
+.visual-aqua .aq-meter--2 { animation-delay: -1.6s; }
+.visual-aqua .aq-meter--3 { animation-delay: -3.2s; }
+@keyframes aqMeter { 0%, 100% { transform: scaleX(.52); } 50% { transform: scaleX(.64); } }
+.visual-aqua .aq-live { animation: blink 1.6s ease-in-out infinite; }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: .25; } }
+.visual-aqua .aq-spark { stroke-dasharray: 260; animation: aqSpark 6s var(--ease-in-out) infinite; }
+@keyframes aqSpark { 0% { stroke-dashoffset: 260; } 55%, 85% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: -260; } }
 
+/* Industrial Emission: a stack plume drifts downwind past a sensor mast;
+   the reading streams along the bottom against the limit line. */
+.visual-emission .em-puff { transform-box: fill-box; transform-origin: center; opacity: 0; animation: emPuff 7s ease-out infinite; }
+.visual-emission .em-puff:nth-child(2) { animation-delay: 1.4s; }
+.visual-emission .em-puff:nth-child(3) { animation-delay: 2.8s; }
+.visual-emission .em-puff:nth-child(4) { animation-delay: 4.2s; }
+.visual-emission .em-puff:nth-child(5) { animation-delay: 5.6s; }
+@keyframes emPuff {
+  0%   { transform: translate(0, 0) scale(.6); opacity: 0; }
+  12%  { opacity: .55; }
+  100% { transform: translate(120px, -70px) scale(3.2); opacity: 0; }
+}
+.visual-emission .em-ring { transform-box: fill-box; transform-origin: center; animation: ring 2.8s ease-out infinite; }
+.visual-emission .em-ring--2 { animation-delay: 1.4s; }
+.visual-emission .em-trace { animation: emTrace 6s linear infinite; }
+@keyframes emTrace { to { transform: translateX(-120px); } }
 
-/* Aqua Insight - floating nodes */
-.visual-aqua .node-top { animation: float 4s ease-in-out infinite; }
-.visual-aqua .node-top:nth-child(2) { animation-delay: 0.3s; }
-.visual-aqua .node-top:nth-child(3) { animation-delay: 0.6s; }
-.visual-aqua .node-mid { animation: float 4s ease-in-out infinite; }
-.visual-aqua .node-mid:nth-child(2) { animation-delay: 0.3s; }
-.visual-aqua .node-mid:nth-child(3) { animation-delay: 0.6s; }
-.visual-aqua .node-bot { animation: float 4s ease-in-out infinite; }
-.visual-aqua .node-bot:nth-child(2) { animation-delay: 0.3s; }
-.visual-aqua .node-bot:nth-child(3) { animation-delay: 0.6s; }
-@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+/* Fleet & Cloud: rovers report up (green), the cloud sends commands down
+   (amber), the cloud glows on each round trip. */
+.visual-fleet .fl-up, .visual-fleet .fl-down { opacity: 0; animation: flPacket 3s var(--ease-in-out) infinite; }
+.visual-fleet .fl-down { animation-delay: 1.5s; }
+@keyframes flPacket {
+  0%   { transform: translate(0, 0); opacity: 0; }
+  12%  { opacity: 1; }
+  88%  { opacity: 1; }
+  100% { transform: translate(var(--dx), var(--dy)); opacity: 0; }
+}
+.visual-fleet .fl-bot { animation: flBob 2.6s ease-in-out infinite; }
+.visual-fleet .fl-bot--2 { animation-delay: -.9s; }
+.visual-fleet .fl-bot--3 { animation-delay: -1.7s; }
+@keyframes flBob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+.visual-fleet .fl-led { animation: blink 1.2s ease-in-out infinite; }
+.visual-fleet .fl-halo { transform-box: fill-box; transform-origin: center; animation: flHalo 3s ease-out infinite; }
+@keyframes flHalo { from { transform: scale(.9); opacity: .7; } to { transform: scale(1.5); opacity: 0; } }
 
-/* Emission - data stream */
-.visual-emission .data-stream { animation: stream 3s linear infinite; }
-@keyframes stream { 0% { transform: translateY(0); } 100% { transform: translateY(-20px); } }
+/* Off-screen visuals pause (scripts/motion.js toggles .is-playing). */
+[data-anim]:not(.is-playing) *, [data-anim]:not(.is-playing) { animation-play-state: paused !important; }
 
 @media (prefers-reduced-motion: reduce) {
-  .visual-aqua .wave-1, .visual-aqua .wave-2, .visual-aqua .wave-3,
-  .visual-marine .sonar-sweep, .visual-marine .ping,
-  .visual-ros .orbit-1, .visual-ros .orbit-2, .visual-ros .orbit-3 {
-    animation: none;
-  }
+  .system-card__visual * { animation: none !important; }
 }
 
 .systems__dots {

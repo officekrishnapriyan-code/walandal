@@ -28,18 +28,6 @@
   .manifesto__statement { font-size: clamp(1.75rem, 8.6vw, 2.5rem); line-height: 1.16; }
   .manifesto__eyebrow { margin-bottom: 22px; }
 
-  /* ---- Framework (domains): compact 2×2 grid ---- */
-  .domains__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
-  .domain-card { padding: 16px 14px; }
-  .domain-card__glyph svg { width: 34px; height: 34px; }
-  .domain-card__glyph { margin-bottom: 10px; }
-  .domain-card__tag { font-size: 0.58rem; margin-bottom: 6px; }
-  .domain-card__title { font-size: 1.15rem; margin-bottom: 6px; }
-  .domain-card__body {
-    font-size: 0.8rem; line-height: 1.45;
-    display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden;
-  }
-
   /* ---- Systems: swipeable cards ---- */
   .systems__pin { height: auto; overflow: visible; }
   .systems__track {
@@ -87,8 +75,6 @@
 
 /* Short phones */
 @media (max-width: 760px) and (max-height: 760px) {
-  .domain-card__body { -webkit-line-clamp: 3; }
-  .domain-card__glyph { display: none; }
   .layer__body p { display: none; }
   .system-card__specs { display: none; }
   .founder__bio { font-size: 0.84rem; }
@@ -96,7 +82,6 @@
 
 /* Fine-tuning from measurements */
 @media (max-width: 760px) {
-  .domain-card__body { -webkit-line-clamp: 4; }
   #capabilities .section__desc { display: none; }
   .stack { gap: 12px; }
   .layer { padding: 11px 12px; gap: 6px; }
@@ -125,14 +110,12 @@
 @media (max-width: 760px) and (max-height: 700px) {
   .step p { display: none; }
   .step { padding: 28px 12px 18px; }
-  .domain-card__body { -webkit-line-clamp: 2; }
   .contact__title { font-size: 1.6rem; }
   .field textarea { min-height: 44px; }
 }
 
 /* Gutters and stacking fixes from visual review */
 @media (max-width: 760px) {
-  .domains .section__header.container, .domains__grid.container { padding-inline: var(--gutter); }
   .systems .section__header { padding: calc(64px + 14px) var(--gutter) 12px; }
   .systems__pin { align-items: flex-start; overflow: visible; }
   .systems__track { padding-inline: var(--gutter) !important; scroll-padding-inline: var(--gutter); }

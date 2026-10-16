@@ -45,7 +45,7 @@ export function initReveals() {
     });
   }, { rootMargin: '0px 0px -15% 0px' });
 
-  document.querySelectorAll('.reveal, .domain-card').forEach((el) => io.observe(el));
+  document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
 
   // ---------- Reveal-stagger ----------
   document.querySelectorAll('.reveal-stagger').forEach((parent) => {
@@ -109,20 +109,4 @@ export function initReveals() {
     const text = stmt.textContent.trim();
     stmt.innerHTML = text.split(/\s+/).map((w) => `<span class="word" style="opacity:1">${w}</span>`).join(' ');
   }
-
-  // ---------- Emission bar visualization ----------
-  document.querySelectorAll('.visual-emission').forEach((vis) => {
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
-        if (!e.isIntersecting) return;
-        vis.querySelectorAll('.bar').forEach((bar) => {
-          const h = parseFloat(bar.dataset.h || '60');
-          bar.setAttribute('height', h);
-          bar.setAttribute('y', 280 - h);
-        });
-        obs.unobserve(vis);
-      });
-    }, { threshold: 0.3 });
-    obs.observe(vis);
-  });
 }

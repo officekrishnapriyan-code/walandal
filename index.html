@@ -404,87 +404,103 @@
       </div>
     </section>
 
-    <!-- ============== DOMAINS ============== -->
+    <!-- ============== FRAMEWORK ============== -->
     <section id="domains" class="section domains">
-      <header class="section__header container">
+      <header class="section__header container fw__header">
         <p class="mono section__eyebrow">03 / FRAMEWORK</p>
-        <h2 class="section__title reveal-lines">The WAL &amp; AL framework.</h2>
-        <p class="section__desc reveal">
-          Systems engineered to outlast the problems they solve. Precision at scale, autonomy in execution, coherence across layers — building infrastructure that endures.
-        </p>
-
+        <h2 class="section__title reveal-lines">One method for water, air and land.</h2>
+        <p class="section__desc reveal">Every system we build follows the same four steps. What changes is the ground it stands on.</p>
       </header>
 
-      <div class="domains__grid container reveal-stagger">
-        <article class="domain-card" data-tilt>
-          <div class="domain-card__glyph">
-            <svg viewBox="0 0 60 60" width="60" height="60" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
-              <path d="M30 10 L50 50" class="draw" />
-              <path d="M30 10 L10 50" class="draw" />
-              <path d="M10 50 L50 50 L30 10 Z" class="draw" />
-              <path d="M30 25 L40 45" class="draw" />
-              <path d="M30 25 L20 45" class="draw" />
-              <path d="M20 45 L40 45 L30 25 Z" class="draw" />
-              <circle cx="30" cy="10" r="2" class="draw" />
-            </svg>
-          </div>
-          <p class="domain-card__tag mono">SYSTEMS DESIGN</p>
-          <h3 class="domain-card__title">Precision</h3>
-          <p class="domain-card__body">Architecting systems with exacting specifications — every component calibrated, every interface optimized, every signal clean. We build with micrometer precision and industrial-grade reliability.</p>
-        </article>
+      <div class="fw container">
+        <ol class="fw__method reveal" aria-label="Our method">
+          <li><span class="mono">01</span><b>Sense</b><small>Measure at the source</small></li>
+          <li><span class="mono">02</span><b>Connect</b><small>Bring every reading home</small></li>
+          <li><span class="mono">03</span><b>Understand</b><small>Turn data into a clear signal</small></li>
+          <li><span class="mono">04</span><b>Act</b><small>Close the loop in the field</small></li>
+          <i class="fw__pulse" aria-hidden="true"></i>
+        </ol>
 
-        <article class="domain-card" data-tilt>
-          <div class="domain-card__glyph">
-            <svg viewBox="0 0 60 60" width="60" height="60" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
-              <circle cx="30" cy="30" r="10" class="draw" />
-              <path d="M30 20 L30 10" class="draw" />
-              <path d="M30 40 L30 50" class="draw" />
-              <path d="M20 30 L10 30" class="draw" />
-              <path d="M40 30 L50 30" class="draw" />
-              <path d="M22 22 L14 14" class="draw" />
-              <path d="M38 38 L46 46" class="draw" />
-              <path d="M22 38 L14 46" class="draw" />
-              <path d="M38 22 L46 14" class="draw" />
-            </svg>
-          </div>
-          <p class="domain-card__tag mono">ROS / ROS 2</p>
-          <h3 class="domain-card__title">Fleet</h3>
-          <p class="domain-card__body">Autonomous robotic systems built on ROS and ROS 2, connected to modern cloud infrastructure. We enable fleets of robots to operate independently, share telemetry, and scale from single units to coordinated swarms.</p>
-        </article>
+        <div class="fw__grid reveal-stagger">
+          <article class="fw-card fw-card--water">
+            <div class="fw-card__scene" data-anim aria-hidden="true">
+              <span class="fw-card__letter">W</span>
+              <svg viewBox="0 0 300 120" preserveAspectRatio="xMidYMid slice">
+                <defs>
+                  <linearGradient id="fwWater" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#14E0D5" stop-opacity="0.45"/>
+                    <stop offset="1" stop-color="#14E0D5" stop-opacity="0.02"/>
+                  </linearGradient>
+                </defs>
+                <g class="fw-wave fw-wave--back"><path d="M0 70 Q37.5 56 75 70 T150 70 T225 70 T300 70 T375 70 T450 70 T525 70 T600 70 V120 H0 Z" fill="url(#fwWater)" opacity="0.6"/></g>
+                <g class="fw-wave fw-wave--front"><path d="M0 78 Q50 64 100 78 T200 78 T300 78 T400 78 T500 78 T600 78 V120 H0 Z" fill="url(#fwWater)"/></g>
+                <circle class="fw-bubble" cx="70" cy="112" r="2.5"/>
+                <circle class="fw-bubble" cx="150" cy="112" r="2"/>
+                <circle class="fw-bubble" cx="230" cy="112" r="3"/>
+              </svg>
+            </div>
+            <div class="fw-card__text">
+              <p class="mono fw-card__tag">Water</p>
+              <h3 class="fw-card__title">Safe water, shown every minute.</h3>
+              <p class="fw-card__body">Tanks and pipelines report chlorine, pH, turbidity, TDS and level as they change, with a warning before a reading crosses the line.</p>
+              <p class="mono fw-card__in">In practice <span>Aqua Insight</span></p>
+            </div>
+          </article>
 
-        <article class="domain-card" data-tilt>
-          <div class="domain-card__glyph">
-            <svg viewBox="0 0 60 60" width="60" height="60" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
-              <path d="M10 30 L50 30" class="draw" />
-              <path d="M10 20 L50 20" class="draw" />
-              <path d="M10 40 L50 40" class="draw" />
-              <path d="M20 10 L20 50" class="draw" />
-              <path d="M40 10 L40 50" class="draw" />
-              <circle cx="20" cy="20" r="2" class="draw" />
-              <circle cx="40" cy="20" r="2" class="draw" />
-              <circle cx="20" cy="40" r="2" class="draw" />
-              <circle cx="40" cy="40" r="2" class="draw" />
-            </svg>
-          </div>
-          <p class="domain-card__tag mono">CLOUD-NATIVE</p>
-          <h3 class="domain-card__title">Fabric</h3>
-          <p class="domain-card__body">Unified data layers that maintain integrity across distributed systems. We weave together disparate data sources into a single, consistent view — so every decision is based on truth, not approximation.</p>
-        </article>
+          <article class="fw-card fw-card--air">
+            <div class="fw-card__scene" data-anim aria-hidden="true">
+              <span class="fw-card__letter">A</span>
+              <svg viewBox="0 0 300 120" preserveAspectRatio="xMidYMid slice">
+                <g class="fw-flow">
+                  <path d="M-300 40 H600 M-300 64 H600 M-300 88 H600" stroke="rgba(139,209,124,0.22)" stroke-width="1" stroke-dasharray="18 14"/>
+                </g>
+                <circle class="fw-mote" cx="40" cy="110" r="2.4"/>
+                <circle class="fw-mote" cx="90" cy="110" r="1.6"/>
+                <circle class="fw-mote" cx="135" cy="110" r="2.8"/>
+                <circle class="fw-mote" cx="180" cy="110" r="1.8"/>
+                <circle class="fw-mote" cx="220" cy="110" r="2.2"/>
+                <circle class="fw-mote" cx="260" cy="110" r="1.6"/>
+              </svg>
+            </div>
+            <div class="fw-card__text">
+              <p class="mono fw-card__tag">Air</p>
+              <h3 class="fw-card__title">The air around industry, measured.</h3>
+              <p class="fw-card__body">Sensors at site boundaries track gases and particulates, building a record that plant teams, regulators and neighbours can all read.</p>
+              <p class="mono fw-card__in">In practice <span>Emission Monitoring</span></p>
+            </div>
+          </article>
 
-        <article class="domain-card domain-card--highlight" data-tilt>
-          <div class="domain-card__glyph">
-            <svg viewBox="0 0 60 60" width="60" height="60" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
-              <path d="M10 30 L50 30" class="draw" />
-              <path d="M30 10 L30 50" class="draw" />
-              <path d="M18 18 L42 42" class="draw" />
-              <path d="M42 18 L18 42" class="draw" />
-              <circle cx="30" cy="30" r="6" class="draw" />
-            </svg>
-          </div>
-          <p class="domain-card__tag mono">FULL SPECTRUM</p>
-          <h3 class="domain-card__title">Scale</h3>
-          <p class="domain-card__body">Infrastructure that grows with ambition — from single-node deployments to continent-spanning networks. We design for exponential growth, ensuring your systems scale without compromise or re-architecture.</p>
-        </article>
+          <article class="fw-card fw-card--land">
+            <div class="fw-card__scene" data-anim aria-hidden="true">
+              <span class="fw-card__letter">L</span>
+              <svg viewBox="0 0 300 120" preserveAspectRatio="xMidYMid slice">
+                <g fill="none" stroke="rgba(242,197,92,0.22)" stroke-width="1">
+                  <ellipse cx="110" cy="66" rx="96" ry="44"/>
+                  <ellipse cx="114" cy="64" rx="68" ry="30"/>
+                  <ellipse cx="118" cy="62" rx="40" ry="17"/>
+                  <ellipse cx="236" cy="78" rx="52" ry="26"/>
+                  <ellipse cx="238" cy="78" rx="26" ry="12"/>
+                </g>
+                <g class="fw-scan"><rect x="-40" y="0" width="40" height="120" fill="url(#fwScan)"/></g>
+                <defs>
+                  <linearGradient id="fwScan" x1="0" x2="1">
+                    <stop offset="0" stop-color="#F2C55C" stop-opacity="0"/>
+                    <stop offset="1" stop-color="#F2C55C" stop-opacity="0.28"/>
+                  </linearGradient>
+                </defs>
+                <circle class="fw-point" cx="78" cy="58" r="3"/>
+                <circle class="fw-point" cx="160" cy="74" r="3"/>
+                <circle class="fw-point" cx="244" cy="76" r="3"/>
+              </svg>
+            </div>
+            <div class="fw-card__text">
+              <p class="mono fw-card__tag">Land &amp; coast</p>
+              <h3 class="fw-card__title">Machines in the field, seen from anywhere.</h3>
+              <p class="fw-card__body">Robots and marine platforms send telemetry from places people can't easily reach, all landing in one live cloud view.</p>
+              <p class="mono fw-card__in">In practice <span>Marine · Fleet &amp; Cloud</span></p>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -510,32 +526,46 @@
                 <li>Dashboards for operations, maintenance, planning</li>
               </ul>
             </div>
-            <div class="system-card__visual visual-aqua" aria-hidden="true">
+            <div class="system-card__visual visual-aqua" data-anim aria-hidden="true">
               <svg viewBox="0 0 320 320" width="100%" height="100%">
-                <path d="M40 80 L280 80" stroke="rgba(20,224,213,0.2)" stroke-width="1"/>
-                <path d="M40 160 L280 160" stroke="rgba(20,224,213,0.2)" stroke-width="1"/>
-                <path d="M40 240 L280 240" stroke="rgba(20,224,213,0.2)" stroke-width="1"/>
-                <circle cx="80" cy="80" r="6" class="node-top" fill="#14E0D5"/>
-                <circle cx="160" cy="80" r="6" class="node-top" fill="#14E0D5"/>
-                <circle cx="240" cy="80" r="6" class="node-top" fill="#14E0D5"/>
-                <path d="M80 86 L80 120" stroke="#14E0D5" stroke-width="1"/>
-                <path d="M160 86 L160 120" stroke="#14E0D5" stroke-width="1"/>
-                <path d="M240 86 L240 120" stroke="#14E0D5" stroke-width="1"/>
-                <circle cx="80" cy="120" r="6" class="node-mid" fill="#14E0D5"/>
-                <circle cx="160" cy="120" r="6" class="node-mid" fill="#14E0D5"/>
-                <circle cx="240" cy="120" r="6" class="node-mid" fill="#14E0D5"/>
-                <path d="M80 126 L80 160" stroke="#14E0D5" stroke-width="1"/>
-                <path d="M160 126 L160 160" stroke="#14E0D5" stroke-width="1"/>
-                <path d="M240 126 L240 160" stroke="#14E0D5" stroke-width="1"/>
-                <circle cx="80" cy="160" r="6" class="node-bot" fill="#14E0D5"/>
-                <circle cx="160" cy="160" r="6" class="node-bot" fill="#14E0D5"/>
-                <circle cx="240" cy="160" r="6" class="node-bot" fill="#14E0D5"/>
-                <path d="M80 166 L80 200" stroke="#14E0D5" stroke-width="1"/>
-                <path d="M160 166 L160 200" stroke="#14E0D5" stroke-width="1"/>
-                <path d="M240 166 L240 200" stroke="#14E0D5" stroke-width="1"/>
-                <circle cx="80" cy="200" r="4" fill="#14E0D5"/>
-                <circle cx="160" cy="200" r="4" fill="#14E0D5"/>
-                <circle cx="240" cy="200" r="4" fill="#14E0D5"/>
+                <defs>
+                  <clipPath id="aqTank"><rect x="61" y="71" width="118" height="178" rx="13"/></clipPath>
+                  <linearGradient id="aqWater" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#14E0D5" stop-opacity="0.55"/>
+                    <stop offset="1" stop-color="#14E0D5" stop-opacity="0.08"/>
+                  </linearGradient>
+                </defs>
+                <rect x="60" y="70" width="120" height="180" rx="14" fill="rgba(20,224,213,0.04)" stroke="rgba(20,224,213,0.45)" stroke-width="1.5"/>
+                <g clip-path="url(#aqTank)">
+                  <g class="aq-level">
+                    <g class="aq-wave aq-wave--back"><path d="M60 128 q15.0 -6 30.0 0 t30.0 0 q15.0 -6 30.0 0 t30.0 0 q15.0 -6 30.0 0 t30.0 0 q15.0 -6 30.0 0 t30.0 0 q15.0 -6 30.0 0 t30.0 0 q15.0 -6 30.0 0 t30.0 0 V252 H60 Z" fill="url(#aqWater)" opacity="0.55"/></g>
+                    <g class="aq-wave"><path d="M60 134 q15.0 -5 30.0 0 t30.0 0 q15.0 -5 30.0 0 t30.0 0 q15.0 -5 30.0 0 t30.0 0 q15.0 -5 30.0 0 t30.0 0 q15.0 -5 30.0 0 t30.0 0 q15.0 -5 30.0 0 t30.0 0 V252 H60 Z" fill="url(#aqWater)"/></g>
+                  </g>
+                  <circle class="aq-bubble" cx="92" cy="244" r="2.5"/>
+                  <circle class="aq-bubble" cx="130" cy="244" r="2"/>
+                  <circle class="aq-bubble" cx="160" cy="244" r="3"/>
+                </g>
+                <path d="M74 110 h8 M74 150 h8 M74 190 h8 M74 230 h8" stroke="rgba(245,247,250,0.25)" stroke-width="1"/>
+                <line x1="150" y1="52" x2="150" y2="214" stroke="#14E0D5" stroke-width="1.5"/>
+                <circle cx="150" cy="218" r="4" fill="#14E0D5"/>
+                <circle class="aq-ping" cx="150" cy="218" r="4" fill="none" stroke="#14E0D5" stroke-width="1.5"/>
+                <path d="M150 52 V40 H200" fill="none" stroke="rgba(20,224,213,0.35)" stroke-width="1" stroke-dasharray="3 3"/>
+                <g font-family="JetBrains Mono, monospace" font-size="10" fill="#9AA8BD">
+                  <text x="204" y="74">pH</text><text x="290" y="74" text-anchor="end" fill="#F5F7FA">7.2</text>
+                  <rect x="204" y="80" width="86" height="3" rx="1.5" fill="rgba(255,255,255,0.08)"/>
+                  <rect class="aq-meter" x="204" y="80" width="86" height="3" rx="1.5" fill="#14E0D5"/>
+                  <text x="204" y="110">Cl mg/L</text><text x="290" y="110" text-anchor="end" fill="#F5F7FA">0.42</text>
+                  <rect x="204" y="116" width="86" height="3" rx="1.5" fill="rgba(255,255,255,0.08)"/>
+                  <rect class="aq-meter aq-meter--2" x="204" y="116" width="86" height="3" rx="1.5" fill="#8BD17C"/>
+                  <text x="204" y="146">NTU</text><text x="290" y="146" text-anchor="end" fill="#F5F7FA">0.6</text>
+                  <rect x="204" y="152" width="86" height="3" rx="1.5" fill="rgba(255,255,255,0.08)"/>
+                  <rect class="aq-meter aq-meter--3" x="204" y="152" width="86" height="3" rx="1.5" fill="#14E0D5"/>
+                </g>
+                <rect x="204" y="176" width="64" height="22" rx="11" fill="rgba(139,209,124,0.12)" stroke="rgba(139,209,124,0.5)"/>
+                <circle class="aq-live" cx="217" cy="187" r="3.5" fill="#8BD17C"/>
+                <text x="226" y="191" font-family="JetBrains Mono, monospace" font-size="10" font-weight="700" fill="#8BD17C">SAFE</text>
+                <path class="aq-spark" d="M60 292 l20 -6 l20 4 l20 -10 l20 6 l20 -3 l20 5 l20 -9 l20 3 l20 -5 l20 4 l20 -7" fill="none" stroke="#14E0D5" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                <text x="60" y="270" font-family="JetBrains Mono, monospace" font-size="9" fill="#5A6577" letter-spacing="1.5">LIVE · 24H</text>
               </svg>
             </div>
           </article>
@@ -552,22 +582,33 @@
                 <li>Cloud-native reporting and APIs for regulators</li>
               </ul>
             </div>
-            <div class="system-card__visual visual-emission" aria-hidden="true">
+            <div class="system-card__visual visual-emission" data-anim aria-hidden="true">
               <svg viewBox="0 0 320 320" width="100%" height="100%">
-                <path d="M50 260 L270 260" stroke="rgba(20,224,213,0.3)" stroke-width="2"/>
-                <path d="M70 260 L70 180" stroke="rgba(20,224,213,0.2)" stroke-width="1"/>
-                <path d="M110 260 L110 140" stroke="rgba(20,224,213,0.2)" stroke-width="1"/>
-                <path d="M150 260 L150 100" stroke="rgba(20,224,213,0.2)" stroke-width="1"/>
-                <path d="M190 260 L190 160" stroke="rgba(20,224,213,0.2)" stroke-width="1"/>
-                <path d="M230 260 L230 120" stroke="rgba(20,224,213,0.2)" stroke-width="1"/>
-                <path d="M270 260 L270 200" stroke="rgba(20,224,213,0.2)" stroke-width="1"/>
-                <rect x="60" y="180" width="20" height="80" fill="rgba(20,224,213,0.3)" rx="2"/>
-                <rect x="100" y="140" width="20" height="120" fill="rgba(20,224,213,0.5)" rx="2"/>
-                <rect x="140" y="100" width="20" height="160" fill="rgba(20,224,213,0.7)" rx="2"/>
-                <rect x="180" y="160" width="20" height="100" fill="rgba(20,224,213,0.4)" rx="2"/>
-                <rect x="220" y="120" width="20" height="140" fill="rgba(20,224,213,0.6)" rx="2"/>
-                <rect x="260" y="200" width="20" height="60" fill="rgba(20,224,213,0.3)" rx="2"/>
-                <path d="M70 180 L110 140 L150 100 L190 160 L230 120 L270 200" fill="none" stroke="#14E0D5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <defs>
+                  <clipPath id="emChart"><rect x="30" y="256" width="260" height="46"/></clipPath>
+                </defs>
+                <g class="em-puffs" fill="rgba(154,168,189,0.5)">
+                  <circle class="em-puff" cx="129" cy="104" r="9"/>
+                  <circle class="em-puff" cx="129" cy="104" r="9"/>
+                  <circle class="em-puff" cx="129" cy="104" r="9"/>
+                  <circle class="em-puff" cx="129" cy="104" r="9"/>
+                  <circle class="em-puff" cx="129" cy="104" r="9"/>
+                </g>
+                <path d="M40 232 V196 l24 -14 v14 l24 -14 v14 l24 -14 V232 Z" fill="rgba(20,224,213,0.08)" stroke="rgba(20,224,213,0.45)" stroke-width="1.5" stroke-linejoin="round"/>
+                <rect x="120" y="108" width="18" height="124" fill="rgba(20,224,213,0.08)" stroke="rgba(20,224,213,0.45)" stroke-width="1.5"/>
+                <path d="M120 124 h18 M120 140 h18" stroke="rgba(242,197,92,0.5)" stroke-width="2"/>
+                <line x1="20" y1="232" x2="300" y2="232" stroke="rgba(20,224,213,0.3)" stroke-width="1.5"/>
+                <line x1="250" y1="232" x2="250" y2="160" stroke="#14E0D5" stroke-width="1.5"/>
+                <path d="M240 232 l10 -14 l10 14" fill="none" stroke="#14E0D5" stroke-width="1.2"/>
+                <circle cx="250" cy="156" r="5" fill="#14E0D5"/>
+                <circle class="em-ring" cx="250" cy="156" r="6" fill="none" stroke="#14E0D5" stroke-width="1.2"/>
+                <circle class="em-ring em-ring--2" cx="250" cy="156" r="6" fill="none" stroke="#14E0D5" stroke-width="1.2"/>
+                <text x="250" y="138" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#9AA8BD" letter-spacing="1">PM2.5 · NO₂ · SO₂</text>
+                <line x1="30" y1="270" x2="290" y2="270" stroke="#F2C55C" stroke-width="1" stroke-dasharray="4 4" opacity="0.7"/>
+                <text x="290" y="264" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="8" fill="#F2C55C" letter-spacing="1.5">LIMIT</text>
+                <g clip-path="url(#emChart)">
+                  <g class="em-trace"><path d="M30 292 l20 -8 l20 6 l20 -18 l20 14 l20 -4 l20 10 l20 -8 l20 6 l20 -18 l20 14 l20 -4 l20 10 l20 -8 l20 6 l20 -18 l20 14 l20 -4 l20 10 l20 -8 l20 6 l20 -18 l20 14 l20 -4 l20 10 l20 -8 l20 6 l20 -18 l20 14 l20 -4 l20 10" fill="none" stroke="#14E0D5" stroke-width="1.6" stroke-linejoin="round"/></g>
+                </g>
               </svg>
             </div>
           </article>
@@ -584,7 +625,7 @@
                 <li>Data products for analysis and mapping</li>
               </ul>
             </div>
-            <div class="system-card__visual visual-marine" aria-hidden="true">
+            <div class="system-card__visual visual-marine" data-anim aria-hidden="true">
               <svg viewBox="0 0 320 320" width="100%" height="100%">
                 <defs>
                   <radialGradient id="sweep" cx="50%" cy="50%" r="50%">
@@ -622,21 +663,43 @@
                 <li>Remote operations and digital-twin analysis</li>
               </ul>
             </div>
-            <div class="system-card__visual visual-ros" aria-hidden="true">
+            <div class="system-card__visual visual-fleet" data-anim aria-hidden="true">
               <svg viewBox="0 0 320 320" width="100%" height="100%">
-                <circle cx="160" cy="160" r="100" stroke="rgba(20,224,213,0.18)" fill="none" stroke-width="1" stroke-dasharray="3 3"/>
-                <circle cx="160" cy="160" r="60" stroke="rgba(139,209,124,0.18)" fill="none" stroke-width="1" stroke-dasharray="3 3"/>
-                <g class="orbit orbit-1" style="transform-origin: 160px 160px">
-                  <circle cx="260" cy="160" r="6" fill="#14E0D5"/>
+                <path d="M20 262 H300 M50 282 H270 M90 300 H230" stroke="rgba(20,224,213,0.12)" stroke-width="1"/>
+                <circle class="fl-halo" cx="160" cy="64" r="34" fill="none" stroke="rgba(20,224,213,0.5)" stroke-width="1"/>
+                <rect x="112" y="42" width="96" height="44" rx="22" fill="rgba(20,224,213,0.12)" stroke="#14E0D5" stroke-width="1.5"/>
+                <text x="160" y="69" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700" fill="#F5F7FA" letter-spacing="2">CLOUD</text>
+                <g class="fl-bot fl-bot--1">
+                  <line x1="70" y1="222" x2="70" y2="208" stroke="#14E0D5" stroke-width="1.2"/>
+                  <circle class="fl-led" cx="70" cy="206" r="2.5" fill="#8BD17C"/>
+                  <rect x="50" y="222" width="40" height="22" rx="6" fill="rgba(20,224,213,0.1)" stroke="#14E0D5" stroke-width="1.4"/>
+                  <circle cx="59" cy="248" r="5" fill="#0C1119" stroke="#14E0D5" stroke-width="1.4"/>
+                  <circle cx="81" cy="248" r="5" fill="#0C1119" stroke="#14E0D5" stroke-width="1.4"/>
                 </g>
-                <g class="orbit orbit-2" style="transform-origin: 160px 160px">
-                  <circle cx="220" cy="160" r="5" fill="#8BD17C"/>
+                <line x1="70" y1="200" x2="160" y2="86" stroke="rgba(20,224,213,0.2)" stroke-width="1" stroke-dasharray="3 4"/>
+                <circle class="fl-up" style="--dx:90px;--dy:-114px" cx="70" cy="200" r="3" fill="#8BD17C"/>
+                <circle class="fl-down" style="--dx:-90px;--dy:114px" cx="160" cy="86" r="2.6" fill="#F2C55C"/>
+                <g class="fl-bot fl-bot--2">
+                  <line x1="160" y1="222" x2="160" y2="208" stroke="#14E0D5" stroke-width="1.2"/>
+                  <circle class="fl-led" cx="160" cy="206" r="2.5" fill="#8BD17C"/>
+                  <rect x="140" y="222" width="40" height="22" rx="6" fill="rgba(20,224,213,0.1)" stroke="#14E0D5" stroke-width="1.4"/>
+                  <circle cx="149" cy="248" r="5" fill="#0C1119" stroke="#14E0D5" stroke-width="1.4"/>
+                  <circle cx="171" cy="248" r="5" fill="#0C1119" stroke="#14E0D5" stroke-width="1.4"/>
                 </g>
-                <g class="orbit orbit-3" style="transform-origin: 160px 160px">
-                  <circle cx="100" cy="160" r="4" fill="#F2C55C"/>
+                <line x1="160" y1="200" x2="160" y2="86" stroke="rgba(20,224,213,0.2)" stroke-width="1" stroke-dasharray="3 4"/>
+                <circle class="fl-up" style="--dx:0px;--dy:-114px;animation-delay:.9s" cx="160" cy="200" r="3" fill="#8BD17C"/>
+                <circle class="fl-down" style="--dx:0px;--dy:114px;animation-delay:2.4s" cx="160" cy="86" r="2.6" fill="#F2C55C"/>
+                <g class="fl-bot fl-bot--3">
+                  <line x1="250" y1="222" x2="250" y2="208" stroke="#14E0D5" stroke-width="1.2"/>
+                  <circle class="fl-led" cx="250" cy="206" r="2.5" fill="#8BD17C"/>
+                  <rect x="230" y="222" width="40" height="22" rx="6" fill="rgba(20,224,213,0.1)" stroke="#14E0D5" stroke-width="1.4"/>
+                  <circle cx="239" cy="248" r="5" fill="#0C1119" stroke="#14E0D5" stroke-width="1.4"/>
+                  <circle cx="261" cy="248" r="5" fill="#0C1119" stroke="#14E0D5" stroke-width="1.4"/>
                 </g>
-                <circle cx="160" cy="160" r="22" fill="rgba(20,224,213,0.15)" stroke="#14E0D5" stroke-width="1.5"/>
-                <text x="160" y="166" text-anchor="middle" fill="#F5F7FA" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">CORE</text>
+                <line x1="250" y1="200" x2="160" y2="86" stroke="rgba(20,224,213,0.2)" stroke-width="1" stroke-dasharray="3 4"/>
+                <circle class="fl-up" style="--dx:-90px;--dy:-114px;animation-delay:1.8s" cx="250" cy="200" r="3" fill="#8BD17C"/>
+                <circle class="fl-down" style="--dx:90px;--dy:114px;animation-delay:.3s" cx="160" cy="86" r="2.6" fill="#F2C55C"/>
+                <text x="160" y="312" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#5A6577" letter-spacing="1.5">3 / 3 ONLINE · ROS 2</text>
               </svg>
             </div>
           </article>
