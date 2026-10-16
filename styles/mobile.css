@@ -138,3 +138,6 @@
   .systems__track { padding-inline: var(--gutter) !important; scroll-padding-inline: var(--gutter); }
 }
 @media (max-width: 760px) { .system-card__visual { height: clamp(96px, 14svh, 150px); } .system-card { padding: 18px; gap: 10px; } }
+@media (max-width: 760px) {
+  .founder__card { margin-inline: var(--gutter); width: auto; padding: 20px !important; border-radius: 20px; }
+}
