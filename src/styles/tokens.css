@@ -1,0 +1,71 @@
+/* Clearwater design tokens */
+:root {
+  /* Surfaces */
+  --bg: #F3F5F4;
+  --surface: #FFFFFF;
+  --line: #D3DBDA;
+  --line-strong: #B9C3C2;
+
+  /* Text */
+  --ink: #0C1A20;
+  --ink-2: #2B3A40;
+  --muted: #4D5B61;
+
+  /* Accent (ultramarine) */
+  --ac: #2438F5;
+  --ac-tint: #E9EDFC;
+  --ac-light: #8F9BFF;
+
+  /* On dark (method band) */
+  --on-dark: #F3F5F4;
+  --on-dark-2: #D4DCDE;
+  --on-dark-muted: #A9B7BC;
+  --dark-line: rgba(243, 245, 244, 0.18);
+
+  /* Type */
+  --f-display: 'Bricolage Grotesque', 'Helvetica Neue', Arial, sans-serif;
+  --f-body: 'Geist', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --f-mono: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* One viewport-height unit. svh where supported, so mobile browser bars never cut a screen. */
+  --vh: 1vh;
+
+  /* Every screen is sized by width AND height, so short laptop windows get a tighter layout */
+  --fs-hero: clamp(44px, min(10.4vw, calc(16 * var(--vh))), 168px);
+  --fs-h2: clamp(32px, min(5.4vw, calc(8.4 * var(--vh))), 88px);
+  --fs-lede: clamp(17px, min(calc(1rem + 0.45vw), calc(3 * var(--vh))), 23px);
+  --fs-body: clamp(15px, min(1.25vw, calc(2.5 * var(--vh))), 18px);
+
+  /* Vertical rhythm */
+  --pad-y: clamp(16px, calc(5.5 * var(--vh)), 80px);
+  --gap-s: clamp(8px, calc(1.6 * var(--vh)), 18px);
+  --gap-m: clamp(14px, calc(3.2 * var(--vh)), 40px);
+  --gap-l: clamp(20px, calc(5.4 * var(--vh)), 72px);
+
+  /* Layout */
+  --wrap: 1320px;
+  --gutter: clamp(20px, 4vw, 64px);
+  --header-h: 76px;
+  --radius-l: 28px;
+  --radius-m: 20px;
+
+  /* Motion */
+  --ease: cubic-bezier(0.2, 0.7, 0.1, 1);
+  --ease-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@supports (height: 1svh) {
+  :root { --vh: 1svh; }
+}
+
+@media (min-width: 1680px) {
+  :root { --wrap: 1440px; }
+}
+
+@media (min-width: 2200px) {
+  :root { --wrap: 1600px; }
+}
+
+@media (max-width: 899px) {
+  :root { --header-h: 68px; }
+}
