@@ -293,24 +293,21 @@
 }
 .monogram-label { position: absolute; left: 7cqi; top: 6cqi; color: var(--muted); }
 .monogram-mark { position: absolute; right: 6cqi; top: 5cqi; width: 11cqi; height: 11cqi; color: var(--ac); }
+/* WAL, &, AL stacked on one centre line, in the space below the label and mark */
 .monogram-letters {
   position: absolute;
-  left: 6cqi;
-  bottom: 5cqi;
+  inset: 17cqi 0 5cqi;
   display: flex;
   flex-direction: column;
-  font-size: 44cqi;
+  align-items: center;
+  justify-content: center;
+  font-size: 40cqi;
   font-weight: 700;
   letter-spacing: -0.06em;
   line-height: 0.8;
 }
-.monogram-letters em {
-  font-family: var(--f-serif);
-  font-style: italic;
-  font-weight: 400;
-  letter-spacing: 0;
-  color: var(--ac);
-}
+.monogram-letters > span { padding-right: 0.06em; } /* balances the tight tracking so each line centres truly */
+.monogram-amp { color: var(--ac); }
 .studio-kicker { font-weight: 400; }
 .quote {
   margin-top: var(--gap-m);
