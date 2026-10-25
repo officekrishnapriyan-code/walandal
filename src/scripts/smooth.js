@@ -55,8 +55,10 @@ export function initSmoothScroll() {
       const maxY = document.documentElement.scrollHeight - vh;
       let best = null;
       let distance = Infinity;
-      for (const screen of screens) {
-        const top = Math.min(maxY, screen.getBoundingClientRect().top + y);
+      // The page end is a resting point too, so the footer can be read without being pulled back.
+      const stops = [...screens.map((screen) => screen.getBoundingClientRect().top + y), maxY];
+      for (const stop of stops) {
+        const top = Math.min(maxY, stop);
         const d = Math.abs(top - y);
         if (d < distance) {
           distance = d;

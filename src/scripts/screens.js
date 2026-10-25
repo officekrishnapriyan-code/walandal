@@ -8,6 +8,8 @@ const MIN_ZOOM = 0.8;
 export function initScreens() {
   const screens = [...document.querySelectorAll('[data-screen]')];
   if (!screens.length) return;
+  // Areas whose colour the header and rail adapt to: the screens plus the footer.
+  const bands = [...document.querySelectorAll('[data-screen], .site-footer[data-tone]')];
 
   const header = document.querySelector('[data-header]');
   const rail = document.querySelector('[data-rail]');
@@ -54,18 +56,24 @@ export function initScreens() {
   const update = () => {
     const headerMid = header ? header.offsetHeight / 2 : 0;
     const viewMid = window.innerHeight / 2;
-    let under = screens[0];
+    // Everything is in page order, so the last area starting above a line is the one under it
+    // (for position, the footer after the last screen counts as part of it).
     let current = screens[0];
     for (const screen of screens) {
-      const r = screen.getBoundingClientRect();
-      if (r.top <= headerMid && r.bottom > headerMid) under = screen;
-      if (r.top <= viewMid && r.bottom > viewMid) current = screen;
+      if (screen.getBoundingClientRect().top <= viewMid) current = screen;
+    }
+    let underHeader = bands[0];
+    let underRail = bands[0];
+    for (const band of bands) {
+      const top = band.getBoundingClientRect().top;
+      if (top <= headerMid) underHeader = band;
+      if (top <= viewMid) underRail = band;
     }
     if (header) {
-      header.dataset.tone = under.dataset.tone || 'light';
+      header.dataset.tone = underHeader.dataset.tone || 'light';
       header.classList.toggle('is-scrolled', window.scrollY > 8);
     }
-    if (rail) rail.dataset.tone = current.dataset.tone || 'light';
+    if (rail) rail.dataset.tone = underRail.dataset.tone || 'light';
     for (const link of railLinks) {
       if (link.dataset.railFor === current.id) link.setAttribute('aria-current', 'true');
       else link.removeAttribute('aria-current');

@@ -26,6 +26,7 @@
   --f-display: 'Bricolage Grotesque', 'Helvetica Neue', Arial, sans-serif;
   --f-body: 'Geist', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   --f-mono: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --f-serif: 'Instrument Serif', Georgia, 'Times New Roman', serif;
 
   /* One viewport-height unit. svh where supported, so mobile browser bars never cut a screen. */
   --vh: 1vh;

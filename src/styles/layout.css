@@ -13,15 +13,6 @@
   scroll-snap-align: start;
 }
 
-/* The last screen holds the contact section and the footer together */
-.screen-last {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  min-height: calc(100 * var(--vh));
-  scroll-snap-align: start;
-}
-
 /* Touch screens snap gently to each screen. With a mouse or trackpad, smooth.js glides and snaps instead. */
 @media (min-width: 700px) and (min-height: 540px) {
   html { scroll-snap-type: y proximity; }
@@ -343,7 +334,27 @@
 @keyframes drift { to { transform: translateX(-50%); } }
 
 /* ---------- Footer ---------- */
-.site-footer { background: var(--bg); }
+.site-footer { background: var(--bg); scroll-snap-align: end; }
+.signoff {
+  padding-block: clamp(48px, calc(11 * var(--vh)), 136px) clamp(32px, calc(7 * var(--vh)), 88px);
+  border-bottom: 1px solid var(--line);
+}
+.signoff-line {
+  max-width: 15em;
+  font-size: clamp(40px, min(7vw, calc(12 * var(--vh))), 128px);
+  font-weight: 600;
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+  text-wrap: balance;
+}
+.signoff-line em {
+  font-family: var(--f-serif);
+  font-size: 1.12em;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--ac);
+}
 .footer-inner {
   display: flex;
   flex-wrap: wrap;
