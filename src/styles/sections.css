@@ -36,17 +36,25 @@
 
 .fig-wrap { position: relative; }
 .fig-card {
+  --fig-h: calc(100 * var(--vh) - var(--header-h) - 2 * var(--pad-y) - 160px); /* tallest the drawing may be */
+  --fig-pad: clamp(16px, min(2.4vw, calc(3.6 * var(--vh))), 34px);
+  container-type: inline-size;
   background: var(--surface);
   border: 1px solid #D9E0DF;
   border-radius: var(--radius-l);
-  padding: clamp(16px, min(2.4vw, calc(3.6 * var(--vh))), 34px);
+  padding: var(--fig-pad);
 }
 .fig-label { display: block; color: var(--muted); }
+/* The stage is exactly the drawing's box, so the resident card can be placed against the drawing itself */
+.fig-stage {
+  position: relative;
+  width: min(100%, calc(var(--fig-h) * 640 / 470));
+  margin: var(--gap-s) auto 0;
+}
 .fig-svg {
+  display: block;
   width: 100%;
   height: auto;
-  max-height: calc(100 * var(--vh) - var(--header-h) - 2 * var(--pad-y) - 160px);
-  margin-top: var(--gap-s);
   overflow: visible;
 }
 
@@ -90,39 +98,40 @@
 .js .fig-wrap.is-in .callout text,
 .js .fig-wrap.is-in .callout circle { opacity: 1; }
 
-/* The resident card sits in the empty bottom-right corner of the drawing */
+/* The resident card sits in the empty corner below the labels: it starts just past the tank's right
+   edge (57% of the drawing) and may run on into the blank margin and padding beside the drawing. */
 .safe-card {
   position: absolute;
-  right: clamp(10px, 1.6vw, 24px);
-  bottom: clamp(10px, 1.6vw, 24px);
-  width: min(300px, 50%);
+  left: calc(57% + 10px);
+  right: calc((100% - 100cqi) / 2 - var(--fig-pad) + 12px);
+  bottom: 0;
+  max-width: 280px;
+  margin-left: auto;
   background: var(--ink);
   color: var(--on-dark);
   border-radius: var(--radius-m);
-  padding: clamp(12px, calc(2 * var(--vh)), 18px) clamp(14px, 1.4vw, 20px);
+  padding: clamp(12px, calc(2 * var(--vh)), 16px) clamp(12px, 1.2vw, 16px);
   box-shadow: 0 30px 60px -24px rgba(12, 26, 32, 0.5);
 }
-.safe-kicker,
-.safe-foot { color: var(--on-dark-muted); font-size: 11px; }
-.safe-row { display: flex; align-items: center; gap: 12px; margin-top: 10px; }
+.safe-kicker { color: var(--on-dark-muted); font-size: 11px; }
+.safe-row { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
 .safe-icon {
   flex: none;
-  width: 36px;
-  height: 36px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   background: var(--ac);
   display: grid;
   place-items: center;
 }
-.safe-icon svg { width: 20px; height: 20px; fill: none; stroke: #FFFFFF; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
-.safe-title { font-family: var(--f-display); font-size: clamp(17px, 1.4vw, 20px); font-weight: 600; letter-spacing: -0.02em; line-height: 1.2; }
-.safe-sub { font-size: 13px; line-height: 1.4; color: var(--on-dark-2); margin-top: 2px; }
-.safe-foot { margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--dark-line); }
+.safe-icon svg { width: 17px; height: 17px; fill: none; stroke: #FFFFFF; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.safe-title { font-family: var(--f-display); font-size: clamp(15px, 1.2vw, 18px); font-weight: 600; letter-spacing: -0.02em; line-height: 1.2; text-wrap: balance; }
+.safe-sub { font-size: 13px; line-height: 1.4; text-wrap: balance; color: var(--on-dark-2); margin-top: 2px; }
 
 @media (max-width: 1023px) {
   .aqua-grid { grid-template-columns: minmax(0, 1fr); }
   .fig-wrap { max-width: 720px; }
-  .fig-svg { max-height: calc(40 * var(--vh)); }
+  .fig-card { --fig-h: calc(40 * var(--vh)); }
 }
 
 /* ---------- 02 Platform ---------- */
