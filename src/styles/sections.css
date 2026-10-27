@@ -301,7 +301,7 @@
   background-image: repeating-linear-gradient(135deg, rgba(12, 26, 32, 0.06) 0 1px, transparent 1px 14px);
 }
 .monogram-label { position: absolute; left: 7cqi; top: 6cqi; color: var(--muted); }
-.monogram-mark { position: absolute; right: 6cqi; top: 5cqi; width: 11cqi; height: 11cqi; color: var(--ac); }
+.monogram-mark { position: absolute; right: 6cqi; top: 5cqi; width: 11cqi; height: 11cqi; color: var(--ink); }
 /* WAL, &, AL stacked on one centre line, in the space below the label and mark */
 .monogram-letters {
   position: absolute;
