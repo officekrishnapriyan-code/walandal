@@ -239,6 +239,14 @@
   .sys { grid-template-columns: 40px minmax(0, 1fr) minmax(0, 1.3fr) 28px; gap: 18px; padding-inline: 12px; }
   .sys-domain { display: none; }
 }
+/* Phones: the description sits under the name, so long names keep the full width */
+@media (max-width: 599px) {
+  .sys { grid-template-columns: 28px minmax(0, 1fr) 24px; gap: 6px 14px; }
+  .sys > :first-child { grid-row: 1 / span 2; align-self: start; padding-top: 0.5em; }
+  .sys-name { grid-column: 2; grid-row: 1; }
+  .sys-desc { grid-column: 2; grid-row: 2; font-size: 15px; }
+  .sys-arr { grid-column: 3; grid-row: 1 / span 2; }
+}
 
 /* ---------- 05 Stack ---------- */
 .layers {

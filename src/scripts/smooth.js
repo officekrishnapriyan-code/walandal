@@ -2,7 +2,7 @@
 // links ease to their screen, and when scrolling comes to rest close to a screen's top edge
 // the page settles onto it. Touch devices keep native scrolling (with CSS snap), and
 // people who ask for reduced motion keep plain scrolling.
-import Lenis from 'lenis';
+import Lenis from '../lib/lenis.js';
 
 const SNAP_RANGE = 0.22; // settle only when within 22% of a window height from a screen edge
 const SNAP_DELAY = 160;
