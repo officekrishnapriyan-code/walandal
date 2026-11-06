@@ -37,6 +37,14 @@ walandal/
 │       ├── base.css
 │       ├── layout.css
 │       └── sections.css
+├── whitepaper/           ← the Aqua Insight white paper, walandal.com/whitepaper/
+│   ├── index.html
+│   ├── whitepaper.css    ← reading, figure, chart and print styles (imports tokens.css and base.css)
+│   ├── whitepaper.js     ← draws each chart from the data table under it
+│   ├── WAL-AL-Aqua-Insight-White-Paper-v1.0.pdf
+│   └── og-whitepaper.png ← share image
+├── tools/
+│   └── whitepaper-pdf.mjs ← rebuilds the white paper PDF and share image
 ├── assets/               ← logo, mark, favicons, og-image
 ├── CNAME                 ← custom domain for GitHub Pages
 └── .nojekyll             ← serve files as they are, no Jekyll
@@ -51,6 +59,15 @@ walandal.com is served by **GitHub Pages** straight from the root of `main`, wit
 Because of that, the browser must be able to load every file as it is in the repo: use relative or `/`-rooted paths in imports, never bare package names like `import x from 'lenis'`.
 
 The previous site is kept on the `v1` branch.
+
+---
+
+## White paper
+
+`whitepaper/index.html` is plain HTML. Every figure in it cites an official source in the reference list at the end.
+
+- **Charts** are drawn by `whitepaper.js` from the `table.chart-data` under each figure. To change a chart, edit its table.
+- **PDF and share image:** after editing the page, rebuild them with `node tools/whitepaper-pdf.mjs`. It needs Node 20+, python3, Playwright's Chromium (in `~/.cache/ms-playwright`) and poppler's `pdfunite`.
 
 ---
 

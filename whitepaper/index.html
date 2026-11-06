@@ -1,0 +1,819 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Measured, not assumed — Aqua Insight white paper · WAL &amp; AL</title>
+  <meta name="description" content="Why India's village overhead tanks need continuous water-quality monitoring, and how Aqua Insight puts it into practice. A white paper by Team WAL &amp; AL, with official sources." />
+  <meta name="theme-color" content="#F3F5F4" />
+  <link rel="canonical" href="https://walandal.com/whitepaper/" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="WAL &amp; AL" />
+  <meta property="og:url" content="https://walandal.com/whitepaper/" />
+  <meta property="og:title" content="Measured, not assumed — Aqua Insight white paper" />
+  <meta property="og:description" content="The case for continuous water-quality monitoring of India's village overhead tanks. Team WAL &amp; AL, v1.0, November 2026." />
+  <meta property="og:image" content="https://walandal.com/whitepaper/og-whitepaper.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Measured, not assumed. Aqua Insight white paper by WAL &amp; AL." />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Measured, not assumed — Aqua Insight white paper" />
+  <meta name="twitter:description" content="The case for continuous water-quality monitoring of India's village overhead tanks." />
+  <meta name="twitter:image" content="https://walandal.com/whitepaper/og-whitepaper.png" />
+
+  <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="/assets/favicon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&family=Geist:wght@400..700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@1&display=swap" />
+  <link rel="stylesheet" href="/whitepaper/whitepaper.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Report",
+    "name": "Measured, not assumed: the case for continuous water-quality monitoring of India's village overhead tanks",
+    "headline": "Measured, not assumed",
+    "url": "https://walandal.com/whitepaper/",
+    "inLanguage": "en",
+    "version": "1.0",
+    "datePublished": "2026-11",
+    "author": { "@type": "Organization", "name": "WAL & AL", "url": "https://walandal.com" },
+    "publisher": { "@type": "Organization", "name": "WAL & AL", "url": "https://walandal.com", "logo": "https://walandal.com/assets/logo.png" },
+    "about": ["Drinking water quality", "Water quality monitoring", "Jal Jeevan Mission", "IS 10500"]
+  }
+  </script>
+  <script type="module" src="/whitepaper/whitepaper.js"></script>
+</head>
+<body>
+  <a class="skip" href="#paper">Skip to the paper</a>
+
+  <header class="wp-header">
+    <div class="wrap wp-header-inner">
+      <a class="brand" href="/" aria-label="WAL &amp; AL home">
+        <span class="mark" aria-hidden="true"></span>
+        <span class="brand-name">WAL &amp; AL</span>
+      </a>
+      <span class="mono wp-header-meta">White paper · Aqua Insight · v1.0</span>
+      <div class="wp-header-actions">
+        <a class="btn btn-ghost btn-sm hide-sm" href="/">walandal.com</a>
+        <a class="btn btn-ink btn-sm" href="/whitepaper/WAL-AL-Aqua-Insight-White-Paper-v1.0.pdf" download>PDF <span class="arr" aria-hidden="true">↓</span></a>
+      </div>
+    </div>
+    <span class="reading-bar" aria-hidden="true"></span>
+  </header>
+
+  <!-- COVER -->
+  <section class="cover" aria-labelledby="wp-title">
+    <div class="wrap cover-top">
+      <span class="brand">
+        <span class="mark" aria-hidden="true"></span>
+        <span class="brand-name">WAL &amp; AL</span>
+      </span>
+      <span class="mono">walandal.com</span>
+    </div>
+    <div class="wrap cover-grid">
+      <div class="cover-copy">
+        <p class="mono cover-kicker"><span>White paper</span><span>Aqua Insight</span><span>v1.0 · November 2026</span></p>
+        <h1 class="display cover-title" id="wp-title">Measured, not <em>assumed</em>.</h1>
+        <p class="cover-lede">Why India’s village overhead tanks need continuous water-quality monitoring, and how Aqua Insight puts it into practice.</p>
+        <dl class="cover-meta">
+          <div><dt>By</dt><dd>Team WAL &amp; AL</dd></div>
+          <div><dt>Version</dt><dd>1.0 · November 2026</dd></div>
+          <div><dt>Reading time</dt><dd>About 25 minutes</dd></div>
+        </dl>
+        <div class="cover-ctas">
+          <a class="btn btn-ink" href="#summary">Read the paper <span class="arr" aria-hidden="true">↓</span></a>
+          <a class="btn btn-ghost" href="/whitepaper/WAL-AL-Aqua-Insight-White-Paper-v1.0.pdf" download>Download PDF <span class="arr" aria-hidden="true">↓</span></a>
+        </div>
+      </div>
+      <figure class="cover-fig">
+        <figcaption class="mono">One node per tank</figcaption>
+        <svg class="fig-svg" viewBox="0 50 640 470" role="img" aria-labelledby="cover-fig-title">
+          <title id="cover-fig-title">An overhead village water tank with a solar-powered sensor node on its roof. The node measures the water around the clock, checks it against IS 10500 limits and alerts the right person.</title>
+          <defs>
+            <clipPath id="wp-tank-clip"><path d="M80 170 Q220 112 360 170 L360 340 L80 340 Z" /></clipPath>
+          </defs>
+          <g class="ink-line">
+            <line x1="16" y1="500" x2="624" y2="500" stroke-width="1.2" />
+            <path class="faint" d="M24 500 l-10 12 M48 500 l-10 12 M72 500 l-10 12 M96 500 l-10 12 M120 500 l-10 12 M144 500 l-10 12 M168 500 l-10 12 M192 500 l-10 12 M216 500 l-10 12 M240 500 l-10 12 M264 500 l-10 12 M288 500 l-10 12 M312 500 l-10 12 M336 500 l-10 12 M360 500 l-10 12 M384 500 l-10 12" />
+            <path stroke-width="1.3" d="M104 340 L98 500 M178 340 L176 500 M262 340 L264 500 M336 340 L342 500" />
+            <path class="faint" d="M101 384 L339 384 M100 452 L341 452 M101 384 L177 452 M177 384 L101 452 M177 384 L263 452 M263 384 L177 452 M263 384 L339 452 M339 384 L263 452" />
+            <path class="faint" d="M50 186 L50 500 M64 186 L64 500 M50 206 L64 206 M50 228 L64 228 M50 250 L64 250 M50 272 L64 272 M50 294 L64 294 M50 316 L64 316 M50 338 L64 338 M50 360 L64 360 M50 382 L64 382 M50 404 L64 404 M50 426 L64 426 M50 448 L64 448 M50 470 L64 470 M50 492 L64 492" />
+          </g>
+          <g clip-path="url(#wp-tank-clip)">
+            <path class="water-fill" d="M80 214 Q115 203 150 214 T220 214 T290 214 T360 214 L360 340 L80 340 Z" />
+            <path class="water-line" d="M80 214 Q115 203 150 214 T220 214 T290 214 T360 214" />
+          </g>
+          <g class="ink-line">
+            <path stroke-width="1.8" d="M80 170 Q220 112 360 170 L360 340 L80 340 Z" />
+            <line x1="220" y1="141" x2="220" y2="214" stroke-width="1.2" stroke-dasharray="3 4" />
+            <line x1="220" y1="214" x2="220" y2="300" stroke-width="1.6" />
+            <line x1="222" y1="117" x2="222" y2="104" stroke-width="1.4" />
+            <path class="panel" stroke-width="1.4" d="M186 104 L250 90 L256 99 L192 113 Z" />
+            <path class="faint" d="M202 101 L208 110 M218 97 L224 106 M234 94 L240 103 M189 108 L253 94" />
+            <line x1="238" y1="117" x2="250" y2="76" stroke-width="1.4" />
+          </g>
+          <rect class="ink-fill" x="214" y="298" width="12" height="24" rx="3" />
+          <rect class="ink-fill" x="200" y="117" width="42" height="25" rx="5" />
+          <circle class="ac-fill" cx="233" cy="124" r="2.6" />
+          <circle class="ink-fill" cx="250" cy="74" r="3" />
+          <path class="ac-stroke" d="M259 66 Q266 74 259 82" />
+          <path class="ac-stroke" d="M266 58 Q278 74 266 90" />
+          <g>
+            <polyline class="leader" points="286,74 400,74 420,96 430,96" />
+            <circle class="ac-fill" cx="286" cy="74" r="4" />
+            <text class="co-t" x="438" y="92">Alerts the</text>
+            <text class="co-t" x="438" y="118">right person</text>
+          </g>
+          <g>
+            <polyline class="leader" points="246,129 400,129 420,170 430,170" />
+            <circle class="ac-fill" cx="246" cy="129" r="4" />
+            <text class="co-t" x="438" y="174">Checks against</text>
+            <text class="co-t" x="438" y="200">IS 10500 limits</text>
+          </g>
+          <g>
+            <polyline class="leader" points="226,300 400,300 420,250 430,250" />
+            <circle class="ac-fill" cx="226" cy="300" r="4" />
+            <text class="co-t" x="438" y="254">Measures the water,</text>
+            <text class="co-t" x="438" y="280">around the clock</text>
+          </g>
+        </svg>
+      </figure>
+    </div>
+    <div class="cover-wave" aria-hidden="true">
+      <svg viewBox="0 0 1440 72" preserveAspectRatio="none">
+        <path class="wave-ac" d="M0 34 Q60 14 120 34 T240 34 T360 34 T480 34 T600 34 T720 34 T840 34 T960 34 T1080 34 T1200 34 T1320 34 T1440 34" vector-effect="non-scaling-stroke" />
+        <path class="wave-ink" d="M0 44 Q90 36 180 44 T360 44 T540 44 T720 44 T900 44 T1080 44 T1260 44 T1440 44" vector-effect="non-scaling-stroke" />
+      </svg>
+      <div class="wave-ruler"></div>
+    </div>
+  </section>
+
+  <div class="wrap wp-body" id="paper">
+    <nav class="toc" aria-label="Contents">
+      <div class="toc-inner">
+        <p class="mono toc-title">Contents</p>
+        <ol>
+          <li><a href="#summary"><span class="mono">00</span>Summary</a></li>
+          <li><a href="#access"><span class="mono">01</span>From access to assurance</a></li>
+          <li><a href="#change"><span class="mono">02</span>Where quality changes</a></li>
+          <li><a href="#stakes"><span class="mono">03</span>What is at stake</a></li>
+          <li><a href="#gap"><span class="mono">04</span>The gap between tests</a></li>
+          <li><a href="#approach"><span class="mono">05</span>Aqua Insight</a></li>
+          <li><a href="#how"><span class="mono">06</span>How it works</a></li>
+          <li><a href="#wqi"><span class="mono">07</span>The Water Quality Index</a></li>
+          <li><a href="#roles"><span class="mono">08</span>One view, every role</a></li>
+          <li><a href="#trust"><span class="mono">09</span>Security and standards</a></li>
+          <li><a href="#limits"><span class="mono">10</span>What sensors don’t replace</a></li>
+          <li><a href="#roadmap"><span class="mono">11</span>Status and roadmap</a></li>
+          <li><a href="#conclusion"><span class="mono">12</span>Conclusion</a></li>
+          <li><a href="#references"><span class="mono">—</span>References</a></li>
+        </ol>
+        <a class="btn btn-ghost btn-sm toc-pdf" href="/whitepaper/WAL-AL-Aqua-Insight-White-Paper-v1.0.pdf" download>Download PDF <span class="arr" aria-hidden="true">↓</span></a>
+      </div>
+    </nav>
+
+    <article class="paper">
+      <!-- 00 -->
+      <section class="wp-sec" id="summary" aria-labelledby="h-summary">
+        <div class="sec-head"><span class="mono">00 — Summary</span><span class="mono">The paper in one page</span></div>
+        <h2 id="h-summary">India has built the taps. Whether the water is safe is still mostly assumed.</h2>
+        <p class="lede">Since August 2019, the share of rural Indian homes with a tap has risen from 16.7% to 82.3%. The Jal Jeevan Mission’s promise is not only a tap: it is water of the quality set by IS&nbsp;10500, supplied regularly and over the long term.<a class="cite" href="#ref-1" aria-label="Reference 1">[1]</a> Quality, unlike a tap, cannot be inspected once and ticked off.</p>
+        <p>Water can change between the source and the glass, and most of all where it waits: in the overhead tanks that feed village pipe networks. Today it is checked by laboratory samples and field test kits. Those tests are essential, and their scale has grown fast. But each one is a snapshot, and between snapshots the quality of the water is assumed.</p>
+        <p>The evidence says the assumption often fails. In the Mission’s own 2024 assessment of villages that report a tap in every home, 24% of household water samples failed the microbiological test.<a class="cite" href="#ref-2" aria-label="Reference 2">[2]</a> In its 2022 assessment, residual chlorine, the disinfectant that protects water on its way to the tap, was found within permissible limits in only 24% of household samples; 72% had none at all.<a class="cite" href="#ref-3" aria-label="Reference 3">[3]</a></p>
+        <p>This paper makes the case for monitoring a few operational parameters continuously at every village overhead tank: free residual chlorine, pH, turbidity and total dissolved solids. Each reading should be checked against IS&nbsp;10500 as it arrives and shared with the people who run the water and the people who drink it. Sections 01–04 set out the evidence, sections 05–09 describe Aqua Insight, the system we are building to do this, and section 10 is plain about what sensors cannot do.</p>
+
+        <div class="tiles" role="list">
+          <div class="tile" role="listitem">
+            <div class="tile-value">82.3<small>%</small></div>
+            <div class="tile-label">of rural households had a tap connection on 31 August 2026, up from 16.7% in August 2019.</div>
+            <div class="mono tile-src">Jal Jeevan Mission <a class="cite" href="#ref-4" aria-label="Reference 4">[4]</a></div>
+          </div>
+          <div class="tile" role="listitem">
+            <div class="tile-value">24<small>%</small></div>
+            <div class="tile-label">of household tap-water samples failed the microbiological test in Har Ghar Jal villages, 2024.</div>
+            <div class="mono tile-src">Functionality Assessment <a class="cite" href="#ref-2" aria-label="Reference 2">[2]</a></div>
+          </div>
+          <div class="tile" role="listitem">
+            <div class="tile-value">2.04<small> lakh</small></div>
+            <div class="tile-label">diarrhoea deaths in India in 2019 were attributable to unsafe drinking water.</div>
+            <div class="mono tile-src">WHO <a class="cite" href="#ref-5" aria-label="Reference 5">[5]</a></div>
+          </div>
+          <div class="tile" role="listitem">
+            <div class="tile-value">2.1<small> billion</small></div>
+            <div class="tile-label">people worldwide still lacked safely managed drinking water in 2024.</div>
+            <div class="mono tile-src">WHO/UNICEF JMP <a class="cite" href="#ref-6" aria-label="Reference 6">[6]</a></div>
+          </div>
+        </div>
+
+        <nav class="contents-inline" aria-label="Contents">
+          <span class="mono">In this paper</span>
+          <ol>
+            <li><span>01</span>From access to assurance</li>
+            <li><span>02</span>Where quality changes</li>
+            <li><span>03</span>What is at stake</li>
+            <li><span>04</span>The gap between tests</li>
+            <li><span>05</span>Aqua Insight</li>
+            <li><span>06</span>How it works</li>
+            <li><span>07</span>The Water Quality Index</li>
+            <li><span>08</span>One view, every role</li>
+            <li><span>09</span>Security and standards</li>
+            <li><span>10</span>What sensors don’t replace</li>
+            <li><span>11</span>Status and roadmap</li>
+            <li><span>12</span>Conclusion</li>
+          </ol>
+        </nav>
+      </section>
+
+      <!-- 01 -->
+      <section class="wp-sec" id="access" aria-labelledby="h-access">
+        <div class="sec-head"><span class="mono">01 — Context</span><span class="mono">From access to assurance</span></div>
+        <h2 id="h-access">In seven years, rural India went from one home in six with a tap to more than four in five.</h2>
+        <p>When the Jal Jeevan Mission (Har Ghar Jal) began on 15 August 2019, 3.23 crore rural households, 16.7% of the total, had a tap connection. By 31 August 2026, the Mission’s information system recorded 15.94 crore of 19.36 crore rural households, or 82.34%.<a class="cite" href="#ref-7" aria-label="Reference 7">[7]</a><a class="cite" href="#ref-4" aria-label="Reference 4">[4]</a> That is about 12.7 crore more homes with a tap in seven years.</p>
+
+        <figure class="wp-fig" id="fig-jjm">
+          <figcaption class="fig-head">
+            <span class="mono fig-no">Fig. 1</span>
+            <span class="fig-title">Rural households with a tap connection under the Jal Jeevan Mission, 2019–2026</span>
+            <span class="fig-sub">Share of all rural households: at launch (August 2019), on 31 December of each year, and the latest figure (31 August 2026).</span>
+          </figcaption>
+          <div class="fig-body">
+            <div class="chart" data-chart="column" data-suffix="%" data-max="100" data-ticks="4" data-decimals="1" data-highlight="last" data-ref="100|Every rural home"></div>
+            <details class="data-view">
+              <summary>Data table</summary>
+              <div class="table-wrap">
+                <table class="wp-table chart-data">
+                  <thead><tr><th>As on</th><th class="num">Households with a tap (%)</th></tr></thead>
+                  <tbody>
+                    <tr data-flag="label"><td data-short="Aug 2019">15 Aug 2019 (launch)</td><td class="num" data-v="16.7">16.7%</td></tr>
+                    <tr><td data-short="2020">31 Dec 2020</td><td class="num">32.5%</td></tr>
+                    <tr><td data-short="2021">31 Dec 2021</td><td class="num">45.5%</td></tr>
+                    <tr><td data-short="2022">31 Dec 2022</td><td class="num">56.1%</td></tr>
+                    <tr><td data-short="2023">31 Dec 2023</td><td class="num">72.6%</td></tr>
+                    <tr><td data-short="2024">31 Dec 2024</td><td class="num">79.5%</td></tr>
+                    <tr><td data-short="2025">31 Dec 2025</td><td class="num">81.5%</td></tr>
+                    <tr data-flag="label"><td data-short="Aug 2026">31 Aug 2026 (latest)</td><td class="num">82.3%</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </details>
+          </div>
+          <p class="fig-note">Source: National Jal Jeevan Mission, <i>Jal Jeevan Samvad</i> newsletters, December 2020 to August 2026 (snapshots of the Mission’s IMIS) <a class="cite" href="#ref-8" aria-label="Reference 8">[8]</a><a class="cite" href="#ref-4" aria-label="Reference 4">[4]</a>. The launch figure is 3,23,62,838 households (16.7%) <a class="cite" href="#ref-7" aria-label="Reference 7">[7]</a>. Percentages are as printed; the total number of rural households changes slightly between snapshots.</p>
+        </figure>
+
+        <h3>The promise includes quality</h3>
+        <p>The Mission does not count a tap as enough. Its guidelines define a functional household tap connection as one that provides water “in adequate quantity, i.e. at least 55 lpcd, of prescribed quality, i.e. BIS:10500 standard, on regular basis, i.e. continuous supply in long-term”.<a class="cite" href="#ref-1" aria-label="Reference 1">[1]</a></p>
+        <p>Quantity and regularity can be checked by watching the supply. Quality is harder: it is invisible, it can change in hours, and it is measured today by taking samples to a laboratory or testing them with a kit. As coverage approaches every home, the question for the next phase moves from <em>is there a tap?</em> to <em>is the water safe, today, at this tap?</em></p>
+        <div class="quote">
+          <p>“What cannot be measured cannot be managed. … it is necessary to have data on water supplied every day, the quality of water supplied as well as depth of water in bore wells.”</p>
+          <footer class="mono">Jal Jeevan Mission, Operational Guidelines, December 2019, §11.1 <a class="cite" href="#ref-1" aria-label="Reference 1">[1]</a></footer>
+        </div>
+      </section>
+
+      <!-- 02 -->
+      <section class="wp-sec" id="change" aria-labelledby="h-change">
+        <div class="sec-head"><span class="mono">02 — The problem</span><span class="mono">Where quality changes</span></div>
+        <h2 id="h-change">Water that leaves the source safe does not always arrive safe.</h2>
+        <p>In a typical village scheme, water is pumped from a borewell, well or bulk supply into an overhead tank, and flows from there by gravity through the village pipes to each home. The Mission’s guidelines list the overhead tank as part of the in-village infrastructure, and ask for the supply from each one to be measured with sensors.<a class="cite" href="#ref-1" aria-label="Reference 1">[1]</a> In the Mission’s 2020–21 functionality survey, 55.5% of villages reported an overhead tank in their piped water scheme.<a class="cite" href="#ref-9" aria-label="Reference 9">[9]</a></p>
+        <p>Between the treatment point and the tap, three things can go wrong, and each leaves a trace in the water. WHO notes that outbreaks in distribution systems “have been linked to cross-connections, contamination during storage, low water pressure and intermittent supply”.<a class="cite" href="#ref-10" aria-label="Reference 10">[10]</a></p>
+        <ul class="bullets">
+          <li><strong>The disinfectant runs out.</strong> Chlorine is added to kill germs, and enough of it has to survive all the way to the tap. WHO advises that “a chlorine residual should be maintained throughout the distribution system” and that free chlorine at the point of delivery should be at least 0.2&nbsp;mg/l.<a class="cite" href="#ref-10" aria-label="Reference 10">[10]</a> The government’s 2024 water supply manual is blunt: “absence of residual chlorine could indicate potential presence of heavy contamination.”<a class="cite" href="#ref-11" aria-label="Reference 11">[11]</a></li>
+          <li><strong>Stored water deteriorates.</strong> Water quality in a reservoir “may also deteriorate due to excessively prolonged periods of stagnant conditions”.<a class="cite" href="#ref-11" aria-label="Reference 11">[11]</a> Unprotected tanks “are at risk of faecal contamination from birds and vermin”.<a class="cite" href="#ref-12" aria-label="Reference 12">[12]</a> A February 2026 advisory for urban water systems asks for reservoirs and overhead tanks to be cleaned “at least twice a year”.<a class="cite" href="#ref-13" aria-label="Reference 13">[13]</a></li>
+          <li><strong>Intermittent supply lets dirt in.</strong> When pipes run empty between supply hours, pressure drops and contaminated water can be drawn in through joints and cracks. “It is now well established that intermittent water supply leads to health risks for users,” the same manual states.<a class="cite" href="#ref-14" aria-label="Reference 14">[14]</a> WHO calls intermittent supplies “frequently associated with contamination”.<a class="cite" href="#ref-10" aria-label="Reference 10">[10]</a></li>
+        </ul>
+
+        <figure class="wp-fig" id="fig-flow">
+          <figcaption class="fig-head">
+            <span class="mono fig-no">Fig. 2</span>
+            <span class="fig-title">From source to tap: where water quality can change, and where it is checked today</span>
+          </figcaption>
+          <div class="fig-body">
+            <div class="flow">
+              <div class="flow-step">
+                <span class="mono">01 · Source</span>
+                <h4>Borewell, well or bulk supply</h4>
+                <p>Natural contaminants such as nitrate, fluoride, arsenic, iron and salinity.</p>
+                <span class="flow-risk">Geogenic</span>
+              </div>
+              <div class="flow-step">
+                <span class="mono">02 · Treatment</span>
+                <h4>Disinfection</h4>
+                <p>Chlorine is added. Too little leaves water unprotected; the residual has to last to the tap.</p>
+                <span class="flow-risk">Under-dosing</span>
+              </div>
+              <div class="flow-step is-focus">
+                <span class="mono">03 · Tank</span>
+                <h4>Overhead tank</h4>
+                <p>Water waits for hours. Chlorine decays, sediment settles and tanks need regular cleaning.</p>
+                <span class="flow-risk">Decay · sediment</span>
+              </div>
+              <div class="flow-step">
+                <span class="mono">04 · Pipes</span>
+                <h4>Village pipes</h4>
+                <p>Intermittent supply lets pipes empty and pressure drop, so dirty water can be drawn in.</p>
+                <span class="flow-risk">Ingress</span>
+              </div>
+              <div class="flow-step">
+                <span class="mono">05 · Home</span>
+                <h4>The tap</h4>
+                <p>What people drink is the sum of every step before it.</p>
+                <span class="flow-risk">Exposure</span>
+              </div>
+            </div>
+            <div class="flow-band">
+              <span class="lane-label">Tested today</span>
+              <span class="lane"><i style="left:10%"></i><i style="left:30%"></i><i style="left:90%"></i></span>
+              <span class="lane-label">Aqua Insight</span>
+              <span class="lane cont" aria-label="Continuous measurement at the overhead tank"></span>
+            </div>
+          </div>
+          <p class="fig-note">Schematic. Dots mark the usual sampling points under the Mission’s framework: drinking-water sources, treatment plants and tail-end taps, tested at set intervals <a class="cite" href="#ref-15" aria-label="Reference 15">[15]</a>. Aqua Insight adds a continuous record at the overhead tank, the point every home on the scheme shares.</p>
+        </figure>
+
+        <h3>The source itself is not always safe</h3>
+        <p>Many rural schemes draw on groundwater, and in many districts it carries natural contaminants that no amount of storage management will remove. In the Central Ground Water Board’s 2024 sampling, one in five samples exceeded the BIS limit for nitrate, and one in twelve exceeded it for fluoride.<a class="cite" href="#ref-16" aria-label="Reference 16">[16]</a></p>
+
+        <figure class="wp-fig" id="fig-cgwb">
+          <figcaption class="fig-head">
+            <span class="mono fig-no">Fig. 3</span>
+            <span class="fig-title">Groundwater samples above the BIS limit, by parameter, India (pre-monsoon 2024)</span>
+            <span class="fig-sub">Share of samples tested for each parameter.</span>
+          </figcaption>
+          <div class="fig-body">
+            <div class="chart" data-chart="hbar" data-suffix="%" data-max="25" data-label-w="200" data-decimals="0" data-val-room="70"></div>
+            <details class="data-view">
+              <summary>Data table</summary>
+              <div class="table-wrap">
+                <table class="wp-table chart-data">
+                  <thead><tr><th>Parameter (limit)</th><th class="num">Above limit</th><th class="num">Samples</th></tr></thead>
+                  <tbody>
+                    <tr><td data-short="Nitrate">Nitrate (above 45 mg/l)</td><td class="num">20.71%</td><td class="num">14,978</td></tr>
+                    <tr><td data-short="Iron">Iron (above 1.0 mg/l)</td><td class="num">13.48%</td><td class="num">3,398</td></tr>
+                    <tr><td data-short="Manganese">Manganese (above 0.3 mg/l)</td><td class="num">12.02%</td><td class="num">3,170</td></tr>
+                    <tr><td data-short="Fluoride">Fluoride (above 1.5 mg/l)</td><td class="num">8.05%</td><td class="num">14,978</td></tr>
+                    <tr><td data-short="Salinity (EC)">Salinity, as electrical conductivity (above 3,000 µS/cm)</td><td class="num">7.23%</td><td class="num">14,978</td></tr>
+                    <tr><td data-short="Arsenic">Arsenic (above 10 ppb)</td><td class="num">3.60%</td><td class="num">3,415</td></tr>
+                    <tr><td data-short="Lead">Lead (above 0.01 mg/l)</td><td class="num">0.95%</td><td class="num">2,537</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </details>
+          </div>
+          <p class="fig-note">Source: Central Ground Water Board, state-wise tables of the Annual Ground Water Quality Report 2025 (pre-monsoon 2024 samples) <a class="cite" href="#ref-16" aria-label="Reference 16">[16]</a>. Iron, manganese, arsenic and lead were tested in a smaller set of samples. These are groundwater samples from CGWB’s monitoring network, not samples of supplied drinking water.</p>
+        </figure>
+        <p>These contaminants need laboratory tests and, where they are found, treatment or a different source. Continuous sensors at the tank do not detect them (section 10). As reported by States, access to potable water has been ensured in every arsenic- and fluoride-affected habitation; in January 2025 the last 568 of them were served by interim community water purification plants.<a class="cite" href="#ref-17" aria-label="Reference 17">[17]</a></p>
+      </section>
+
+      <!-- 03 -->
+      <section class="wp-sec" id="stakes" aria-labelledby="h-stakes">
+        <div class="sec-head"><span class="mono">03 — Why it matters</span><span class="mono">What is at stake</span></div>
+        <h2 id="h-stakes">Unsafe water is still one of India’s largest preventable causes of illness and death.</h2>
+        <p>WHO’s latest burden-of-disease estimate, for 2019, attributes 4,97,738 deaths in India to unsafe drinking water, sanitation and hygiene. That is 36.4 deaths per 1,00,000 people. Unsafe drinking water alone accounted for 2,03,863 deaths from diarrhoea.<a class="cite" href="#ref-5" aria-label="Reference 5">[5]</a> Worldwide, at least 1.7 billion people used a drinking-water source contaminated with faeces in 2022.<a class="cite" href="#ref-18" aria-label="Reference 18">[18]</a></p>
+        <p>Routine reporting shows the illness behind those deaths. In 2022, States reported nearly 56 lakh cases of acute diarrhoeal disease and more than 12.3 lakh cases of typhoid (provisional figures).<a class="cite" href="#ref-19" aria-label="Reference 19">[19]</a> In the National Family Health Survey of 2019–21, 7.3% of children under five had had diarrhoea in the two weeks before the survey, down from 9.2% in 2015–16.<a class="cite" href="#ref-20" aria-label="Reference 20">[20]</a></p>
+
+        <h3>Measuring quality is what made India’s progress visible</h3>
+        <p>The WHO/UNICEF Joint Monitoring Programme (JMP) counts drinking water as “safely managed” only when it comes from an improved source that is on premises, available when needed and free from faecal and priority chemical contamination.<a class="cite" href="#ref-21" aria-label="Reference 21">[21]</a> Until 2025 it had no national estimate for India. Its 2025 report was the first, “due to newly compiled data on drinking-water quality in urban areas”.<a class="cite" href="#ref-6" aria-label="Reference 6">[6]</a> Water-quality data is what made the national figure possible.</p>
+
+        <figure class="wp-fig" id="fig-jmp">
+          <figcaption class="fig-head">
+            <span class="mono fig-no">Fig. 4</span>
+            <span class="fig-title">Rural India against the three tests of safely managed drinking water, 2015 and 2024</span>
+            <span class="fig-sub">Share of the rural population. Safely managed is the lowest of the three.</span>
+          </figcaption>
+          <div class="fig-body">
+            <div class="chart" data-chart="dumbbell" data-suffix="%" data-max="100" data-ticks="4" data-decimals="0" data-label-w="220"></div>
+            <details class="data-view">
+              <summary>Data table</summary>
+              <div class="table-wrap">
+                <table class="wp-table chart-data">
+                  <thead><tr><th>Measure (rural India)</th><th class="num">2015</th><th class="num">2024</th></tr></thead>
+                  <tbody>
+                    <tr><td data-short="Free from contamination">Free from faecal and priority chemical contamination</td><td class="num">65%</td><td class="num">88%</td></tr>
+                    <tr><td data-short="Available when needed">Available when needed</td><td class="num">76%</td><td class="num">85%</td></tr>
+                    <tr><td data-short="Accessible on premises">Accessible on premises</td><td class="num">54%</td><td class="num">73%</td></tr>
+                    <tr><td data-short="Safely managed">Safely managed (lowest of the three)</td><td class="num">54%</td><td class="num">73%</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </details>
+          </div>
+          <p class="fig-note">Source: WHO/UNICEF JMP, <i>Progress on household drinking water, sanitation and hygiene 2000–2024</i> (2025), Annex 3, p. 123 <a class="cite" href="#ref-6" aria-label="Reference 6">[6]</a>. For India as a whole in 2024: 76% safely managed and 96% with at least a basic service.</p>
+        </figure>
+        <p>Even on the JMP’s measure, about one rural Indian in eight in 2024 did not have drinking water from an improved source free from contamination. Tests at the tap tell a sharper story: in the Mission’s 2024 assessment of Har Ghar Jal villages, 24% of household samples failed the microbiological test.<a class="cite" href="#ref-2" aria-label="Reference 2">[2]</a></p>
+      </section>
+
+      <!-- 04 -->
+      <section class="wp-sec" id="gap" aria-labelledby="h-gap">
+        <div class="sec-head"><span class="mono">04 — The gap</span><span class="mono">Between tests</span></div>
+        <h2 id="h-gap">India tests more water than ever. Each test is still a snapshot.</h2>
+        <p>The Mission has built a very large water-testing network. In January 2025 there were 2,162 water-testing laboratories, 1,572 of them accredited or recognised by NABL.<a class="cite" href="#ref-17" aria-label="Reference 17">[17]</a> In 2025–26, up to 21 October 2025, 2,843 laboratories tested 38.78 lakh samples.<a class="cite" href="#ref-22" aria-label="Reference 22">[22]</a> In 2024–25, up to 15 January 2025, laboratories tested 62 lakh samples and found 3.18 lakh contaminated, and 83 lakh more were tested with field test kits. 24.8 lakh women have been trained to use the kits.<a class="cite" href="#ref-17" aria-label="Reference 17">[17]</a></p>
+        <p>The testing schedule is set by the Mission’s 2021 framework. Laboratories test every drinking-water source “at least twice a year, i.e., before and after the monsoon for bacteriological parameters and at least once in a year for chemical parameters”. In every village, five trained people, preferably women, test the sources and two tail-end taps with field test kits at least once a month.<a class="cite" href="#ref-15" aria-label="Reference 15">[15]</a> The framework itself notes that a kit “gives an indicative result”.</p>
+        <p>The Mission’s own surveys show what a monthly rhythm can miss. In 2022, 87% of households received water that passed laboratory tests. Yet residual chlorine was within permissible limits in only 24% of household samples, and only 21% of villages had a mechanism for chlorination.<a class="cite" href="#ref-3" aria-label="Reference 3">[3]</a></p>
+
+        <figure class="wp-fig" id="fig-fa">
+          <figcaption class="fig-head">
+            <span class="mono fig-no">Fig. 5</span>
+            <span class="fig-title">Household tap connections against JJM’s functionality tests, 2022</span>
+            <span class="fig-sub">Share of surveyed households or villages, Functionality Assessment 2022 (February–April 2022).</span>
+          </figcaption>
+          <div class="fig-body">
+            <div class="chart" data-chart="hbar" data-suffix="%" data-max="100" data-label-w="250" data-decimals="0" data-highlight="true"></div>
+            <details class="data-view">
+              <summary>Data table</summary>
+              <div class="table-wrap">
+                <table class="wp-table chart-data">
+                  <thead><tr><th>Indicator</th><th class="num">Share</th></tr></thead>
+                  <tbody>
+                    <tr><td data-short="Potable water (households)">Households receiving potable water (laboratory tests)</td><td class="num">87%</td></tr>
+                    <tr><td data-short="Working tap (households)">Households with a working tap connection</td><td class="num">86%</td></tr>
+                    <tr><td data-short="Adequate quantity (households)">Households receiving at least 55 litres per person per day</td><td class="num">85%</td></tr>
+                    <tr><td data-short="Regular supply (households)">Households receiving a fully regular supply</td><td class="num">80%</td></tr>
+                    <tr data-flag="hl"><td data-short="All three at once (households)">Fully functional: adequate, regular and potable at once</td><td class="num">62%</td></tr>
+                    <tr><td data-short="Bacteriological test in last year (villages)">Villages where the water committee ran a bacteriological test in the last year</td><td class="num">29%</td></tr>
+                    <tr data-flag="hl"><td data-short="Residual chlorine within limits (households)">Households with residual chlorine detected within permissible limits</td><td class="num">24%</td></tr>
+                    <tr><td data-short="Chlorination mechanism (villages)">Villages with a mechanism for chlorination</td><td class="num">21%</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </details>
+          </div>
+          <p class="fig-note">Source: National Jal Jeevan Mission, <i>Functionality assessment of household tap connection – 2022</i>, national factsheet, p. 17 <a class="cite" href="#ref-3" aria-label="Reference 3">[3]</a>. The 2024 round reports 76% of household samples passing the microbiological test and chlorination available in 70.3% of villages, but covers only Har Ghar Jal villages and says it is not directly comparable with earlier rounds <a class="cite" href="#ref-2" aria-label="Reference 2">[2]</a>.</p>
+        </figure>
+
+        <h3>What a snapshot misses</h3>
+        <p>A sample shows the water at one moment. Free chlorine can drop quickly: when contamination gets in, when water stands too long in a tank, or when supply is interrupted. WHO notes that “a sudden disappearance of an otherwise stable residual can indicate ingress of contamination”.<a class="cite" href="#ref-10" aria-label="Reference 10">[10]</a> If the drop comes and goes between two samples, a household can drink unprotected water for days without any test recording it.</p>
+
+        <figure class="wp-fig" id="fig-snap">
+          <figcaption class="fig-head">
+            <span class="mono fig-no">Fig. 6</span>
+            <span class="fig-title">Two samples a month apart can both pass while the water fails in between</span>
+            <span class="fig-sub">Schematic: the shape of a typical event, not measured data.</span>
+          </figcaption>
+          <div class="fig-body">
+            <div class="chart" data-chart="schematic" data-title="Schematic: free residual chlorine at one tank over a month"><svg class="schematic" viewBox="0 0 720 244" role="img" aria-labelledby="snap-t">
+              <title id="snap-t">Schematic of free residual chlorine over a month at an overhead tank. A continuous record dips below the IS 10500 minimum for a few days in the middle of the month. Grab samples taken at the start and at the end of the month both pass and miss the dip.</title>
+              <line x1="64" y1="214" x2="700" y2="214" stroke="#B9C3C2" stroke-width="1" />
+              <line x1="64" y1="24" x2="64" y2="214" stroke="#B9C3C2" stroke-width="1" />
+              <line x1="64" y1="157.0" x2="700" y2="157.0" stroke="#0C1A20" stroke-width="1.2" stroke-dasharray="4 4" opacity="0.7" />
+              <text class="s-mono" x="700" y="173.0" text-anchor="end">IS 10500 MINIMUM</text>
+              <path d="M352.3,157.0 L352.3,159.6 L353.4,163.0 L354.4,166.1 L355.5,168.8 L356.6,170.9 L357.6,172.6 L358.7,173.8 L359.7,174.7 L360.8,175.3 L361.9,175.8 L362.9,176.2 L364.0,176.7 L365.0,177.4 L366.1,178.4 L367.2,179.5 L368.2,180.8 L369.3,182.3 L370.3,183.9 L371.4,185.3 L372.5,186.6 L373.5,187.5 L374.6,188.1 L375.6,188.0 L376.7,187.5 L377.8,186.3 L378.8,184.5 L379.9,182.3 L380.9,179.7 L382.0,176.8 L383.1,173.7 L384.1,170.6 L385.2,167.7 L386.2,165.0 L387.3,162.6 L388.4,160.5 L389.4,158.7 L390.5,157.2 L390.5,157.0 Z" fill="#2438F5" fill-opacity="0.14" />
+              <path d="M64.0,89.9 L65.1,88.6 L66.1,87.4 L67.2,86.4 L68.2,85.7 L69.3,85.5 L70.4,85.6 L71.4,86.2 L72.5,87.0 L73.5,88.1 L74.6,89.4 L75.7,90.6 L76.7,91.8 L77.8,92.6 L78.8,93.2 L79.9,93.4 L81.0,93.1 L82.0,92.5 L83.1,91.6 L84.1,90.4 L85.2,89.1 L86.3,87.8 L87.3,86.6 L88.4,85.6 L89.4,85.0 L90.5,84.8 L91.6,85.0 L92.6,85.6 L93.7,86.5 L94.7,87.7 L95.8,89.0 L96.9,90.3 L97.9,91.5 L99.0,92.4 L100.0,93.0 L101.1,93.2 L102.2,93.0 L103.2,92.5 L104.3,91.6 L105.3,90.4 L106.4,89.2 L107.5,87.9 L108.5,86.8 L109.6,85.9 L110.6,85.3 L111.7,85.2 L112.8,85.4 L113.8,86.1 L114.9,87.0 L115.9,88.2 L117.0,89.6 L118.1,90.9 L119.1,92.2 L120.2,93.1 L121.2,93.8 L122.3,94.1 L123.4,93.9 L124.4,93.4 L125.5,92.5 L126.5,91.4 L127.6,90.2 L128.7,89.0 L129.7,87.9 L130.8,87.1 L131.8,86.5 L132.9,86.4 L134.0,86.7 L135.0,87.4 L136.1,88.4 L137.1,89.6 L138.2,91.0 L139.3,92.4 L140.3,93.6 L141.4,94.7 L142.4,95.3 L143.5,95.6 L144.6,95.5 L145.6,95.0 L146.7,94.2 L147.7,93.1 L148.8,91.9 L149.9,90.7 L150.9,89.6 L152.0,88.8 L153.0,88.3 L154.1,88.2 L155.2,88.5 L156.2,89.2 L157.3,90.2 L158.3,91.5 L159.4,92.9 L160.5,94.2 L161.5,95.5 L162.6,96.5 L163.6,97.2 L164.7,97.5 L165.8,97.4 L166.8,96.9 L167.9,96.0 L168.9,95.0 L170.0,93.8 L171.1,92.6 L172.1,91.5 L173.2,90.6 L174.2,90.1 L175.3,90.0 L176.4,90.3 L177.4,91.0 L178.5,92.0 L179.5,93.2 L180.6,94.6 L181.7,95.9 L182.7,97.2 L183.8,98.2 L184.8,98.8 L185.9,99.1 L187.0,98.9 L188.0,98.4 L189.1,97.5 L190.1,96.4 L191.2,95.2 L192.3,94.0 L193.3,92.8 L194.4,92.0 L195.4,91.4 L196.5,91.3 L197.6,91.5 L198.6,92.1 L199.7,93.1 L200.7,94.3 L201.8,95.6 L202.9,96.9 L203.9,98.1 L205.0,99.1 L206.0,99.7 L207.1,99.9 L208.2,99.7 L209.2,99.2 L210.3,98.3 L211.3,97.1 L212.4,95.8 L213.5,94.5 L214.5,93.4 L215.6,92.4 L216.6,91.8 L217.7,91.6 L218.8,91.8 L219.8,92.4 L220.9,93.3 L221.9,94.5 L223.0,95.7 L224.1,97.0 L225.1,98.2 L226.2,99.1 L227.2,99.6 L228.3,99.8 L229.4,99.6 L230.4,98.9 L231.5,98.0 L232.5,96.8 L233.6,95.4 L234.7,94.1 L235.7,92.9 L236.8,91.9 L237.8,91.3 L238.9,91.0 L240.0,91.1 L241.0,91.7 L242.1,92.5 L243.1,93.6 L244.2,94.9 L245.3,96.1 L246.3,97.2 L247.4,98.1 L248.4,98.6 L249.5,98.7 L250.6,98.4 L251.6,97.8 L252.7,96.8 L253.7,95.5 L254.8,94.1 L255.9,92.8 L256.9,91.5 L258.0,90.5 L259.0,89.8 L260.1,89.5 L261.2,89.7 L262.2,90.2 L263.3,91.0 L264.3,92.1 L265.4,93.3 L266.5,94.5 L267.5,95.6 L268.6,96.4 L269.6,96.9 L270.7,97.0 L271.8,96.7 L272.8,96.0 L273.9,95.0 L274.9,93.7 L276.0,92.4 L277.1,91.0 L278.1,89.7 L279.2,88.7 L280.2,88.0 L281.3,87.7 L282.4,87.9 L283.4,88.4 L284.5,89.2 L285.5,90.3 L286.6,91.5 L287.7,92.8 L288.7,93.9 L289.8,94.7 L290.8,95.3 L291.9,95.4 L293.0,95.2 L294.0,94.6 L295.1,93.6 L296.1,92.4 L297.2,91.1 L298.3,89.9 L299.3,88.7 L300.4,87.8 L301.4,87.3 L302.5,87.2 L303.6,87.5 L304.6,88.2 L305.7,89.3 L306.7,90.6 L307.8,92.1 L308.9,93.6 L309.9,95.1 L311.0,96.3 L312.0,97.2 L313.1,97.8 L314.2,98.1 L315.2,98.0 L316.3,97.6 L317.3,97.0 L318.4,96.4 L319.5,95.8 L320.5,95.4 L321.6,95.4 L322.6,95.7 L323.7,96.5 L324.8,97.8 L325.8,99.6 L326.9,101.8 L327.9,104.3 L329.0,107.0 L330.1,109.8 L331.1,112.6 L332.2,115.2 L333.2,117.6 L334.3,119.7 L335.4,121.5 L336.4,123.0 L337.5,124.2 L338.5,125.2 L339.6,126.2 L340.7,127.3 L341.7,128.6 L342.8,130.1 L343.8,132.1 L344.9,134.5 L346.0,137.3 L347.0,140.5 L348.1,144.1 L349.1,147.9 L350.2,151.9 L351.3,155.8 L352.3,159.6 L353.4,163.0 L354.4,166.1 L355.5,168.8 L356.6,170.9 L357.6,172.6 L358.7,173.8 L359.7,174.7 L360.8,175.3 L361.9,175.8 L362.9,176.2 L364.0,176.7 L365.0,177.4 L366.1,178.4 L367.2,179.5 L368.2,180.8 L369.3,182.3 L370.3,183.9 L371.4,185.3 L372.5,186.6 L373.5,187.5 L374.6,188.1 L375.6,188.0 L376.7,187.5 L377.8,186.3 L378.8,184.5 L379.9,182.3 L380.9,179.7 L382.0,176.8 L383.1,173.7 L384.1,170.6 L385.2,167.7 L386.2,165.0 L387.3,162.6 L388.4,160.5 L389.4,158.7 L390.5,157.2 L391.5,155.9 L392.6,154.7 L393.7,153.5 L394.7,152.1 L395.8,150.5 L396.8,148.6 L397.9,146.3 L399.0,143.6 L400.0,140.6 L401.1,137.3 L402.1,133.8 L403.2,130.2 L404.3,126.7 L405.3,123.5 L406.4,120.5 L407.4,117.9 L408.5,115.8 L409.6,114.2 L410.6,113.1 L411.7,112.4 L412.7,112.0 L413.8,111.9 L414.9,111.8 L415.9,111.7 L417.0,111.4 L418.0,110.9 L419.1,110.0 L420.2,108.9 L421.2,107.4 L422.3,105.6 L423.3,103.7 L424.4,101.7 L425.5,99.8 L426.5,98.0 L427.6,96.6 L428.6,95.5 L429.7,94.9 L430.8,94.7 L431.8,95.0 L432.9,95.6 L433.9,96.5 L435.0,97.5 L436.1,98.6 L437.1,99.6 L438.2,100.3 L439.2,100.8 L440.3,100.9 L441.4,100.5 L442.4,99.8 L443.5,98.8 L444.5,97.6 L445.6,96.3 L446.7,94.9 L447.7,93.7 L448.8,92.7 L449.8,92.1 L450.9,91.9 L452.0,92.0 L453.0,92.6 L454.1,93.5 L455.1,94.7 L456.2,95.9 L457.3,97.2 L458.3,98.4 L459.4,99.3 L460.4,99.8 L461.5,100.0 L462.6,99.8 L463.6,99.2 L464.7,98.2 L465.7,97.0 L466.8,95.7 L467.9,94.4 L468.9,93.2 L470.0,92.3 L471.0,91.6 L472.1,91.4 L473.2,91.6 L474.2,92.1 L475.3,93.0 L476.3,94.1 L477.4,95.4 L478.5,96.6 L479.5,97.7 L480.6,98.6 L481.6,99.1 L482.7,99.3 L483.8,99.0 L484.8,98.3 L485.9,97.4 L486.9,96.1 L488.0,94.8 L489.1,93.4 L490.1,92.2 L491.2,91.2 L492.2,90.5 L493.3,90.2 L494.4,90.4 L495.4,90.9 L496.5,91.7 L497.5,92.8 L498.6,94.0 L499.7,95.2 L500.7,96.3 L501.8,97.1 L502.8,97.6 L503.9,97.8 L505.0,97.5 L506.0,96.8 L507.1,95.8 L508.1,94.5 L509.2,93.1 L510.3,91.8 L511.3,90.5 L512.4,89.5 L513.4,88.8 L514.5,88.5 L515.6,88.6 L516.6,89.1 L517.7,89.9 L518.7,91.0 L519.8,92.2 L520.9,93.4 L521.9,94.5 L523.0,95.3 L524.0,95.8 L525.1,95.9 L526.2,95.6 L527.2,94.9 L528.3,93.9 L529.3,92.7 L530.4,91.3 L531.5,89.9 L532.5,88.6 L533.6,87.6 L534.6,87.0 L535.7,86.7 L536.8,86.8 L537.8,87.3 L538.9,88.1 L539.9,89.2 L541.0,90.4 L542.1,91.7 L543.1,92.8 L544.2,93.6 L545.2,94.1 L546.3,94.3 L547.4,94.0 L548.4,93.3 L549.5,92.3 L550.5,91.1 L551.6,89.8 L552.7,88.4 L553.7,87.2 L554.8,86.2 L555.8,85.6 L556.9,85.3 L558.0,85.5 L559.0,86.0 L560.1,86.9 L561.1,88.0 L562.2,89.3 L563.3,90.5 L564.3,91.7 L565.4,92.5 L566.4,93.1 L567.5,93.3 L568.6,93.1 L569.6,92.4 L570.7,91.5 L571.7,90.3 L572.8,89.0 L573.9,87.7 L574.9,86.5 L576.0,85.6 L577.0,85.0 L578.1,84.8 L579.2,85.0 L580.2,85.6 L581.3,86.5 L582.3,87.7 L583.4,89.0 L584.5,90.3 L585.5,91.5 L586.6,92.4 L587.6,93.1 L588.7,93.3 L589.8,93.1 L590.8,92.5 L591.9,91.7 L592.9,90.5 L594.0,89.3 L595.1,88.0 L596.1,86.9 L597.2,86.0 L598.2,85.5 L599.3,85.3 L600.4,85.6 L601.4,86.2 L602.5,87.2 L603.5,88.4 L604.6,89.8 L605.7,91.1 L606.7,92.3 L607.8,93.3 L608.8,94.0 L609.9,94.3 L611.0,94.1 L612.0,93.6 L613.1,92.8 L614.1,91.7 L615.2,90.4 L616.3,89.2 L617.3,88.1 L618.4,87.3 L619.4,86.8 L620.5,86.7 L621.6,87.0 L622.6,87.6 L623.7,88.6 L624.7,89.9 L625.8,91.3 L626.9,92.7 L627.9,93.9 L629.0,94.9 L630.0,95.6 L631.1,95.9 L632.2,95.8 L633.2,95.3 L634.3,94.5 L635.3,93.4 L636.4,92.2 L637.5,91.0 L638.5,89.9 L639.6,89.1 L640.6,88.6 L641.7,88.5 L642.8,88.8 L643.8,89.5 L644.9,90.5 L645.9,91.8 L647.0,93.1 L648.1,94.5 L649.1,95.8 L650.2,96.8 L651.2,97.5 L652.3,97.8 L653.4,97.7 L654.4,97.1 L655.5,96.3 L656.5,95.2 L657.6,94.0 L658.7,92.8 L659.7,91.7 L660.8,90.9 L661.8,90.4 L662.9,90.2 L664.0,90.5 L665.0,91.2 L666.1,92.2 L667.1,93.4 L668.2,94.8 L669.3,96.1 L670.3,97.4 L671.4,98.4 L672.4,99.0 L673.5,99.3 L674.6,99.1 L675.6,98.6 L676.7,97.7 L677.7,96.6 L678.8,95.4 L679.9,94.1 L680.9,93.0 L682.0,92.1 L683.0,91.5 L684.1,91.4 L685.2,91.6 L686.2,92.2 L687.3,93.2 L688.3,94.4 L689.4,95.7 L690.5,97.0 L691.5,98.2 L692.6,99.2 L693.6,99.8 L694.7,100.0 L695.8,99.8 L696.8,99.2 L697.9,98.3 L698.9,97.1 L700.0,95.8" fill="none" stroke="#2438F5" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" />
+              <circle cx="64" cy="89.9" r="7" fill="#8A979C" stroke="#FFFFFF" stroke-width="2" />
+              <circle cx="700" cy="95.8" r="7" fill="#8A979C" stroke="#FFFFFF" stroke-width="2" />
+              <text class="s-lbl" x="74" y="136">Sample: passes</text>
+              <text class="s-lbl" x="690" y="136" text-anchor="end">Next sample: passes</text>
+              <text class="s-acc" x="398" y="188">Below the minimum for days,</text>
+              <text class="s-acc" x="398" y="204">between the two samples</text>
+              <text class="s-mono" x="64" y="234">DAY 1</text>
+              <text class="s-mono" x="700" y="234" text-anchor="end">DAY 30</text>
+              <text class="s-mono" x="74" y="38">FREE RESIDUAL CHLORINE</text>
+            </svg></div>
+            <div class="legend" style="margin-top:12px">
+              <span><i style="background:#2438F5;border-radius:2px;height:3px;width:16px"></i>Continuous record at the tank</span>
+              <span><i style="background:#8A979C"></i>Periodic grab sample</span>
+            </div>
+          </div>
+          <p class="fig-note">Illustration only. It shows why sampling frequency matters; it does not report readings from any tank.</p>
+        </figure>
+
+        <h3>The official direction is already set</h3>
+        <p>None of this is a new idea. The Mission’s 2019 guidelines ask for the supply “from each ESR [elevated storage reservoir] to be measured using modern sensors based IoT solutions”, and for public health engineering departments to “employ water quality sensors and IoT based monitoring systems”.<a class="cite" href="#ref-1" aria-label="Reference 1">[1]</a> Its 2021 framework calls for “technological innovations such as sensor-based IoTs which provide automatic data on water supply quantity, quality and regularity”, starting with pilot projects to be “demonstrated, and later be planned for scaling it up”.<a class="cite" href="#ref-15" aria-label="Reference 15">[15]</a></p>
+        <p>The government’s 2024 operations manual goes further: “Wherever online water quality parameters are monitored, the laboratory water quality test may not be required for such parameters.”<a class="cite" href="#ref-11" aria-label="Reference 11">[11]</a> WHO explains why speed matters: laboratory tests for germs “are often of limited use for operational monitoring, because the time taken to process and analyse water samples does not allow operational adjustments to be made prior to supply”.<a class="cite" href="#ref-10" aria-label="Reference 10">[10]</a></p>
+        <div class="keypoint">
+          <span class="mono">The opportunity</span>
+          <p>Laboratories and field-test kits tell us what is in the water. Continuous sensors at the tank tell us when it changed. Together they turn periodic checks into a record that operators, officials and residents can act on, and trust.</p>
+        </div>
+      </section>
+
+      <!-- 05 -->
+      <section class="wp-sec" id="approach" aria-labelledby="h-approach">
+        <div class="sec-head"><span class="mono">05 — Our approach</span><span class="mono">Aqua Insight</span></div>
+        <h2 id="h-approach">One node on every tank, one shared view of the water.</h2>
+        <p class="lede">Aqua Insight is the drinking-water system Team WAL &amp; AL is building for village overhead tanks. A solar-powered node on the tank measures the water around the clock. Every reading is checked against IS&nbsp;10500 as it arrives, and the result reaches the people who run the tank, the officials who oversee it and the residents who drink from it.</p>
+
+        <h3>What the node measures</h3>
+        <p>The node measures four parameters continuously: free residual chlorine, pH, turbidity and total dissolved solids (TDS). Water level is planned as a fifth reading, so the same view shows supply as well as quality. We chose these four for two reasons. They can be measured reliably by sensors that sit in the water. And between laboratory tests, they answer the questions that matter most: is the water still disinfected, has something disturbed or entered it, and has its mineral content changed?</p>
+
+        <figure class="wp-fig" id="tab-params">
+          <figcaption class="fig-head">
+            <span class="mono fig-no">Table 1</span>
+            <span class="fig-title">The four parameters Aqua Insight measures continuously, with their limits in IS&nbsp;10500:2012</span>
+          </figcaption>
+          <div class="fig-body table-wrap">
+            <table class="wp-table">
+              <thead><tr><th>Parameter</th><th>Acceptable limit</th><th>Permissible limit, no alternate source</th><th>What it tells you between tests</th></tr></thead>
+              <tbody>
+                <tr><td>Free residual chlorine</td><td>At least 0.2&nbsp;mg/l</td><td>1&nbsp;mg/l</td><td>Whether the water is still protected. The standard tests it “at consumer end”, and asks for at least 0.5&nbsp;mg/l where protection against viral infection is required. A sudden loss can signal contamination.</td></tr>
+                <tr><td>pH</td><td>6.5–8.5</td><td>No relaxation</td><td>Whether chlorine can work. WHO advises a pH preferably below 8 for effective chlorination; lower-pH water (about pH&nbsp;7 or less) is more likely to be corrosive.</td></tr>
+                <tr><td>Turbidity</td><td>1&nbsp;NTU</td><td>5&nbsp;NTU</td><td>Whether particles are present that hinder disinfection. WHO advises keeping it below 1&nbsp;NTU. A rise can come from sediment or biofilm stirred up in a tank, or from dirt getting in.</td></tr>
+                <tr><td>Total dissolved solids</td><td>500&nbsp;mg/l</td><td>2,000&nbsp;mg/l</td><td>The salts and minerals in the water. They affect taste, and a sudden change shows that the water itself has changed, for example a different source.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="fig-note">Limits: BIS, IS 10500:2012, Tables 1 and 2 <a class="cite" href="#ref-23" aria-label="Reference 23">[23]</a>. The chlorine requirement applies “only when water is chlorinated”. Guidance on pH and turbidity: WHO, <i>Guidelines for drinking-water quality</i>, 2022 <a class="cite" href="#ref-10" aria-label="Reference 10">[10]</a>; turbidity from sediments and biofilms in storage tanks: WHO, <i>Water safety in buildings</i> <a class="cite" href="#ref-12" aria-label="Reference 12">[12]</a>.</p>
+        </figure>
+
+        <h3>What it does with each reading</h3>
+        <ol class="steps">
+          <li><strong>Checks it against IS&nbsp;10500</strong> as it arrives, and flags a breach in real time.</li>
+          <li><strong>Warns before a limit is crossed.</strong> A trend fitted to recent readings projects the next few hours, so a falling chlorine level raises a warning while there is still time to act.</li>
+          <li><strong>Alerts the right person.</strong> Alerts go to the people responsible for that tank, who acknowledge and resolve them in the app. Each action is recorded, so it is clear who acted and when.</li>
+          <li><strong>Scores the water.</strong> A 0–100 Water Quality Index for every tank, village and district (section 07).</li>
+          <li><strong>Watches its own sensors.</strong> It flags readings that flat-line and calibration that is due, so a faulty sensor is not mistaken for safe water.</li>
+          <li><strong>Closes the loop.</strong> Rules can turn readings into commands sent back to the device, within limits that operators set.</li>
+          <li><strong>Reports compliance.</strong> IS&nbsp;10500 reports by village, exported as PDF.</li>
+          <li><strong>Answers the resident’s question.</strong> An “Is the water safe?” card gives a plain answer, checked against IS&nbsp;10500.</li>
+        </ol>
+      </section>
+
+      <!-- 06 -->
+      <section class="wp-sec" id="how" aria-labelledby="h-how">
+        <div class="sec-head"><span class="mono">06 — How it works</span><span class="mono">Sense · Connect · Understand · Act</span></div>
+        <h2 id="h-how">From the tank to a decision, in one loop.</h2>
+        <p>Aqua Insight runs on the same four-step method behind every WAL &amp; AL system. We build and run every layer ourselves, from the node’s firmware to the apps, so the system behaves as one product and a problem in any layer is ours to fix.</p>
+
+        <figure class="wp-fig" id="fig-loop">
+          <figcaption class="fig-head">
+            <span class="mono fig-no">Fig. 7</span>
+            <span class="fig-title">The Aqua Insight loop: every reading travels from the tank to a decision, and decisions can travel back.</span>
+          </figcaption>
+          <div class="fig-body">
+            <div class="loop">
+              <div class="loop-step">
+                <span class="mono">01 · Sense</span>
+                <h4>Measure at the tank</h4>
+                <p>A solar-powered node with sensors in the water reads the four parameters around the clock.</p>
+                <ul><li>Solar and battery power</li><li>Multi-parameter sensors</li><li>Actuators for commands</li></ul>
+              </div>
+              <div class="loop-step">
+                <span class="mono">02 · Connect</span>
+                <h4>Bring every reading home</h4>
+                <p>Each reading travels over an encrypted link from an authenticated device to a cloud hosted in India.</p>
+                <ul><li>Encrypted in transit</li><li>One identity per device</li><li>Hosted in India</li></ul>
+              </div>
+              <div class="loop-step">
+                <span class="mono">03 · Understand</span>
+                <h4>Turn data into a signal</h4>
+                <p>Readings enter a durable queue, are checked against safe limits and are kept as a time-series history.</p>
+                <ul><li>Nothing dropped under load</li><li>Checks against IS&nbsp;10500</li><li>Trends and the WQI</li></ul>
+              </div>
+              <div class="loop-step">
+                <span class="mono">04 · Act</span>
+                <h4>Close the loop</h4>
+                <p>Alerts, dashboards and reports reach each role, and commands can go back to the device.</p>
+                <ul><li>Alerts to the right person</li><li>Phone and web apps</li><li>Commands back to devices</li></ul>
+              </div>
+            </div>
+          </div>
+          <p class="fig-note">Method shared by every WAL &amp; AL system. Specific components are not named in this paper.</p>
+        </figure>
+
+        <h3>Design choices</h3>
+        <ul class="bullets">
+          <li><strong>Built for the tank, not the lab.</strong> The node runs on solar power and a battery, so it does not depend on mains power at the tank.</li>
+          <li><strong>Hosted in India.</strong> Readings, accounts and logs are kept in Indian data centres.</li>
+          <li><strong>One app for every role, on phone and web.</strong> Owners, operators and officials get the same features on both, from one codebase, so field staff and offices see the same thing.</li>
+          <li><strong>Nothing lost in transit.</strong> Readings pass through a durable queue before they are processed, so a burst of traffic or a slow step does not drop data.</li>
+        </ul>
+      </section>
+
+      <!-- 07 -->
+      <section class="wp-sec" id="wqi" aria-labelledby="h-wqi">
+        <div class="sec-head"><span class="mono">07 — Method</span><span class="mono">Water Quality Index</span></div>
+        <h2 id="h-wqi">One score from 0 to 100, without hiding a breach.</h2>
+        <p>Four readings per tank, across hundreds of tanks, are too many numbers for a busy official. The Aqua Insight Water Quality Index (WQI) turns each tank’s readings into one score from 0 to 100, which also averages up to a village and a district.</p>
+        <ol class="steps">
+          <li><strong>Score each parameter.</strong> Inside its safe band, a parameter scores 85–100, highest near the middle of the band. For turbidity and TDS, lower is better, so low values are not penalised. Across the caution band just beyond the limit, the score falls from 85 to 50. Beyond that, it falls from 50 towards 0.</li>
+          <li><strong>Weight the scores.</strong> The weights favour the parameters most directly tied to health: free residual chlorine 35%, pH 25%, turbidity 25% and TDS 15% (Fig. 8).</li>
+          <li><strong>Grade the result.</strong> 90 and above is Excellent, 75–89 Good, 50–74 Fair, and below 50 Poor.</li>
+        </ol>
+
+        <figure class="wp-fig" id="fig-wqi">
+          <figcaption class="fig-head">
+            <span class="mono fig-no">Fig. 8</span>
+            <span class="fig-title">How much each parameter counts towards the Water Quality Index.</span>
+            <span class="fig-sub">Weights in version 1.0 of the index. Disinfection carries the most weight.</span>
+          </figcaption>
+          <div class="fig-body">
+            <div class="chart" data-chart="hbar" data-suffix="%" data-max="40" data-label-w="190" data-decimals="0"></div>
+            <div class="wqi-scale" aria-label="WQI grades: Poor below 50, Fair 50 to 74, Good 75 to 89, Excellent 90 and above">
+              <div class="wqi-bar"><i style="--w:50"></i><i style="--w:25"></i><i style="--w:15"></i><i style="--w:10"></i></div>
+              <div class="wqi-labels"><span style="--w:50">Poor <b>0–49</b></span><span style="--w:25">Fair <b>50–74</b></span><span style="--w:15">Good <b>75–89</b></span><span style="--w:10">Excellent <b>90+</b></span></div>
+            </div>
+            <details class="data-view">
+              <summary>Data table</summary>
+              <div class="table-wrap">
+                <table class="wp-table chart-data">
+                  <thead><tr><th>Parameter</th><th class="num">Weight</th></tr></thead>
+                  <tbody>
+                    <tr><td>Free residual chlorine</td><td class="num">35%</td></tr>
+                    <tr><td>pH</td><td class="num">25%</td></tr>
+                    <tr><td>Turbidity</td><td class="num">25%</td></tr>
+                    <tr><td>Total dissolved solids</td><td class="num">15%</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </details>
+          </div>
+          <p class="fig-note">Source: Aqua Insight WQI, version 1.0. The WQI is our own index. It is not a BIS or government index.</p>
+        </figure>
+
+        <div class="keypoint">
+          <span class="mono">The index never overrides a limit</span>
+          <p>The WQI summarises; it does not decide. Each reading is still checked against its own IS&nbsp;10500 limit, and a single parameter outside its limit raises its own alert, whatever the overall score.</p>
+        </div>
+        <p>The bands and weights in version 1.0 are a starting point. We will check them against laboratory results in field trials and record any change in later versions of this paper.</p>
+      </section>
+
+      <!-- 08 -->
+      <section class="wp-sec" id="roles" aria-labelledby="h-roles">
+        <div class="sec-head"><span class="mono">08 — People</span><span class="mono">One view, every role</span></div>
+        <h2 id="h-roles">The same live record for everyone responsible for the water.</h2>
+        <p>Village water is everyone’s business and often no one’s job. Aqua Insight gives each person a view scoped to what they are responsible for, built on one shared record. A problem is then visible to the people who can fix it and to the people who oversee them.</p>
+        <figure class="wp-fig" id="tab-roles">
+          <figcaption class="fig-head">
+            <span class="mono fig-no">Table 2</span>
+            <span class="fig-title">Roles in Aqua Insight. Every role gets the same features on phone and web.</span>
+          </figcaption>
+          <div class="fig-body table-wrap">
+            <table class="wp-table">
+              <thead><tr><th>Role</th><th>Who</th><th>Sees</th><th>Can do</th></tr></thead>
+              <tbody>
+                <tr><td>Resident</td><td>People who drink the water</td><td>Their tank’s status</td><td>Check “Is the water safe?” in plain words</td></tr>
+                <tr><td>Owner</td><td>The tank’s owner, such as a gram panchayat, a community or an institution</td><td>Their own tanks</td><td>Acknowledge alerts, see history and reports</td></tr>
+                <tr><td>Operator</td><td>Field staff who run, clean and repair tanks</td><td>Assigned tanks</td><td>Acknowledge and resolve alerts, log work, act on the device, see reports</td></tr>
+                <tr><td>Authority</td><td>District water officials</td><td>Their district</td><td>Oversight of every tank, compliance reports, fleet view (read-only)</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </figure>
+      </section>
+
+      <!-- 09 -->
+      <section class="wp-sec" id="trust" aria-labelledby="h-trust">
+        <div class="sec-head"><span class="mono">09 — Trust</span><span class="mono">Security, privacy and standards</span></div>
+        <h2 id="h-trust">A system that vouches for water has to be trustworthy itself.</h2>
+        <p>If the data can be faked, lost or leaked, the “safe” card means nothing. Aqua Insight is designed to the Indian standards and rules that apply to drinking water, personal data and cyber-security, and to the leading open standard for mobile app security.</p>
+        <figure class="wp-fig" id="tab-standards">
+          <figcaption class="fig-head">
+            <span class="mono fig-no">Table 3</span>
+            <span class="fig-title">The standards and rules Aqua Insight is designed to meet</span>
+          </figcaption>
+          <div class="fig-body table-wrap">
+            <table class="wp-table">
+              <thead><tr><th>Standard</th><th>What it requires</th><th>How Aqua Insight is designed to meet it</th></tr></thead>
+              <tbody>
+                <tr><td>IS 10500:2012<br /><span class="tag">BIS</span></td><td>Acceptable and permissible limits for drinking water. E.&nbsp;coli “shall not be detectable in any 100 ml sample”.</td><td>Every reading is checked against its IS&nbsp;10500 limit as it arrives. Compliance reports by village.</td></tr>
+                <tr><td>Digital Personal Data Protection Act, 2023<br /><span class="tag">Act 22 of 2023</span></td><td>Notice, and consent that is free, specific and informed. “Reasonable security safeguards to prevent personal data breach.” Breach intimation to the Data Protection Board and each affected person. The DPDP Rules, 2025, notified on 13 November 2025, bring the main duties into force 18 months later.</td><td>Only the personal data needed for sign-in and roles. Notice and consent in the apps. Consent records, correction and erasure handled on the server. A breach procedure.</td></tr>
+                <tr><td>CERT-In Directions, 28 April 2022<br /><span class="tag">IT Act s.&nbsp;70B(6)</span></td><td>Report listed cyber incidents to CERT-In within 6 hours. Keep ICT logs for a rolling 180 days within Indian jurisdiction. Synchronise clocks with NIC or NPL time servers.</td><td>Logs kept for 180 days in India. Clocks synchronised to national time servers. An incident runbook with 6-hour reporting.</td></tr>
+                <tr><td>OWASP MASVS v2.1.0<br /><span class="tag">January 2024</span></td><td>The industry standard for mobile app security, covering storage, cryptography, authentication, network, platform, code, resilience and privacy.</td><td>Phone apps designed to MASVS controls, such as encrypted session storage and lockout after repeated failed sign-ins.</td></tr>
+                <tr><td>UN SDG indicator 6.1.1<br /><span class="tag">Safe drinking water</span></td><td>Water from an improved source that is on premises, available when needed and free from faecal and priority chemical contamination.</td><td>Continuous evidence on water quality at the point every home on a scheme shares.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="fig-note">Sources: IS 10500 <a class="cite" href="#ref-23" aria-label="Reference 23">[23]</a>; DPDP Act <a class="cite" href="#ref-24" aria-label="Reference 24">[24]</a> and Rules <a class="cite" href="#ref-25" aria-label="Reference 25">[25]</a>; CERT-In Directions <a class="cite" href="#ref-26" aria-label="Reference 26">[26]</a>; OWASP MASVS <a class="cite" href="#ref-27" aria-label="Reference 27">[27]</a>; SDG 6.1.1 metadata <a class="cite" href="#ref-21" aria-label="Reference 21">[21]</a>.</p>
+        </figure>
+        <h3>Security controls, by design</h3>
+        <p>These controls are part of Aqua Insight’s design, and an independent audit will test them before launch.</p>
+        <ul class="bullets">
+          <li><strong>Devices.</strong> Each node has its own identity and may send only its own readings. Commands to devices are checked on the server, against the sender’s role and the tank’s limits.</li>
+          <li><strong>Data.</strong> Encrypted in transit and at rest. Data and logs are kept in India.</li>
+          <li><strong>Access.</strong> The same role and tank-scope checks run on every request and every device command, not only in the app’s screens. Officials and administrators use multi-factor sign-in.</li>
+          <li><strong>Apps.</strong> Short-lived sessions in encrypted storage on the device, lockout after repeated failed sign-ins, an optional biometric lock, and no keys or credentials inside the app.</li>
+          <li><strong>Assurance.</strong> An independent vulnerability assessment and penetration test by a CERT-In empanelled auditor before launch, then every year.</li>
+        </ul>
+      </section>
+
+      <!-- 10 -->
+      <section class="wp-sec" id="limits" aria-labelledby="h-limits">
+        <div class="sec-head"><span class="mono">10 — Limits</span><span class="mono">What sensors don’t replace</span></div>
+        <h2 id="h-limits">Continuous sensors are not a laboratory.</h2>
+        <p>We think it matters to say clearly what continuous monitoring does not do.</p>
+        <ul class="bullets">
+          <li><strong>They do not detect germs directly.</strong> IS&nbsp;10500 requires that E.&nbsp;coli “shall not be detectable in any 100 ml sample”,<a class="cite" href="#ref-23" aria-label="Reference 23">[23]</a> and only a microbiological test can show that. Free chlorine, pH and turbidity show whether the conditions for safe water hold. WHO describes chlorine residual monitoring as giving “a rapid indication of problems that will direct measurement of microbial parameters”.<a class="cite" href="#ref-10" aria-label="Reference 10">[10]</a> It tells you when to test; it does not replace the test.</li>
+          <li><strong>They do not cover every contaminant.</strong> Arsenic, fluoride, nitrate, iron, uranium and many other contaminants need laboratory tests (section 02). TDS is not a stand-in for any of them.</li>
+          <li><strong>They need care.</strong> Sensors in water drift and foul, and must be cleaned and calibrated on schedule. Aqua Insight flags calibration that is due and readings that flat-line, but someone still has to do the work.</li>
+          <li><strong>The tank is not every tap.</strong> The node measures the water in the tank. Pipes downstream can still let dirt in, especially when supply is intermittent, and IS&nbsp;10500 tests free chlorine “at consumer end”.<a class="cite" href="#ref-23" aria-label="Reference 23">[23]</a> Testing at tail-end taps stays essential.</li>
+        </ul>
+        <div class="keypoint">
+          <span class="mono">What continuous monitoring adds</span>
+          <p>Timing. It shows when something changed, where, and for how long. Laboratory and field-kit tests can then be sent where they are needed, and a problem can be found within hours rather than at the next scheduled sample.</p>
+        </div>
+      </section>
+
+      <!-- 11 -->
+      <section class="wp-sec" id="roadmap" aria-labelledby="h-roadmap">
+        <div class="sec-head"><span class="mono">11 — Status</span><span class="mono">Roadmap</span></div>
+        <h2 id="h-roadmap">Where Aqua Insight is today, and what comes next.</h2>
+        <p>Aqua Insight is in development. The node, the cloud platform and the apps are being built and tested together against a simulated tank, ahead of field trials. Nothing in this paper describes a deployed system or reports results from one.</p>
+        <figure class="wp-fig" id="fig-road">
+          <figcaption class="fig-head">
+            <span class="mono fig-no">Fig. 9</span>
+            <span class="fig-title">Four phases, each with a gate that must be passed before the next begins.</span>
+          </figcaption>
+          <div class="fig-body">
+            <div class="road">
+              <div class="road-phase is-now">
+                <span class="mono">Phase 1 · Now</span>
+                <h4>Build and bench test</h4>
+                <p>Node, cloud platform and apps built together and tested against a simulated tank and on the bench.</p>
+                <div class="road-gate"><b>Gate</b>Readings flow end to end, and every alert reaches the right role.</div>
+              </div>
+              <div class="road-phase">
+                <span class="mono">Phase 2</span>
+                <h4>Field trial</h4>
+                <p>Nodes on a small number of real tanks, run alongside laboratory tests of the same water.</p>
+                <div class="road-gate"><b>Gate</b>Sensor readings agree with laboratory results, and nodes run unattended on solar power.</div>
+              </div>
+              <div class="road-phase">
+                <span class="mono">Phase 3</span>
+                <h4>Pilot</h4>
+                <p>A cluster of villages with a gram panchayat or district partner, with every role using the system.</p>
+                <div class="road-gate"><b>Gate</b>Alerts are acted on in time, and officials use the reports.</div>
+              </div>
+              <div class="road-phase">
+                <span class="mono">Phase 4</span>
+                <h4>Scale</h4>
+                <p>More tanks, villages and districts on the same platform and method.</p>
+                <div class="road-gate"><b>Gate</b>Cost and upkeep per tank that a village or district can sustain.</div>
+              </div>
+            </div>
+          </div>
+        </figure>
+        <p>We are looking for partners for phases 2 and 3: gram panchayats and village water committees, district and state water departments, NGOs and CSR programmes, and research labs that can run laboratory tests alongside the sensors.</p>
+      </section>
+
+      <!-- 12 -->
+      <section class="wp-sec" id="conclusion" aria-labelledby="h-conclusion">
+        <div class="sec-head"><span class="mono">12 — Conclusion</span><span class="mono">Measured, not assumed</span></div>
+        <h2 id="h-conclusion">India has built the taps. The next task is knowing the water is safe, around the clock.</h2>
+        <p>The Jal Jeevan Mission has changed what rural India can expect from its water supply. The next step is to make sure that what flows from the taps meets the standard the Mission itself set: water of prescribed quality, supplied regularly, over the long term.</p>
+        <p>Laboratories and field test kits will remain the reference for what is in the water. Continuous monitoring at the overhead tank adds what they cannot: a record of when the water changed, shared at once with the people who can act on it. The Mission’s own guidelines already ask for sensors. What remains is to prove them in the field, at a cost and an upkeep that villages can sustain.</p>
+        <p>That is the work Aqua Insight is built for. We would like to do it with the people who run, oversee and drink village water.</p>
+      </section>
+
+      <!-- References -->
+      <section class="wp-sec page-start" id="references" aria-labelledby="h-refs">
+        <div class="sec-head"><span class="mono">References</span><span class="mono">Sources accessed 5 Nov 2026</span></div>
+        <h2 id="h-refs">Sources</h2>
+        <p>Official and primary sources only. Figures are quoted as published, with the edition and date we used.</p>
+        <ol class="refs">
+          <li id="ref-1"><span class="ref-n">[1]</span><span>Ministry of Jal Shakti, Department of Drinking Water and Sanitation, National Jal Jeevan Mission. <cite>Operational Guidelines for the Implementation of Jal Jeevan Mission (Har Ghar Jal)</cite>. December 2019. <a href="https://jaljeevanmission.gov.in/sites/default/files/guideline/JJM_Operational_Guidelines.pdf" rel="noopener">jaljeevanmission.gov.in/sites/default/files/guideline/JJM_Operational_Guidelines.pdf</a><span class="ref-what">Definition of a functional household tap connection, p. 5; sensors for each ESR, p. 38; water-quality sensors, §10.5, p. 63; §11.1, p. 64.</span></span></li>
+          <li id="ref-2"><span class="ref-n">[2]</span><span>National Jal Jeevan Mission. <cite>Functionality Assessment of Household Tap Connection: National Report 2024</cite>. Survey July–October 2024, Har Ghar Jal villages only. <a href="https://jaljeevanmission.gov.in/sites/default/files/2025-12/FHTC_National%20Report%202024.pdf" rel="noopener">jaljeevanmission.gov.in/sites/default/files/2025-12/FHTC_National%20Report%202024.pdf</a><span class="ref-what">National factsheet, printed p. 2; water quality, §4.6.1, printed p. 33. The report states it is not directly comparable with earlier rounds.</span></span></li>
+          <li id="ref-3"><span class="ref-n">[3]</span><span>National Jal Jeevan Mission. <cite>National Report: Functionality assessment of household tap connection – 2022</cite>. Survey February–April 2022. <a href="https://jaljeevanmission.gov.in/sites/default/files/2022-10/national_report_of_functionality_assessment_2022.pdf" rel="noopener">jaljeevanmission.gov.in/sites/default/files/2022-10/national_report_of_functionality_assessment_2022.pdf</a><span class="ref-what">Executive summary, p. 12, and national factsheet, p. 17.</span></span></li>
+          <li id="ref-4"><span class="ref-n">[4]</span><span>National Jal Jeevan Mission. <cite>Jal Jeevan Samvad</cite>. 71st edition, August 2026. <a href="https://jaljeevanmission.gov.in/sites/default/files/2026-10/Jal-Jeevan-Samvad-August-2026.pdf" rel="noopener">jaljeevanmission.gov.in/sites/default/files/2026-10/Jal-Jeevan-Samvad-August-2026.pdf</a><span class="ref-what">JJM-IMIS snapshot, printed p. 6: 15,93,64,282 of 19,35,54,073 rural households (82.34%) as on 31 August 2026.</span></span></li>
+          <li id="ref-5"><span class="ref-n">[5]</span><span>World Health Organization. <cite>Burden of disease attributable to unsafe drinking-water, sanitation and hygiene: 2019 update</cite>. 2023. <a href="https://www.who.int/publications/i/item/9789240075610" rel="noopener">www.who.int/publications/i/item/9789240075610</a><span class="ref-what">India, Annex 6, Tables A6.1 and A6.2.</span></span></li>
+          <li id="ref-6"><span class="ref-n">[6]</span><span>WHO/UNICEF Joint Monitoring Programme for Water Supply, Sanitation and Hygiene. <cite>Progress on household drinking water, sanitation and hygiene 2000–2024: special focus on inequalities</cite>. August 2025. <a href="https://washdata.org/reports/jmp-2025-wash-households" rel="noopener">washdata.org/reports/jmp-2025-wash-households</a><span class="ref-what">Key findings, p. viii; India estimates, Annex 3, pp. 122–123; India data note, p. 3.</span></span></li>
+          <li id="ref-7"><span class="ref-n">[7]</span><span>National Jal Jeevan Mission. <cite>Jal Jeevan Samvad</cite>. 51st edition, December 2024. <a href="https://jaljeevanmission.gov.in/sites/default/files/2025-05/JalJeevanSamvad-December-2024-en.pdf" rel="noopener">jaljeevanmission.gov.in/sites/default/files/2025-05/JalJeevanSamvad-December-2024-en.pdf</a><span class="ref-what">JJM-IMIS snapshot, printed p. 5: households with tap water on 15 August 2019, 3,23,62,838; on 31 December 2024, 15,40,21,333 (79.53%).</span></span></li>
+          <li id="ref-8"><span class="ref-n">[8]</span><span>National Jal Jeevan Mission. <cite>Jal Jeevan Samvad</cite>. December issues of 2020, 2021, 2022, 2023 and 2025 (JJM-IMIS snapshots). <a href="https://jaljeevanmission.gov.in/sites/default/files/2025-05/JalJeevanSamvad-December-2020-en.pdf" rel="noopener">jaljeevanmission.gov.in/sites/default/files/2025-05/JalJeevanSamvad-December-2020-en.pdf</a> · <a href="https://jaljeevanmission.gov.in/sites/default/files/2025-05/JalJeevanSamvad-December-2021-en.pdf" rel="noopener">jaljeevanmission.gov.in/sites/default/files/2025-05/JalJeevanSamvad-December-2021-en.pdf</a> · <a href="https://jaljeevanmission.gov.in/sites/default/files/2025-05/JalJeevanSamvad-December-2022-en.pdf" rel="noopener">jaljeevanmission.gov.in/sites/default/files/2025-05/JalJeevanSamvad-December-2022-en.pdf</a> · <a href="https://jaljeevanmission.gov.in/sites/default/files/2025-05/JalJeevanSamvad-December-2023-en.pdf" rel="noopener">jaljeevanmission.gov.in/sites/default/files/2025-05/JalJeevanSamvad-December-2023-en.pdf</a> · <a href="https://jaljeevanmission.gov.in/sites/default/files/2026-01/Jal-Jeevan-Samvad-December-2025.pdf" rel="noopener">jaljeevanmission.gov.in/sites/default/files/2026-01/Jal-Jeevan-Samvad-December-2025.pdf</a><span class="ref-what">Coverage on 31 December of each year: 32.54%, 45.51%, 56.10%, 72.55% and 81.49%.</span></span></li>
+          <li id="ref-9"><span class="ref-n">[9]</span><span>National Jal Jeevan Mission. <cite>Assessment of functionality status of household tap connections in rural areas (2020–2021)</cite>. Final report; survey November–December 2020. <a href="https://jaljeevanmission.gov.in/sites/default/files/2024-04/Functionality-Assessment-National-Report-2020.pdf" rel="noopener">jaljeevanmission.gov.in/sites/default/files/2024-04/Functionality-Assessment-National-Report-2020.pdf</a></span></li>
+          <li id="ref-10"><span class="ref-n">[10]</span><span>World Health Organization. <cite>Guidelines for drinking-water quality: fourth edition incorporating the first and second addenda</cite>. 2022. <a href="https://www.who.int/publications/i/item/9789240045064" rel="noopener">www.who.int/publications/i/item/9789240045064</a><span class="ref-what">Pages quoted: 57, 62, 125, 151, 202 and 245. WHO published a further edition, incorporating a third addendum, on 17 June 2026.</span></span></li>
+          <li id="ref-11"><span class="ref-n">[11]</span><span>Central Public Health and Environmental Engineering Organisation (CPHEEO), Ministry of Housing and Urban Affairs. <cite>Manual on Water Supply and Treatment Systems (Drink from Tap), Part B: Operation and Maintenance</cite>. Second edition, March 2024. <a href="https://mohua.gov.in/static/uploads/2025/10/1086f3271a4a4ff64a70e79669ee4f2b.pdf" rel="noopener">mohua.gov.in/static/uploads/2025/10/1086f3271a4a4ff64a70e79669ee4f2b.pdf</a><span class="ref-what">Reservoir water quality, §6.2.3.2, p. 251; chlorine residual, §7.4.17, p. 276; online monitoring, Table 8.3, p. 303.</span></span></li>
+          <li id="ref-12"><span class="ref-n">[12]</span><span>World Health Organization. <cite>Water safety in buildings</cite>. 2011. <a href="https://www.who.int/publications/i/item/9789241548106" rel="noopener">www.who.int/publications/i/item/9789241548106</a><span class="ref-what">Turbidity from storage tanks, §2.1.2, p. 6; ingress of contamination, §4.6.2, p. 46.</span></span></li>
+          <li id="ref-13"><span class="ref-n">[13]</span><span>CPHEEO, Ministry of Housing and Urban Affairs. <cite>Advisory on Protection of Water Quality in Distribution System</cite>. AMRUT 2.0, February 2026. <a href="https://mohua.gov.in/static/uploads/2026/03/1f50bd8f27197b40e6e472b5b86f4b8a.pdf" rel="noopener">mohua.gov.in/static/uploads/2026/03/1f50bd8f27197b40e6e472b5b86f4b8a.pdf</a><span class="ref-what">Scheduled cleaning and disinfection of storage facilities, §3.13, p. 18.</span></span></li>
+          <li id="ref-14"><span class="ref-n">[14]</span><span>Central Public Health and Environmental Engineering Organisation (CPHEEO), Ministry of Housing and Urban Affairs. <cite>Manual on Water Supply and Treatment Systems (Drink from Tap), Part A: Engineering — Planning, Design and Implementation</cite>. Fourth edition, March 2024. <a href="https://mohua.gov.in/static/uploads/2025/10/0eb252b5d7932a03e97fc364f9a503f3.pdf" rel="noopener">mohua.gov.in/static/uploads/2025/10/0eb252b5d7932a03e97fc364f9a503f3.pdf</a><span class="ref-what">Intermittent supply, §11.24, p. 677.</span></span></li>
+          <li id="ref-15"><span class="ref-n">[15]</span><span>Ministry of Jal Shakti, Department of Drinking Water and Sanitation, National Jal Jeevan Mission. <cite>Drinking Water Quality Monitoring &amp; Surveillance Framework</cite>. Released 2 October 2021. <a href="https://jaljeevanmission.gov.in/sites/default/files/guideline/WQMS-Framework.pdf" rel="noopener">jaljeevanmission.gov.in/sites/default/files/guideline/WQMS-Framework.pdf</a><span class="ref-what">Sensor-based IoT, p. 6; testing frequency and field test kits, §3.3, p. 16 and §4.3, pp. 20–23.</span></span></li>
+          <li id="ref-16"><span class="ref-n">[16]</span><span>Central Ground Water Board, Ministry of Jal Shakti. <cite>State-wise details of ground water quality sampling and analysis for various parameters, based on the Annual Ground Water Quality Report 2025</cite>. Pre-monsoon 2024 samples; published December 2025. <a href="https://cgwb.gov.in/cgwbpnm/public/uploads/documents/1764833633531847433file.pdf" rel="noopener">cgwb.gov.in/cgwbpnm/public/uploads/documents/1764833633531847433file.pdf</a><span class="ref-what">National totals from the state-wise tables.</span></span></li>
+          <li id="ref-17"><span class="ref-n">[17]</span><span>Department of Drinking Water and Sanitation, Ministry of Jal Shakti. <cite>Annual Report 2024–25</cite>. 2025. <a href="https://www.jalshakti-ddws.gov.in/static/uploads/2025/03/b411cf0455523419696301fe6c08b262.pdf" rel="noopener">www.jalshakti-ddws.gov.in/static/uploads/2025/03/b411cf0455523419696301fe6c08b262.pdf</a><span class="ref-what">Quality-affected habitations, §3.4.1, printed p. 69; laboratories and testing (WQMIS snapshot of 15 January 2025), §3.6.2–3.6.3, printed pp. 81–82.</span></span></li>
+          <li id="ref-18"><span class="ref-n">[18]</span><span>World Health Organization. <cite>Drinking-water</cite>. Fact sheet, 13 September 2023. <a href="https://www.who.int/news-room/fact-sheets/detail/drinking-water" rel="noopener">www.who.int/news-room/fact-sheets/detail/drinking-water</a></span></li>
+          <li id="ref-19"><span class="ref-n">[19]</span><span>Central Bureau of Health Intelligence, Ministry of Health and Family Welfare. <cite>National Health Profile 2023</cite>. 18th issue, 2024. <a href="https://cbhidghs.mohfw.gov.in/sites/default/files/NHP/NHP-2023-Last-Final.pdf" rel="noopener">cbhidghs.mohfw.gov.in/sites/default/files/NHP/NHP-2023-Last-Final.pdf</a><span class="ref-what">Tables 3.1.6(B) and 3.1.8(B), 2022 (provisional). Reported cases from routine surveillance, not incidence.</span></span></li>
+          <li id="ref-20"><span class="ref-n">[20]</span><span>International Institute for Population Sciences (IIPS) and ICF. <cite>National Family Health Survey (NFHS-5), 2019–21: India and State Factsheet Compendium</cite>. Ministry of Health and Family Welfare. <a href="https://dhsprogram.com/pubs/pdf/OF43/NFHS-5_India_and_State_Factsheet_Compendium_Phase-II.pdf" rel="noopener">dhsprogram.com/pubs/pdf/OF43/NFHS-5_India_and_State_Factsheet_Compendium_Phase-II.pdf</a><span class="ref-what">India key indicators, indicator 69, printed p. 4. Also published by IIPS at rchiips.org.</span></span></li>
+          <li id="ref-21"><span class="ref-n">[21]</span><span>United Nations Statistics Division (custodians WHO and UNICEF). <cite>SDG indicator metadata: indicator 6.1.1</cite>. Last updated 27 September 2024. <a href="https://unstats.un.org/sdgs/metadata/files/Metadata-06-01-01.pdf" rel="noopener">unstats.un.org/sdgs/metadata/files/Metadata-06-01-01.pdf</a></span></li>
+          <li id="ref-22"><span class="ref-n">[22]</span><span>Press Information Bureau, Ministry of Jal Shakti. <cite>Jal Jeevan Mission (backgrounder)</cite>. 26 October 2025. <a href="https://static.pib.gov.in/WriteReadData/specificdocs/documents/2025/oct/doc20251026676401.pdf" rel="noopener">static.pib.gov.in/WriteReadData/specificdocs/documents/2025/oct/doc20251026676401.pdf</a><span class="ref-what">“Quality Assurance and Monitoring”, p. 4: 2,843 laboratories tested 38.78 lakh samples in 2025–26, as on 21 October 2025.</span></span></li>
+          <li id="ref-23"><span class="ref-n">[23]</span><span>Bureau of Indian Standards. <cite>IS 10500:2012 Drinking Water — Specification (Second Revision)</cite>. May 2012, with amendments. <a href="https://law.resource.org/pub/in/bis/S06/is.10500.2012.pdf" rel="noopener">law.resource.org/pub/in/bis/S06/is.10500.2012.pdf</a><span class="ref-what">Tables 1, 2 and 6. Later amendments changed the limits for iron (1.0 mg/l) and arsenic (0.01 mg/l, no relaxation), as reproduced in the CPHEEO 2024 manual; the four parameters in Table 1 of this paper are unchanged.</span></span></li>
+          <li id="ref-24"><span class="ref-n">[24]</span><span>Ministry of Law and Justice. <cite>The Digital Personal Data Protection Act, 2023 (No. 22 of 2023)</cite>. Gazette of India, 11 August 2023. <a href="https://www.meity.gov.in/static/uploads/2024/06/2bf1f0e9f04e6fb4f8fef35e82c42aa5.pdf" rel="noopener">www.meity.gov.in/static/uploads/2024/06/2bf1f0e9f04e6fb4f8fef35e82c42aa5.pdf</a><span class="ref-what">Sections 5, 6, 8(5) and 8(6).</span></span></li>
+          <li id="ref-25"><span class="ref-n">[25]</span><span>Ministry of Electronics and Information Technology. <cite>Digital Personal Data Protection Rules, 2025</cite>. G.S.R. 846(E), 13 November 2025. <a href="https://www.meity.gov.in/static/uploads/2025/11/53450e6e5dc0bfa85ebd78686cadad39.pdf" rel="noopener">www.meity.gov.in/static/uploads/2025/11/53450e6e5dc0bfa85ebd78686cadad39.pdf</a><span class="ref-what">Rule 1: most rules come into force eighteen months after publication.</span></span></li>
+          <li id="ref-26"><span class="ref-n">[26]</span><span>Indian Computer Emergency Response Team (CERT-In), Ministry of Electronics and Information Technology. <cite>Directions under sub-section (6) of section 70B of the Information Technology Act, 2000</cite>. No. 20(3)/2022-CERT-In, 28 April 2022. <a href="https://www.cert-in.org.in/PDF/CERT-In_Directions_70B_28.04.2022.pdf" rel="noopener">www.cert-in.org.in/PDF/CERT-In_Directions_70B_28.04.2022.pdf</a><span class="ref-what">Directions (i), (ii) and (iv).</span></span></li>
+          <li id="ref-27"><span class="ref-n">[27]</span><span>OWASP Mobile Application Security project. <cite>Mobile Application Security Verification Standard (MASVS)</cite>. Version 2.1.0, January 2024. <a href="https://mas.owasp.org/MASVS/" rel="noopener">mas.owasp.org/MASVS/</a></span></li>
+        </ol>
+      </section>
+    </article>
+  </div>
+
+  <footer class="closing">
+    <div class="wrap closing-inner">
+      <div>
+        <span class="brand">
+          <span class="mark" aria-hidden="true"></span>
+          <span class="brand-name">WAL &amp; AL</span>
+        </span>
+        <p class="display closing-line">Ensuring trust in <em>every</em> drop.</p>
+        <p>We are looking for partners to take Aqua Insight from the bench to the field: gram panchayats and village water committees, district and state water departments, NGOs, CSR programmes and research labs.</p>
+      </div>
+      <div class="closing-ctas">
+        <a class="btn btn-ink" href="/#contact">Start a conversation <span class="arr" aria-hidden="true">→</span></a>
+        <a class="btn btn-ghost" href="/#aqua">Aqua Insight on walandal.com</a>
+      </div>
+    </div>
+    <div class="fineprint">
+      <div class="wrap fineprint-inner">
+        <p><b>About this paper.</b> This paper describes Aqua Insight, a system in development; its features may change before launch. Third-party figures are quoted as published, with the edition and date we used, and where official sources differ we say which one we use. It is not medical, legal or regulatory advice. Sources accessed 5 November 2026.</p>
+        <p><b>Cite as:</b> Team WAL &amp; AL. <i>Measured, not assumed: the case for continuous water-quality monitoring of India’s village overhead tanks.</i> White paper v1.0, November 2026. walandal.com/whitepaper<br />© 2026 WAL &amp; AL. You may quote this paper with credit.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
